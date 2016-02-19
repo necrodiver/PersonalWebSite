@@ -72,8 +72,6 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Microsoft.Owin.Sec
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Microsoft.Owin.Security.Twitter.xml
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\System.Web.Http.Owin.xml
-F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.dll
-F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.pdb
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\System.Web.Helpers.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\System.Web.Http.resources.dll
@@ -97,3 +95,5 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\Microsoft.
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\zh-Hans\System.Web.Http.Owin.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.pdb
