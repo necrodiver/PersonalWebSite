@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Configuration;
 using PersonalWebService.Model;
+using System.Web;
+using System.Web.Http.Controllers;
 
 namespace PersonalWebService.Helper
 {
@@ -18,37 +20,35 @@ namespace PersonalWebService.Helper
     }
     public class BasicAuthenticationAttribute : ActionFilterAttribute
     {
-        public UserInfo userInfo
+        public override void OnActionExecuting(HttpActionContext actionContext)
         {
-
-        }
-        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
-        {
-            string action = actionExecutedContext.ActionContext.ActionDescriptor.ActionName;
-            string controller = actionExecutedContext.ActionContext.Request.GetRouteData().Values["controller"] as string;
-            if (!string.IsNullOrEmpty(action) && !string.IsNullOrEmpty(controller) && UserInfo != null)
+            if (actionContext.Request.Headers.Authorization != null)
             {
+                var encryptTicket = actionContext.Request.Headers.Authorization.Parameter;
+                if (ValidateUserTicket(encryptTicket))
+                    base.OnActionExecuting(actionContext);
+                else
+                    actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                return;
 
             }
-            //if (actionExecutedContext.Request.Headers.Authorization != null)
-            //{
-            //    var encryptTicket = actionExecutedContext.Request.Headers.Authorization.Parameter;
-            //    if (ValidateUserTicket(encryptTicket))
-            //        base.OnActionExecuted(actionExecutedContext);
-            //    else
-            //        actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            //}
-            //else
-            //{
-            //    bool isRequired = (WebConfigurationManager.AppSettings["WebApiAuthenticatedFlag"].ToString().Equals("true", StringComparison.OrdinalIgnoreCase));
-            //    if(isRequired)
-            //    {
-            //        var attr = actionExecutedContext.ActionContext.ActionDescriptor.GetCustomAttributes<T>().OfType();
-            //    }
-            //}
+
+            bool isRequired = (WebConfigurationManager.AppSettings["WebApiAuthenticatedFlag"].ToString().Equals("true", StringComparison.OrdinalIgnoreCase));
+            if (isRequired)
+            {
+                var attr = actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
+                if (attr)
+                {
+                    base.OnActionExecuting(actionContext);
+                    return;
+                }
+                actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            }
 
         }
-
+        //https://github.com/besley/DemoUserAuthorization/blob/master/WebUtility/Security/BasicAuthenticationAttribute.cs
+        //http://blog.sina.com.cn/s/blog_4e0987310101imce.html
+        //http://www.cnblogs.com/shan333chao/p/5002054.html
         private bool ValidateUserTicket(string encryotTicket)
         {
             var userTicket = FormsAuthentication.Decrypt(encryotTicket);
