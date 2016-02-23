@@ -283,6 +283,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalWebService.Helper\PersonalWebService.Helper.csproj">
+      <Project>{b545805c-a7ae-443f-bec0-1c4196d5a025}</Project>
+      <Name>PersonalWebService.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalWebService.Model\PersonalWebService.Model.csproj">
+      <Project>{adc1f98e-a360-49c9-bbf2-4d9eec2ff05f}</Project>
+      <Name>PersonalWebService.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

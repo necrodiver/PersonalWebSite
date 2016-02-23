@@ -10,8 +10,7 @@ namespace PersonalWebService.Controllers
 {
     public class UserController : BaseController
     {
-        // GET: api/User
-        [Route("User")]
+        [Route("api/User")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -23,7 +22,6 @@ namespace PersonalWebService.Controllers
             return "value";
         }
 
-        // POST: api/User
         public void Post([FromBody]string value)
         {
         }

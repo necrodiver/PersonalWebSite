@@ -1,0 +1,10 @@
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.DAL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.DAL.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.xml
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\obj\Debug\PersonalWebService.DAL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.DAL\obj\Debug\PersonalWebService.DAL.pdb

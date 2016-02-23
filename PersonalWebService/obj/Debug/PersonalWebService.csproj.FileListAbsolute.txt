@@ -196,3 +196,6 @@ E:\Web\StudyMaterials\PersonalWebService\bin\zh-Hans\System.Web.Http.Owin.resour
 E:\Web\StudyMaterials\PersonalWebService\obj\Debug\PersonalWebService.dll
 E:\Web\StudyMaterials\PersonalWebService\obj\Debug\PersonalWebService.pdb
 E:\Web\StudyMaterials\PersonalWebService\bin\PersonalWebService.dll.config
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.csprojResolveAssemblyReference.cache
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Helper.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Helper.pdb
