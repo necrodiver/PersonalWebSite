@@ -199,3 +199,5 @@ E:\Web\StudyMaterials\PersonalWebService\bin\PersonalWebService.dll.config
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\obj\Debug\PersonalWebService.csprojResolveAssemblyReference.cache
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Helper.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Helper.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Model.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Model.pdb

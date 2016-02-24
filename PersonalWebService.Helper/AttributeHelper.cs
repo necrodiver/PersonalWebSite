@@ -9,6 +9,7 @@ using System.Web.Configuration;
 using System.Web.Http.Controllers;
 using PersonalWebService.Model;
 using System.Web;
+using System.Collections.Generic;
 
 namespace PersonalWebService.Helper
 {
@@ -31,6 +32,8 @@ namespace PersonalWebService.Helper
 
             }
             #endregion
+
+            #region 第一种方法
             var configFlag = WebConfigurationManager.AppSettings["WebApiAuthenticatedFlag"] as string;
             if (string.IsNullOrEmpty(configFlag))
             {
@@ -49,8 +52,8 @@ namespace PersonalWebService.Helper
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
             }
             actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
-
-            #region 第二种验证方式就是直接验证当前请求链接和当前账户存在情况
+            #endregion
+            #region 第二种方法 第二种验证方式就是直接验证当前请求链接和当前账户存在情况
             string action = actionContext.ActionDescriptor.ActionName;
             //.RouteData.Values["controller"] as string;
             string controller = actionContext.Request.GetRouteData().Values["controller"] as string;
@@ -60,6 +63,7 @@ namespace PersonalWebService.Helper
             {
                 base.OnActionExecuting(actionContext);
             }
+            actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
             #endregion
         }
         //https://github.com/besley/DemoUserAuthorization/blob/master/WebUtility/Security/BasicAuthenticationAttribute.cs
@@ -93,6 +97,27 @@ namespace PersonalWebService.Helper
                 return userinfo;
             }
             return null;
+        }
+    }
+
+    /// <summary>
+    /// 模型过滤器验证
+    /// </summary>
+    public class ModelValidationFilterAttribute:ActionFilterAttribute
+    {
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+            if(!actionContext.ModelState.IsValid)
+            {
+                var errors = new Dictionary<string, IEnumerable<string>>();
+                actionContext.ModelState.All(m=> {
+                    errors[m.Key] = m.Value.Errors.Select(e=>e.ErrorMessage);
+                    return true;
+                });
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest,errors);
+                return;
+            }
+            base.OnActionExecuting(actionContext);
         }
     }
 }
