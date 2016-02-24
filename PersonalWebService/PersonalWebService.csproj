@@ -285,6 +285,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PersonalWebService.BLL\PersonalWebService.BLL.csproj">
+      <Project>{cfd11176-b9db-46b4-8cdc-992ba030a989}</Project>
+      <Name>PersonalWebService.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersonalWebService.Helper\PersonalWebService.Helper.csproj">
       <Project>{b545805c-a7ae-443f-bec0-1c4196d5a025}</Project>
       <Name>PersonalWebService.Helper</Name>

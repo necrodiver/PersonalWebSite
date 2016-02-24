@@ -19,7 +19,10 @@ namespace PersonalWebService.Controllers
         [ModelValidationFilter]
         public async Task<string> Login([FromBody]UserLogin user)
         {
-            return await GetValueAsync(user.UserName, user.PassWord);
+            return await Task.Run(()=> {
+                return string.Empty;
+            });
+            //return await GetValueAsync(user.UserName, user.PassWord);
         }
 
         private Task<string> GetValueAsync(string userName, string passWord)
