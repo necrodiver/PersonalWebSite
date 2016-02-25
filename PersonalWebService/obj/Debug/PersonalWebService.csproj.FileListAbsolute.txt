@@ -201,3 +201,8 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Helper.pdb
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Model.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.Model.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\NLog.config
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.BLL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\NLog.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.BLL.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\NLog.xml

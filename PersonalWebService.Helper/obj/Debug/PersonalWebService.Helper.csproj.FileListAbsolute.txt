@@ -18,3 +18,6 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\zh-Ha
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\zh-Hans\System.Web.Http.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\zh-Hans\System.Net.Http.Formatting.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\obj\Debug\PersonalWebService.Helper.csprojResolveAssemblyReference.cache
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\NLog.config
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\NLog.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.Helper\bin\Debug\NLog.xml

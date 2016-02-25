@@ -1,0 +1,12 @@
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\PersonalWebService.BLL.dll.config
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\PersonalWebService.BLL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\PersonalWebService.BLL.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.xml
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\obj\Debug\PersonalWebService.BLL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\obj\Debug\PersonalWebService.BLL.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\obj\Debug\PersonalWebService.BLL.csprojResolveAssemblyReference.cache

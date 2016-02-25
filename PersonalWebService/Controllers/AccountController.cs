@@ -32,8 +32,17 @@ namespace PersonalWebService.Controllers
                 return DateTime.Now.ToString() + "  UserName:" + userName + "  PWD:" + passWord;
             });
         }
-        public string GetTestValues(string DM)
+        public string GetTestValues(int DM)
         {
+            try
+            {
+                int a = 100 / DM;
+            }
+            catch (Exception ex)
+            {
+                LogRecordHelper.RecordLog(ex.Message);
+            }
+           
             return DateTime.Now.ToString() + ":" + DM;
         }
 
