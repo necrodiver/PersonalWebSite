@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="LogLevels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInfo.cs" />
+    <Compile Include="ReturnStatus_Model.cs" />
+    <Compile Include="UserInfo_Model.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -50,9 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfo_DAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalWebService.Helper\PersonalWebService.Helper.csproj">
+      <Project>{b545805c-a7ae-443f-bec0-1c4196d5a025}</Project>
+      <Name>PersonalWebService.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalWebService.Model\PersonalWebService.Model.csproj">
+      <Project>{adc1f98e-a360-49c9-bbf2-4d9eec2ff05f}</Project>
+      <Name>PersonalWebService.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

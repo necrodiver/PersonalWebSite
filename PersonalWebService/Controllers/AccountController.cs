@@ -14,12 +14,16 @@ namespace PersonalWebService.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
+
         [HttpPost]
         [Route("Login")]
         [ModelValidationFilter]
         public async Task<string> Login([FromBody]UserLogin user)
         {
+            YZMHelper yz = new YZMHelper();
             return await Task.Run(()=> {
+                accountBll.VerifyUserInfo(user);
                 return string.Empty;
             });
             //return await GetValueAsync(user.UserName, user.PassWord);
@@ -40,7 +44,7 @@ namespace PersonalWebService.Controllers
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(ex.Message);
+                LogRecordHelper.RecordLog(LogLevels.Error,ex);
             }
            
             return DateTime.Now.ToString() + ":" + DM;

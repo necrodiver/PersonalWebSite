@@ -84,14 +84,14 @@ namespace PersonalWebService.Helper
             return true;
         }
 
-        public UserInfo userInfo
+        public UserInfo_Model userInfo
         {
             get { return GetUserInfo(); }
         }
 
-        public static UserInfo GetUserInfo()
+        public static UserInfo_Model GetUserInfo()
         {
-            UserInfo userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo;
+            UserInfo_Model userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo_Model;
             if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserID) && !string.IsNullOrEmpty(userinfo.UserName) && !string.IsNullOrEmpty(userinfo.Password))
             {
                 return userinfo;
