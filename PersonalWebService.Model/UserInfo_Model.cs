@@ -12,20 +12,29 @@ namespace PersonalWebService.Model
     {
         [Required]
         [DisplayName("用户Id")]
-        [RegularExpression(@"^\d+", ErrorMessage = "{0}只能是数字")]
         [StringLength(32)]
         public string UserID { get; set; }
+
         [Required]
         [DisplayName("用户名")]
-        [StringLength(50, MinimumLength = 5)]
+        [StringLength(50, MinimumLength = 6)]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}用户名必须是邮箱，以便找回密码")]
         public string UserName { get; set; }
+
+        [Required]
+        [DisplayName("昵称")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
+        public string Nickname { get; set; }
+
         [Required]
         [DisplayName("登录密码")]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "{0}只能是字母、数字或字母和数字的混合")]
         [StringLength(20, MinimumLength = 6)]
         public string Password { get; set; }
+
         [DisplayName("用户状态")]
         public int Status { get; set; }
+
         [DisplayName("用户类型")]
         public UserType UserType { get; set; }
     }
@@ -33,18 +42,18 @@ namespace PersonalWebService.Model
     {
         [Required]
         [DisplayName("用户名")]
-        [StringLength(50, MinimumLength = 5,ErrorMessage ="{0}长度不能超过50个字段，不能小于5个字段")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "{0}长度不能超过50个字段，不能小于5个字段")]
         public string UserName { get; set; }
 
         [Required]
         [DisplayName("登录密码")]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "{0}只能是字母、数字或字母和数字的混合")]
-        [StringLength(20, MinimumLength = 6,ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string PassWord { get; set; }
 
         [Required]
         [DisplayName("验证码")]
-        [StringLength(6,ErrorMessage ="{0} 长度必须是6位数字或字母组合")]
+        [StringLength(6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
         public string ValidateCode { get; set; }
     }
 }
