@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFactoryDB.cs" />
+    <Compile Include="DataField.cs" />
     <Compile Include="GenericityOperateDB.cs" />
     <Compile Include="OperateDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

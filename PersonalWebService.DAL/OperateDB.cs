@@ -45,7 +45,7 @@ namespace PersonalWebService.DAL
             List<T> list = new List<T>();
             using (IDbConnection conn = GetOpenConnection())
             {
-                IEnumerable<T> logs = conn.Query<T>(sql);
+                IEnumerable<T> logs = conn.Query<T>(sql,param);
                 list = logs as List<T>;
             }
             return list;

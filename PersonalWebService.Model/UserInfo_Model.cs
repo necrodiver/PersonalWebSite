@@ -26,17 +26,17 @@ namespace PersonalWebService.Model
         [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
         public string Nickname { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         [DisplayName("登录密码")]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "{0}只能是字母、数字或字母和数字的混合")]
         [StringLength(20, MinimumLength = 6)]
         public string Password { get; set; }
 
         [DisplayName("用户状态")]
-        public int Status { get; set; }
+        public int? Status { get; set; }
 
         [DisplayName("用户类型")]
-        public UserType UserType { get; set; }
+        public UserType? UserType { get; set; }
     }
     public class UserLogin
     {
