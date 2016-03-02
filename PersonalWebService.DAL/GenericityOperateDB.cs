@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.DAL
 {
-    public class GenericityOperateDB
+    public class GenericityOperateDB:OperateDB
     {
-        public bool Add<T>(T model)
+        public bool Add1<T>(T model)
         {
             StringBuilder sbSql = new StringBuilder();
             Type t = model.GetType();
@@ -20,6 +20,7 @@ namespace PersonalWebService.DAL
                // PropertyInfo
                 string name = item.Name;
             }
+            Add<T>("1212",model);
             return false;
         }
     }
