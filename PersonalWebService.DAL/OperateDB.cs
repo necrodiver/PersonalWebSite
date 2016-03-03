@@ -10,7 +10,14 @@ namespace PersonalWebService.DAL
     public class OperateDB : AbstractFactoryDB
     {
         private static readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString;
-        public override bool Add<T>(string sql, object param)
+
+        /// <summary>
+        /// 操作数据，增删改，适用于自定义操作
+        /// </summary>
+        /// <param name="sql">操作语句</param>
+        /// <param name="param">附加操作的内容</param>
+        /// <returns></returns>
+        public override bool Operate(string sql, object param)
         {
             int addNum = 0;
             using (IDbConnection conn = GetOpenConnection())
@@ -20,32 +27,19 @@ namespace PersonalWebService.DAL
             return addNum > 0;
         }
 
-        public override bool Delete<T>(string sql, object param)
-        {
-            int delNum = 0;
-            using (IDbConnection conn = GetOpenConnection())
-            {
-                delNum=conn.Execute(sql, param);
-            }
-            return delNum > 0;
-        }
-
-        public override bool Edit<T>(string sql, object param)
-        {
-            int editNum = 0;
-            using (IDbConnection conn = GetOpenConnection())
-            {
-                editNum = conn.Execute(sql, param);
-            }
-            return editNum > 0;
-        }
-
+        /// <summary>
+        /// 查询语句，适用于自定义操作
+        /// </summary>
+        /// <typeparam name="T">模型类</typeparam>
+        /// <param name="sql">查询语句</param>
+        /// <param name="param">附带条件内容</param>
+        /// <returns></returns>
         public override List<T> Get<T>(string sql, object param)
         {
             List<T> list = new List<T>();
             using (IDbConnection conn = GetOpenConnection())
             {
-                IEnumerable<T> logs = conn.Query<T>(sql,param);
+                IEnumerable<T> logs = conn.Query<T>(sql, param);
                 list = logs as List<T>;
             }
             return list;
@@ -88,7 +82,7 @@ namespace PersonalWebService.DAL
         /// 开启数据库
         /// </summary>
         /// <returns></returns>
-        public static IDbConnection GetOpenConnection()
+        private static IDbConnection GetOpenConnection()
         {
             SqlConnection conn = new SqlConnection(sqlConnectionString);
             conn.Open();
