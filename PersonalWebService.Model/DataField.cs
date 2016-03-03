@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalWebService.DAL
+namespace PersonalWebService.Model
 {
     public class DataField
     {
