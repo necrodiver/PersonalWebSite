@@ -15,6 +15,10 @@ namespace PersonalWebService.DAL
             return generDB.Operate(userInfo, operate);
         }
 
+        public List<T> GetUserInfoList<T>(T userInfo)
+        {
+             return generDB.GetList(userInfo);
+        }
         //public bool AddUserInfo(UserInfo_Model userinfo)
         //{
         //    StringBuilder sbsql = new StringBuilder();
