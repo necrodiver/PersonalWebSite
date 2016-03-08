@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeHelper.cs" />
-    <Compile Include="Email.cs" />
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="EncryptOperateHelper.cs" />
     <Compile Include="LogRecordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PersonalWebService.Helper
 {
-    public class Email
+    public class EmailHelper
     {
         /// <summary>
         /// 发送邮件
