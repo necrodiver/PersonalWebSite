@@ -12,12 +12,12 @@ namespace PersonalWebService.Helper
     {
     }
 
-    public class AESEncryt
+    public class AESEncryptS
     {
         /// <summary>
         /// 获取密钥,AES密钥必须是32位的字符串
         /// </summary>
-        private static string Key
+        private string Key
         {
             get { return @")O[NB]6,YF}+efcaj{+oESb9d8>Z'e9M"; }
         }
@@ -25,7 +25,7 @@ namespace PersonalWebService.Helper
         /// <summary>
         /// 获取向量
         /// </summary>
-        private static string IV
+        private string IV
         {
             get { return @"L+\~f4,Ir)b$=pkf"; }
         }
@@ -35,7 +35,7 @@ namespace PersonalWebService.Helper
         /// </summary>
         /// <param name="plainStr">明文字符串</param>
         /// <returns>密文</returns>
-        public static string AESEncrypt(string plainStr)
+        public string AESEncrypt(string plainStr)
         {
             byte[] bKey = Encoding.UTF8.GetBytes(Key);
             byte[] bIV = Encoding.UTF8.GetBytes(IV);
@@ -62,7 +62,7 @@ namespace PersonalWebService.Helper
         /// <param name="plainStr">明文字符串</param>
         /// <param name="returnNull">加密失败时是否返回 null，false 返回 String.Empty</param>
         /// <returns>密文</returns>
-        public static string AESEncrypt(string plainStr, bool returnNull)
+        public string AESEncrypt(string plainStr, bool returnNull)
         {
             string encrypt = AESEncrypt(plainStr);
             return returnNull ? encrypt : (encrypt == null ? String.Empty : encrypt);
@@ -73,7 +73,7 @@ namespace PersonalWebService.Helper
         /// </summary>
         /// <param name="encryptStr">密文字符串</param>
         /// <returns>明文</returns>
-        public static string AESDecrypt(string encryptStr)
+        public string AESDecrypt(string encryptStr)
         {
             byte[] bKey = Encoding.UTF8.GetBytes(Key);
             byte[] bIV = Encoding.UTF8.GetBytes(IV);
@@ -100,7 +100,7 @@ namespace PersonalWebService.Helper
         /// <param name="encryptStr">密文字符串</param>
         /// <param name="returnNull">解密失败时是否返回 null，false 返回 String.Empty</param>
         /// <returns>明文</returns>
-        public static string AESDecrypt(string encryptStr, bool returnNull)
+        public string AESDecrypt(string encryptStr, bool returnNull)
         {
             string decrypt = AESDecrypt(encryptStr);
             return returnNull ? decrypt : (decrypt == null ? String.Empty : decrypt);

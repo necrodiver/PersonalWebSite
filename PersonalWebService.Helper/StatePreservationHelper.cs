@@ -21,7 +21,7 @@ namespace PersonalWebService.Helper
         /// <param name="sessionContent">存储内容</param>
         /// <param name="sessionKey">Key值</param>
         /// <returns></returns>
-        public bool SaveSession<T>(T sessionContent,string sessionKey)
+        public static bool SaveSession<T>(T sessionContent,string sessionKey)
         {
             HttpContext.Current.Session[sessionKey] = sessionContent;
             return true;
@@ -31,7 +31,7 @@ namespace PersonalWebService.Helper
         /// </summary>
         /// <param name="sessionKey">Key值</param>
         /// <returns></returns>
-        public bool RemoveSession(string sessionKey)
+        public static bool RemoveSession(string sessionKey)
         {
             if(HttpContext.Current.Session[sessionKey]==null)
             {

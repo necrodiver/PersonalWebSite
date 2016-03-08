@@ -39,12 +39,33 @@ namespace PersonalWebService.DAL
             List<T> list = new List<T>();
             using (IDbConnection conn = GetOpenConnection())
             {
-                IEnumerable<T> logs = conn.Query<T>(sql, param);
-                list = logs as List<T>;
+                IEnumerable<T> models = conn.Query<T>(sql, param);
+                list = models as List<T>;
             }
             return list;
         }
 
+        public override T GetModel<T>(string sql, object param)
+        {
+            using (IDbConnection conn = GetOpenConnection())
+            {
+                return conn.Query<T>(sql, param) as T;
+            }
+        }
+
+        /// <summary>
+        /// 查找数据的第一行第一列的内容
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public override string GetScaler(string sql, object param)
+        {
+            using (IDbConnection conn = GetOpenConnection())
+            {
+                return conn.ExecuteScalar(sql, param) as string;
+            }
+        }
         public static List<T> SelectData<T>(string sql)
         {
             Type type = typeof(T);

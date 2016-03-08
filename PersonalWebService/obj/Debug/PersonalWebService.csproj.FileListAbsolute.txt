@@ -206,3 +206,8 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\NLog.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.BLL.pdb
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\NLog.xml
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.DAL.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Dapper.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\PersonalWebService.DAL.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Dapper.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService\bin\Dapper.xml

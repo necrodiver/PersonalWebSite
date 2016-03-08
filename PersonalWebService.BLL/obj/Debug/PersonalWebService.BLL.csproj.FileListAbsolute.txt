@@ -26,3 +26,6 @@ F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\NLog.xml
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\System.Net.Http.Formatting.xml
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\zh-Hans\System.Web.Http.resources.dll
 F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\zh-Hans\System.Net.Http.Formatting.resources.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\Dapper.dll
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\Dapper.pdb
+F:\迅雷下载\Github\PersonalWebSite\PersonalWebService.BLL\bin\Debug\Dapper.xml

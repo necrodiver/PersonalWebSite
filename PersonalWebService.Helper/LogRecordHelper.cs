@@ -25,7 +25,7 @@ namespace PersonalWebService.Helper
         /// </summary>
         /// <param name="loglevels">日志等级</param>
         /// <param name="e">日志内容</param>
-        public static void RecordLog(LogLevels loglevels,Exception e)
+        public static void RecordLog(LogLevels loglevels,object e)
         {
             switch (loglevels)
             {

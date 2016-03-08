@@ -18,7 +18,7 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("用户名")]
         [StringLength(50, MinimumLength = 6)]
-        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}用户名必须是邮箱，以便找回密码")]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
         public string UserName { get; set; }
 
         [Required]
@@ -50,6 +50,20 @@ namespace PersonalWebService.Model
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "{0}只能是字母、数字或字母和数字的混合")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string PassWord { get; set; }
+
+        [Required]
+        [DisplayName("验证码")]
+        [StringLength(6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
+        public string ValidateCode { get; set; }
+    }
+
+    public class RetrievePwdStart
+    {
+        [Required]
+        [DisplayName("注册的用户名")]
+        [StringLength(50, MinimumLength = 6)]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
+        public string Email { get; set; }
 
         [Required]
         [DisplayName("验证码")]

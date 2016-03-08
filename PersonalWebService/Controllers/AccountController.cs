@@ -12,21 +12,70 @@ using System.Web.Http;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Account")]
+    [ModelValidationFilter]
     public class AccountController : ApiController
     {
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
 
         [HttpPost]
         [Route("Login")]
-        [ModelValidationFilter]
-        public async Task<string> Login([FromBody]UserLogin user)
+        public async Task<ReturnStatus_Model> Login([FromBody]UserLogin user)
         {
             YZMHelper yz = new YZMHelper();
-            return await Task.Run(()=> {
-                accountBll.VerifyUserInfo(user);
-                return string.Empty;
+            return await Task.Run(() =>
+            {
+                return accountBll.VerifyUserInfo(user);
             });
             //return await GetValueAsync(user.UserName, user.PassWord);
+        }
+
+        [HttpPost]
+        [Route("Edit")]
+        public async Task<ReturnStatus_Model> Edit([FromBody]UserInfo_Model userInfo)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.EditUserInfo(userInfo);
+            });
+        }
+
+        [HttpPost]
+        [Route("Add")]
+        public async Task<ReturnStatus_Model> Add([FromBody]UserInfo_Model userInfo)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.AddUserInfo(userInfo);
+            });
+        }
+
+        [HttpPost]
+        [Route("Logout")]
+        public async Task<ReturnStatus_Model> Logout()
+        {
+            return await Task.Run(() =>
+            {
+                ReturnStatus_Model rsModel = new ReturnStatus_Model();
+                rsModel.isRight = false;
+                rsModel.title = "注销登录";
+                rsModel.message = "注销失败";
+                if (SessionState.RemoveSession("UserInfo"))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "注销成功";
+                }
+                return rsModel;
+            });
+        }
+
+        [HttpPost]
+        [Route("RetrievePwd")]
+        public async Task<ReturnStatus_Model> RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.RetrievePwd(retrievePwd);
+            });
         }
 
         private Task<string> GetValueAsync(string userName, string passWord)
@@ -36,6 +85,7 @@ namespace PersonalWebService.Controllers
                 return DateTime.Now.ToString() + "  UserName:" + userName + "  PWD:" + passWord;
             });
         }
+
         public string GetTestValues(int DM)
         {
             try
@@ -44,9 +94,9 @@ namespace PersonalWebService.Controllers
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Error,ex);
+                LogRecordHelper.RecordLog(LogLevels.Error, ex);
             }
-           
+
             return DateTime.Now.ToString() + ":" + DM;
         }
 

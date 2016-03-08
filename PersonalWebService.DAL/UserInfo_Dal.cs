@@ -10,14 +10,41 @@ namespace PersonalWebService.DAL
     public class UserInfo_DAL
     {
         GenericityOperateDB generDB = new GenericityOperateDB();
+        /// <summary>
+        /// 进行增删改操作
+        /// </summary>
+        /// <param name="userInfo">用户信息</param>
+        /// <param name="operate">操作类型</param>
+        /// <returns></returns>
         public bool UserInfoOpe(UserInfo_Model userInfo, OperatingModel operate)
         {
             return generDB.Operate(userInfo, operate);
         }
 
+        /// <summary>
+        /// 进行查找操作
+        /// </summary>
+        /// <typeparam name="T">Model类</typeparam>
+        /// <param name="userInfo">传入的实体类</param>
+        /// <returns>查找到的实体类的List集合</returns>
         public List<T> GetUserInfoList<T>(T userInfo)
         {
              return generDB.GetList(userInfo);
+        }
+
+        //public T GetUserInfo<T>(string sql,object param) where T :class
+        //{
+        //    return generDB.GetModel<T>(sql, param);
+        //}
+
+        public int GetUserInfoCount(string sql,object param)
+        {
+            string value= generDB.GetScaler(sql,param);
+            if (string.IsNullOrEmpty(value))
+            {
+                return Convert.ToInt32(value);
+            }
+            return 0;
         }
         //public bool AddUserInfo(UserInfo_Model userinfo)
         //{
