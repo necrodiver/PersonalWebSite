@@ -156,7 +156,7 @@ namespace PersonalWebService.BLL
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "找回密码";
-
+            //首先各种验证
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
             if (rvPrev==null||rvPrev.SaveTime.AddMinutes(Convert.ToDouble(EmailHelper.emailTimeFrame)) > DateTime.Now)
             {
@@ -178,7 +178,7 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-
+            //然后进行数据导入
             UserInfo_Model userinfo = new UserInfo_Model();
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
             userinfo.UserName = resetPwd.Email;
@@ -192,12 +192,12 @@ namespace PersonalWebService.BLL
                 }
                 else
                 {
-                    rsModel.message = "修改失败，请稍后重试";
+                    rsModel.message = "修改失败，请稍后重试（请重新发送邮件）";
                 }
             }catch(Exception ex)
             {
                 LogRecordHelper.RecordLog(LogLevels.Fatal,ex.ToString());
-                rsModel.message = "服务器错误，请稍后重试";
+                rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
             return rsModel;
         }
