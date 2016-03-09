@@ -11,7 +11,7 @@ namespace PersonalWebService.DAL
     public class GenericityOperateDB : OperateDB
     {
         /// <summary>
-        /// 操作进行增删改，主要进行简单的增删改操作
+        /// 操作进行增删，主要进行简单的增删操作
         /// </summary>
         /// <typeparam name="T">模型类</typeparam>
         /// <param name="model">实例数据</param>
@@ -43,9 +43,6 @@ namespace PersonalWebService.DAL
                             break;
                         case OperatingModel.Delete:
                             sql1.Append(item.Name + "=@" + item.Name + " AND ");
-                            break;
-                        case OperatingModel.Edit:
-                            sql1.Append(item.Name + "=@" + item.Name + ",");
                             break;
                         default:
                             break;
@@ -115,9 +112,6 @@ namespace PersonalWebService.DAL
                     break;
                 case OperatingModel.Delete:
                     sql = " DELETE {0} WHERE {1} ";
-                    break;
-                case OperatingModel.Edit:
-                    sql = " UPDATE {0} SET {1} ";
                     break;
                 default:
                     sql = null;

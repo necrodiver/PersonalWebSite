@@ -14,6 +14,6 @@ namespace PersonalWebService.DAL
         public abstract string GetScaler(string sql, object param);
         //public abstract bool Add<T>(string sql, object param);
         //public abstract bool Delete<T>(string sql, object param);
-        //public abstract bool Edit<T>(string sql, object param);
+        public abstract int Edit(string sql, object param);
     }
 }

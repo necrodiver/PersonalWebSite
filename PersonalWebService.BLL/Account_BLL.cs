@@ -3,6 +3,7 @@ using PersonalWebService.Helper;
 using PersonalWebService.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace PersonalWebService.BLL
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
         private DAL.UserInfo_DAL userinfoDal = new DAL.UserInfo_DAL();
+        private static EmailHelper emailHelper = new EmailHelper();
+        private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
 
         /// <summary>
         /// 验证用户登录
@@ -93,24 +96,47 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model RetrievePwd(RetrievePwdStart retrievePwd)
         {
+
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "找回密码";
-            if (!yzM.Text.Equals(retrievePwd.ValidateCode, StringComparison.OrdinalIgnoreCase))
+
+            //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
+            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) < DateTime.Now)
             {
-                rsModel.message = "验证码输入错误，请刷新后重新输入";
+                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
                 return rsModel;
             }
 
             try
             {
                 string sql = "SELECT Count(*) FROM UserInfo WHERE UserName=@UserName";
-                int count= userinfoDal.GetUserInfoCount(sql, new DataField { Name = "@UserName", Value = retrievePwd.Email });
+                int count = userinfoDal.GetUserInfoCount(sql, new DataField { Name = "@UserName", Value = retrievePwd.Email });
                 if (count == 1)
                 {
-                   //准备进行发送邮件
+                    //准备进行发送邮件
+                    YZMHelper yzmChild = new YZMHelper();
+                    RetrieveValue rv = new RetrieveValue();
+                    rv.ValidateCode = yzmChild.Text;
+                    rv.SaveTime = DateTime.Now;
+                    SessionState.SaveSession(rv, "RetrieveValidateCode");
+                    if (emailHelper.SendEmail(retrievePwd.Email, yzmChild.Text))
+                    {
+                        rsModel.isRight = true;
+                        rsModel.message = "邮件发送成功！";
+                        return rsModel;
+                    }
                 }
-                rsModel.message = "当前用户不存在，请输入正确的注册的用户Email";
+                if (count == 0)
+                {
+                    rsModel.message = "当前用户不存在，请输入正确的注册的用户Email";
+                }
+                if (count > 1)
+                {
+                    rsModel.message = "当前用户存在问题，请联系管理员进行查看";
+                    LogRecordHelper.RecordLog(LogLevels.Fatal, "账户：" + retrievePwd.Email + " 存在问题，查询出现多个此账户，请检查程序和数据库是否存在问题");
+                }
             }
             catch (Exception ex)
             {
@@ -118,6 +144,61 @@ namespace PersonalWebService.BLL
                 LogRecordHelper.RecordLog(LogLevels.Error, ex);
             }
             yzM.CreateImage();
+            return rsModel;
+        }
+
+        /// <summary>
+        /// 验证找回密码并重置密码
+        /// </summary>
+        /// <returns></returns>
+        public ReturnStatus_Model VertifyCode(ResetPwd resetPwd)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "找回密码";
+
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
+            if (rvPrev==null||rvPrev.SaveTime.AddMinutes(Convert.ToDouble(EmailHelper.emailTimeFrame)) > DateTime.Now)
+            {
+                rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
+                return rsModel;
+            }
+
+            if (!rvPrev.ValidateCode.Equals(resetPwd.Password))
+            {
+                rsModel.message = "验证码输入有误，请重新输入";
+                return rsModel;
+            }
+
+            string sql = "SELECT Count(*) FROM UserInfo WHERE UserName=@UserName";
+            int count = userinfoDal.GetUserInfoCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email });
+            if (count != 1)
+            {
+                rsModel.message = "登录账号有问题或不存在，请重新输入";
+                return rsModel;
+            }
+
+
+            UserInfo_Model userinfo = new UserInfo_Model();
+            userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
+            userinfo.UserName = resetPwd.Email;
+            SessionState.RemoveSession("RetrieveValidateCode");
+            string sqlUpdate = "UPDATE UserInfo SET Password=@Password WHERE UserName=@UserName";
+            try {
+                if (userinfoDal.EditPwd(sqlUpdate, new DataField { Name = "@UserName", Value = resetPwd.Email }))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改密码成功，你现在可以登录了";
+                }
+                else
+                {
+                    rsModel.message = "修改失败，请稍后重试";
+                }
+            }catch(Exception ex)
+            {
+                LogRecordHelper.RecordLog(LogLevels.Fatal,ex.ToString());
+                rsModel.message = "服务器错误，请稍后重试";
+            }
             return rsModel;
         }
 

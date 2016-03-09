@@ -109,5 +109,15 @@ namespace PersonalWebService.DAL
             conn.Open();
             return conn;
         }
+
+        public override int Edit(string sql, object param)
+        {
+            int num = 0;
+            using (IDbConnection conn = GetOpenConnection())
+            {
+                num= Convert.ToInt32(conn.Execute(sql, param));
+            }
+            return num;
+        }
     }
 }

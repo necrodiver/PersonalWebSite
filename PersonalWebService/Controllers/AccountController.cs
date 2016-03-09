@@ -78,6 +78,16 @@ namespace PersonalWebService.Controllers
             });
         }
 
+        [HttpPost]
+        [Route("VertifyCode")]
+        public async Task<ReturnStatus_Model> VertifyCode([FromBody]ResetPwd resetPwd)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.VertifyCode(resetPwd);
+            });
+        }
+
         private Task<string> GetValueAsync(string userName, string passWord)
         {
             return Task.Run(() =>

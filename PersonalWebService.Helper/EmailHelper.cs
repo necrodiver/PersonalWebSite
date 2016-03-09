@@ -9,18 +9,33 @@ namespace PersonalWebService.Helper
 {
     public class EmailHelper
     {
+        private readonly string sendEmailAddress = ConfigurationManager.AppSettings["SendEmail"];
+        private readonly string sendEmailPwd = ConfigurationManager.AppSettings["SendEmailPwd"];
+        private readonly string feedBackEmail = ConfigurationManager.AppSettings["FeedBackEmail"];
+        public static readonly string emailTimeFrame = ConfigurationManager.AppSettings["EmailTimeFrame"];
+        private readonly string sHos = ConfigurationManager.AppSettings["Host"];
+
+        public bool SendEmail(string email,string verificationCodeNum)
+        {
+            try
+            {
+                return Email(email, verificationCodeNum);
+            }
+            catch (Exception ex)
+            {
+                LogRecordHelper.RecordLog(Model.LogLevels.Error,ex.ToString());
+                return false;
+            }
+        }
         /// <summary>
         /// 发送邮件
         /// </summary>
         /// <param name="email">接收者邮箱地址</param>
         /// <param name="verificationCodeNum">验证码</param>
         /// <returns></returns>
-        public bool SendEmail(string email, string verificationCodeNum, int emailTimeFrame)
+        private bool Email(string email, string verificationCodeNum)
         {
-            string SendEmail = ConfigurationManager.AppSettings["SendEmail"];
-            string SendEmailPwd = ConfigurationManager.AppSettings["SendEmailPwd"];
-            string FeedBackEmail = ConfigurationManager.AppSettings["FeedBackEmail"];
-            string sHos = ConfigurationManager.AppSettings["Host"];
+
             //用户跳转链接
             StringBuilder sb = new StringBuilder();
             sb.Append("<div  style='border:6px solid gray;width:80%;margin:0 auto;' >");
@@ -43,23 +58,23 @@ namespace PersonalWebService.Helper
             sb.Append("		</div>");
             sb.Append("	</div>");
             sb.Append("</div>");
-            string emailBody = string.Format(sb.ToString(), email,verificationCodeNum, emailTimeFrame, FeedBackEmail, DateTime.Now.ToString("yyyy-MM-dd"));
+            string emailBody = string.Format(sb.ToString(), email,verificationCodeNum, emailTimeFrame, feedBackEmail, DateTime.Now.ToString("yyyy-MM-dd"));
             try
             {
                 using (SmtpClient client = new SmtpClient())
                 {
                     client.Host = sHos;
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new System.Net.NetworkCredential(SendEmail, SendEmailPwd);
+                    client.Credentials = new System.Net.NetworkCredential(sendEmailAddress, sendEmailPwd);
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     MailMessage mail = new MailMessage
                     {
-                        From = new MailAddress(SendEmail),
+                        From = new MailAddress(sendEmailAddress),
                         Subject = "找回密码——个人网站XXX",
                         BodyEncoding = Encoding.UTF8,
                         IsBodyHtml = true
                     };
-                    mail.From = new MailAddress(SendEmail, "个人网站XXX邮件中心");
+                    mail.From = new MailAddress(sendEmailAddress, "个人网站XXX邮件中心");
                     mail.To.Add(new MailAddress(email));
                     mail.Body = emailBody;
                     client.Send(mail);

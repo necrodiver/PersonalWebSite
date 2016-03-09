@@ -11,8 +11,14 @@ namespace PersonalWebService.Model
     /// </summary>
     public enum UserType
     {
-        None=-100,
-        管理员=-1,
-        普通用户=1
+        None = -100,
+        管理员 = -1,
+        普通用户 = 1
+    }
+    public enum UserState
+    {
+        退出登录 = 0,
+        已登录 = 1,
+        禁用修改 = 3
     }
 }

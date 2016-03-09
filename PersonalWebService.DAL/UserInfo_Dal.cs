@@ -46,6 +46,11 @@ namespace PersonalWebService.DAL
             }
             return 0;
         }
+
+        public bool EditPwd(string sqlUpdate, DataField dataField)
+        {
+            return generDB.Edit(sqlUpdate, dataField)>0;
+        }
         //public bool AddUserInfo(UserInfo_Model userinfo)
         //{
         //    StringBuilder sbsql = new StringBuilder();
