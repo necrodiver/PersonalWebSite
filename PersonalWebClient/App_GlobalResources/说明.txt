@@ -1,0 +1,2 @@
+﻿多国语言选择实现方式
+http://blog.chinaunix.net/uid-26559452-id-3079886.html
