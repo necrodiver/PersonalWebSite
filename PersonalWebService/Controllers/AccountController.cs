@@ -15,7 +15,7 @@ namespace PersonalWebService.Controllers
     [ModelValidationFilter]
     public class AccountController : ApiController
     {
-        PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
+        PersonalWebService.BLL.Account_BLL accountBll = new BLL.Account_BLL();
 
         [HttpPost]
         [Route("Login")]
