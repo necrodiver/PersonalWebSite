@@ -1,0 +1,7 @@
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\bin\Debug\PersonalWebService.IDAL.dll
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\bin\Debug\PersonalWebService.IDAL.pdb
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\bin\Debug\PersonalWebService.Model.dll
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\bin\Debug\PersonalWebService.Model.pdb
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\obj\Debug\PersonalWebService.IDAL.csprojResolveAssemblyReference.cache
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\obj\Debug\PersonalWebService.IDAL.dll
+F:\Codes\PersonalWebSite\PersonalWebService.IDAL\obj\Debug\PersonalWebService.IDAL.pdb

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PersonalWebService.Model;
+using PersonalWebService.IDAL;
 
-namespace PersonalWebService.DAL
+namespace PersonalWebService.IDAL
 {
-    public class UserInfo_DAL
+    public class UserInfo_DAL: IDAL_UserInfo
     {
         GenericityOperateDB generDB = new GenericityOperateDB();
         /// <summary>

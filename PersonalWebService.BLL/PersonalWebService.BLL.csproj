@@ -66,6 +66,10 @@
       <Project>{b545805c-a7ae-443f-bec0-1c4196d5a025}</Project>
       <Name>PersonalWebService.Helper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonalWebService.IDAL\PersonalWebService.IDAL.csproj">
+      <Project>{084e0acc-7457-4b82-9ce7-7ba4b8ae1f64}</Project>
+      <Name>PersonalWebService.IDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersonalWebService.Model\PersonalWebService.Model.csproj">
       <Project>{adc1f98e-a360-49c9-bbf2-4d9eec2ff05f}</Project>
       <Name>PersonalWebService.Model</Name>

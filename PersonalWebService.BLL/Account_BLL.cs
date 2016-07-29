@@ -14,7 +14,7 @@ namespace PersonalWebService.BLL
     {
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
-        private DAL.UserInfo_DAL userinfoDal = new DAL.UserInfo_DAL();
+        private IDAL.IDAL_UserInfo userinfoDal = new IDAL.UserInfo_DAL();
         private static EmailHelper emailHelper = new EmailHelper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
 

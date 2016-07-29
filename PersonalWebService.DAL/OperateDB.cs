@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 
-namespace PersonalWebService.DAL
+namespace PersonalWebService.IDAL
 {
     public class OperateDB : AbstractFactoryDB
     {

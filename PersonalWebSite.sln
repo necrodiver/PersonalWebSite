@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonalService", "PersonalService", "{76855BE3-87EA-4A73-9E25-B4C25BCBC085}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService", "PersonalWebService\PersonalWebService.csproj", "{26F0F471-D020-4DFC-85B9-993FB26748B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService.Model", "PersonalWebService.Model\PersonalWebService.Model.csproj", "{ADC1F98E-A360-49C9-BBF2-4D9EEC2FF05F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService.IDAL", "PersonalWebService.IDAL\PersonalWebService.IDAL.csproj", "{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{ADC1F98E-A360-49C9-BBF2-4D9EEC2FF05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADC1F98E-A360-49C9-BBF2-4D9EEC2FF05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC1F98E-A360-49C9-BBF2-4D9EEC2FF05F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{B545805C-A7AE-443F-BEC0-1C4196D5A025} = {76855BE3-87EA-4A73-9E25-B4C25BCBC085}
 		{26F0F471-D020-4DFC-85B9-993FB26748B0} = {76855BE3-87EA-4A73-9E25-B4C25BCBC085}
 		{ADC1F98E-A360-49C9-BBF2-4D9EEC2FF05F} = {76855BE3-87EA-4A73-9E25-B4C25BCBC085}
+		{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64} = {76855BE3-87EA-4A73-9E25-B4C25BCBC085}
 	EndGlobalSection
 EndGlobal

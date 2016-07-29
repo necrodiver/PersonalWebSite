@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalWebService.DAL
+namespace PersonalWebService.IDAL
 {
     public class GenericityOperateDB : OperateDB
     {
