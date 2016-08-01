@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PersonalWebService.Model
+{
+    public class Article_Model
+    {
+        [Required]
+        [DisplayName("文章Id")]
+        [StringLength(32)]
+        public string ArtilceId { get; set; }
+
+        [Required]
+        [DisplayName("文章名称")]
+        [StringLength(200, MinimumLength = 1, ErrorMessage = "{0}长度不能超过{1}个字段，不能小于{2}个字段")]
+        [RegularExpression(@"^[([a-zA-Z\u4e00-\u9fa5])|(\w)]+$", ErrorMessage = "文章名称必须是由汉字字母或数字组成")]
+        //这里需要添加敏感词过滤
+        public string ArticleName { get; set; }
+
+        [Required]
+        [DisplayName("文章内容")]
+        [StringLength(5 * 1024 * 1024, MinimumLength = 20, ErrorMessage = "{0}长度不能超过{1}个字段，不能小于{2}个字段")]
+        //这里需要添加敏感词过滤
+        public string ArticleContent { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DisplayName("文章分类")]
+        public int ArticleSortId { get; set; }
+
+        [Required]
+        [DisplayName("文章状态")]
+        public ArticleState ArticleState { get; set; }
+    }
+
+    /// <summary>
+    /// 查询文章条件
+    /// </summary>
+    public class ArticleCondition
+    {
+        /// <summary>
+        /// 用户昵称
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
+        /// 文章类别
+        /// </summary>
+        public string ArticleSort { get; set; }
+        /// <summary>
+        /// 文章名称
+        /// </summary>
+        public string ArticleName { get; set; }
+    }
+
+    /// <summary>
+    /// 文章模型（数据库通）
+    /// </summary>
+    public class Article
+    {
+        public string ArtilceId { get; set; }
+        public string ArticleName { get; set; }
+        public string ArticleContent { get; set; }
+        public string ArticleSort { get; set; }
+        public ArticleState ArticleState { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime EditTime { get; set; }
+        public int hits { get; set; }
+        public string UserId { get; set; }
+    }
+}

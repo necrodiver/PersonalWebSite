@@ -13,13 +13,12 @@ namespace PersonalWebService.Model
     /// </summary>
     public class UserInfo_Model
     {
-        [Required]
         [DisplayName("用户Id")]
         [StringLength(32)]
         public string UserID { get; set; }
 
         [Required]
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [StringLength(50, MinimumLength = 6)]
         [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
         public string UserName { get; set; }
@@ -27,6 +26,7 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("昵称")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
+        //这里需要添加敏感词过滤
         public string Nickname { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -34,6 +34,14 @@ namespace PersonalWebService.Model
         [RegularExpression(@"^\w+$", ErrorMessage = "{0}只能是字母、数字和下划线组成的")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string Password { get; set; }
+
+        [Required]
+        [DisplayName("创建日期")]
+        public DateTime CreationTime { get; set; }
+
+        [Required]
+        [DisplayName("修改日期")]
+        public DateTime EditTime { get; set; }
 
         [DisplayName("用户状态")]
         public UserState? Status { get; set; }
