@@ -35,11 +35,16 @@ namespace PersonalWebService.Model
         [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string Password { get; set; }
 
+
         [Required]
+        [DisplayName("用户头像")]
+        [StringLength(1*1024*1024,MinimumLength =10,ErrorMessage ="{0}不符合规格")]
+        //这里需要添加图片过滤
+        public string AccountPicture{ get; set; }
+
         [DisplayName("创建日期")]
         public DateTime CreationTime { get; set; }
 
-        [Required]
         [DisplayName("修改日期")]
         public DateTime EditTime { get; set; }
 
@@ -115,5 +120,45 @@ namespace PersonalWebService.Model
         [RegularExpression(@"^\w+$", ErrorMessage = "{0}必须是字母、数字和下划线组成的")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string Password { get; set; }
+    }
+
+    public class UserInfo
+    {
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserID { get; set; }
+        /// <summary>
+        /// 用户名（邮箱地址）
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
+        /// 用户昵称
+        /// </summary>
+        public string Nickname { get; set; }
+        /// <summary>
+        /// 用户头像
+        /// </summary>
+        public string AccountPictureUrl { get; set; }
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string Password { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreationTime { get; set; }
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime EditTime { get; set; }
+        /// <summary>
+        /// 用户状态
+        /// </summary>
+        public UserState? Status { get; set; }
+        /// <summary>
+        /// 用户类型
+        /// </summary>
+        public UserType? UserType { get; set; }
     }
 }

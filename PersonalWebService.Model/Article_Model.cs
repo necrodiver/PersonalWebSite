@@ -40,7 +40,7 @@ namespace PersonalWebService.Model
     /// <summary>
     /// 查询文章条件
     /// </summary>
-    public class ArticleCondition
+    public class ArticleCondition_Model
     {
         /// <summary>
         /// 用户昵称
@@ -54,6 +54,14 @@ namespace PersonalWebService.Model
         /// 文章名称
         /// </summary>
         public string ArticleName { get; set; }
+        /// <summary>
+        /// 发布时间范围开始
+        /// </summary>
+        public DateTime FirstTime { get; set; }
+        /// <summary>
+        /// 发布时间范围结束
+        /// </summary>
+        public DateTime LastTime { get; set; }
     }
 
     /// <summary>
@@ -61,14 +69,41 @@ namespace PersonalWebService.Model
     /// </summary>
     public class Article
     {
+        /// <summary>
+        /// 文章Id
+        /// </summary>
         public string ArtilceId { get; set; }
+        /// <summary>
+        /// 文章名称
+        /// </summary>
         public string ArticleName { get; set; }
+        /// <summary>
+        /// 文章内容
+        /// </summary>
         public string ArticleContent { get; set; }
+        /// <summary>
+        /// 文章类别
+        /// </summary>
         public string ArticleSort { get; set; }
+        /// <summary>
+        /// 文章状态
+        /// </summary>
         public ArticleState ArticleState { get; set; }
+        /// <summary>
+        /// 文章创建时间
+        /// </summary>
         public DateTime CreationTime { get; set; }
+        /// <summary>
+        /// 文章最新修改时间
+        /// </summary>
         public DateTime EditTime { get; set; }
+        /// <summary>
+        /// 文章是否公开
+        /// </summary>
         public int hits { get; set; }
+        /// <summary>
+        /// 用户Id
+        /// </summary>
         public string UserId { get; set; }
     }
 }
