@@ -42,7 +42,7 @@ namespace PersonalWebService.Helper
             var userTicketData = userTicket.UserData;
             string userName = userTicketData.Substring(0, userTicketData.IndexOf(":"));
             string password = userTicketData.Substring(userTicketData.IndexOf(":") + 1);
-            //这里需要对用户名和密码进行验证
+            //这里对用户名和密码进行验证
             UserInfo_Model userModel = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userModel!=null&&userModel.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
             {
