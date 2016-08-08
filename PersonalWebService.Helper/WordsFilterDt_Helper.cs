@@ -1,6 +1,7 @@
 ﻿using PersonalWebService.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,21 @@ namespace PersonalWebService.Helper
     public class WordsFilterDt_Helper
     {
     }
+
+    /// <summary>
+    /// 敏感词模型验证
+    /// </summary>
+    public class DetectionWordsAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            string str = value.ToString();
+            if (string.IsNullOrEmpty(str))
+                return true;
+            return new WordsFilterDt().DetectionWords(str);
+        }
+    }
+
     public class WordsFilterDt
     {
         private TrieNodeOperate trie = new TrieNodeOperate();
