@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace PersonalWebService.Helper
 {
-    public class AttributeHelper
+    public class Attribute_Helper
     {
     }
     public class BasicAuthenticationAttribute : ActionFilterAttribute

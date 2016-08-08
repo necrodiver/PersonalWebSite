@@ -37,7 +37,7 @@ namespace PersonalWebService.BLL
             catch (Exception ex)
             {
                 rsModel.message = "服务器错误,请稍后重试,如果不行请联系管理员进行处理（请先保存好您的文章）";
-                LogRecordHelper.RecordLog(LogLevels.Error, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
             return rsModel;
         }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PersonalWebService.Helper
 {
-    public class EmailHelper
+    public class Email_Helper
     {
         private readonly string sendEmailAddress = ConfigurationManager.AppSettings["SendEmail"];
         private readonly string sendEmailPwd = ConfigurationManager.AppSettings["SendEmailPwd"];
@@ -23,7 +23,7 @@ namespace PersonalWebService.Helper
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(Model.LogLevels.Error,ex.ToString());
+                LogRecord_Helper.RecordLog(Model.LogLevels.Error,ex.ToString());
                 return false;
             }
         }

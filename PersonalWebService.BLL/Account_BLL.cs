@@ -15,7 +15,7 @@ namespace PersonalWebService.BLL
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
         private IDAL.IDAL_UserInfo userinfoDal = new IDAL.UserInfo_DAL();
-        private static EmailHelper emailHelper = new EmailHelper();
+        private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace PersonalWebService.BLL
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Fatal, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
                 rsModel.message = "服务器错误，请稍后重试";
                 yzM.CreateImage();
                 return rsModel;
@@ -64,7 +64,7 @@ namespace PersonalWebService.BLL
                 if (userInfo.UserName == null || userInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
-                    LogRecordHelper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
+                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
                     return rsModel;
                 }
 
@@ -82,7 +82,7 @@ namespace PersonalWebService.BLL
             else
             {
                 rsModel.message = "当前用户存在问题，请联系管理员进行处理";
-                LogRecordHelper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
+                LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
             }
 
             yzM.CreateImage();
@@ -135,13 +135,13 @@ namespace PersonalWebService.BLL
                 if (count > 1)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行查看";
-                    LogRecordHelper.RecordLog(LogLevels.Fatal, "账户：" + retrievePwd.Email + " 存在问题，查询出现多个此账户，请检查程序和数据库是否存在问题");
+                    LogRecord_Helper.RecordLog(LogLevels.Fatal, "账户：" + retrievePwd.Email + " 存在问题，查询出现多个此账户，请检查程序和数据库是否存在问题");
                 }
             }
             catch (Exception ex)
             {
                 rsModel.message = "服务器错误，请稍后重试";
-                LogRecordHelper.RecordLog(LogLevels.Error, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
             yzM.CreateImage();
             return rsModel;
@@ -158,7 +158,7 @@ namespace PersonalWebService.BLL
             rsModel.title = "找回密码";
             //首先各种验证
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
-            if (rvPrev==null||rvPrev.SaveTime.AddMinutes(Convert.ToDouble(EmailHelper.emailTimeFrame)) > DateTime.Now)
+            if (rvPrev==null||rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
             {
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
                 return rsModel;
@@ -196,7 +196,7 @@ namespace PersonalWebService.BLL
                 }
             }catch(Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Fatal,ex.ToString());
+                LogRecord_Helper.RecordLog(LogLevels.Fatal,ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
             return rsModel;
@@ -226,7 +226,7 @@ namespace PersonalWebService.BLL
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Error, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
                 rsModel.message = "服务器错误，请稍后重试";
             }
             return rsModel;
@@ -257,7 +257,7 @@ namespace PersonalWebService.BLL
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Error, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
                 rsModel.message = "服务器错误，请稍后重试";
             }
             yzM.CreateImage();

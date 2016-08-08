@@ -8,10 +8,10 @@ using PersonalWebService.Model;
 
 namespace PersonalWebService.Helper
 {
-    public class LogRecordHelper
+    public class LogRecord_Helper
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        private LogRecordHelper()
+        private LogRecord_Helper()
         {
             logger.Trace("Sample trace message");
             logger.Debug("Sample debug message");

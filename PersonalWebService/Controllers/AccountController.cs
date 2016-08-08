@@ -104,7 +104,7 @@ namespace PersonalWebService.Controllers
             }
             catch (Exception ex)
             {
-                LogRecordHelper.RecordLog(LogLevels.Error, ex);
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
 
             return DateTime.Now.ToString() + ":" + DM;

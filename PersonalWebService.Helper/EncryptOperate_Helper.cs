@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.Helper
 {
-    public class EncryptOperateHelper
+    public class EncryptOperate_Helper
     {
     }
 

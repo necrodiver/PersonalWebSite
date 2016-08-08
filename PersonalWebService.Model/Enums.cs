@@ -32,4 +32,27 @@ namespace PersonalWebService.Model
         草稿 = 0,
         已发布 = 1
     }
+
+    /// <summary>
+    /// 数据库操作方式
+    /// </summary>
+    public enum OperatingModel
+    {
+        /// <summary>
+        /// 增
+        /// </summary>
+        Add,
+        /// <summary>
+        /// 删
+        /// </summary>
+        Delete,
+        /// <summary>
+        /// 改
+        /// </summary>
+        Edit,
+        /// <summary>
+        /// 查
+        /// </summary>
+        Get
+    }
 }

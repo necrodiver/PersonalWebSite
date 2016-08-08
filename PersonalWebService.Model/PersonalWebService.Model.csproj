@@ -45,9 +45,9 @@
     <Compile Include="DataField.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="LogLevels.cs" />
-    <Compile Include="OperatingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnStatus_Model.cs" />
+    <Compile Include="TrieNode_Model.cs" />
     <Compile Include="UserInfo_Model.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
