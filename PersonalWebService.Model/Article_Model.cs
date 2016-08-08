@@ -10,7 +10,6 @@ namespace PersonalWebService.Model
 {
     public class Article_Model
     {
-        [Required]
         [DisplayName("文章Id")]
         [StringLength(32)]
         public string ArtilceId { get; set; }

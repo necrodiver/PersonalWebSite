@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleSort_Model.cs" />
     <Compile Include="Article_Model.cs" />
     <Compile Include="DataField.cs" />
     <Compile Include="Enums.cs" />

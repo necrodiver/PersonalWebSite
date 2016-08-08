@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDAL_Article.cs" />
+    <Compile Include="IDAL_ArticleSort.cs" />
     <Compile Include="IDAL_UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

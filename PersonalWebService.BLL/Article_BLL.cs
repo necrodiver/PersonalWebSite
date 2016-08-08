@@ -11,7 +11,8 @@ namespace PersonalWebService.BLL
     public class Article_BLL
     {
         private IDAL.IDAL_Article articleDal = new DAL.Article_DAL();
-
+        private WordsFilterDt wordsFilter = new WordsFilterDt();
+        public static List<ArticleSort_Model> articleSortList;
         /// <summary>
         /// 新增文章
         /// </summary>
@@ -19,10 +20,39 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model AddArticle(Article_Model article)
         {
+
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "新增文章";
             //首先各种验证
+            if (!wordsFilter.DetectionWords(article.ArticleName))
+            {
+                rsModel.isRight = false;
+                rsModel.message = "新增文章标题存在脏词，请检查后再次进行提交";
+                return rsModel;
+            }
+
+            if (!wordsFilter.DetectionWords(article.ArticleContent))
+            {
+                rsModel.isRight = false;
+                rsModel.message = "新增文章内容存在脏词，请检查后再次进行提交";
+                return rsModel;
+            }
+
+            //这里直接获取内容
+            if (articleSortList == null)
+            {
+                IDAL.IDAL_ArticleSort articleSort = new DAL.ArticleSort_DAL();
+                articleSortList = articleSort.GetArticleSortAllList<ArticleSort_Model>();
+            }
+
+            if (!articleSortList.Exists(artSort => artSort.ArticleSortId == article.ArticleSortId))
+            {
+                rsModel.isRight = false;
+                rsModel.message = "新增文章类别不符，请重新设定类别";
+                return rsModel;
+            }
+
             try
             {
                 if (articleDal.ArticleOpe(article, OperatingModel.Add))
@@ -40,6 +70,13 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
             return rsModel;
+        }
+
+        public Article_Model GetArticle(ArticleCondition_Model articleCondition)
+        {
+
+
+            throw new NotImplementedException();
         }
     }
 }

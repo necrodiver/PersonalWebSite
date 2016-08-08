@@ -27,6 +27,14 @@ namespace PersonalWebService.Controllers
             });
         }
 
-        public async Task<Article_Model>Get([FromBody])
+        [HttpPost]
+        [Route("Get")]
+        public async Task<Article_Model>GetArticle([FromBody]ArticleCondition_Model articleCondition)
+        {
+            YZMHelper yz = new YZMHelper();
+            return await Task.Run(()=> {
+                return articleBll.GetArticle(articleCondition);
+            });
+        }
     }
 }
