@@ -4,23 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PersonalWebService.Model;
-using PersonalWebService.IDAL;
 
-namespace PersonalWebService.IDAL
+namespace PersonalWebService.DAL
 {
     public class UserInfo_DAL: IDAL_UserInfo
     {
         GenericityOperateDB generDB = new GenericityOperateDB();
-        /// <summary>
-        /// 进行增删改操作
-        /// </summary>
-        /// <param name="userInfo">用户信息</param>
-        /// <param name="operate">操作类型</param>
-        /// <returns></returns>
-        public bool UserInfoOpe(UserInfo_Model userInfo, OperatingModel operate)
-        {
-            return generDB.Operate(userInfo, operate);
-        }
 
         /// <summary>
         /// 进行查找操作
@@ -51,6 +40,23 @@ namespace PersonalWebService.IDAL
         public bool EditPwd(string sqlUpdate, DataField dataField)
         {
             return generDB.Edit(sqlUpdate, dataField)>0;
+        }
+
+        /// <summary>
+        /// 进行增删改操作
+        /// </summary>
+        /// <typeparam name="T">模型</typeparam>
+        /// <param name="userInfo">用户model</param>
+        /// <param name="operate">参数</param>
+        /// <returns></returns>
+        public bool UserInfoOpe<T>(T userInfo, OperatingModel operate)
+        {
+            return generDB.Operate(userInfo, operate);
+        }
+
+        public T GetUserInfo<T>(string sql, object param)where T:class
+        {
+            return generDB.GetModel<T>(sql, param);
         }
         //public bool AddUserInfo(UserInfo_Model userinfo)
         //{

@@ -14,7 +14,7 @@ namespace PersonalWebService.BLL
     {
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
-        private IDAL.IDAL_UserInfo userinfoDal = new IDAL.UserInfo_DAL();
+        private DAL.IDAL_UserInfo userinfoDal = new DAL.UserInfo_DAL();
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
 
@@ -87,6 +87,18 @@ namespace PersonalWebService.BLL
 
             yzM.CreateImage();
             return rsModel;
+        }
+
+        /// <summary>
+        /// 获取用户数据
+        /// </summary>
+        /// <returns></returns>
+        public UserInfo_Model GetUserInfo()
+        {
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.Nickname))
+                return null;
+            return userInfo;
         }
 
         /// <summary>
@@ -262,6 +274,15 @@ namespace PersonalWebService.BLL
             }
             yzM.CreateImage();
             return rsModel;
+        }
+        /// <summary>
+        /// 获取具有条件的用户列表
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public List<UserInfo_Model> GetUserInfoList(UserInfoCondition condition)
+        {
+            throw new NotImplementedException();
         }
     }
 }

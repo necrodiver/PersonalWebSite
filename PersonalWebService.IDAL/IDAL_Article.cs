@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonalWebService.Model;
 
-namespace PersonalWebService.IDAL
+namespace PersonalWebService.DAL
 {
     public interface IDAL_Article
     {

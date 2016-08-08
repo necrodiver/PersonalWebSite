@@ -44,7 +44,7 @@ namespace PersonalWebService.Helper
             string password = userTicketData.Substring(userTicketData.IndexOf(":") + 1);
             //这里对用户名和密码进行验证
             UserInfo_Model userModel = SessionState.GetSession<UserInfo_Model>("UserInfo");
-            if (userModel!=null&&userModel.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
+            if (userModel != null && userModel.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
@@ -138,6 +138,32 @@ namespace PersonalWebService.Helper
                     errors[m.Key] = m.Value.Errors.Select(e => e.ErrorMessage);
                     return true;
                 });
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
+                return;
+            }
+            base.OnActionExecuting(actionContext);
+        }
+    }
+
+    /// <summary>
+    /// 用户权限过滤验证
+    /// </summary>
+    public class AuthorityAdminAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
+            var errors = new Dictionary<string, string>();
+            bool isPass = false;
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.Nickname))
+                errors.Add("SelectList", "非法查询！");
+            else if (!userInfo.UserType.Equals(UserType.管理员))
+                errors.Add("SelectList", "权限不足！无法查询");
+            else
+                isPass = true;
+
+            if (!isPass)
+            {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
                 return;
             }

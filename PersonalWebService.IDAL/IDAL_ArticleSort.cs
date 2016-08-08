@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalWebService.IDAL
+namespace PersonalWebService.DAL
 {
     public interface IDAL_ArticleSort
     {

@@ -30,6 +30,7 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [BasicAuthentication]
         [Route("Edit")]
         public async Task<ReturnStatus_Model> Edit([FromBody]UserInfo_Model userInfo)
         {
@@ -50,6 +51,20 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [BasicAuthentication]
+        [Route("Get")]
+        public async Task<UserInfo_Model> Get()
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.GetUserInfo();
+            });
+        }
+
+        //还有一个获取用户所有数据，这个放在管理员端
+
+        [HttpPost]
+        [BasicAuthentication]
         [Route("Logout")]
         public async Task<ReturnStatus_Model> Logout()
         {
@@ -69,6 +84,7 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [BasicAuthentication]
         [Route("RetrievePwd")]
         public async Task<ReturnStatus_Model> RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
         {

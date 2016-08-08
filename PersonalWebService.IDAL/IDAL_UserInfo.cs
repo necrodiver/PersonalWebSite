@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalWebService.IDAL
+namespace PersonalWebService.DAL
 {
     public interface IDAL_UserInfo
     {
@@ -13,9 +13,18 @@ namespace PersonalWebService.IDAL
         /// 修改用户信息
         /// </summary>
         /// <param name="userInfo">用户model</param>
-        /// <param name="operate">操作方式（增删改查）</param>
+        /// <param name="operate">操作方式（增删改）</param>
         /// <returns></returns>
-        bool UserInfoOpe(UserInfo_Model userInfo, OperatingModel operate);
+        bool UserInfoOpe<T>(T userInfo, OperatingModel operate);
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        T GetUserInfo<T>(string sql, object param) where T : class;
         /// <summary>
         /// 获取用户的所有信息
         /// </summary>

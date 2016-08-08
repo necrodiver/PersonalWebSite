@@ -10,7 +10,7 @@ namespace PersonalWebService.BLL
 {
     public class Article_BLL
     {
-        private IDAL.IDAL_Article articleDal = new DAL.Article_DAL();
+        private DAL.IDAL_Article articleDal = new DAL.Article_DAL();
         private WordsFilterDt wordsFilter = new WordsFilterDt();
         public static List<ArticleSort_Model> articleSortList;
         /// <summary>
@@ -42,7 +42,7 @@ namespace PersonalWebService.BLL
             //这里直接获取内容
             if (articleSortList == null)
             {
-                IDAL.IDAL_ArticleSort articleSort = new DAL.ArticleSort_DAL();
+                DAL.IDAL_ArticleSort articleSort = new DAL.ArticleSort_DAL();
                 articleSortList = articleSort.GetArticleSortAllList<ArticleSort_Model>();
             }
 
@@ -74,7 +74,23 @@ namespace PersonalWebService.BLL
 
         public Article_Model GetArticle(ArticleCondition_Model articleCondition)
         {
+            //sql先不写了，根据数据库来写
+            //一堆判断
+            string sql = "";
+            List<DataField> datafiled = new List<DataField>();
+            Article_Model articleModel = new Article_Model();
+            try
+            {
+                articleModel=articleDal.GetArticle<Article_Model>(sql, datafiled);
+                if (articleModel == null) {
 
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             throw new NotImplementedException();
         }

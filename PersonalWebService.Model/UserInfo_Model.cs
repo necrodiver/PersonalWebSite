@@ -38,9 +38,9 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("用户头像")]
-        [StringLength(1*1024*1024,MinimumLength =10,ErrorMessage ="{0}不符合规格")]
+        [StringLength(1 * 1024 * 1024, MinimumLength = 10, ErrorMessage = "{0}不符合规格")]
         //这里需要添加图片过滤
-        public string AccountPicture{ get; set; }
+        public string AccountPicture { get; set; }
 
         [DisplayName("创建日期")]
         public DateTime CreationTime { get; set; }
@@ -160,5 +160,45 @@ namespace PersonalWebService.Model
         /// 用户类型
         /// </summary>
         public UserType? UserType { get; set; }
+    }
+
+    public class UserInfoCondition
+    {
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserID { get; set; }
+        /// <summary>
+        /// 用户名（邮箱地址）
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
+        /// 用户昵称
+        /// </summary>
+        public string Nickname { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreationTime { get; set; }
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime EditTime { get; set; }
+        /// <summary>
+        /// 用户状态
+        /// </summary>
+        public UserState Status { get; set; }
+        /// <summary>
+        /// 用户类型
+        /// </summary>
+        public UserType UserType { get; set; }
+        /// <summary>
+        /// 文章Id
+        /// </summary>
+        public int ArticleId { get; set; }
+        /// <summary>
+        /// 图片Id
+        /// </summary>
+        public int PictureId { get; set; }
     }
 }
