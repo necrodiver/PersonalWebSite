@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonalWebService.Model;
 using PersonalWebService.Helper;
+using PersonalWebService.DAL;
 
 namespace PersonalWebService.BLL
 {
     public class Article_BLL
     {
-        private DAL.IDAL_Article articleDal = new DAL.Article_DAL();
         private WordsFilterDt wordsFilter = new WordsFilterDt();
         public static List<ArticleSort_Model> articleSortList;
+        private static Operate_DAL dal = new Operate_DAL();
         /// <summary>
         /// 新增文章
         /// </summary>
@@ -42,8 +43,7 @@ namespace PersonalWebService.BLL
             //这里直接获取内容
             if (articleSortList == null)
             {
-                DAL.IDAL_ArticleSort articleSort = new DAL.ArticleSort_DAL();
-                articleSortList = articleSort.GetArticleSortAllList<ArticleSort_Model>();
+                articleSortList =dal.GetDataList<ArticleSort_Model>(null);
             }
 
             if (!articleSortList.Exists(artSort => artSort.ArticleSortId == article.ArticleSortId))
@@ -55,7 +55,7 @@ namespace PersonalWebService.BLL
 
             try
             {
-                if (articleDal.ArticleOpe(article, OperatingModel.Add))
+                if (dal.OpeData(article, OperatingModel.Add))
                 {
                     rsModel.message = "新增文章成功";
                 }
@@ -81,7 +81,8 @@ namespace PersonalWebService.BLL
             Article_Model articleModel = new Article_Model();
             try
             {
-                articleModel=articleDal.GetArticle<Article_Model>(sql, datafiled);
+                
+                articleModel= dal.GetDataSingle<Article_Model>(sql, datafiled);
                 if (articleModel == null) {
 
                 }

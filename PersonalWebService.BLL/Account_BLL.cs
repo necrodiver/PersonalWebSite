@@ -1,4 +1,5 @@
 ﻿//using PersonalWebService.Helper;
+using PersonalWebService.DAL;
 using PersonalWebService.Helper;
 using PersonalWebService.Model;
 using System;
@@ -14,10 +15,11 @@ namespace PersonalWebService.BLL
     {
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
-        private DAL.IDAL_UserInfo userinfoDal = new DAL.UserInfo_DAL();
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
-
+        private static Operate_DAL dal = new Operate_DAL();
+        private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
+        private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0}";
         /// <summary>
         /// 验证用户登录
         /// </summary>
@@ -37,10 +39,11 @@ namespace PersonalWebService.BLL
                 yzM.CreateImage();
                 return rsModel;
             }
-            List<UserInfo_Model> userInfoList = new List<UserInfo_Model>();
+            UserInfo_Model userInfo = new UserInfo_Model();
             try
             {
-                userInfoList = userinfoDal.GetUserInfoList(new UserInfo_Model { UserName = user.UserName });
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName");
+                userInfo = dal.GetDataSingle<UserInfo_Model>(sql, new DataField { Name = "@UserName", Value = user.UserName });
             }
             catch (Exception ex)
             {
@@ -50,17 +53,13 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            UserInfo_Model userInfo = new UserInfo_Model();
             //无用户
-            if (userInfoList == null)
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserName))
             {
                 rsModel.message = "不存在此账户，请重新登录或注册后进行登录";
             }
-
-            //存在用户并进行操作
-            if (userInfoList.Count == 1)
+            else
             {
-                userInfo = userInfoList[0];
                 if (userInfo.UserName == null || userInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
@@ -79,12 +78,6 @@ namespace PersonalWebService.BLL
                     rsModel.message = "用户名或密码有误，请重新输入登录账户";
                 }
             }
-            else
-            {
-                rsModel.message = "当前用户存在问题，请联系管理员进行处理";
-                LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
-            }
-
             yzM.CreateImage();
             return rsModel;
         }
@@ -123,8 +116,8 @@ namespace PersonalWebService.BLL
 
             try
             {
-                string sql = "SELECT Count(*) FROM UserInfo WHERE UserName=@UserName";
-                int count = userinfoDal.GetUserInfoCount(sql, new DataField { Name = "@UserName", Value = retrievePwd.Email });
+                string sql = string.Format(sqlSelectTemplate, "Count(*)", "UserName=@UserName");
+                int count = dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = retrievePwd.Email });
                 if (count == 1)
                 {
                     //准备进行发送邮件
@@ -170,7 +163,7 @@ namespace PersonalWebService.BLL
             rsModel.title = "找回密码";
             //首先各种验证
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
-            if (rvPrev==null||rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
+            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
             {
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
                 return rsModel;
@@ -182,11 +175,18 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            string sql = "SELECT Count(*) FROM UserInfo WHERE UserName=@UserName";
-            int count = userinfoDal.GetUserInfoCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email });
-            if (count != 1)
+            string sql = string.Format(sqlSelectTemplate, "Count(*)", "UserName=@UserName");
+            try
             {
-                rsModel.message = "登录账号有问题或不存在，请重新输入";
+                if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email })!=1) {
+                    rsModel.message = "登录账号有问题或不存在，请重新输入";
+                    return rsModel;
+                }
+            }
+            catch (Exception ex) 
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
                 return rsModel;
             }
 
@@ -195,9 +195,13 @@ namespace PersonalWebService.BLL
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
             userinfo.UserName = resetPwd.Email;
             SessionState.RemoveSession("RetrieveValidateCode");
-            string sqlUpdate = "UPDATE UserInfo SET Password=@Password WHERE UserName=@UserName";
-            try {
-                if (userinfoDal.EditPwd(sqlUpdate, new DataField { Name = "@UserName", Value = resetPwd.Email }))
+            string sqlUpdate = string.Format(sqlUpdateTemple, "PassWord=@PassWord WHERE UserName=@UserName");
+            try
+            {
+                List<DataField> param = new List<DataField>();
+                param.Add(new DataField { Name="@UserName",Value=resetPwd.Email});
+                param.Add(new DataField { Name = "PassWord", Value = resetPwd.Password });
+                if (dal.OpeData(sqlUpdate, param))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改密码成功，你现在可以登录了";
@@ -206,9 +210,10 @@ namespace PersonalWebService.BLL
                 {
                     rsModel.message = "修改失败，请稍后重试（请重新发送邮件）";
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                LogRecord_Helper.RecordLog(LogLevels.Fatal,ex.ToString());
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
             return rsModel;
@@ -226,7 +231,7 @@ namespace PersonalWebService.BLL
             rsModel.title = "修改用户信息";
             try
             {
-                if (userinfoDal.UserInfoOpe(userInfo, OperatingModel.Edit))
+                if (dal.OpeData(userInfo, OperatingModel.Edit))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改用户数据成功";
@@ -257,7 +262,7 @@ namespace PersonalWebService.BLL
 
             try
             {
-                if (userinfoDal.UserInfoOpe(userInfo, OperatingModel.Add))
+                if (dal.OpeData(userInfo, OperatingModel.Add))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "注册成功";
