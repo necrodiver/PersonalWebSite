@@ -39,11 +39,11 @@ namespace PersonalWebService.BLL
                 yzM.CreateImage();
                 return rsModel;
             }
-            UserInfo_Model userInfo = new UserInfo_Model();
+            UserInfo userInfo = new UserInfo();
             try
             {
                 string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName");
-                userInfo = dal.GetDataSingle<UserInfo_Model>(sql, new DataField { Name = "@UserName", Value = user.UserName });
+                userInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
             }
             catch (Exception ex)
             {
@@ -133,11 +133,11 @@ namespace PersonalWebService.BLL
                         return rsModel;
                     }
                 }
-                if (count == 0)
+                else if (count == 0)
                 {
                     rsModel.message = "当前用户不存在，请输入正确的注册的用户Email";
                 }
-                if (count > 1)
+                else if (count > 1)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行查看";
                     LogRecord_Helper.RecordLog(LogLevels.Fatal, "账户：" + retrievePwd.Email + " 存在问题，查询出现多个此账户，请检查程序和数据库是否存在问题");
@@ -178,12 +178,13 @@ namespace PersonalWebService.BLL
             string sql = string.Format(sqlSelectTemplate, "Count(*)", "UserName=@UserName");
             try
             {
-                if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email })!=1) {
+                if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email }) != 1)
+                {
                     rsModel.message = "登录账号有问题或不存在，请重新输入";
                     return rsModel;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
@@ -199,7 +200,7 @@ namespace PersonalWebService.BLL
             try
             {
                 List<DataField> param = new List<DataField>();
-                param.Add(new DataField { Name="@UserName",Value=resetPwd.Email});
+                param.Add(new DataField { Name = "@UserName", Value = resetPwd.Email });
                 param.Add(new DataField { Name = "PassWord", Value = resetPwd.Password });
                 if (dal.OpeData(sqlUpdate, param))
                 {
@@ -226,12 +227,22 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model EditUserInfo(UserInfo_Model userInfo)
         {
+            UserInfo userInfoS = new UserInfo();
+            userInfoS.UserID = userInfo.UserID;
+            userInfoS.UserName = userInfo.UserName;
+            userInfoS.Nickname = userInfo.Nickname;
+            userInfoS.AccountPicture = userInfo.AccountPicture;
+            userInfoS.Password = userInfo.Password;
+            userInfoS.EditTime = userInfo.EditTime;
+            userInfoS.Status = userInfo.Status;
+            userInfoS.UserType = userInfo.UserType;
+
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
             try
             {
-                if (dal.OpeData(userInfo, OperatingModel.Edit))
+                if (dal.OpeData(userInfoS, OperatingModel.Edit))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改用户数据成功";
@@ -256,13 +267,25 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model AddUserInfo(UserInfo_Model userInfo)
         {
+
+            UserInfo userInfoS = new UserInfo();
+            userInfoS.UserID = userInfo.UserID;
+            userInfoS.UserName = userInfo.UserName;
+            userInfoS.Nickname = userInfo.Nickname;
+            userInfoS.AccountPicture = userInfo.AccountPicture;
+            userInfoS.Password = userInfo.Password;
+            userInfoS.CreationTime = DateTime.Now;
+            userInfoS.EditTime = userInfo.EditTime;
+            userInfoS.Status = userInfo.Status;
+            userInfoS.UserType = userInfo.UserType;
+
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "注册用户";
 
             try
             {
-                if (dal.OpeData(userInfo, OperatingModel.Add))
+                if (dal.OpeData(userInfoS, OperatingModel.Add))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "注册成功";

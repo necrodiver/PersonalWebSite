@@ -137,9 +137,9 @@ namespace PersonalWebService.Model
         /// </summary>
         public string Nickname { get; set; }
         /// <summary>
-        /// 用户头像
+        /// 用户头像地址
         /// </summary>
-        public string AccountPictureUrl { get; set; }
+        public string AccountPicture { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
