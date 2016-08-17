@@ -17,7 +17,7 @@ namespace PersonalWebService.BLL
         private static AESEncryptS aesE = new AESEncryptS();
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
-        private static Operate_DAL dal = new Operate_DAL();
+        private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
         private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0}";
         /// <summary>

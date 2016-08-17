@@ -13,7 +13,7 @@ namespace PersonalWebService.BLL
     {
         private WordsFilterDt wordsFilter = new WordsFilterDt();
         public static List<ArticleSort_Model> articleSortList;
-        private static Operate_DAL dal = new Operate_DAL();
+        private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         /// <summary>
         /// 新增文章
         /// </summary>
@@ -78,12 +78,11 @@ namespace PersonalWebService.BLL
             //一堆判断
             string sql = "";
             List<DataField> datafiled = new List<DataField>();
-            Article_Model articleModel = new Article_Model();
+            List<Article_Model> articleList = new List<Article_Model>();
             try
             {
-                
-                articleModel= dal.GetDataSingle<Article_Model>(sql, datafiled);
-                if (articleModel == null) {
+                articleList = dal.GetDataList<Article_Model>(sql, datafiled);
+                if (articleList == null||articleList.Count==0) {
 
                 }
             }

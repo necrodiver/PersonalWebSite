@@ -36,6 +36,16 @@ namespace PersonalWebService.IDAL
         /// <returns></returns>
         List<T> GetDataList<T>(T model);
 
+
+        /// <summary>
+        /// 获取数据List集合
+        /// </summary>
+        /// <typeparam name="T">模型类</typeparam>
+        /// <param name="sql">查询条件</param>
+        /// <param name="param">参数</param>
+        /// <returns></returns>
+        List<T> GetDataList<T>(string sql, object param) where T : class;
+
         /// <summary>
         /// 获取数据的数据量
         /// </summary>

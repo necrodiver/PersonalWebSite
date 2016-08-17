@@ -27,6 +27,11 @@ namespace PersonalWebService.DAL
             return generDB.GetList(model);
         }
 
+        public List<T> GetDataList<T>(string sql, object param) where T : class
+        {
+            return generDB.Get<T>(sql, param);
+        }
+
         public T GetDataSingle<T>(string sql, object param) where T : class
         {
             return generDB.GetModel<T>(sql, param);
