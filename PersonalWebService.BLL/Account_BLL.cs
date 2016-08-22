@@ -310,6 +310,7 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public List<UserInfo_Model> GetUserInfoList(UserInfoCondition condition)
         {
+            //这条件太牛逼了，等数据库做出来了再弄吧（暂时还不知道全部表有哪些）
             throw new NotImplementedException();
         }
     }
