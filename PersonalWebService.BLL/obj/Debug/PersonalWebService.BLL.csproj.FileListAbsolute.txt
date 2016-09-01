@@ -48,7 +48,6 @@ F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\PersonalWebService.Hel
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\PersonalWebService.Model.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.xml
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\EntityFramework.SqlServer.xml
-F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\Dapper.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\Dapper.xml
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\System.Web.Http.xml
 F:\Codes\PersonalWebSite\PersonalWebService.BLL\bin\Debug\NLog.xml

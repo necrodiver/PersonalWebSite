@@ -61,5 +61,7 @@ namespace PersonalWebService.IDAL
         /// <param name="operate">操作方式(增删改)</param>
         /// <returns></returns>
         bool OpeData(string sql,object param);
+
+        List<T> GetListSP<T>(string spName, object dp, bool buffered = true);
     }
 }

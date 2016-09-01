@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.Model
 {
+    /// <summary>
+    /// 返回数据，api的返回状态
+    /// </summary>
     public class ReturnStatus_Model
     {
         public bool isRight { get; set; }

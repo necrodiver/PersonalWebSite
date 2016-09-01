@@ -40,7 +40,6 @@ F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\System.Net.Http.Format
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Newtonsoft.Json.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Helper.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Model.pdb
-F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Dapper.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Dapper.xml
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.xml
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.SqlServer.xml

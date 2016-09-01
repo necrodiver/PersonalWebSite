@@ -26,6 +26,9 @@ namespace PersonalWebService.Model
         禁用修改 = 3
     }
 
+    /// <summary>
+    /// 文章状态
+    /// </summary>
     public enum ArticleState
     {
         冻结 = -100,

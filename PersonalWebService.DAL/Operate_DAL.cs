@@ -46,5 +46,9 @@ namespace PersonalWebService.DAL
         {
             return generDB.Operate(model, operate);
         }
+        public List<T> GetListSP<T>(string spName, object dp, bool buffered = true)
+        {
+            return generDB.GetListSP<T>(spName, dp, buffered);
+        }
     }
 }

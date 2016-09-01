@@ -121,5 +121,24 @@ namespace PersonalWebService.DAL
             }
             return num;
         }
+
+        /// <summary>
+        /// 调用存储过程
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spName">存储过程名字</param>
+        /// <param name="dp">参数</param>
+        /// <param name="buffered">是否缓冲（默认是）</param>
+        /// <returns></returns>
+        public override List<T> GetListSP<T>(string spName, object dp, bool buffered = true)
+        {
+            List<T> list = new List<T>();
+            using (IDbConnection conn = GetOpenConnection())
+            {
+                IEnumerable<T> models = conn.Query<T>(spName, dp, null, buffered, null, CommandType.StoredProcedure);
+                list = models as List<T>;
+            }
+            return list;
+        }
     }
 }
