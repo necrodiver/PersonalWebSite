@@ -29,12 +29,12 @@ namespace PersonalWebService.DAL
 
         public List<T> GetDataList<T>(string sql, object param) where T : class
         {
-            return generDB.Get<T>(sql, param);
+            return generDB.GetList<T>(sql, param);
         }
 
         public T GetDataSingle<T>(string sql, object param) where T : class
         {
-            return generDB.GetModel<T>(sql, param);
+            return generDB.GetSingle<T>(sql, param);
         }
 
         public bool OpeData(string sql, object param)

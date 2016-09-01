@@ -94,7 +94,7 @@ namespace PersonalWebService.DAL
             }
             sbstring = sb.ToString();
             sql = string.Format(sql, nameof(T), sbstring.Substring(0, sbstring.Length - 4));
-            return Get<T>(sql, model);
+            return GetList<T>(sql, model);
         }
 
         /// <summary>

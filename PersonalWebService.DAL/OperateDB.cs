@@ -34,7 +34,7 @@ namespace PersonalWebService.DAL
         /// <param name="sql">查询语句</param>
         /// <param name="param">附带条件内容</param>
         /// <returns></returns>
-        public override List<T> Get<T>(string sql, object param)
+        public override List<T> GetList<T>(string sql, object param)
         {
             List<T> list = new List<T>();
             using (IDbConnection conn = GetOpenConnection())
@@ -45,11 +45,11 @@ namespace PersonalWebService.DAL
             return list;
         }
 
-        public override T GetModel<T>(string sql, object param)
+        public override T GetSingle<T>(string sql, object param)
         {
             using (IDbConnection conn = GetOpenConnection())
             {
-                return conn.Query<T>(sql, param) as T;
+                return conn.QuerySingle<T>(sql, param) as T;
             }
         }
 
@@ -66,6 +66,8 @@ namespace PersonalWebService.DAL
                 return conn.ExecuteScalar(sql, param) as string;
             }
         }
+
+        //这个方法自个玩的，不参与使用
         public static List<T> SelectData<T>(string sql)
         {
             Type type = typeof(T);

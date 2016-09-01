@@ -9,8 +9,8 @@ namespace PersonalWebService.DAL
     public abstract class AbstractFactoryDB
     {
         public abstract bool Operate(string sql, object param);
-        public abstract List<T> Get<T>(string sql, object param);
-        public abstract T GetModel<T>(string sql, object param) where T : class;
+        public abstract List<T> GetList<T>(string sql, object param);
+        public abstract T GetSingle<T>(string sql, object param) where T : class;
         public abstract string GetScaler(string sql, object param);
         //public abstract bool Add<T>(string sql, object param);
         //public abstract bool Delete<T>(string sql, object param);
