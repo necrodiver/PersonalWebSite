@@ -33,7 +33,7 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("文章状态")]
-        public ArticleState ArticleState { get; set; }
+        public WorkState ArticleState { get; set; }
     }
 
     /// <summary>
@@ -87,19 +87,23 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 文章状态
         /// </summary>
-        public ArticleState ArticleState { get; set; }
+        public WorkState ArticleState { get; set; }
         /// <summary>
         /// 文章创建时间
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTime AddTime { get; set; }
         /// <summary>
         /// 文章最新修改时间
         /// </summary>
         public DateTime EditTime { get; set; }
         /// <summary>
-        /// 文章是否公开
+        /// 文章点击量
         /// </summary>
         public int hits { get; set; }
+        /// <summary>
+        /// 文章是否公开
+        /// </summary>
+        public int IsExpose { get; set; }
         /// <summary>
         /// 用户Id
         /// </summary>

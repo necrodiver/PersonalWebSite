@@ -27,9 +27,9 @@ namespace PersonalWebService.Model
     }
 
     /// <summary>
-    /// 文章状态
+    /// 文章/图片 状态
     /// </summary>
-    public enum ArticleState
+    public enum WorkState
     {
         冻结 = -100,
         草稿 = 0,

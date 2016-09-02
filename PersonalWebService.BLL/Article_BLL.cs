@@ -12,7 +12,7 @@ namespace PersonalWebService.BLL
     public class Article_BLL
     {
         private WordsFilterDt wordsFilter = new WordsFilterDt();
-        public static List<ArticleSort_Model> articleSortList;
+        public static List<ArticleSort> articleSortList;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         /// <summary>
         /// 新增文章
@@ -43,7 +43,7 @@ namespace PersonalWebService.BLL
             //这里直接获取内容
             if (articleSortList == null)
             {
-                articleSortList =dal.GetDataList<ArticleSort_Model>(null);
+                articleSortList =dal.GetDataList<ArticleSort>(null);
             }
 
             if (!articleSortList.Exists(artSort => artSort.ArticleSortId == article.ArticleSortId))

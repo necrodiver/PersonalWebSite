@@ -29,6 +29,9 @@ namespace PersonalWebService.Model
         //这里需要添加敏感词过滤
         public string Nickname { get; set; }
 
+        [DisplayName("个人简介")]
+        [StringLength(300,MinimumLength =1,ErrorMessage ="{0}长度不能超过300个字段，不能小于1个字段")]
+        public string Introduce { get; set; }
         [Required(AllowEmptyStrings = false)]
         [DisplayName("登录密码")]
         [RegularExpression(@"^\w+$", ErrorMessage = "{0}只能是字母、数字和下划线组成的")]
@@ -137,6 +140,10 @@ namespace PersonalWebService.Model
         /// </summary>
         public string Nickname { get; set; }
         /// <summary>
+        /// 个人简介
+        /// </summary>
+        public string Introduce { get; set; }
+        /// <summary>
         /// 用户头像地址
         /// </summary>
         public string AccountPicture { get; set; }
@@ -147,7 +154,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTime AddTime { get; set; }
         /// <summary>
         /// 修改时间
         /// </summary>
@@ -162,6 +169,9 @@ namespace PersonalWebService.Model
         public UserType? UserType { get; set; }
     }
 
+    /// <summary>
+    /// 用户搜索条件Model
+    /// </summary>
     public class UserInfoCondition
     {
         /// <summary>

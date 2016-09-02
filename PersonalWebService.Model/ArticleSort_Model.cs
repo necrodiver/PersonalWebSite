@@ -9,7 +9,7 @@ namespace PersonalWebService.Model
     /// <summary>
     /// 文章类别
     /// </summary>
-    public class ArticleSort_Model
+    public class ArticleSort
     {
         /// <summary>
         /// 分类Id

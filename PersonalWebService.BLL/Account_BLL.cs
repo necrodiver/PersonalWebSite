@@ -231,6 +231,7 @@ namespace PersonalWebService.BLL
             userInfoS.UserID = userInfo.UserID;
             userInfoS.UserName = userInfo.UserName;
             userInfoS.Nickname = userInfo.Nickname;
+            userInfoS.Introduce = userInfo.Introduce;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
             userInfoS.EditTime = userInfo.EditTime;
@@ -274,7 +275,7 @@ namespace PersonalWebService.BLL
             userInfoS.Nickname = userInfo.Nickname;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
-            userInfoS.CreationTime = DateTime.Now;
+            userInfoS.AddTime = DateTime.Now;
             userInfoS.EditTime = userInfo.EditTime;
             userInfoS.Status = userInfo.Status;
             userInfoS.UserType = userInfo.UserType;
