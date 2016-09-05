@@ -33,7 +33,7 @@
 | 正则表达式|*|检测匹配表单输入，过滤输入内容|
 |Lambda表达式|基于 .NetFrameWork4.5|处理IEnumerable的数据，提取和修改内容|
 |NLog|4.0|错误日志记录功能|
-|Dapper|1.40.0.0|轻型的ORM框架，处理与数据库交互|
+|Dapper|1.50.2|轻型的ORM框架，处理与数据库交互|
 |AES|*|使用32位密钥加密短字符串，这里用于加密用户密码|
 |GDI+绘图|*|生成自定义图片，这里用于处理生成验证码|
 |Trie|*|用于敏感词判断,[几个demo](http://git.oschina.net/neclodiver/TestEleven)|
