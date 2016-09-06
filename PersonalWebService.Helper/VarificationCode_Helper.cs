@@ -149,7 +149,7 @@ namespace PersonalWebService.Helper
             HttpContext.Current.Response.ExpiresAbsolute = DateTime.Now.AddSeconds(-1);
             HttpContext.Current.Response.AddHeader("pragma", "no-cache");
             HttpContext.Current.Response.CacheControl = "no-cache";
-            this.text = DrawValidationCode.Number(4);
+            this.text = DrawValidationCode.Number(letterCount);
             CreateImage();
         }
         #endregion
