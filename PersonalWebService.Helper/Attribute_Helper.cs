@@ -155,10 +155,10 @@ namespace PersonalWebService.Helper
             UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             var errors = new Dictionary<string, string>();
             bool isPass = false;
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.Nickname))
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))
                 errors.Add("SelectList", "非法查询！");
-            else if (!userInfo.UserType.Equals(UserType.管理员))
-                errors.Add("SelectList", "权限不足！无法查询");
+            //else if (!userInfo.UserType.Equals(UserType.管理员))
+            //    errors.Add("SelectList", "权限不足！无法查询");
             else
                 isPass = true;
 

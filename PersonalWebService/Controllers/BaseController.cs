@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Controllers;
 
-namespace PersonalWebService.ControllerBase
+namespace PersonalWebService.Controllers
 {
     [BasicAuthentication]
     public class BaseController : ApiController

@@ -27,7 +27,7 @@ namespace PersonalWebService.Model
         [DisplayName("昵称")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
         //这里需要添加敏感词过滤
-        public string Nickname { get; set; }
+        public string NickName { get; set; }
 
         [DisplayName("个人简介")]
         [StringLength(300,MinimumLength =1,ErrorMessage ="{0}长度不能超过300个字段，不能小于1个字段")]
@@ -51,11 +51,11 @@ namespace PersonalWebService.Model
         [DisplayName("修改日期")]
         public DateTime EditTime { get; set; }
 
-        [DisplayName("用户状态")]
-        public UserState? Status { get; set; }
+        [DisplayName("当前登录状态")]
+        public NowStatus? Status { get; set; }
 
-        [DisplayName("用户类型")]
-        public UserType? UserType { get; set; }
+        [DisplayName("账号状态")]
+        public State? State { get; set; }
     }
     /// <summary>
     /// 用户登录Model
@@ -160,13 +160,13 @@ namespace PersonalWebService.Model
         /// </summary>
         public DateTime EditTime { get; set; }
         /// <summary>
-        /// 用户状态
+        /// 账号状态
         /// </summary>
-        public UserState? Status { get; set; }
+        public State State { get; set; }
         /// <summary>
-        /// 用户类型
+        /// 用户登录状态
         /// </summary>
-        public UserType? UserType { get; set; }
+        public NowStatus NowStatus { get; set; }
     }
 
     /// <summary>
@@ -195,13 +195,9 @@ namespace PersonalWebService.Model
         /// </summary>
         public DateTime EditTime { get; set; }
         /// <summary>
-        /// 用户状态
+        /// 当前登录状态
         /// </summary>
-        public UserState Status { get; set; }
-        /// <summary>
-        /// 用户类型
-        /// </summary>
-        public UserType UserType { get; set; }
+        public NowStatus? Status { get; set; }
         /// <summary>
         /// 文章Id
         /// </summary>

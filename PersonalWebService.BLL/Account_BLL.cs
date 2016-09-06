@@ -89,7 +89,7 @@ namespace PersonalWebService.BLL
         public UserInfo_Model GetUserInfo()
         {
             UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.Nickname))
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))
                 return null;
             return userInfo;
         }
@@ -230,14 +230,11 @@ namespace PersonalWebService.BLL
             UserInfo userInfoS = new UserInfo();
             userInfoS.UserId = userInfo.UserID;
             userInfoS.UserName = userInfo.UserName;
-            userInfoS.NickName = userInfo.Nickname;
+            userInfoS.NickName = userInfo.NickName;
             userInfoS.Introduce = userInfo.Introduce;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
-            userInfoS.EditTime = userInfo.EditTime;
-            userInfoS.Status = userInfo.Status;
-            userInfoS.UserType = userInfo.UserType;
-
+            userInfoS.EditTime = DateTime.Now;
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
@@ -272,13 +269,13 @@ namespace PersonalWebService.BLL
             UserInfo userInfoS = new UserInfo();
             userInfoS.UserId = userInfo.UserID;
             userInfoS.UserName = userInfo.UserName;
-            userInfoS.NickName = userInfo.Nickname;
+            userInfoS.NickName = userInfo.NickName;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
             userInfoS.AddTime = DateTime.Now;
             userInfoS.EditTime = userInfo.EditTime;
-            userInfoS.Status = userInfo.Status;
-            userInfoS.UserType = userInfo.UserType;
+            userInfoS.State = State.正常;
+            userInfoS.NowStatus = NowStatus.未登录;
 
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;

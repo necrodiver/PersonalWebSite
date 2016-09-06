@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 namespace PersonalWebService.Model
 {
     /// <summary>
-    /// 用户类别
+    /// 账号状态
     /// </summary>
-    public enum UserType
-    {
-        None = -100,
-        管理员 = -1,
-        普通用户 = 1
-    }
-    /// <summary>
-    /// 用户状态
-    /// </summary>
-    public enum UserState
+    public enum State
     {
         冻结 = -100,
-        退出登录 = 0,
-        已登录 = 1,
-        禁用修改 = 3
+        正常 = 0,
+        禁止修改账号 = 1
+    }
+
+    /// <summary>
+    /// 用户登录状态
+    /// </summary>
+    public enum NowStatus
+    {
+        未登录 = 0,
+        已登录 = 1
     }
 
     /// <summary>
