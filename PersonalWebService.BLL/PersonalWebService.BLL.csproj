@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountAdmin_BLL.cs" />
     <Compile Include="Account_BLL.cs" />
     <Compile Include="Article_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

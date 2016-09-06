@@ -49,6 +49,7 @@
     <Compile Include="Picture_Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnStatus_Model.cs" />
+    <Compile Include="SystemAdmin.cs" />
     <Compile Include="TrieNode_Model.cs" />
     <Compile Include="UserComment_Model.cs" />
     <Compile Include="UserInfo_Model.cs" />

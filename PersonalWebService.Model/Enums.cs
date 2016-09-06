@@ -87,4 +87,10 @@ namespace PersonalWebService.Model
         /// </summary>
         Trace
     }
+
+    public enum AdminLevel
+    {
+        最高权限 = -100,
+        第一权限 = 1
+    }
 }
