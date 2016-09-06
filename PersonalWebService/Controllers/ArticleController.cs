@@ -28,12 +28,12 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
-        [Route("Get")]
-        public async Task<Article_Model>GetArticle([FromBody]ArticleCondition_Model articleCondition)
+        [Route("GetList")]
+        public async Task<List<Article_Model>>GetArticleList([FromBody]ArticleCondition_Model articleCondition)
         {
             YZMHelper yz = new YZMHelper();
             return await Task.Run(()=> {
-                return articleBll.GetArticle(articleCondition);
+                return articleBll.GetArticleList(articleCondition);
             });
         }
     }

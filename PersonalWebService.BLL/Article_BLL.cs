@@ -72,7 +72,12 @@ namespace PersonalWebService.BLL
             return rsModel;
         }
 
-        public Article_Model GetArticle(ArticleCondition_Model articleCondition)
+        /// <summary>
+        /// 根据条件获取对应的文章列表
+        /// </summary>
+        /// <param name="articleCondition"></param>
+        /// <returns></returns>
+        public List<Article_Model> GetArticleList(ArticleCondition_Model articleCondition)
         {
             //sql先不写了，根据数据库来写
             //一堆判断
@@ -83,13 +88,13 @@ namespace PersonalWebService.BLL
             {
                 articleList = dal.GetDataList<Article_Model>(sql, datafiled);
                 if (articleList == null||articleList.Count==0) {
-
+                    return null;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
+                return null;
             }
 
             throw new NotImplementedException();

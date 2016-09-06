@@ -130,7 +130,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 用户Id
         /// </summary>
-        public string UserID { get; set; }
+        public string UserId { get; set; }
         /// <summary>
         /// 用户名（邮箱地址）
         /// </summary>
@@ -138,7 +138,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 用户昵称
         /// </summary>
-        public string Nickname { get; set; }
+        public string NickName { get; set; }
         /// <summary>
         /// 个人简介
         /// </summary>

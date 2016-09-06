@@ -85,10 +85,6 @@ namespace PersonalWebService.Model
         /// </summary>
         public string ArticleSort { get; set; }
         /// <summary>
-        /// 文章状态
-        /// </summary>
-        public WorkState ArticleState { get; set; }
-        /// <summary>
         /// 文章创建时间
         /// </summary>
         public DateTime AddTime { get; set; }
@@ -104,6 +100,10 @@ namespace PersonalWebService.Model
         /// 文章是否公开
         /// </summary>
         public int IsExpose { get; set; }
+        /// <summary>
+        /// 文章状态
+        /// </summary>
+        public WorkState ArticleState { get; set; }
         /// <summary>
         /// 用户Id
         /// </summary>

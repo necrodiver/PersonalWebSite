@@ -62,5 +62,9 @@ namespace PersonalWebService.Model
         /// 图片状态(冻结 = -100,草稿 = 0, 已发布 = 1)
         /// </summary>
         public int PictureState { get; set; }
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserId { get; set; }
     }
 }

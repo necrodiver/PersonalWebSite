@@ -63,7 +63,7 @@ namespace PersonalWebService.BLL
                 if (userInfo.UserName == null || userInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
-                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserID + "的账户存在问题");
+                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserId + "的账户存在问题");
                     return rsModel;
                 }
 
@@ -228,9 +228,9 @@ namespace PersonalWebService.BLL
         public ReturnStatus_Model EditUserInfo(UserInfo_Model userInfo)
         {
             UserInfo userInfoS = new UserInfo();
-            userInfoS.UserID = userInfo.UserID;
+            userInfoS.UserId = userInfo.UserID;
             userInfoS.UserName = userInfo.UserName;
-            userInfoS.Nickname = userInfo.Nickname;
+            userInfoS.NickName = userInfo.Nickname;
             userInfoS.Introduce = userInfo.Introduce;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
@@ -270,9 +270,9 @@ namespace PersonalWebService.BLL
         {
 
             UserInfo userInfoS = new UserInfo();
-            userInfoS.UserID = userInfo.UserID;
+            userInfoS.UserId = userInfo.UserID;
             userInfoS.UserName = userInfo.UserName;
-            userInfoS.Nickname = userInfo.Nickname;
+            userInfoS.NickName = userInfo.Nickname;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
             userInfoS.AddTime = DateTime.Now;
