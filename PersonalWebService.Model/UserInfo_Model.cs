@@ -30,7 +30,7 @@ namespace PersonalWebService.Model
         public string NickName { get; set; }
 
         [DisplayName("个人简介")]
-        [StringLength(300,MinimumLength =1,ErrorMessage ="{0}长度不能超过300个字段，不能小于1个字段")]
+        [StringLength(300, MinimumLength = 1, ErrorMessage = "{0}长度不能超过300个字段，不能小于1个字段")]
         public string Introduce { get; set; }
         [Required(AllowEmptyStrings = false)]
         [DisplayName("登录密码")]
@@ -159,6 +159,10 @@ namespace PersonalWebService.Model
         /// 修改时间
         /// </summary>
         public DateTime EditTime { get; set; }
+        /// <summary>
+        /// 最后一次登录时间
+        /// </summary>
+        public DateTime LastvisitDate { get; set; }
         /// <summary>
         /// 账号状态
         /// </summary>

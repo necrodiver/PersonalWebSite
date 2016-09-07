@@ -69,6 +69,8 @@ namespace PersonalWebService.BLL
 
                 if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
+                    string sqlUpTime = "UPDATE [dbo].[UserInfo] SET LastvisitDate=GETDATE() WHERE UserId=@UserId";
+                    dal.OpeData(sqlUpTime, new DataField { Name = "@UserId", Value = userInfo.UserId });
                     rsModel.isRight = true;
                     rsModel.message = "用户登录成功！";
                     SessionState.SaveSession(userInfo, "UserInfo");

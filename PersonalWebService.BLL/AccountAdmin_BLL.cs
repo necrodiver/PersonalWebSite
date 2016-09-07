@@ -34,11 +34,11 @@ namespace PersonalWebService.BLL
                 yzM.CreateImage();
                 return rsModel;
             }
-            UserInfo userInfo = new UserInfo();
+            UserInfo adminInfo = new UserInfo();
             try
             {
                 string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName");
-                userInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
+                adminInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
             }
             catch (Exception ex)
             {
@@ -49,24 +49,26 @@ namespace PersonalWebService.BLL
             }
 
             //无用户
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserName))
+            if (adminInfo == null || string.IsNullOrEmpty(adminInfo.UserName))
             {
                 rsModel.message = "不存在此账户，请重新登录或注册后进行登录";
             }
             else
             {
-                if (userInfo.UserName == null || userInfo.Password == null)
+                if (adminInfo.UserName == null || adminInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
-                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserId + "的账户存在问题");
+                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + adminInfo.UserId + "的账户存在问题");
                     return rsModel;
                 }
 
-                if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
+                if (adminInfo.UserName.Equals(user.UserName) && adminInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
+                    string sqlUpTime = "UPDATE [dbo].[SystemAdmin] SET LastvisitDate=GETDATE() WHERE AdminId=@AdminId";
+                    dal.OpeData(sqlUpTime, new DataField { Name = "@AdminId", Value = adminInfo.UserId });
                     rsModel.isRight = true;
                     rsModel.message = "管理员登录成功！";
-                    SessionState.SaveSession(userInfo, "SystemAdmin");
+                    SessionState.SaveSession(adminInfo, "SystemAdmin");
                 }
                 else
                 {

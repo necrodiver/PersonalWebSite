@@ -16,6 +16,10 @@ namespace PersonalWebService.Model
         public DateTime AddTime { get; set; }
         public DateTime EditTime { get; set; }
         /// <summary>
+        /// 最后一次登录时间
+        /// </summary>
+        public DateTime LastvisitDate { get; set; }
+        /// <summary>
         /// 管理员权限  
         /// 最高权限 = -100,
         /// 第一权限 = 1
