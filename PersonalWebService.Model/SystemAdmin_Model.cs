@@ -60,4 +60,16 @@ namespace PersonalWebService.Model
         [StringLength(6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
         public string ValidateCode { get; set; }
     }
+
+    public class AdminInfoCondition
+    {
+        [DisplayName("用户名")]
+        public string UserName { get; set; }
+        [DisplayName("添加时间")]
+        public DateTime AddTime { get; set; }
+        [DisplayName("修改时间")]
+        public DateTime EditTime { get; set; }
+        [DisplayName("管理等级")]
+        public AdminLevel Level { get; set; }
+    }
 }

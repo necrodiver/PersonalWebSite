@@ -229,8 +229,11 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model EditUserInfo(UserInfo_Model userInfo)
         {
+            ----
+            ///////存在一个问题，这里的更新没有where!!
+            UserInfo userInfos = SessionState.GetSession<UserInfo>("UserInfo");
             UserInfo userInfoS = new UserInfo();
-            userInfoS.UserId = userInfo.UserID;
+            userInfoS.UserId = userInfos.UserId;
             userInfoS.UserName = userInfo.UserName;
             userInfoS.NickName = userInfo.NickName;
             userInfoS.Introduce = userInfo.Introduce;

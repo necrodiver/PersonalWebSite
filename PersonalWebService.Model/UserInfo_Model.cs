@@ -19,8 +19,8 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("用户账号名")]
-        [StringLength(50, MinimumLength = 6)]
-        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage ="{0}必须是邮箱格式，以便找回密码")]
         public string UserName { get; set; }
 
         [Required]
@@ -64,7 +64,8 @@ namespace PersonalWebService.Model
     {
         [Required]
         [DisplayName("用户名")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "{0}长度不能超过50个字段，不能小于5个字段")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string UserName { get; set; }
 
         [Required]
@@ -86,8 +87,8 @@ namespace PersonalWebService.Model
     {
         [Required]
         [DisplayName("注册的用户名")]
-        [StringLength(50, MinimumLength = 6)]
-        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string Email { get; set; }
 
         [Required]
@@ -111,8 +112,8 @@ namespace PersonalWebService.Model
     {
         [Required]
         [DisplayName("用户名")]
-        [StringLength(50, MinimumLength = 6)]
-        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "{0}必须是邮箱，以便找回密码")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string Email { get; set; }
         [Required]
         [DisplayName("验证码")]

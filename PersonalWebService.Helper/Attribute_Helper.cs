@@ -152,7 +152,7 @@ namespace PersonalWebService.Helper
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("SystemAdmin");
             var errors = new Dictionary<string, string>();
             bool isPass = false;
             if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))

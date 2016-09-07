@@ -12,7 +12,7 @@ namespace PersonalWebService.Model
     {
         [DisplayName("文章Id")]
         [StringLength(32)]
-        public string ArtilceId { get; set; }
+        public string ArticleId { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [DisplayName("文章名称")]
@@ -34,6 +34,10 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("文章状态")]
         public WorkState ArticleState { get; set; }
+
+        [Required]
+        [DisplayName("文章是否公开")]
+        public int IsExpose { get; set; }
     }
 
     /// <summary>
@@ -71,7 +75,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 文章Id
         /// </summary>
-        public string ArtilceId { get; set; }
+        public string ArticleId { get; set; }
         /// <summary>
         /// 文章名称
         /// </summary>
@@ -83,7 +87,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 文章类别
         /// </summary>
-        public string ArticleSort { get; set; }
+        public int ArticleSortId { get; set; }
         /// <summary>
         /// 文章创建时间
         /// </summary>

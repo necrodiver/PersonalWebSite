@@ -11,7 +11,7 @@ namespace PersonalWebService.IDAL
     {
 
         /// <summary>
-        /// 修改信息
+        /// 增/删信息（没有改和查）
         /// </summary>
         /// <typeparam name="T">模型类</typeparam>
         /// <param name="model">实体数据</param>

@@ -37,8 +37,8 @@ namespace PersonalWebService.BLL
             UserInfo adminInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName");
-                adminInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " Name=@Name");
+                adminInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@Name", Value = user.UserName });
             }
             catch (Exception ex)
             {
@@ -124,6 +124,17 @@ namespace PersonalWebService.BLL
                 rsModel.message = "服务器错误，请稍后重试";
             }
             return rsModel;
+        }
+
+        /// <summary>
+        /// 获取具有条件的管理员列表
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public List<UserInfo_Model> GetAdminInfoList(AdminInfoCondition condition)
+        {
+            //这条件太牛逼了，等数据库做出来了再弄吧（暂时还不知道全部表有哪些）
+            throw new NotImplementedException();
         }
     }
 }

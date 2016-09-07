@@ -20,7 +20,6 @@ namespace PersonalWebService.Controllers
         [Route("Add")]
         public async Task<ReturnStatus_Model> Add([FromBody]Article_Model article)
         {
-            YZMHelper yz = new YZMHelper();
             return await Task.Run(() =>
             {
                 return articleBll.AddArticle(article);
@@ -29,12 +28,26 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("GetList")]
-        public async Task<List<Article_Model>>GetArticleList([FromBody]ArticleCondition_Model articleCondition)
+        public async Task<List<Article_Model>> GetArticleList([FromBody]ArticleCondition_Model articleCondition)
         {
-            YZMHelper yz = new YZMHelper();
-            return await Task.Run(()=> {
+            return await Task.Run(() =>
+            {
                 return articleBll.GetArticleList(articleCondition);
             });
+        }
+
+        [HttpPost]
+        [Route("Edit")]
+        public async Task<ReturnStatus_Model> Edit([FromBody]Article_Model article)
+        {
+            return await Task.Run(() => { return articleBll.EditArticle(article); });
+        }
+
+        [HttpPost]
+        [Route("Delete")]
+        public async Task<ReturnStatus_Model> Delete([FromBody]string[] articleIdList)
+        {
+            return await Task.Run(()=> { return articleBll.DeleteArticle(articleIdList); });
         }
     }
 }

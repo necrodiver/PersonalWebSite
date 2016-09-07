@@ -13,8 +13,7 @@ namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/AccountSystem")]
     [ModelValidationFilter]
-    [AuthorityAdmin]
-    public class AccountAdminController : ApiController
+    public class AccountAdminController : AdminBaseController
     {
         private static BLL.AccountAdmin_BLL accountAdminBll = new BLL.AccountAdmin_BLL();
         private static BLL.Account_BLL accountBll = new BLL.Account_BLL();
@@ -31,12 +30,13 @@ namespace PersonalWebService.ControllerAdmin
 
         [HttpPost]
         [BasicAuthentication]
-        [Route("GetUserList")]
-        public async Task<List<UserInfo_Model>> GetList([FromBody]UserInfoCondition condition)
+        [AuthorityAdmin]
+        [Route("GetList")]
+        public async Task<List<SystemAdmin>> GetList([FromBody]AdminInfoCondition condition)
         {
             return await Task.Run(() =>
             {
-                return accountBll.GetUserInfoList(condition);
+                return accountAdminBll.GetAdminInfoList(condition);
             });
         }
     }
