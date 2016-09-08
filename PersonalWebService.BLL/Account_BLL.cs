@@ -19,7 +19,7 @@ namespace PersonalWebService.BLL
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
-        private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0}";
+        private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         /// <summary>
         /// 验证用户登录
         /// </summary>
@@ -42,7 +42,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName");
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
                 userInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
             }
             catch (Exception ex)
@@ -90,10 +90,16 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public UserInfo_Model GetUserInfo()
         {
-            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
+            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
             if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))
                 return null;
-            return userInfo;
+            UserInfo_Model userInfoModel = new UserInfo_Model();
+            userInfoModel.UserId = userInfo.UserId;
+            userInfoModel.NickName = userInfo.NickName;
+            userInfoModel.Introduce = userInfo.Introduce;
+            userInfoModel.AccountPicture = userInfo.AccountPicture;
+            userInfoModel.AddTime = userInfo.AddTime;
+            return userInfoModel;
         }
 
         /// <summary>
@@ -198,7 +204,7 @@ namespace PersonalWebService.BLL
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
             userinfo.UserName = resetPwd.Email;
             SessionState.RemoveSession("RetrieveValidateCode");
-            string sqlUpdate = string.Format(sqlUpdateTemple, "PassWord=@PassWord WHERE UserName=@UserName");
+            string sqlUpdate = string.Format(sqlUpdateTemple, "PassWord=@PassWord", "UserName=@UserName");
             try
             {
                 List<DataField> param = new List<DataField>();
@@ -229,23 +235,36 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public ReturnStatus_Model EditUserInfo(UserInfo_Model userInfo)
         {
-            ----
-            ///////存在一个问题，这里的更新没有where!!
-            UserInfo userInfos = SessionState.GetSession<UserInfo>("UserInfo");
-            UserInfo userInfoS = new UserInfo();
-            userInfoS.UserId = userInfos.UserId;
-            userInfoS.UserName = userInfo.UserName;
-            userInfoS.NickName = userInfo.NickName;
-            userInfoS.Introduce = userInfo.Introduce;
-            userInfoS.AccountPicture = userInfo.AccountPicture;
-            userInfoS.Password = userInfo.Password;
-            userInfoS.EditTime = DateTime.Now;
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
+
+            UserInfo userInfos = SessionState.GetSession<UserInfo>("UserInfo");
+            userInfo.Password = aesE.AESEncrypt(userInfo.Password);
+
+            StringBuilder sbsql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (!userInfos.Introduce.Equals(userInfo.Introduce))
+            {
+                sbsql.Append("Introduce=@Introduce,");
+                param.Add(new DataField { Name = "@Introduce", Value = userInfo.Introduce });
+            }
+            if (!userInfos.AccountPicture.Equals(userInfo.AccountPicture))
+            {
+                sbsql.Append("Introduce=@Introduce,");
+                param.Add(new DataField { Name = "@Introduce", Value = userInfo.AccountPicture });
+            }
+            if (!userInfos.Password.Equals(userInfo.Password))
+            {
+                sbsql.Append("Password=@Password,");
+                param.Add(new DataField { Name = "@Password", Value = userInfo.Password });
+            }
+            sbsql.Append("EditTime=GETDATE()");
+            param.Add(new DataField { Name = "@UserId", Value = userInfos.UserId });
+            string sqlupdate = string.Format(sqlUpdateTemple, sbsql.ToString(), "UserId=@UserId");
             try
             {
-                if (dal.OpeData(userInfoS, OperatingModel.Edit))
+                if (dal.OpeData(sqlupdate, param))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改用户数据成功";
@@ -272,7 +291,7 @@ namespace PersonalWebService.BLL
         {
 
             UserInfo userInfoS = new UserInfo();
-            userInfoS.UserId = userInfo.UserID;
+            userInfoS.UserId = userInfo.UserId;
             userInfoS.UserName = userInfo.UserName;
             userInfoS.NickName = userInfo.NickName;
             userInfoS.AccountPicture = userInfo.AccountPicture;

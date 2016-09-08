@@ -30,9 +30,9 @@ namespace PersonalWebService.ControllerAdmin
 
         [HttpPost]
         [BasicAuthentication]
-        [AuthorityAdmin]
+        //[AuthorityAdmin]
         [Route("GetList")]
-        public async Task<List<SystemAdmin>> GetList([FromBody]AdminInfoCondition condition)
+        public async Task<List<AdminInfo>> GetList([FromBody]AdminInfoCondition condition)
         {
             return await Task.Run(() =>
             {

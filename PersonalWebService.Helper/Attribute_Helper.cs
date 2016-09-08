@@ -43,7 +43,7 @@ namespace PersonalWebService.Helper
             string userName = userTicketData.Substring(0, userTicketData.IndexOf(":"));
             string password = userTicketData.Substring(userTicketData.IndexOf(":") + 1);
             //这里对用户名和密码进行验证
-            UserInfo_Model userModel = SessionState.GetSession<UserInfo_Model>("UserInfo");
+            UserInfo userModel = SessionState.GetSession<UserInfo>("UserInfo");
             if (userModel != null && userModel.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
@@ -51,15 +51,15 @@ namespace PersonalWebService.Helper
             return false;
         }
 
-        public UserInfo_Model userInfo
+        public UserInfo userInfo
         {
             get { return GetUserInfo(); }
         }
 
-        public static UserInfo_Model GetUserInfo()
+        public static UserInfo GetUserInfo()
         {
-            UserInfo_Model userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo_Model;
-            if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserID) && !string.IsNullOrEmpty(userinfo.UserName) && !string.IsNullOrEmpty(userinfo.Password))
+            UserInfo userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo;
+            if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserId) && !string.IsNullOrEmpty(userinfo.UserName) && !string.IsNullOrEmpty(userinfo.Password))
             {
                 return userinfo;
             }
@@ -152,7 +152,7 @@ namespace PersonalWebService.Helper
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("SystemAdmin");
+            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
             var errors = new Dictionary<string, string>();
             bool isPass = false;
             if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))

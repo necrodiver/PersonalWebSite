@@ -47,15 +47,16 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 删
         /// </summary>
-        Delete,
-        /// <summary>
-        /// 改
-        /// </summary>
-        Edit,
-        /// <summary>
-        /// 查
-        /// </summary>
-        Get
+        Delete
+        //    ,
+        ///// <summary>
+        ///// 改
+        ///// </summary>
+        //Edit,
+        ///// <summary>
+        ///// 查
+        ///// </summary>
+        //Get
     }
     /// <summary>
     /// 错误等级

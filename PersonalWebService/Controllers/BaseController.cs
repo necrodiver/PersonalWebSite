@@ -56,7 +56,7 @@ namespace PersonalWebService.Controllers
         /// 获取用户信息
         /// </summary>
         /// <returns>用户UserInfo的Model</returns>
-        public UserInfo_Model GetUserInfo()
+        public UserInfo GetUserInfo()
         {
             return BasicAuthenticationAttribute.GetUserInfo();
         }

@@ -19,6 +19,7 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("Login")]
+        //登录
         public async Task<ReturnStatus_Model> Login([FromBody]UserLogin user)
         {
             YZMHelper yz = new YZMHelper();
@@ -26,12 +27,12 @@ namespace PersonalWebService.Controllers
             {
                 return accountBll.VerifyUserInfo(user);
             });
-            //return await GetValueAsync(user.UserName, user.PassWord);
         }
 
         [HttpPost]
         [BasicAuthentication]
         [Route("Edit")]
+        //修改用户信息
         public async Task<ReturnStatus_Model> Edit([FromBody]UserInfo_Model userInfo)
         {
             return await Task.Run(() =>
@@ -42,6 +43,7 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("Add")]
+        //用户注册
         public async Task<ReturnStatus_Model> Add([FromBody]UserInfo_Model userInfo)
         {
             return await Task.Run(() =>
@@ -53,6 +55,7 @@ namespace PersonalWebService.Controllers
         [HttpPost]
         [BasicAuthentication]
         [Route("Get")]
+        //获取个人信息
         public async Task<UserInfo_Model> Get()
         {
             return await Task.Run(() =>
@@ -66,6 +69,7 @@ namespace PersonalWebService.Controllers
         [HttpPost]
         [BasicAuthentication]
         [Route("Logout")]
+        //退出登录
         public async Task<ReturnStatus_Model> Logout()
         {
             return await Task.Run(() =>
@@ -86,6 +90,7 @@ namespace PersonalWebService.Controllers
         [HttpPost]
         [BasicAuthentication]
         [Route("RetrievePwd")]
+        //找回密码，发送验证码
         public async Task<ReturnStatus_Model> RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
         {
             return await Task.Run(() =>
@@ -96,6 +101,7 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("VertifyCode")]
+        //修改密码
         public async Task<ReturnStatus_Model> VertifyCode([FromBody]ResetPwd resetPwd)
         {
             return await Task.Run(() =>

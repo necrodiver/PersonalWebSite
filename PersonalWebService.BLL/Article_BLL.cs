@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PersonalWebService.Model;
 using PersonalWebService.Helper;
 using PersonalWebService.DAL;
+using System.Text.RegularExpressions;
 
 namespace PersonalWebService.BLL
 {
@@ -15,7 +16,8 @@ namespace PersonalWebService.BLL
         public static List<ArticleSort> articleSortList;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[Article] WHERE {1}";
-        private static readonly string sqlDeleteTemplate = @"DELETE [dbo].[SystemAdmin] where {0}";
+        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[Article] where {0}";
+        private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[Article] SET {0} WHERE {1}";
         /// <summary>
         /// 新增文章
         /// </summary>
@@ -93,14 +95,13 @@ namespace PersonalWebService.BLL
                 {
                     return null;
                 }
+                return articleList;
             }
             catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
                 return null;
             }
-
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -136,15 +137,39 @@ namespace PersonalWebService.BLL
                 rsModel.message = "文章不存在，无法修改，请重试！";
                 return rsModel;
             }
-            articleInfo.ArticleName = article.ArticleName;
-            articleInfo.ArticleContent = article.ArticleContent;
-            articleInfo.ArticleSortId = article.ArticleSortId;
-            articleInfo.EditTime = DateTime.Now;
-            articleInfo.ArticleState = article.ArticleState;
-            articleInfo.IsExpose = article.IsExpose;
+            StringBuilder sbSql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (!article.ArticleName.Equals(articleInfo.ArticleName))
+            {
+                sbSql.Append("[ArticleName]=@ArticleName,");
+                param.Add(new DataField { Name = "@ArticleName", Value = article.ArticleName });
+            }
+            if (!article.ArticleContent.Equals(articleInfo.ArticleContent))
+            {
+                sbSql.Append("[ArticleContent]=@ArticleContent,");
+                param.Add(new DataField { Name = "@ArticleContent", Value = article.ArticleContent });
+            }
+            if (article.ArticleSortId != articleInfo.ArticleSortId)
+            {
+                sbSql.Append("[ArticleSortId]=@ArticleSortId,");
+                param.Add(new DataField { Name = "@ArticleSortId", Value = article.ArticleSortId });
+            }
+            if (article.ArticleState != articleInfo.ArticleState)
+            {
+                sbSql.Append("[ArticleState]=@ArticleState,");
+                param.Add(new DataField { Name = "@ArticleState", Value = article.ArticleState });
+            }
+            if (article.IsExpose != articleInfo.IsExpose)
+            {
+                sbSql.Append("[IsExpose]=@IsExpose");
+                param.Add(new DataField { Name = "@IsExpose", Value = article.IsExpose });
+            }
+            sbSql.Append("[EditTime]=GETDATE()");
+            param.Add(new DataField { Name = "@ArticleId", Value = article.ArticleId });
+            string sqlEdit = string.Format(sqlUpdateTemplate, sbSql.ToString(), "[ArticleId]=@ArticleId");
             try
             {
-                if (dal.OpeData(articleInfo, OperatingModel.Edit))
+                if (dal.OpeData(sqlEdit, param))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改成功！";
@@ -168,31 +193,77 @@ namespace PersonalWebService.BLL
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "文章删除";
+            if (articleIdList.Length > 100)
+            {
+                rsModel.message = "你的一次删除操作太多，不予执行！";
+                return rsModel;
+            }
             if (articleIdList == null || articleIdList.Length <= 0)
             {
                 rsModel.message = "需要操作删除的文章为空，请先选择需要删除的文章";
                 return rsModel;
             }
+            UserInfo userInfo =SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
+            {
+                rsModel.message = "你未登录账号或账号已过期，请重新登录！";
+                return rsModel;
+            }
+
             string ids = string.Empty;
-            articleIdList.Select(l=> {
-                ids += "'"+l+"'" + ",";
+            if(IsArticleIds(articleIdList))
+            {
+                rsModel.message = "你所需要操作的内容不合法！账号将被记录，请规范操作！";
+                StringBuilder articleids = new StringBuilder();
+                articleIdList.Select(l=> { articleids.Append(l);return true; });
+                LogRecord_Helper.RecordLog(LogLevels.Warn,"错误删除操作，怀疑为sql注入,用户Id为"+userInfo.UserId+"，输入信息为"+ articleids.ToString());
+                return rsModel;
+            }
+
+            articleIdList.Select(l =>
+            {
+                ids += "'" + l + "'" + ",";
                 return true;
             });
-            ids= ids.Substring(0, ids.Length - 1);
-            string sql =string.Format(sqlDeleteTemplate, "AdminId in");
-            throw new NotImplementedException();
-        }
 
-        protected bool IsAdmin()
-        {
-            SystemAdmin adminInfo = SessionState.GetSession<SystemAdmin>("SystemAdmin");
-            if(adminInfo != null&& !string.IsNullOrEmpty(adminInfo.AdminId))
+            ids = ids.Substring(0, ids.Length - 1);
+            string sql = string.Format(sqlDeleteTemplate, "ArticleId in(" + ids+")", "[UserId]=@UserId");
+
+            try
             {
-                return true;
+                if (dal.OpeData(sql, new DataField { Name = "@UserId", Value = userInfo.UserId }))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改成功！";
+                    return rsModel;
+                }
+                else
+                {
+                    rsModel.isRight = false;
+                    rsModel.message = "你删除的内容有误，请重试或联系管理员！";
+                    return rsModel;
+                }
             }
-            UserInfo userInfo
-            if()
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal,ex.ToString());
+                rsModel.isRight = false;
+                rsModel.message = "系统出现一个问题，请联系管理员或重试！";
+                return rsModel;
+            }
         }
 
+        private bool IsArticleIds(string[] str)
+        {
+            Regex re = new Regex(@"^[a-zA-Z0-9]+$");
+            foreach (var item in str)
+            {
+                if(string.IsNullOrEmpty(item))
+                    return false;
+                if (!re.IsMatch(item))
+                    return false;
+            }
+            return true;
+        }
     }
 }

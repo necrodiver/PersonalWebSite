@@ -15,7 +15,7 @@ namespace PersonalWebService.Model
     {
         [DisplayName("用户Id")]
         [StringLength(32)]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [DisplayName("用户账号名")]
@@ -46,7 +46,7 @@ namespace PersonalWebService.Model
         public string AccountPicture { get; set; }
 
         [DisplayName("创建日期")]
-        public DateTime CreationTime { get; set; }
+        public DateTime AddTime { get; set; }
 
         [DisplayName("修改日期")]
         public DateTime EditTime { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.Model
 {
-    public class SystemAdmin
+    public class AdminInfo
     {
         public string AdminId { get; set; }
         public string Name { get; set; }

@@ -109,6 +109,10 @@ namespace PersonalWebService.Model
         /// </summary>
         public WorkState ArticleState { get; set; }
         /// <summary>
+        ///是否被冻结(0:是,1:否)
+        /// </summary>
+        public int IsFreeze { get; set; }
+        /// <summary>
         /// 用户Id
         /// </summary>
         public string UserId { get; set; }
