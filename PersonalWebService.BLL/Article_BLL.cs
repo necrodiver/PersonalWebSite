@@ -65,7 +65,7 @@ namespace PersonalWebService.BLL
                 }
                 else
                 {
-                    rsModel.message = "新增文章失败，请稍后再试一次";
+                    rsModel.message = "新增文章失败，请整理后再次发布";
                 }
             }
             catch (Exception ex)
@@ -84,24 +84,69 @@ namespace PersonalWebService.BLL
         public List<Article_Model> GetArticleList(ArticleCondition_Model articleCondition)
         {
             //sql先不写了，根据数据库来写
-            //一堆判断
-            string sql = "";
-            List<DataField> datafiled = new List<DataField>();
-            List<Article_Model> articleList = new List<Article_Model>();
+            StringBuilder sbsql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (!string.IsNullOrEmpty(articleCondition.NickName))
+            {
+                sbsql.Append("u.NickName=@NickName AND");
+                param.Add(new DataField { Name = "@NickName", Value = articleCondition.NickName });
+            }
+            if (!string.IsNullOrEmpty(articleCondition.ArticleName))
+            {
+                sbsql.Append("a.ArticleName=@ArticleName AND");
+                param.Add(new DataField { Name = "@ArticleName", Value = articleCondition.ArticleName });
+            }
+            if (articleCondition.ArticleSortId != null)
+            {
+                sbsql.Append("a.ArticleSortId=@ArticleSortId AND");
+                param.Add(new DataField { Name = "@ArticleSortId", Value = articleCondition.ArticleSortId });
+            }
+            if (articleCondition.FirstTime != null)
+            {
+                sbsql.Append("a.EditTime>=@FirstTime AND");
+                param.Add(new DataField { Name = "@FirstTime", Value = articleCondition.FirstTime });
+            }
+            if (articleCondition.LastTime != null)
+            {
+                sbsql.Append("a.EditTime<=@LastTime AND");
+                param.Add(new DataField { Name = "@LastTime", Value = articleCondition.LastTime });
+            }
+            string sqlSelect = @"SELECT a.* FROM [dbo].[Article] AS a
+                                LEFT JOIN [dbo].[UserInfo] AS u
+                                ON a.UserId=u.UserId WHERE {0}";
+            //硬条件
+            sbsql.Append("a.IsFreeze=1 AND a.ArticleState=1");
+            sqlSelect = string.Format(sqlSelect, sbsql.ToString());
+            List<Article> articleList = new List<Article>();
             try
             {
-                articleList = dal.GetDataList<Article_Model>(sql, datafiled);
+                articleList = dal.GetDataList<Article>(sqlSelect, param);
                 if (articleList == null || articleList.Count == 0)
                 {
                     return null;
                 }
-                return articleList;
             }
             catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
                 return null;
             }
+            List<Article_Model> articleModelList = new List<Article_Model>();
+            articleList.Select(al =>
+            {
+                articleModelList.Add(
+                    new Article_Model
+                    {
+                        ArticleId = al.ArticleId,
+                        ArticleName = al.ArticleName,
+                        ArticleContent = al.ArticleContent,
+                        ArticleSortId = al.ArticleSortId,
+                        ArticleState = al.ArticleState,
+                        IsExpose = al.IsExpose
+                    });
+                return true;
+            });
+            return articleModelList;
         }
 
         /// <summary>
@@ -188,6 +233,11 @@ namespace PersonalWebService.BLL
             }
         }
 
+        /// <summary>
+        /// 删除操作
+        /// </summary>
+        /// <param name="articleIdList"></param>
+        /// <returns></returns>
         public ReturnStatus_Model DeleteArticle(string[] articleIdList)
         {
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
@@ -203,7 +253,7 @@ namespace PersonalWebService.BLL
                 rsModel.message = "需要操作删除的文章为空，请先选择需要删除的文章";
                 return rsModel;
             }
-            UserInfo userInfo =SessionState.GetSession<UserInfo>("UserInfo");
+            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
             if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
             {
                 rsModel.message = "你未登录账号或账号已过期，请重新登录！";
@@ -211,12 +261,12 @@ namespace PersonalWebService.BLL
             }
 
             string ids = string.Empty;
-            if(IsArticleIds(articleIdList))
+            if (IsArticleIds(articleIdList))
             {
                 rsModel.message = "你所需要操作的内容不合法！账号将被记录，请规范操作！";
                 StringBuilder articleids = new StringBuilder();
-                articleIdList.Select(l=> { articleids.Append(l);return true; });
-                LogRecord_Helper.RecordLog(LogLevels.Warn,"错误删除操作，怀疑为sql注入,用户Id为"+userInfo.UserId+"，输入信息为"+ articleids.ToString());
+                articleIdList.Select(l => { articleids.Append(l); return true; });
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除操作，怀疑为sql注入,用户Id为" + userInfo.UserId + "，输入信息为" + articleids.ToString());
                 return rsModel;
             }
 
@@ -227,7 +277,7 @@ namespace PersonalWebService.BLL
             });
 
             ids = ids.Substring(0, ids.Length - 1);
-            string sql = string.Format(sqlDeleteTemplate, "ArticleId in(" + ids+")", "[UserId]=@UserId");
+            string sql = string.Format(sqlDeleteTemplate, "ArticleId in(" + ids + ")", "[UserId]=@UserId");
 
             try
             {
@@ -246,7 +296,7 @@ namespace PersonalWebService.BLL
             }
             catch (Exception ex)
             {
-                LogRecord_Helper.RecordLog(LogLevels.Fatal,ex.ToString());
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.isRight = false;
                 rsModel.message = "系统出现一个问题，请联系管理员或重试！";
                 return rsModel;
@@ -258,7 +308,7 @@ namespace PersonalWebService.BLL
             Regex re = new Regex(@"^[a-zA-Z0-9]+$");
             foreach (var item in str)
             {
-                if(string.IsNullOrEmpty(item))
+                if (string.IsNullOrEmpty(item))
                     return false;
                 if (!re.IsMatch(item))
                     return false;

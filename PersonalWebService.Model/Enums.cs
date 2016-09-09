@@ -30,7 +30,6 @@ namespace PersonalWebService.Model
     /// </summary>
     public enum WorkState
     {
-        冻结 = -100,
         草稿 = 0,
         已发布 = 1
     }

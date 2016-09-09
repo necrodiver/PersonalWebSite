@@ -48,11 +48,11 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 用户昵称
         /// </summary>
-        public string UserName { get; set; }
+        public string NickName { get; set; }
         /// <summary>
         /// 文章类别
         /// </summary>
-        public string ArticleSort { get; set; }
+        public int? ArticleSortId { get; set; }
         /// <summary>
         /// 文章名称
         /// </summary>
@@ -60,11 +60,11 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 发布时间范围开始
         /// </summary>
-        public DateTime FirstTime { get; set; }
+        public DateTime? FirstTime { get; set; }
         /// <summary>
         /// 发布时间范围结束
         /// </summary>
-        public DateTime LastTime { get; set; }
+        public DateTime? LastTime { get; set; }
     }
 
     /// <summary>

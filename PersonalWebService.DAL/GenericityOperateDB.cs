@@ -77,8 +77,15 @@ namespace PersonalWebService.DAL
         /// <returns></returns>
         public List<T> GetList<T>(T model)
         {
-            Type t = model.GetType();
             string sql = "SELECT * FROM {0} WHERE {1} ";
+            if (model == null)
+            {
+                sql = "SELECT * FROM {0}";
+                sql = string.Format(sql, nameof(T));
+                return GetList<T>(sql,null);
+            }
+
+            Type t = model.GetType();
             StringBuilder sb = new StringBuilder();
             string sbstring = string.Empty;
             foreach (var item in t.GetProperties())
