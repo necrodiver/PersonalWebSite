@@ -32,7 +32,38 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("发布时间/修改时间")]
         public DateTime ReleaseTime { get; set; }
+        [Required]
+        [DisplayName("是否发布")]
+        public int IsExpose { get; set; }
 
+        [Required]
+        [DisplayName("图片状态")]
+        public WorkState PictureState { get; set; }
+
+    }
+
+    public class PictureCondition_Model
+    {
+        /// <summary>
+        /// 用户昵称
+        /// </summary>
+        public string NickName { get; set; }
+        /// <summary>
+        /// 图片类别
+        /// </summary>
+        public int? PictureSortId { get; set; }
+        /// <summary>
+        /// 图片名称
+        /// </summary>
+        public string PictureName { get; set; }
+        /// <summary>
+        /// 发布时间范围开始
+        /// </summary>
+        public DateTime? FirstTime { get; set; }
+        /// <summary>
+        /// 发布时间范围结束
+        /// </summary>
+        public DateTime? LastTime { get; set; }
     }
     public class Picture
     {
@@ -59,9 +90,9 @@ namespace PersonalWebService.Model
         /// </summary>
         public int IsExpose { get; set; }
         /// <summary>
-        /// 图片状态(冻结 = -100,草稿 = 0, 已发布 = 1)
+        /// 图片状态(草稿 = 0, 已发布 = 1)
         /// </summary>
-        public int PictureState { get; set; }
+        public WorkState PictureState { get; set; }
         /// <summary>
         ///是否被冻结(0:是,1:否)
         /// </summary>

@@ -53,7 +53,7 @@ namespace PersonalWebService.BLL
             if (!articleSortList.Exists(artSort => artSort.ArticleSortId == article.ArticleSortId))
             {
                 rsModel.isRight = false;
-                rsModel.message = "新增文章类别不符，请重新设定类别";
+                rsModel.message = "新增文章的类别无效，请重新设定类别";
                 return rsModel;
             }
 
@@ -261,12 +261,12 @@ namespace PersonalWebService.BLL
             }
 
             string ids = string.Empty;
-            if (IsArticleIds(articleIdList))
+            if (Utility_Helper.IsClassIds(articleIdList))
             {
                 rsModel.message = "你所需要操作的内容不合法！账号将被记录，请规范操作！";
                 StringBuilder articleids = new StringBuilder();
                 articleIdList.Select(l => { articleids.Append(l); return true; });
-                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除操作，怀疑为sql注入,用户Id为" + userInfo.UserId + "，输入信息为" + articleids.ToString());
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除文章操作，怀疑为sql注入,用户Id为" + userInfo.UserId + "，输入信息为" + articleids.ToString());
                 return rsModel;
             }
 
@@ -303,17 +303,17 @@ namespace PersonalWebService.BLL
             }
         }
 
-        private bool IsArticleIds(string[] str)
-        {
-            Regex re = new Regex(@"^[a-zA-Z0-9]+$");
-            foreach (var item in str)
-            {
-                if (string.IsNullOrEmpty(item))
-                    return false;
-                if (!re.IsMatch(item))
-                    return false;
-            }
-            return true;
-        }
+        //public bool IsClassIds(string[] str)
+        //{
+        //    Regex re = new Regex(@"^[a-zA-Z0-9]+$");
+        //    foreach (var item in str)
+        //    {
+        //        if (string.IsNullOrEmpty(item))
+        //            return false;
+        //        if (!re.IsMatch(item))
+        //            return false;
+        //    }
+        //    return true;
+        //}
     }
 }

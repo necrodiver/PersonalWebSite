@@ -64,6 +64,7 @@
     <Compile Include="LogRecord_Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatePreservation_Helper.cs" />
+    <Compile Include="Utility_Helper.cs" />
     <Compile Include="VarificationCode_Helper.cs" />
     <Compile Include="WordsFilterDt_Helper.cs" />
   </ItemGroup>

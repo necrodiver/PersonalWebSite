@@ -53,6 +53,7 @@
     <Compile Include="AccountAdmin_BLL.cs" />
     <Compile Include="Account_BLL.cs" />
     <Compile Include="Article_BLL.cs" />
+    <Compile Include="Picture_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
