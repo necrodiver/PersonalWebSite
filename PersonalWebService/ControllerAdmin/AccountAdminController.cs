@@ -30,13 +30,34 @@ namespace PersonalWebService.ControllerAdmin
 
         [HttpPost]
         [BasicAuthentication]
-        //[AuthorityAdmin]
+        [AuthorityAdmin]
         [Route("GetList")]
-        public async Task<List<AdminInfo>> GetList([FromBody]AdminInfoCondition condition)
+        public async Task<List<AdminInfo_Model>> GetList([FromBody]AdminInfoCondition condition)
         {
             return await Task.Run(() =>
             {
                 return accountAdminBll.GetAdminInfoList(condition);
+            });
+        }
+
+        [HttpPost]
+        [BasicAuthentication]
+        [AuthorityAdmin]
+        [Route("Edit")]
+        public async Task<ReturnStatus_Model>Edit([FromBody]EditAdmin editAdmin)
+        {
+            return await Task.Run(()=> {
+                return accountAdminBll.EditAdminInfo(editAdmin);
+            });
+        }
+
+        [HttpPost]
+        [BasicAuthentication]
+        [AuthorityAdmin]
+        [Route("Delete")]
+        public async Task<ReturnStatus_Model> Delete([FromBody]string[] adminIds) {
+            return await Task.Run(()=> {
+                return accountAdminBll.DeleteList(adminIds);
             });
         }
     }

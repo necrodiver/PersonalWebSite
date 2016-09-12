@@ -88,7 +88,6 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
-        [BasicAuthentication]
         [Route("RetrievePwd")]
         //找回密码，发送验证码
         public async Task<ReturnStatus_Model> RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
@@ -101,7 +100,7 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("VertifyCode")]
-        //修改密码
+        //找回密码后的修改密码
         public async Task<ReturnStatus_Model> VertifyCode([FromBody]ResetPwd resetPwd)
         {
             return await Task.Run(() =>

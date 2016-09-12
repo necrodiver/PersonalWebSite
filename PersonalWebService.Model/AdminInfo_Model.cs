@@ -8,6 +8,17 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.Model
 {
+    public class AdminInfo_Model
+    {
+        [DisplayName("用户名")]
+        public string UserName { get; set; }
+        [DisplayName("添加时间")]
+        public DateTime? AddTime { get; set; }
+        [DisplayName("修改时间")]
+        public DateTime? EditTime { get; set; }
+        [DisplayName("管理等级")]
+        public AdminLevel? Level { get; set; }
+    }
     public class AdminInfo
     {
         public string AdminId { get; set; }
@@ -66,10 +77,10 @@ namespace PersonalWebService.Model
         [DisplayName("用户名")]
         public string UserName { get; set; }
         [DisplayName("添加时间")]
-        public DateTime AddTime { get; set; }
+        public DateTime? AddTime { get; set; }
         [DisplayName("修改时间")]
-        public DateTime EditTime { get; set; }
+        public DateTime? EditTime { get; set; }
         [DisplayName("管理等级")]
-        public AdminLevel Level { get; set; }
+        public AdminLevel? Level { get; set; }
     }
 }

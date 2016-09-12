@@ -16,6 +16,7 @@ namespace PersonalWebService.BLL
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[AdminInfo] WHERE {1}";
         private static readonly string sqlUpdateTemple = "UPDATE [dbo].[AdminInfo] SET {0} WHERE {1}";
+        private static readonly string sqlDeleteTemple = "DELETE [dbo].[Article] where {0}";
         /// <summary>
         /// 验证管理员登录
         /// </summary>
@@ -85,7 +86,7 @@ namespace PersonalWebService.BLL
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
-            if (string.IsNullOrEmpty(userInfo.Name)&&string.IsNullOrEmpty(userInfo.Pwd))
+            if (string.IsNullOrEmpty(userInfo.Name) && string.IsNullOrEmpty(userInfo.Pwd))
             {
                 rsModel.message = "修改内容不能为空！";
                 return rsModel;
@@ -114,14 +115,14 @@ namespace PersonalWebService.BLL
                 rsModel.message = "您的权限不足，无法修改更高级别的权限等级！";
                 return rsModel;
             }
-            param.Add(new DataField { Name="@AdminId",Value=userInfoS.AdminId});
+            param.Add(new DataField { Name = "@AdminId", Value = userInfoS.AdminId });
             sbSql.Append("[EditTime]=GETDATE()");
             try
             {
 
                 string sqlEdit = string.Format(sqlUpdateTemple, sbSql.ToString(), "[AdminId=@AdminId]");
 
-                if (dal.OpeData(sqlEdit,param))
+                if (dal.OpeData(sqlEdit, param))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改用户数据成功";
@@ -144,10 +145,128 @@ namespace PersonalWebService.BLL
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>
-        public List<AdminInfo> GetAdminInfoList(AdminInfoCondition condition)
+        public List<AdminInfo_Model> GetAdminInfoList(AdminInfoCondition condition)
         {
-            //这条件太牛逼了，等数据库做出来了再弄吧（暂时还不知道全部表有哪些）
-            throw new NotImplementedException();
+            StringBuilder sbsql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (string.IsNullOrEmpty(condition.UserName))
+            {
+                sbsql.Append("[Name]=@Name AND");
+                param.Add(new DataField { Name = "@Name", Value = condition.UserName });
+            }
+            if (condition.Level != null)
+            {
+                sbsql.Append("[Level] >= @Level AND");
+                param.Add(new DataField { Name = "@Level", Value = condition.Level });
+            }
+            if (condition.AddTime != null)
+            {
+                sbsql.Append("[AddTime] >= @AddTime AND");
+                param.Add(new DataField { Name = "@AddTime", Value = condition.AddTime });
+            }
+            if (condition.EditTime != null)
+            {
+                sbsql.Append("[EditTime] <= @EditTime AND");
+                param.Add(new DataField { Name = "@EditTime", Value = condition.EditTime });
+            }
+
+            //硬条件
+            AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
+            List<AdminInfo> adminInfos = new List<AdminInfo>();
+            if (adminInfo == null)
+            {
+                return null;
+            }
+            try
+            {
+                sbsql.Append("[Level]>" + adminInfo.Level);
+                string sql = string.Format(sqlSelectTemplate, "*", sbsql.ToString());
+                adminInfos = dal.GetDataList<AdminInfo>(sql, param);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                return null;
+            }
+            List<AdminInfo_Model> adminInfoModelList = new List<AdminInfo_Model>();
+            adminInfos.Select(a =>
+            {
+                adminInfoModelList.Add(new AdminInfo_Model
+                {
+                    UserName = a.Name,
+                    Level = a.Level,
+                    AddTime = a.AddTime,
+                    EditTime = a.EditTime
+                });
+
+                return true;
+            });
+            return adminInfoModelList;
+        }
+
+        public ReturnStatus_Model DeleteList(string[] adminIds)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "文章删除";
+            if (adminIds.Length > 5)
+            {
+                rsModel.message = "你的一次删除操作太多，不予执行！";
+                return rsModel;
+            }
+            if (adminIds == null || adminIds.Length <= 0)
+            {
+                rsModel.message = "需要操作删除的管理员为空，请先选择需要删除的文章";
+                return rsModel;
+            }
+            AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
+            if (adminInfo == null || string.IsNullOrEmpty(adminInfo.AdminId))
+            {
+                rsModel.message = "你未登录账号或账号已过期，请重新登录！";
+                return rsModel;
+            }
+
+            string ids = string.Empty;
+            if (Utility_Helper.IsClassIds(adminIds))
+            {
+                rsModel.message = "你所需要操作的内容不合法！账号将被记录，请规范操作！";
+                StringBuilder articleids = new StringBuilder();
+                adminIds.Select(l => { articleids.Append(l); return true; });
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除管理员操作，怀疑为sql注入,管理员Id为" + adminInfo.AdminId + "，输入信息为" + articleids.ToString());
+                return rsModel;
+            }
+
+            adminIds.Select(l =>
+            {
+                ids += "'" + l + "'" + ",";
+                return true;
+            });
+
+            ids = ids.Substring(0, ids.Length - 1);
+            string sql = string.Format(sqlDeleteTemple, "AdminId in(" + ids + ")", "[UserId]=@UserId");
+
+            try
+            {
+                if (dal.OpeData(sql, new DataField { Name = "@UserId", Value = adminInfo.AdminId }))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改成功！";
+                    return rsModel;
+                }
+                else
+                {
+                    rsModel.isRight = false;
+                    rsModel.message = "你删除的内容有误，请重试或联系管理员！";
+                    return rsModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                rsModel.isRight = false;
+                rsModel.message = "系统出现一个问题，请联系管理员或重试！";
+                return rsModel;
+            }
         }
     }
 }
