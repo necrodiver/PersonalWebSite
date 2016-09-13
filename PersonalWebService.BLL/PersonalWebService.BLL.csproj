@@ -55,6 +55,7 @@
     <Compile Include="Article_BLL.cs" />
     <Compile Include="Picture_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserComment_BLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
