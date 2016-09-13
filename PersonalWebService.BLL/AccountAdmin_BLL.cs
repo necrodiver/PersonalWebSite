@@ -208,7 +208,7 @@ namespace PersonalWebService.BLL
         {
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
-            rsModel.title = "文章删除";
+            rsModel.title = "管理员删除";
             if (adminIds.Length > 5)
             {
                 rsModel.message = "你的一次删除操作太多，不予执行！";
@@ -243,11 +243,11 @@ namespace PersonalWebService.BLL
             });
 
             ids = ids.Substring(0, ids.Length - 1);
-            string sql = string.Format(sqlDeleteTemple, "AdminId in(" + ids + ")", "[UserId]=@UserId");
+            string sql = string.Format(sqlDeleteTemple, "AdminId in(" + ids + ") AND [Level]>"+ adminInfo.Level);
 
             try
             {
-                if (dal.OpeData(sql, new DataField { Name = "@UserId", Value = adminInfo.AdminId }))
+                if (dal.OpeData(sql,null))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改成功！";
