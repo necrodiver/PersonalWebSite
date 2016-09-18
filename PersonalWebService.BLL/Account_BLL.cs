@@ -19,6 +19,7 @@ namespace PersonalWebService.BLL
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
+
         private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         /// <summary>
         /// 验证用户登录
@@ -334,6 +335,57 @@ namespace PersonalWebService.BLL
         {
             //这条件太牛逼了，等数据库做出来了再弄吧（暂时还不知道全部表有哪些）
             throw new NotImplementedException();
+        }
+
+        public ReturnStatus_Model AdminEditUserInfo(AdminEditUserInfo editUserInfo)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "修改用户信息";
+            if(string.IsNullOrEmpty(editUserInfo.UserId)|| Utility_Helper.IsClassIds(new string[] { editUserInfo.UserId }))
+            {
+                rsModel.message = "删除的用户Id为为空或不存在，请检查后再次尝试";
+                return rsModel;
+            }
+            AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
+            StringBuilder sbsql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (!string.IsNullOrEmpty(editUserInfo.UserName))
+            {
+                sbsql.Append("UserName=@UserName,");
+                param.Add(new DataField { Name = "@UserName", Value = editUserInfo.UserName });
+            }
+            if (!string.IsNullOrEmpty(editUserInfo.NickName))
+            {
+                sbsql.Append("Nickname=@Nickname,");
+                param.Add(new DataField { Name = "@Nickname", Value = editUserInfo.NickName });
+            }
+            if (!string.IsNullOrEmpty(editUserInfo.Password))
+            {
+                sbsql.Append("Password=@Password,");
+                param.Add(new DataField { Name = "@Password", Value = editUserInfo.Password });
+            }
+            sbsql.Append("EditTime=GETDATE()");
+            param.Add(new DataField { Name = "@UserId", Value = editUserInfo.UserId });
+            string sqlupdate = string.Format(sqlUpdateTemple, sbsql.ToString(), "UserId=@UserId");
+            try
+            {
+                if (dal.OpeData(sqlupdate, param))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改用户数据成功";
+                }
+                else
+                {
+                    rsModel.message = "修改用户数据失败！";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                rsModel.message = "服务器错误，请稍后重试";
+            }
+            return rsModel;
         }
     }
 }

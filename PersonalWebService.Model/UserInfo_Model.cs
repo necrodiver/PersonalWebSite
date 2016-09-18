@@ -20,7 +20,7 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
-        [EmailAddress(ErrorMessage ="{0}必须是邮箱格式，以便找回密码")]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string UserName { get; set; }
 
         [Required]
@@ -190,7 +190,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 用户昵称
         /// </summary>
-        public string Nickname { get; set; }
+        public string NickName { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
@@ -211,5 +211,29 @@ namespace PersonalWebService.Model
         /// 图片Id
         /// </summary>
         public int PictureId { get; set; }
+    }
+
+    public class AdminEditUserInfo
+    {
+        [Required]
+        [StringLength(32)]
+        public string UserId { get; set; }
+        [DisplayName("用户名")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
+        public string UserName { get; set; }
+        [DisplayName("昵称")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
+        public string NickName { get; set; }
+        [DisplayName("用户头像")]
+        [StringLength(1 * 1024 * 1024, MinimumLength = 10, ErrorMessage = "{0}不符合规格")]
+        public string AccountPicture { get; set; }
+        [DisplayName("登录密码")]
+        [RegularExpression(@"^\w+$", ErrorMessage = "{0}只能是字母、数字和下划线组成的")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
+        public string Password { get; set; }
+        [DisplayName("个人简介")]
+        [StringLength(300, MinimumLength = 1, ErrorMessage = "{0}长度不能超过300个字段，不能小于1个字段")]
+        public string Introduce { get; set; }
     }
 }

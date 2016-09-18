@@ -179,7 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControllerAdmin\AccountAdminController.cs" />
     <Compile Include="ControllerAdmin\AdminBaseController.cs" />
-    <Compile Include="ControllerAdmin\UserOperateController.cs" />
+    <Compile Include="ControllerAdmin\UserInfoOperateController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />

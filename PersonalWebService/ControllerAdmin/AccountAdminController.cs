@@ -55,7 +55,7 @@ namespace PersonalWebService.ControllerAdmin
         [BasicAuthentication]
         [AuthorityAdmin]
         [Route("Delete")]
-        public async Task<ReturnStatus_Model> Delete([FromBody]string[] adminIds) {
+        public async Task<ReturnStatus_Model> DeleteList([FromBody]string[] adminIds) {
             return await Task.Run(()=> {
                 return accountAdminBll.DeleteList(adminIds);
             });

@@ -51,6 +51,8 @@ namespace PersonalWebService.BLL
             userCommentModel.CommentParentId = userComment.CommentParentId;
             try
             {
+                //string selectSql = "";
+                //if(dal.GetDataCount()) 本来这里想加个已经评论过了的不允许评论（主要想防止刷评论）
                 if (dal.OpeData<UserComment>(userCommentModel, OperatingModel.Add))
                 {
                     rsModel.isRight = true;
@@ -168,6 +170,66 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
+        }
+
+        public ReturnStatus_Model DeleteCommentList(string[] commentIdList)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "评论删除";
+            if (commentIdList == null || commentIdList.Length <= 0)
+            {
+                rsModel.message = "需要操作删除的图片为空，请先选择需要删除的图片";
+                return rsModel;
+            }
+            AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
+            if (adminInfo == null || string.IsNullOrEmpty(adminInfo.AdminId))
+            {
+                rsModel.message = "你未登录账号或账号已过期，请重新登录！";
+                return rsModel;
+            }
+
+            string ids = string.Empty;
+            if (Utility_Helper.IsClassIds(commentIdList))
+            {
+                rsModel.message = "你所需要操作的内容不合法！账号将被记录，请规范操作！";
+                StringBuilder commentids = new StringBuilder();
+                commentIdList.Select(l => { commentids.Append(l); return true; });
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除图片操作，怀疑为sql注入,用户Id为" + adminInfo.AdminId + "，输入信息为" + commentids.ToString());
+                return rsModel;
+            }
+
+            commentIdList.Select(l =>
+            {
+                ids += "'" + l + "'" + ",";
+                return true;
+            });
+
+            ids = ids.Substring(0, ids.Length - 1);
+            string sql = string.Format(sqlDeleteTemplate, "Picture in(" + ids + ")");
+
+            try
+            {
+                if (dal.OpeData(sql,null))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改成功！";
+                    return rsModel;
+                }
+                else
+                {
+                    rsModel.isRight = false;
+                    rsModel.message = "你删除的内容有误，请重试或联系管理员！";
+                    return rsModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                rsModel.isRight = false;
+                rsModel.message = "系统出现一个问题，请联系管理员或重试！";
+                return rsModel;
+            }
         }
     }
 }
