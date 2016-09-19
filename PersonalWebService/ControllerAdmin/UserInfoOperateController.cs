@@ -34,5 +34,14 @@ namespace PersonalWebService.ControllerAdmin
                 return accountBll.GetUserInfoList(userInfoCondition);
             });
         }
+        [HttpPost]
+        [BasicAuthentication]
+        [Route("Delete")]
+        public async Task<ReturnStatus_Model> DeleteList(string[] userInfoIdList)
+        {
+            return await Task.Run(()=> {
+                return accountBll.DeleteUserinfoList(userInfoIdList);
+            });
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace PersonalWebService.BLL
         public static List<PictureSort> pictureSortList;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[Picture] WHERE {1}";
-        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[Picture] where {0}";
+        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[Picture] WHERE {0}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[Picture] SET {0} WHERE {1}";
         public ReturnStatus_Model AddPicture(Picture_Model picture)
         {

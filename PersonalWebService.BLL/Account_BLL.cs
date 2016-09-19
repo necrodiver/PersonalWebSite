@@ -23,7 +23,8 @@ namespace PersonalWebService.BLL
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
-        private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
+        private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
+        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserInfo] WHERE {0}";
         /// <summary>
         /// 验证用户登录
         /// </summary>
@@ -208,7 +209,7 @@ namespace PersonalWebService.BLL
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
             userinfo.UserName = resetPwd.Email;
             SessionState.RemoveSession("RetrieveValidateCode");
-            string sqlUpdate = string.Format(sqlUpdateTemple, "PassWord=@PassWord", "UserName=@UserName");
+            string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "UserName=@UserName");
             try
             {
                 List<DataField> param = new List<DataField>();
@@ -265,7 +266,7 @@ namespace PersonalWebService.BLL
             }
             sbsql.Append("EditTime=GETDATE()");
             param.Add(new DataField { Name = "@UserId", Value = userInfos.UserId });
-            string sqlupdate = string.Format(sqlUpdateTemple, sbsql.ToString(), "UserId=@UserId");
+            string sqlupdate = string.Format(sqlUpdateTemplate, sbsql.ToString(), "UserId=@UserId");
             try
             {
                 if (dal.OpeData(sqlupdate, param))
@@ -341,43 +342,43 @@ namespace PersonalWebService.BLL
             List<DataField> param = new List<DataField>();
             if (!string.IsNullOrEmpty(condition.UserId))
             {
-                sbsql.Append("UserId=@UserId AND ");
+                sbsql.Append("U.UserId=@UserId AND ");
                 param.Add(new DataField { Name = "@UserId", Value = condition.UserId });
             }
             if (!string.IsNullOrEmpty(condition.UserName))
             {
-                sbsql.Append("UserName=@UserName AND ");
+                sbsql.Append("U.UserName=@UserName AND ");
                 param.Add(new DataField { Name = "@UserName", Value = condition.UserName });
             }
             if (!string.IsNullOrEmpty(condition.NickName))
             {
-                sbsql.Append("NickName=@NickName AND ");
+                sbsql.Append("U.NickName=@NickName AND ");
                 param.Add(new DataField { Name = "@NickName", Value = condition.NickName });
             }
 
             if (condition.CreationTime != null)
             {
-                sbsql.Append("CreationTime>=@CreationTime AND ");
+                sbsql.Append("U.CreationTime>=@CreationTime AND ");
                 param.Add(new DataField { Name = "@CreationTime", Value = condition.CreationTime });
             }
             if (condition.EditTime != null)
             {
-                sbsql.Append("EditTime<=@EditTime AND ");
+                sbsql.Append("U.EditTime<=@EditTime AND ");
                 param.Add(new DataField { Name = "@EditTime", Value = condition.EditTime });
             }
             if (condition.Status != null)
             {
-                sbsql.Append("Status=@Status AND ");
+                sbsql.Append("U.Status=@Status AND ");
                 param.Add(new DataField { Name = "@Status", Value = Convert.ToInt32(condition.Status) });
             }
             if (!string.IsNullOrEmpty(condition.ArticleId))
             {
-                sbsql.Append("ArticleId=@ArticleId AND ");
+                sbsql.Append("A.ArticleId=@ArticleId AND ");
                 param.Add(new DataField { Name = "@ArticleId", Value = condition.ArticleId });
             }
             if (!string.IsNullOrEmpty(condition.PictureId))
             {
-                sbsql.Append("PictureId=@PictureId AND ");
+                sbsql.Append("P.PictureId=@PictureId AND ");
                 param.Add(new DataField { Name = "@PictureId", Value = condition.PictureId });
             }
             string sqlIndex = string.Empty;
@@ -473,7 +474,7 @@ namespace PersonalWebService.BLL
             }
             sbsql.Append("EditTime=GETDATE()");
             param.Add(new DataField { Name = "@UserId", Value = editUserInfo.UserId });
-            string sqlupdate = string.Format(sqlUpdateTemple, sbsql.ToString(), "UserId=@UserId");
+            string sqlupdate = string.Format(sqlUpdateTemplate, sbsql.ToString(), "UserId=@UserId");
             try
             {
                 if (dal.OpeData(sqlupdate, param))
@@ -497,5 +498,93 @@ namespace PersonalWebService.BLL
             }
             return rsModel;
         }
+
+        /// <summary>
+        /// 批量删除用户
+        /// </summary>
+        /// <param name="userInfoList"></param>
+        /// <returns></returns>
+        public ReturnStatus_Model DeleteUserinfoList(string[] userInfoIdList)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "用户删除";
+
+            if (userInfoIdList.Length > 100)
+            {
+                rsModel.message = "你的一次删除操作太多，不予执行！";
+                return rsModel;
+            }
+
+            if (userInfoIdList == null || userInfoIdList.Length <= 0)
+            {
+                rsModel.message = "需要操作删除的图片为空，请先选择需要删除的图片";
+                return rsModel;
+            }
+
+            AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
+            if (adminInfo == null || string.IsNullOrEmpty(adminInfo.AdminId))
+            {
+                rsModel.message = "你未登录账号或账号已过期，请重新登录！";
+                return rsModel;
+            }
+
+            if (adminInfo.Level >=0)
+            {
+                rsModel.isRight = false;
+                rsModel.message = "您的权限不足，不能进行删除操作！";
+            }
+
+            if(dal.GetDataCount("SELECT COUNT(*) FROM [dbo].[AdminInfo] WHERE AdminId='"+adminInfo.AdminId+ "' AND Pwd='" + adminInfo.Pwd + "'",null) != 1)
+            {
+                rsModel.isRight = false;
+                rsModel.message = "管理员账户存在问题，请稍后重试";
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "管理员账户在删除用户操作时错误,管理员Id为：" + adminInfo.AdminId);
+                return rsModel;
+            }
+
+            string ids = string.Empty;
+            if (Utility_Helper.IsClassIds(userInfoIdList))
+            {
+                rsModel.message = "你所需要操作的内容不合法！账号已被记录，请规范操作！";
+                StringBuilder pcitureids = new StringBuilder();
+                userInfoIdList.Select(l => { pcitureids.Append(l); return true; });
+                LogRecord_Helper.RecordLog(LogLevels.Warn, "错误删除用户操作，怀疑为sql注入,管理员Id为" + adminInfo.AdminId + "，输入信息为" + pcitureids.ToString());
+                return rsModel;
+            }
+
+            userInfoIdList.Select(l =>
+            {
+                ids += "'" + l + "'" + ",";
+                return true;
+            });
+
+            ids = ids.Substring(0, ids.Length - 1);
+            string sql = string.Format(sqlDeleteTemplate, "UserId in(" + ids + ")");
+
+            try
+            {
+                if (dal.OpeData(sql,null))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "删除成功！";
+                    return rsModel;
+                }
+                else
+                {
+                    rsModel.isRight = false;
+                    rsModel.message = "你删除的内容有误，请查看日志！";
+                    return rsModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                rsModel.isRight = false;
+                rsModel.message = "系统出现一个问题，请查看日志！";
+                return rsModel;
+            }
+        }
+
     }
 }
