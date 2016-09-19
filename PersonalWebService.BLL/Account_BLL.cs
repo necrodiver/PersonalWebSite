@@ -540,6 +540,7 @@ namespace PersonalWebService.BLL
                 rsModel.isRight = false;
                 rsModel.message = "管理员账户存在问题，请稍后重试";
                 LogRecord_Helper.RecordLog(LogLevels.Warn, "管理员账户在删除用户操作时错误,管理员Id为：" + adminInfo.AdminId);
+                SessionState.RemoveSession("AdminInfo");
                 return rsModel;
             }
 
