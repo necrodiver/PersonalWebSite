@@ -13,13 +13,16 @@ namespace PersonalWebService.BLL
 {
     public class Account_BLL
     {
+        /// <summary>
+        /// 每页显示的条数
+        /// </summary>
+        public static readonly int PageNum = 12;
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
-
         private static readonly string sqlUpdateTemple = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         /// <summary>
         /// 验证用户登录
@@ -333,16 +336,119 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public List<UserInfo_Model> GetUserInfoList(UserInfoCondition condition)
         {
-            //这条件太牛逼了，等数据库做出来了再弄吧（暂时还不知道全部表有哪些）
-            throw new NotImplementedException();
+            List<UserInfo_Model> userInfoMList = new List<UserInfo_Model>();
+            StringBuilder sbsql = new StringBuilder();
+            List<DataField> param = new List<DataField>();
+            if (!string.IsNullOrEmpty(condition.UserId))
+            {
+                sbsql.Append("UserId=@UserId AND ");
+                param.Add(new DataField { Name = "@UserId", Value = condition.UserId });
+            }
+            if (!string.IsNullOrEmpty(condition.UserName))
+            {
+                sbsql.Append("UserName=@UserName AND ");
+                param.Add(new DataField { Name = "@UserName", Value = condition.UserName });
+            }
+            if (!string.IsNullOrEmpty(condition.NickName))
+            {
+                sbsql.Append("NickName=@NickName AND ");
+                param.Add(new DataField { Name = "@NickName", Value = condition.NickName });
+            }
+
+            if (condition.CreationTime != null)
+            {
+                sbsql.Append("CreationTime>=@CreationTime AND ");
+                param.Add(new DataField { Name = "@CreationTime", Value = condition.CreationTime });
+            }
+            if (condition.EditTime != null)
+            {
+                sbsql.Append("EditTime<=@EditTime AND ");
+                param.Add(new DataField { Name = "@EditTime", Value = condition.EditTime });
+            }
+            if (condition.Status != null)
+            {
+                sbsql.Append("Status=@Status AND ");
+                param.Add(new DataField { Name = "@Status", Value = Convert.ToInt32(condition.Status) });
+            }
+            if (!string.IsNullOrEmpty(condition.ArticleId))
+            {
+                sbsql.Append("ArticleId=@ArticleId AND ");
+                param.Add(new DataField { Name = "@ArticleId", Value = condition.ArticleId });
+            }
+            if (!string.IsNullOrEmpty(condition.PictureId))
+            {
+                sbsql.Append("PictureId=@PictureId AND ");
+                param.Add(new DataField { Name = "@PictureId", Value = condition.PictureId });
+            }
+            string sqlIndex = string.Empty;
+            if (condition.PageIndex != null)
+            {
+                int pageIndex = Convert.ToInt32(condition.PageIndex);
+                int firstIndex = (pageIndex - 1) * PageNum + 1;
+                int lastIndex = pageIndex * PageNum;
+                sqlIndex = " NUM>=@firstIndex AND NUM<=@lastIndex ";
+                param.Add(new DataField { Name = "@firstIndex", Value = firstIndex });
+                param.Add(new DataField { Name = "@lastIndex", Value = lastIndex });
+            }
+            else
+            {
+                sbsql.Append(" NUM<=@PageNum ");
+                param.Add(new DataField { Name = "@PageNum", Value = PageNum });
+            }
+            sbsql.Append("U.State>=0");
+            string sqlSelect = @"SELECT * FROM
+                                 (
+	                                SELECT ROW_NUMBER() OVER(ORDER BY AddTime DESC) NUM,* FROM
+	                                (  
+	                                   SELECT DISTINCT U.* FROM [dbo].[UserInfo] U
+	                                   LEFT JOIN [dbo].[Article] A on U.UserId=A.UserId
+	                                   LEFT JOIN [dbo].[Picture] P on U.UserId=P.UserId
+	                                   WHERE {0}
+	                                ) UA
+                                 )UI WHERE {1}";
+            try
+            {
+                string sql = string.Format(sqlSelect, sbsql.ToString(), sqlIndex);
+                List<UserInfo> userInfolist = dal.GetDataList<UserInfo>(sql, param);
+                if (userInfolist != null || userInfolist.Count > 0)
+                {
+                    userInfolist.Select(l =>
+                    {
+                        userInfoMList.Add(new UserInfo_Model
+                        {
+                            UserId = l.UserId,
+                            UserName = l.UserName,
+                            NickName = l.NickName,
+                            Introduce = l.Introduce,
+                            AccountPicture = l.AccountPicture,
+                            AddTime = l.AddTime,
+                            EditTime = l.EditTime,
+                            NowStatus = l.NowStatus,
+                            State = l.State
+                        });
+                        return true;
+                    });
+                    return userInfoMList;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return null;
         }
 
+        /// <summary>
+        /// 修改用户数据（只限管理员）
+        /// </summary>
+        /// <param name="editUserInfo"></param>
+        /// <returns></returns>
         public ReturnStatus_Model AdminEditUserInfo(AdminEditUserInfo editUserInfo)
         {
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
-            if(string.IsNullOrEmpty(editUserInfo.UserId)|| Utility_Helper.IsClassIds(new string[] { editUserInfo.UserId }))
+            if (string.IsNullOrEmpty(editUserInfo.UserId) || Utility_Helper.IsClassIds(new string[] { editUserInfo.UserId }))
             {
                 rsModel.message = "删除的用户Id为为空或不存在，请检查后再次尝试";
                 return rsModel;
@@ -374,16 +480,20 @@ namespace PersonalWebService.BLL
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改用户数据成功";
+                    LogRecord_Helper.RecordLog(LogLevels.Trace, "管理员：" + adminInfo.AdminId + " 修改了" + editUserInfo.UserId + " 的用户数据");
                 }
                 else
                 {
+                    rsModel.isRight = false;
                     rsModel.message = "修改用户数据失败！";
                 }
             }
             catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                rsModel.isRight = false;
                 rsModel.message = "服务器错误，请稍后重试";
+                LogRecord_Helper.RecordLog(LogLevels.Trace, "管理员：" + adminInfo.AdminId + " 尝试修改" + editUserInfo.UserId + " 的用户数据失败");
             }
             return rsModel;
         }

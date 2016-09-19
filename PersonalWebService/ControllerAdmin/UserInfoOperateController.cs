@@ -25,5 +25,14 @@ namespace PersonalWebService.ControllerAdmin
                 return accountBll.AdminEditUserInfo(editUserInfo);
             });
         }
+        [HttpPost]
+        [BasicAuthentication]
+        [Route("GetList")]
+        public async Task<List<UserInfo_Model>> GetUserInfo([FromBody]UserInfoCondition userInfoCondition)
+        {
+            return await Task.Run(()=> {
+                return accountBll.GetUserInfoList(userInfoCondition);
+            });
+        }
     }
 }

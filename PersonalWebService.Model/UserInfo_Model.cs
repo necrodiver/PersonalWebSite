@@ -52,7 +52,7 @@ namespace PersonalWebService.Model
         public DateTime EditTime { get; set; }
 
         [DisplayName("当前登录状态")]
-        public NowStatus? Status { get; set; }
+        public NowStatus? NowStatus { get; set; }
 
         [DisplayName("账号状态")]
         public State? State { get; set; }
@@ -182,7 +182,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 用户Id
         /// </summary>
-        public string UserID { get; set; }
+        public string UserId { get; set; }
         /// <summary>
         /// 用户名（邮箱地址）
         /// </summary>
@@ -194,11 +194,11 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTime? CreationTime { get; set; }
         /// <summary>
         /// 修改时间
         /// </summary>
-        public DateTime EditTime { get; set; }
+        public DateTime? EditTime { get; set; }
         /// <summary>
         /// 当前登录状态
         /// </summary>
@@ -206,11 +206,15 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 文章Id
         /// </summary>
-        public int ArticleId { get; set; }
+        public string ArticleId { get; set; }
         /// <summary>
         /// 图片Id
         /// </summary>
-        public int PictureId { get; set; }
+        public string PictureId { get; set; }
+        /// <summary>
+        /// 页数
+        /// </summary>
+        public int? PageIndex { get; set; }
     }
 
     public class AdminEditUserInfo

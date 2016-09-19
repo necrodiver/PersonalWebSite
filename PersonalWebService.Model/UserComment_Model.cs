@@ -85,6 +85,6 @@ namespace PersonalWebService.Model
         public string WorkId { get; set; }
         [Required]
         [DisplayName("评论页数")]
-        public int Index { get; set; }
+        public int PageIndex { get; set; }
     }
 }

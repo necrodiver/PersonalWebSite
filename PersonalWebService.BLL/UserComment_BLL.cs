@@ -14,7 +14,7 @@ namespace PersonalWebService.BLL
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserComment] WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserComment] where {0}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserComment] SET {0} WHERE {1}";
-        private static readonly int commentEveryCount = 10;
+        private static readonly int commentEveryPageNum = 10;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         public ReturnStatus_Model AddComment(UserComment_Model userComment)
         {
@@ -77,7 +77,7 @@ namespace PersonalWebService.BLL
         public List<UserComment_Model> GetList(UserCommentCondition_Model condition)
         {
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
-            if (condition.Index < 0 || string.IsNullOrEmpty(condition.WorkId))
+            if (condition.PageIndex < 0 || string.IsNullOrEmpty(condition.WorkId))
             {
                 return null;
             }
@@ -86,8 +86,8 @@ namespace PersonalWebService.BLL
             sbsql.Append(" (SELECT ROW_NUMBER() OVER(ORDER BY CommentId) NUM, *FROM[dbo].[UserComment])U ");
             sbsql.Append("  WHERE NUM > @FirstIndex AND NUM<@LastIndex");
             //10*n-9    10*n
-            int firstIndex = (condition.Index - 1) * commentEveryCount + 1;
-            int lastIndex = condition.Index * commentEveryCount;
+            int firstIndex = (condition.PageIndex - 1) * commentEveryPageNum + 1;
+            int lastIndex = condition.PageIndex * commentEveryPageNum;
             List<DataField> param = new List<DataField>();
             param.Add(new DataField { Name = "@FirstIndex", Value = firstIndex });
             param.Add(new DataField { Name = "@LastIndex", Value = lastIndex });
