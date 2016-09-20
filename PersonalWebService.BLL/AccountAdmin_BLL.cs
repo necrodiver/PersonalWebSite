@@ -226,7 +226,6 @@ namespace PersonalWebService.BLL
                     AddTime = a.AddTime,
                     EditTime = a.EditTime
                 });
-
                 return true;
             });
             return adminInfoModelList;
