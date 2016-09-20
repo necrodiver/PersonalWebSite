@@ -208,7 +208,6 @@ namespace PersonalWebService.BLL
             try
             {
                 sbsql.Append("[Level]>" + adminInfo.Level);
-                string sql = string.Format(sqlSelectTemplate, "*", sbsql.ToString());
                 adminInfos = dal.GetDataList<AdminInfo>(sqlSelect, param);
             }
             catch (Exception ex)
