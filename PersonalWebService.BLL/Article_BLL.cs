@@ -302,18 +302,5 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
         }
-
-        //public bool IsClassIds(string[] str)
-        //{
-        //    Regex re = new Regex(@"^[a-zA-Z0-9]+$");
-        //    foreach (var item in str)
-        //    {
-        //        if (string.IsNullOrEmpty(item))
-        //            return false;
-        //        if (!re.IsMatch(item))
-        //            return false;
-        //    }
-        //    return true;
-        //}
     }
 }

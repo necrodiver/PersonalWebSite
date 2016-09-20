@@ -42,6 +42,9 @@ namespace PersonalWebService.Model
 
     }
 
+    /// <summary>
+    /// 图片条件查询
+    /// </summary>
     public class PictureCondition_Model
     {
         /// <summary>

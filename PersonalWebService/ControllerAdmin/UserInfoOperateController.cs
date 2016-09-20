@@ -12,11 +12,11 @@ namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/UserOperate")]
     [ModelValidationFilter]
+    [BasicAuthentication]
     public class UserInfoOperateController : AdminBaseController
     {
         BLL.Account_BLL accountBll = new BLL.Account_BLL();
         [HttpPost]
-        [BasicAuthentication]
         [Route("Edit")]
         public async Task<ReturnStatus_Model> EditUserInfo([FromBody]AdminEditUserInfo editUserInfo)
         {
@@ -25,9 +25,7 @@ namespace PersonalWebService.ControllerAdmin
                 return accountBll.AdminEditUserInfo(editUserInfo);
             });
         }
-        [HttpPost]
-        [BasicAuthentication]
-        [Route("GetList")]
+        [HttpPost]        [Route("GetList")]
         public async Task<List<UserInfo_Model>> GetUserInfo([FromBody]UserInfoCondition userInfoCondition)
         {
             return await Task.Run(()=> {
@@ -35,7 +33,6 @@ namespace PersonalWebService.ControllerAdmin
             });
         }
         [HttpPost]
-        [BasicAuthentication]
         [Route("Delete")]
         public async Task<ReturnStatus_Model> DeleteList(string[] userInfoIdList)
         {
