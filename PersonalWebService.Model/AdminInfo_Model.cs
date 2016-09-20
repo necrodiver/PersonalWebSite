@@ -82,5 +82,9 @@ namespace PersonalWebService.Model
         public DateTime? EditTime { get; set; }
         [DisplayName("管理等级")]
         public AdminLevel? Level { get; set; }
+        /// <summary>
+        /// 页数
+        /// </summary>
+        public int? PageIndex { get; set; }
     }
 }

@@ -12,6 +12,10 @@ namespace PersonalWebService.BLL
    
     public class Picture_BLL
     {
+        /// <summary>
+        /// 每页显示的条数
+        /// </summary>
+        public static readonly int PageNum = 12;
         private WordsFilterDt wordsFilter = new WordsFilterDt();
         public static List<PictureSort> pictureSortList;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
@@ -77,35 +81,57 @@ namespace PersonalWebService.BLL
             List<DataField> param = new List<DataField>();
             if (!string.IsNullOrEmpty(pictureCondition.NickName))
             {
-                sbsql.Append("u.NickName=@NickName AND");
+                sbsql.Append("U.NickName=@NickName AND");
                 param.Add(new DataField { Name = "@NickName", Value = pictureCondition.NickName });
             }
             if (!string.IsNullOrEmpty(pictureCondition.PictureName))
             {
-                sbsql.Append("p.PictureName=@PictureName AND");
+                sbsql.Append("P.PictureName=@PictureName AND");
                 param.Add(new DataField { Name = "@PictureName", Value = pictureCondition.PictureName });
             }
             if (pictureCondition.PictureSortId != null)
             {
-                sbsql.Append("p.PictureSortId=@PictureSortId AND");
+                sbsql.Append("P.PictureSortId=@PictureSortId AND");
                 param.Add(new DataField { Name = "@PictureSortId", Value = pictureCondition.PictureSortId });
             }
             if (pictureCondition.FirstTime != null)
             {
-                sbsql.Append("p.EditTime>=@FirstTime AND");
+                sbsql.Append("P.EditTime>=@FirstTime AND");
                 param.Add(new DataField { Name = "@FirstTime", Value = pictureCondition.FirstTime });
             }
             if (pictureCondition.LastTime != null)
             {
-                sbsql.Append("p.EditTime<=@LastTime AND");
+                sbsql.Append("P.EditTime<=@LastTime AND");
                 param.Add(new DataField { Name = "@LastTime", Value = pictureCondition.LastTime });
             }
-            string sqlSelect = @"SELECT a.* FROM [dbo].[Picture] AS p
-                                LEFT JOIN [dbo].[UserInfo] AS u
-                                ON p.UserId=u.UserId WHERE {0}";
-            //硬条件
-            sbsql.Append("p.IsFreeze=1 AND p.PictureState=1");
-            sqlSelect = string.Format(sqlSelect, sbsql.ToString());
+            string sqlIndex = string.Empty;
+            if (pictureCondition.PageIndex != null)
+            {
+                int pageIndex = Convert.ToInt32(pictureCondition.PageIndex);
+                int firstIndex = (pageIndex - 1) * PageNum + 1;
+                int lastIndex = pageIndex * PageNum;
+                sqlIndex = " NUM>=@firstIndex AND NUM<=@lastIndex ";
+                param.Add(new DataField { Name = "@firstIndex", Value = firstIndex });
+                param.Add(new DataField { Name = "@lastIndex", Value = lastIndex });
+            }
+            else
+            {
+                sbsql.Append(" NUM<=@PageNum ");
+                param.Add(new DataField { Name = "@PageNum", Value = PageNum });
+            }
+            string sqlSelect = @"SELECT * FROM
+                                (
+	                                SELECT ROW_NUMBER() OVER(ORDER BY Hits DESC)NUM,* FROM
+	                                (	
+	                                	SELECT P.* FROM [dbo].[Picture] P
+	                                	LEFT JOIN [dbo].[UserInfo] U ON P.UserId=U.UserId
+	                                	WHERE {0}
+	                                )UA
+                                ) UI
+                                WHERE {1}";
+            //硬条件只给用户，管理员就全部了
+            sbsql.Append("P.IsFreeze=1 AND P.PictureState=1");
+            sqlSelect = string.Format(sqlSelect,sbsql.ToString(),sqlIndex);
             List<Picture> pictureList = new List<Picture>();
             try
             {

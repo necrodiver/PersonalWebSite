@@ -65,6 +65,11 @@ namespace PersonalWebService.Model
         /// 发布时间范围结束
         /// </summary>
         public DateTime? LastTime { get; set; }
+        /// <summary>
+        /// 页数
+        /// </summary>
+        public int? PageIndex { get; set; }
+
     }
 
     /// <summary>

@@ -11,9 +11,9 @@ namespace PersonalWebService.BLL
 {
     public class UserComment_BLL
     {
-        private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserComment] WHERE {1}";
+        //private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserComment] WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserComment] where {0}";
-        private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserComment] SET {0} WHERE {1}";
+        //private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserComment] SET {0} WHERE {1}";
         private static readonly int commentEveryPageNum = 10;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
         public ReturnStatus_Model AddComment(UserComment_Model userComment)
@@ -53,7 +53,7 @@ namespace PersonalWebService.BLL
             {
                 //string selectSql = "";
                 //if(dal.GetDataCount()) 本来这里想加个已经评论过了的不允许评论（主要想防止刷评论）
-                if (dal.OpeData<UserComment>(userCommentModel, OperatingModel.Add))
+                if (dal.OpeData(userCommentModel, OperatingModel.Add))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "评论成功！";

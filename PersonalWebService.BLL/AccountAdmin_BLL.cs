@@ -11,6 +11,10 @@ namespace PersonalWebService.BLL
 {
     public class AccountAdmin_BLL
     {
+        /// <summary>
+        /// 每页显示的条数
+        /// </summary>
+        public static readonly int PageNum = 12;
         private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
@@ -169,7 +173,31 @@ namespace PersonalWebService.BLL
                 sbsql.Append("[EditTime] <= @EditTime AND");
                 param.Add(new DataField { Name = "@EditTime", Value = condition.EditTime });
             }
+            string sqlIndex = string.Empty;
+            if (condition.PageIndex != null)
+            {
+                int pageIndex = Convert.ToInt32(condition.PageIndex);
+                int firstIndex = (pageIndex - 1) * PageNum + 1;
+                int lastIndex = pageIndex * PageNum;
+                sqlIndex = " NUM>=@firstIndex AND NUM<=@lastIndex ";
+                param.Add(new DataField { Name = "@firstIndex", Value = firstIndex });
+                param.Add(new DataField { Name = "@lastIndex", Value = lastIndex });
+            }
+            else
+            {
+                sbsql.Append(" NUM<=@PageNum ");
+                param.Add(new DataField { Name = "@PageNum", Value = PageNum });
+            }
 
+            string sqlSelect = @"SELECT * FROM
+                                (
+                                	SELECT ROW_NUMBER() OVER(ORDER BY AddTime DESC) NUM,* 
+                                    FROM [dbo].[AdminInfo]
+                                    WHERE {0}
+                                )M
+                                WHERE {1}";
+
+            sqlSelect = string.Format(sqlSelect,sbsql.ToString(),sqlIndex);
             //硬条件
             AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
             List<AdminInfo> adminInfos = new List<AdminInfo>();
@@ -181,7 +209,7 @@ namespace PersonalWebService.BLL
             {
                 sbsql.Append("[Level]>" + adminInfo.Level);
                 string sql = string.Format(sqlSelectTemplate, "*", sbsql.ToString());
-                adminInfos = dal.GetDataList<AdminInfo>(sql, param);
+                adminInfos = dal.GetDataList<AdminInfo>(sqlSelect, param);
             }
             catch (Exception ex)
             {

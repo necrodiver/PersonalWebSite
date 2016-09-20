@@ -12,6 +12,10 @@ namespace PersonalWebService.BLL
 {
     public class Article_BLL
     {
+        /// <summary>
+        /// 每页显示的条数
+        /// </summary>
+        public static readonly int PageNum = 12;
         private WordsFilterDt wordsFilter = new WordsFilterDt();
         public static List<ArticleSort> articleSortList;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
@@ -83,40 +87,62 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public List<Article_Model> GetArticleList(ArticleCondition_Model articleCondition)
         {
-            //sql先不写了，根据数据库来写
             StringBuilder sbsql = new StringBuilder();
             List<DataField> param = new List<DataField>();
             if (!string.IsNullOrEmpty(articleCondition.NickName))
             {
-                sbsql.Append("u.NickName=@NickName AND");
+                sbsql.Append("U.NickName=@NickName AND");
                 param.Add(new DataField { Name = "@NickName", Value = articleCondition.NickName });
             }
             if (!string.IsNullOrEmpty(articleCondition.ArticleName))
             {
-                sbsql.Append("a.ArticleName=@ArticleName AND");
+                sbsql.Append("A.ArticleName=@ArticleName AND");
                 param.Add(new DataField { Name = "@ArticleName", Value = articleCondition.ArticleName });
             }
             if (articleCondition.ArticleSortId != null)
             {
-                sbsql.Append("a.ArticleSortId=@ArticleSortId AND");
+                sbsql.Append("A.ArticleSortId=@ArticleSortId AND");
                 param.Add(new DataField { Name = "@ArticleSortId", Value = articleCondition.ArticleSortId });
             }
             if (articleCondition.FirstTime != null)
             {
-                sbsql.Append("a.EditTime>=@FirstTime AND");
+                sbsql.Append("A.EditTime>=@FirstTime AND");
                 param.Add(new DataField { Name = "@FirstTime", Value = articleCondition.FirstTime });
             }
             if (articleCondition.LastTime != null)
             {
-                sbsql.Append("a.EditTime<=@LastTime AND");
+                sbsql.Append("A.EditTime<=@LastTime AND");
                 param.Add(new DataField { Name = "@LastTime", Value = articleCondition.LastTime });
             }
-            string sqlSelect = @"SELECT a.* FROM [dbo].[Article] AS a
-                                LEFT JOIN [dbo].[UserInfo] AS u
-                                ON a.UserId=u.UserId WHERE {0}";
-            //硬条件
-            sbsql.Append("a.IsFreeze=1 AND a.ArticleState=1");
-            sqlSelect = string.Format(sqlSelect, sbsql.ToString());
+
+            string sqlIndex = string.Empty;
+            if (articleCondition.PageIndex != null)
+            {
+                int pageIndex = Convert.ToInt32(articleCondition.PageIndex);
+                int firstIndex = (pageIndex - 1) * PageNum + 1;
+                int lastIndex = pageIndex * PageNum;
+                sqlIndex = " NUM>=@firstIndex AND NUM<=@lastIndex ";
+                param.Add(new DataField { Name = "@firstIndex", Value = firstIndex });
+                param.Add(new DataField { Name = "@lastIndex", Value = lastIndex });
+            }
+            else
+            {
+                sbsql.Append(" NUM<=@PageNum ");
+                param.Add(new DataField { Name = "@PageNum", Value = PageNum });
+            }
+            string sqlSelect = @"SELECT * FROM
+                                (
+	                                SELECT ROW_NUMBER() OVER(ORDER BY Hits DESC)NUM,* FROM
+	                                (	
+	                                	SELECT P.* FROM [dbo].[Article] A
+	                                	LEFT JOIN [dbo].[UserInfo] U ON A.UserId=U.UserId
+	                                	WHERE {0}
+	                                )UA
+                                ) UI
+                                WHERE {1}";
+            //硬条件只针对普通用户，管理员不在此范围内
+            sbsql.Append("A.IsFreeze=1 AND A.ArticleState=1");
+            sqlSelect = string.Format(sqlSelect, sbsql.ToString(),sqlIndex);
             List<Article> articleList = new List<Article>();
             try
             {
