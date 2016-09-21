@@ -1,60 +1,77 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="Scripts/jquery-1.10.2.js"></script>
-    <script>
-        $(function () {
-            $('#btnSubmit').click(function () {
-                var username = $('#userName').val();
-                var passWord = $('#password').val();
-                $.post('http://localhost:10841/Service/api/Account', { userName: username, password: passWord }, function (e) {
-                    alert(e);
+    <script src="Scripts/angular.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('drag', []);
+        myModule.directive('draggable', function ($document) {
+            var startX = 0, startY = 0, x = 0, y = 0;
+            return function (scope, element, attr) {
+                element.css({
+                    position: 'relative',
+                    border: '1px solid red',
+                    backgroundColor: 'lightgrey',
+                    cursor: 'pointer'
                 });
-            });
-            $('#btnSubmit2').click(function () {
-                var username = $('#userName').val();
-                var password = $('#password').val();
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:10841/Service/api/Account/Login",
-                    data: { UserName: username, Password: password },
-                    dataType: "json",
-                    success: function (data) {
-                        alert(data);
-                    },
-                    error: function (data, textStatus) {
-                        var errorJson = data.responseJSON;
-                        for (var name in errorJson) {
-                            alert(errorJson[name]);
-                        }
-                    }
+                element.bind('mousedown', function (event) {
+                    startX = event.screenX - x;
+                    startY = event.screenY - y;
+                    $document.bind('mousemove', mousemove);
+                    $document.bind('mouseup', mouseup);
                 });
-            });
-            $('#btnSubmit3').click(function () {
-                $.post('http://localhost:10841/Service/api/Account/TestValues', { DS: "BBC" }, function (e) {
-                    alert(e);
-                })
-            });
-
-            $('#btnSubmit4').click(function () {
-                $.post('http://localhost:10841/Service/api/Account/TestValues1', { SS: "BBCsss" }, function (e) {
-                    alert(e);
-                })
-            });
+                function mousemove(event) {
+                    y = event.screenY - startY;
+                    x = event.screenX - startX;
+                    element.css({
+                        top: y + 'px',
+                        left: x + 'px'
+                    });
+                }
+                function mouseup() {
+                    $document.unbind('mousemove', mousemove);
+                    $document.unbind('mouseup', mouseup);
+                }
+            };
         });
+
+        myModule.controller('HelloAngular', ['$scope', function HelloAngular($scope) {
+            $scope.greeting = {
+                text:'Hello'
+            };
+        }]);
+        myModule.directive('hello', function () {
+            return {
+                restrict: 'E',
+                template: '<div>Hello SB!</div>',
+                replace:true
+            };
+        });
+
     </script>
 </head>
-<body>
+<body ng-app="drag">
     <div>
-        <div>用户名：<input type="text" id="userName"></div>
-        <div>密码：<input type="password" id="password"></div>
-        <button id="btnSubmit">确定</button>
-        <button id="btnSubmit2">确定1</button>
-        <button id="btnSubmit3">确定2</button>
-        <button id="btnSubmit4">确定4</button>
+        I can add:{{1+2}}.
+        <span draggable>Drag Me</span>
+        <br />
+        <hr />
+        <div>
+            <p ng-init="name='SB'">Hello {{name}}</p>
+            <br />
+            <hr />
+            <div ng-controller="HelloAngular">
+                <input type="password" ng-model="greeting.text" />
+                <p>{{greeting.text}},Angular</p>
+                <hello></hello>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div>
+            <input type="text" ng-model="wahaha" />
+            <p>{{wahaha}},Angular.js</p>
+        </div>
     </div>
+
 </body>
 </html>
