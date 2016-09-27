@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+        .text-black {
+            color: #000000;
+        }
+
+        .text-green {
+            color: #00ff00;
+        }
+    </style>
+    <script src="../Scripts/angular.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module('MyApp', []);
+        myApp.controller('MyCtrl', ['$scope', function ($scope) {
+            $scope.setGreen = function () {
+                $scope.color = $scope.color == 'black' ? 'green' : 'black';
+            };
+        }]);
+
+        myApp.controller('HeaderCtrl', ['$scope', function ($scope) {
+            $scope.isError = false;
+            $scope.isWarning = false;
+            $scope.showError = function () {
+                $scope.messageText = 'This is an error!';
+                $scope.isError = true;
+                $scope.isWarning = false;
+            };
+            $scope.showWarning = function () {
+                $scope.messageText = 'Just a warning.Please carry on!';
+                $scope.isError = false;
+                $scope.isWarning = true;
+            };
+        }]);
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <strong><p class="text-{{color}}">测试css样式</p></strong>
+        <button class="btn btn-default" ng-click="setGreen()">绿色</button>
+    </div>
+
+    <hr />
+    <div ng-controller="HeaderCtrl">
+        <div ng-class="{error:isError,warning:isWarning}">{{messageText}}</div>
+        <button ng-click="showError()">Simulate Error</button>
+        <button ng-click="showWarning()">Simulate Warning</button>
+    </div>
+</body>
+</html>

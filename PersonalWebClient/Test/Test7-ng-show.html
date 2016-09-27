@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../Content/bootstrap.css" />
+    <script src="../Scripts/angular.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module('MyApp', []);
+        myApp.controller('MyCtrl', ['$scope', function ($scope) {
+            $scope.menuState = { show: false };
+            $scope.toggleMenu = function () {
+                $scope.menuState.show = !$scope.menuState.show;
+            }
+            $scope.menuState1 = { hide: true };
+            $scope.toggleMenu1 = function () {
+                $scope.menuState1.hide = !$scope.menuState1.hide;
+            };
+
+
+            $scope.Stun = function () { }
+            $scope.disintegrate = function () { }
+            $scope.erase = function () { }
+        }]);
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div ng-controller="MyCtrl">
+        <button ng-click="toggleMenu()">Toggle Menu</button>
+        <ul ng-show="menuState.show">
+            <li ng-click="stun()">Stun</li>
+            <li ng-click="disintegrate()">Disintegrate</li>
+            <li ng-click="erase()">Erase</li>
+        </ul>
+        <hr />
+        <button ng-click="toggleMenu1()">Toggle Menu</button>
+        <ul ng-show="menuState1.hide">
+            <li ng-click="stun()">Stun</li>
+            <li ng-click="disintegrate()">Disintegrate</li>
+            <li ng-click="erase()">Erase</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="UserInfoModule">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../Content/bootstrap.css" />
+    <script src="../Scripts/angular.js"></script>
+    <script src="../ScriptsAsM/Form.js"></script>
+</head>
+<body>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">双向数据绑定</div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal" role="form" ng-controller="MyCtrl">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">邮箱：</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="email" placeholder="推荐使用163邮箱或qq邮箱" ng-model="userInfo.email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
+                                    密码：
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" placeholder="只能是数字、字母或下划线组成" ng-model="userInfo.password" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="userInfo.autoLogin" />自动登录
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button class="btn btn-default" ng-click="getFormData()">获取Form表单的值</button>
+                                    <button class="btn btn-default" ng-click="setFormData()">设置Form表单的值</button>
+                                    <button class="btn btn-default" ng-click="resetFormData()">重置Form表单的值</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
