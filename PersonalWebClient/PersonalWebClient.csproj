@@ -875,6 +875,10 @@
     <Content Include="Scripts\angularjs\angular-cookies.min.js.map" />
     <Content Include="Scripts\angularjs\angular-aria.min.js.map" />
     <Content Include="Scripts\angularjs\angular-animate.min.js.map" />
+    <Content Include="Content\variables.less" />
+    <Content Include="Content\bootswatch.less" />
+    <Content Include="Content\_variables.scss" />
+    <Content Include="Content\_bootswatch.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
