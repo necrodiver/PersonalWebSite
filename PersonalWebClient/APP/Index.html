@@ -9,7 +9,8 @@
     <!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
     <script src="../Scripts/jquery/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
+    <!--<script src="../Scripts/bootstrap/bootstrap-affix.js"></script>-->
+    <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
     <style type="text/css">
         .all {
@@ -44,14 +45,65 @@
             margin-left: 100px;
         }
         #userBtn{
-            margin-top:15px;
-            margin-left:10px;
+            margin-top:7px;
+            margin-left:8px;
             color:gray;
         }
     </style>
-    <script type="text/javascript">
-        $(function () { $('#userBtn').popover('show') });
-    </script>
+
+    <style type="text/css">
+         .user-img {
+            width: 40px;
+        }
+        .user-chick {
+            height: 25px;
+            padding-top: 3px;
+            font-size: 9px;
+            font-weight: 500;
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+        .user-name {
+            padding-top: 14px;
+            font-size: 12px;
+            font-weight: 500;
+            width: 131px;
+            margin-left: 5px;
+        }
+        .user-chick-p {
+            width: 50px;
+        }
+        .user-dgf {
+            width: 32%;
+            text-align: center;
+            border-right: 1px solid black;
+        }
+        .user-dgf-1 {
+            width: 33%;
+            text-align: center;
+        }
+        .user-dgf-link {
+            color: black;
+        }
+        .user-dgf-link-1 span {
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .user-dgf-link-2 span {
+            font-size: 10px;
+        }
+        .user-dxg {
+            width: 80px;
+            padding-left: 15px;
+        }
+        .user-set {
+            color: black;
+            text-decoration:none;
+        }
+        .user-right{
+            color:#eaeaea;
+        }
+    </style>
     <!--参考自：http://how2j.cn/k/boostrap/boostrap-paging/492.html
     and    http://bootswatch.com/lumen/#navbar-->
 </head>
@@ -75,19 +127,19 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href=".">
-                                <span class="glyphicon glyphicon-home"></span> Home
+                                <i class="glyphicon glyphicon-home"></i> Home
                             </a>
                         </div>
                         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                             <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">
-                                        <span class=""></span>Scrawl<span class="sr-only">(current)</span>
+                                        <i class="glyphicon glyphicon-picture"></i> Scrawl<span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li><a href="#">Jottings</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> Jottings</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th-large"></span> Dropdown <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
                                             <a href="#"><span class="glyphicon glyphicon-user"></span> Sign in | Sign up</a>
@@ -102,8 +154,7 @@
                                 </li>
                             </ul>
                             <div class="navbar-btn navbar-right" role="button" id="userBtn">
-                                <!--<a href="#" class="glyphicon glyphicon-user"></a>-->
-                                <a href="#" class="glyphicon glyphicon-user  popover-destroy" data-toggle="popover" data-container="body" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-placement="bottom"></a>
+                                <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user  popover-destroy" data-toggle="popover"></a>
                             </div>
                             <form class="navbar-form navbar-right" role="search">
                                 <div class="form-group">
@@ -196,5 +247,94 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $('#userId').each(function () {
+            var element = $(this);
+            var txt = '用户信息';
+            element.popover({
+                trigger: 'manual',
+                placement: 'bottom', //top, bottom, left or right
+                title: txt,
+                html: 'true',
+                content: ContentMethod1(),
+            }).on("mouseenter", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
+        });
+        function ContentMethod() {
+            return '<table class="table table-default" style="width:200px;">' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-user"></i> 昵称</td><td>STAR</td></tr>' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-star-empty"></i> 等级</td><td>lv.4</td></tr>' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-bell"></i> 消息</td><td><a href="javascript:(0);">12</a></td></tr>' +
+                        '<tr><td style="width:80px;">涂鸦</td><td><a href="javascript:(0);">53</a></td></tr>' +
+                        '<tr><td colspan="2" text-align="center"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-signout"></i> 退出</button></td></tr>'
+            '</table>';
+        }
+        function ContentMethod1() {
+            return '<table class="table table-default" style="width:260px;">' +
+          '<tr>' +
+              '<td colspan="3">' +
+                  '<div class="pull-left">' +
+                      '<a href="#"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>' +
+                  '</div>' +
+                  '<div class="pull-left user-name">' +
+                      '<a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>' +
+                  '</div>' +
+                  '<div class="pull-left user-chick-p">' +
+                      '<button class="btn btn-default user-chick">签到</button>' +
+                  '</div>' +
+              '</td>' +
+          '</tr>' +
+          '<tr>' +
+             '<td colspan="3">' +
+                  '<div class="pull-left user-dgf">' +
+                      '<a href="#" class="user-dgf-link">' +
+                          '<div class="user-dgf-link-1"><span>12314</span></div>' +
+                          '<div class="user-dgf-link-2"><span>动态</span></div>' +
+                      '</a>' +
+                  '</div>' +
+                  '<div class="pull-left user-dgf">' +
+                      '<a href="#" class="user-dgf-link">' +
+                          '<div class="user-dgf-link-1"><span>2423</span></div>' +
+                          '<div class="user-dgf-link-2"><span>关注</span></div>' +
+                     ' </a>' +
+                  '</div>' +
+                  '<div class="pull-left user-dgf-1">' +
+                      '<a href="#" class="user-dgf-link">' +
+                          '<div class="user-dgf-link-1"><span>236234</span></div>' +
+                          '<div class="user-dgf-link-2"><span>粉丝</span></div>' +
+                      '</a>' +
+                  '</div>' +
+              '</td>' +
+          '</tr>' +
+          '<tr>' +
+              '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-star-empty"></i> 等级</td>' +
+              '<td><a href="#">Lv.4<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
+          '</tr>' +
+          '<tr>' +
+              '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-bell"></i> 消息</td>' +
+              '<td><a href="#">12<i class="glyphicon glyphicon-chevron-right pull-right user-right"></i></a></td>' +
+          '</tr>' +
+          '<tr>' +
+              '<td colspan="3" class="user-dxg"><i class="glyphicon glyphicon-cog"></i> <a href="#" class="user-set">个人信息设置<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
+          '</tr>' +
+          '<tr>' +
+              '<td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> 退出</button></td>' +
+          '</tr>' +
+      '</table>'
+        }
+        $('#userId').popover('toggle');
+    </script>
 </body>
 </html>

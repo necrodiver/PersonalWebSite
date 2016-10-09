@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
+</head>
+<body>
+    <button type="button" class="btn btn-success" title="Popover title"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+        底部的 Popover
+    </button>
+
+    <button type="button" class="btn btn-success popover-destroy"
+            title="Popover title" data-container="body"
+            data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容 —— destroy 方法">
+        底部的 Popover2
+    </button>
+
+    <div clas="container" style="padding: 100px 50px 10px;">
+        <button type="button" class="btn btn-primary popover-show"
+                title="Popover title" data-container="body"
+                data-toggle="popover"
+                data-content="左侧的 Popover 中的一些内容 —— show 方法">
+            左侧的 Popover
+        </button>
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="popover"]').popover('hide');
+            //$('.popover-show').popover('show');
+            $('.popover-show').on('shown.bs.popover', function () {
+                alert("当显示时警告消息");
+            });
+        });
+    </script>
+</body>
+</html>
