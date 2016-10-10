@@ -853,7 +853,9 @@
     <Content Include="Scripts\angularjs\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
     <Content Include="Scripts\grayscale.js" />
