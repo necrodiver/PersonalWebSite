@@ -9,6 +9,7 @@
         .user-img {
             width: 40px;
         }
+
         .user-chick {
             height: 25px;
             padding-top: 3px;
@@ -17,6 +18,7 @@
             margin-left: 5px;
             margin-top: 10px;
         }
+
         .user-name {
             padding-top: 14px;
             font-size: 12px;
@@ -24,35 +26,48 @@
             width: 125px;
             margin-left: 5px;
         }
+
         .user-chick-p {
             width: 55px;
         }
+
         .user-dgf {
             width: 33.3%;
             text-align: center;
             border-right: 1px solid #666;
         }
+
         .user-dgf-1 {
             width: 33%;
             text-align: center;
         }
+
         .user-dgf-link {
             color: black;
         }
+
         .user-dgf-link-1 span {
             font-size: 11px;
             font-weight: 600;
         }
+
         .user-dgf-link-2 span {
             font-size: 10px;
         }
+
         .user-dxg {
             width: 80px;
             padding-left: 15px;
         }
+
         .user-set {
             color: black;
-            text-decoration:none;
+            text-decoration: none;
+        }
+    </style>
+    <style type="text/css">
+        .user-login-txt span {
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -63,7 +78,7 @@
     <hr />
     <br />
     <br />
-    <table class="table table-default" style="width:250px;">
+    <table class="table table-default pull-left" style="width:250px;">
         <tr>
             <td colspan="3">
                 <div class="pull-left">
@@ -114,5 +129,73 @@
             <td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> 退出</button></td>
         </tr>
     </table>
+
+    <form class="navbar-form pull-left" role="search" style="width:270px;">
+        <div class="form-group">
+            <table class="table table-default">
+                <tr>
+                    <td class="user-login-txt"><span>用户名</span></td>
+                    <td><input type="email" class="form-control input-sm" placeholder="必须为邮箱" /></td>
+                </tr>
+                <tr>
+                    <td class="user-login-txt"><span>密码</span></td>
+                    <td><input type="password" class="form-control input-sm" placeholder="必须为字母、数字或下划线" /></td>
+                </tr>
+                <tr>
+                    <td class="user-login-txt"><span>验证码</span></td>
+                    <td><input type="number" class="form-control input-sm" /></td>
+                </tr>
+                <tr></tr>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Submit</button>
+    </form>
+    <style type="text/css">
+        .user-login-content {
+            width: 230px;
+        }
+
+        .user-login-d {
+            margin-top: 5px;
+            width: 200px;
+        }
+
+        .user-login-prompt-2 {
+            font-size: 13px;
+            padding-top: 11px;
+            padding-left: 5px;
+        }
+
+        .user-login-dp {
+            margin-top: 46px;
+            padding-top: 3px;
+            border-top: 1px solid #dedede;
+        }
+
+        /*.img-gray {
+            -webkit-filter: grayscale(100%);
+            -webkit-filter: grayscale(1);
+            filter: grayscale(100%);
+            filter: gray;
+        }*/
+    </style>
+    <div class="user-login-content pull-left">
+        <div class="user-login-prompt">
+            <div class="pull-left">
+                <a href="#" title="当前未登录"><img class="img-circle user-img img-gray" id="user-img" src="../Images/user-ceshi.jpg" /></a>
+            </div>
+            <div class="pull-left user-login-prompt-2">
+                <span>你的用户还未登录？</span>
+            </div>
+        </div>
+        <div class="user-login-dp">
+            <div><button class="btn btn-primary btn-sm user-login-d">登录<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>
+            <div><button class="btn btn-info btn-sm user-login-d">注册<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>
+        </div>
+    </div>
+    <script src="../Scripts/grayscale.js"></script>
+    <script type="text/javascript">
+        grayscale(document.getElementById('user-img'));
+    </script>
 </body>
 </html>

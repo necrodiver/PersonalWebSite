@@ -52,9 +52,10 @@
     </style>
 
     <style type="text/css">
-         .user-img {
+        .user-img {
             width: 40px;
         }
+
         .user-chick {
             height: 25px;
             padding-top: 3px;
@@ -63,6 +64,7 @@
             margin-left: 5px;
             margin-top: 10px;
         }
+
         .user-name {
             padding-top: 14px;
             font-size: 12px;
@@ -70,40 +72,75 @@
             width: 131px;
             margin-left: 5px;
         }
+
         .user-chick-p {
             width: 50px;
         }
+
         .user-dgf {
             width: 32%;
             text-align: center;
             border-right: 1px solid black;
         }
+
         .user-dgf-1 {
             width: 33%;
             text-align: center;
         }
+
         .user-dgf-link {
             color: black;
         }
+
         .user-dgf-link-1 span {
             font-size: 11px;
             font-weight: 600;
         }
+
         .user-dgf-link-2 span {
             font-size: 10px;
         }
+
         .user-dxg {
             width: 80px;
             padding-left: 15px;
         }
+
         .user-set {
             color: black;
-            text-decoration:none;
+            text-decoration: none;
         }
-        .user-right{
-            color:#eaeaea;
+
+        .user-right {
+            color: #eaeaea;
         }
     </style>
+
+    <style type="text/css">
+        .user-login-content {
+            width: 250px;
+        }
+
+        .user-login-d {
+            margin-top: 5px;
+            width: 250px;
+        }
+
+        .user-login-prompt-2 {
+            font-size: 13px;
+            padding-top: 11px;
+            padding-left: 5px;
+        }
+
+        .user-login-dp {
+            padding-top: 3px;
+            border-top: 1px solid #dedede;
+        }
+        .user-login-prompt{
+            height:45px;
+        }
+    </style>
+
     <!--参考自：http://how2j.cn/k/boostrap/boostrap-paging/492.html
     and    http://bootswatch.com/lumen/#navbar-->
 </head>
@@ -256,7 +293,7 @@
                 placement: 'bottom', //top, bottom, left or right
                 title: txt,
                 html: 'true',
-                content: ContentMethod1(),
+                content: ContentMethod2(),
             }).on("mouseenter", function () {
                 var _this = this;
                 $(this).popover("show");
@@ -334,6 +371,24 @@
           '</tr>' +
       '</table>'
         }
+
+        function ContentMethod2() {
+            return '<div class="user-login-content">' +
+                '<div class="user-login-prompt">' +
+                    '<div class="pull-left">' +
+                        '<a href="#" title="当前未登录"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" / ></a>' +
+                    '</div>' +
+                '<div class="pull-left user-login-prompt-2">' +
+                    '<span>你的用户还未登录？</span>' +
+                '</div>' +
+            '</div>' +
+            '<div class="user-login-dp">'+
+                '<div><button class="btn btn-primary btn-sm user-login-d">登录<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
+                '<div><button class="btn btn-info btn-sm user-login-d">注册<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
+                '</div>'+
+            '</div>';
+        }
+
         $('#userId').popover('toggle');
     </script>
 </body>

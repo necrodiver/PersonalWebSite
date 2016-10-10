@@ -856,6 +856,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="Scripts\grayscale.js" />
     <Content Include="Scripts\hometitleAnimation.js" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />
