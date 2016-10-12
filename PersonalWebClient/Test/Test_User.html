@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-modal.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-transition.js"></script>
     <link href="../Content/input-style.css" rel="stylesheet" />
@@ -206,29 +207,118 @@
         开始演示模态框
     </button>
     <div class="pull-left">
+        <style type="text/css">
+            .login-modelbody {
+                z-index: 0;
+            }
+
+            .login-content {
+                margin: 0 auto;
+                height: 300px;
+                width: 90%;
+            }
+
+            .login-content-child {
+                margin-top: 20px;
+            }
+
+            #myModalLabel {
+                font: 15px/24px "Lato", Arial, sans-serif;
+                color: #333;
+                width: 100%;
+                box-sizing: border-box;
+                letter-spacing: 1px;
+            }
+
+            #signUp {
+            }
+        </style>
         <!--模态框-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+                        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-user"></i> Sign In&Sign Up</h4>
                     </div>
                     <!--Content-->
-                    <div class="modal-body">
-                        <div style="height:200px;">
-                            <div class="col-3 input-effect">
-                                <input class="effect-16 input-effect-text" type="text" placeholder="">
-                                <label>First Name</label>
-                                <span class="focus-border"></span>
-                            </div>
-                            <div class="col-3 input-effect">
-                                <input class="effect-17 input-effect-text" type="text" placeholder="">
-                                <label>First Name</label>
-                                <span class="focus-border"></span>
+                    <div class="modal-body login-modelbody">
+                        <div class="login-content">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#signIn" data-target="#signIn" data-toggle="tab">Sign In</a>
+                                </li>
+                                <li>
+                                    <a href="#signUp" data-target="#signUp" data-toggle="tab">Sign Up</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content login-content-child">
+                                <div class="tab-pane active" id="signIn">
+                                    <div class="pull-left" style="width:30%;">
+                                        <i class="text-info">扫码登录</i>
+                                        <img src="../Images/erweima.png" class="img-thumbnail" />
+                                        <div style="margin-top:10px;">
+                                            <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/qq.jpg" title="QQ登录" /></a></div>
+                                            <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/weibo.jpg" title="微博登录" /></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 input-effect">
+                                        <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                        <label class="input-effect-text">Email</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="col-3 input-effect" style="margin-bottom:0px;margin-top:10px;">
+                                        <input class="effect-16 input-effect-text" type="password" placeholder="">
+                                        <label class="input-effect-text">Pass word</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="col-3 input-effect" style="margin-top:0px;">
+                                        <!--<input class="effect-16 input-effect-text" type="text" placeholder="">
+                                        <label class="input-effect-text">Validate code</label>
+                                        <span class="focus-border"></span>-->
+                                        <div style="width:100%;height:75px;">
+                                            <span style="font-size:12px;color:#ccc;">验证(这里准备换一种验证方式，不用输入验证码的)</span>
+                                            <div style="width:100%;height:60px;">
+                                                <span class="text-center" style="font-size:34px;font-weight:700;">WHAT THE FUCK</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right" style="width:60%;margin-right:17px;">
+                                        <div><button class="btn btn-success" style="width:100%;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="signUp">
+                                    <div class="pull-right" style="width:33%;">
+                                        <img src="../Images/user-ceshi.jpg" class="img-circle img-thumbnail" />
+                                    </div>
+                                    <div class="col-3 input-effect pull-left">
+                                        <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                        <label class="input-effect-text">Email</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="col-3 input-effect pull-left" style="margin-bottom:0px;margin-top:10px;">
+                                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                                        <label class="input-effect-text">Nick name</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="col-3 input-effect pull-left" style="margin-top:0px;">
+                                        <!--<input class="effect-17 input-sm" type="text" placeholder="">
+                                        <label class="input-effect-text">Validate code</label>
+                                        <span class="focus-border" style="width:150px;"></span>
+                                        <img class="img-rounded" style="margin-bottom:3px;margin-left:2px;" width="150" height="30" src="../Images/user-ceshi.jpg" />-->
+                                        <div style="width:100%;height:75px;">
+                                            <span style="font-size:12px;color:#ccc;">验证(这里准备换一种验证方式，不用输入验证码的)</span>
+                                            <div style="width:100%;height:60px;">
+                                                <span class="text-center" style="font-size:34px;font-weight:700;">WHAT THE FUCK</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-left" style="width:60%;">
+                                        <button class="btn btn-success" style="width:100%;margin-left:13px;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -239,7 +329,52 @@
         </div>
     </div>
     <script type="text/javascript">
-        $('#myModal').modal('toggle')
+        $('#myModal').modal('toggle');
+        $(window).load(function () {
+            $(".col-3 input").val("");
+
+            $(".input-effect input").focusout(function () {
+                if ($(this).val() != "") {
+                    $(this).addClass("has-content");
+                } else {
+                    $(this).removeClass("has-content");
+                }
+            })
+        });
     </script>
+
+    <br />
+    <br />
+    <br />
+    <hr />
+    <div>
+        <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+            <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <p>I'm in Section 1.</p><div class="col-3 input-effect">
+                    <input class="effect-16" type="email" placeholder="">
+                    <label class="input-effect-text">Email</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="col-3 input-effect">
+                    <input class="effect-17 input-effect-text" type="text" placeholder="">
+                    <label class="input-effect-text">Pass word</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="col-3 input-effect">
+                    <input class="effect-17 input-effect-text" type="text" placeholder="">
+                    <label class="input-effect-text">First Name</label>
+                    <span class="focus-border"></span>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <p>Howdy, I'm in Section 2.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

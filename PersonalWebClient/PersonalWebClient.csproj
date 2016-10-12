@@ -83,8 +83,11 @@
     <Content Include="Content\input-style.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\erweima.png" />
+    <Content Include="Images\qq.jpg" />
     <Content Include="Images\user-ceshi.jpg" />
     <Content Include="Images\bgImg.png" />
+    <Content Include="Images\weibo.jpg" />
     <Content Include="Scripts\angularjs\angular-animate.js" />
     <Content Include="Scripts\angularjs\angular-animate.min.js" />
     <Content Include="Scripts\angularjs\angular-aria.js" />

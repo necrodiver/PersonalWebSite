@@ -2,13 +2,13 @@
 =========================== */
 :focus{outline: none;}
 
-.col-3{float: left; width: 180px; margin: 40px 3%; position: relative;} /* necessary to give position: relative to parent. */
+.col-3{float: right; width: 60%; margin: 10px 3%; position: relative;} /* necessary to give position: relative to parent. */
 
 .input-effect-text{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
 
 .effect-16, 
 .effect-17, 
-.effect-18{border: 0; padding: 4px 0; border-bottom: 1px solid #ccc; background-color: transparent;}
+.effect-18{border: 0; padding: 4px 0; border-bottom: 1px solid #ccc; background-color: transparent;color:#666;}
 
 .effect-16 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #3399FF; transition: 0.4s;}
 .effect-16:focus ~ .focus-border,

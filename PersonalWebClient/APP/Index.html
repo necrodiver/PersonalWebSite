@@ -6,6 +6,7 @@
     <title>首页</title>
     <meta charset="utf-8" />
     <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/input-style.css" rel="stylesheet" />
     <!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
     <script src="../Scripts/jquery/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
@@ -153,6 +154,130 @@
     </ul>-->
     <div class="all" id="all">
         <div class="col-md-12">
+
+            <div class="supplement">
+                <style type="text/css">
+                    .login-modelbody {
+                        z-index: 0;
+                    }
+
+                    .login-content {
+                        margin: 0 auto;
+                        height: 300px;
+                        width: 90%;
+                    }
+
+                    .login-content-child {
+                        margin-top: 20px;
+                    }
+
+                    #myModalLabel {
+                        font: 15px/24px "Lato", Arial, sans-serif;
+                        color: #333;
+                        width: 100%;
+                        box-sizing: border-box;
+                        letter-spacing: 1px;
+                    }
+
+                    #signUp {
+                    }
+                </style>
+                <!--模态框-->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-user"></i> Sign In&Sign Up</h4>
+                            </div>
+                            <!--Content-->
+                            <div class="modal-body login-modelbody">
+                                <div class="login-content">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#signIn" data-target="#signIn" data-toggle="tab">Sign In</a>
+                                        </li>
+                                        <li>
+                                            <a href="#signUp" data-target="#signUp" data-toggle="tab">Sign Up</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content login-content-child">
+                                        <div class="tab-pane active" id="signIn">
+                                            <div class="pull-left" style="width:30%;">
+                                                <i class="text-info">扫码登录</i>
+                                                <img src="../Images/erweima.png" class="img-thumbnail" />
+                                                <div style="margin-top:10px;">
+                                                    <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/qq.jpg" title="QQ登录" /></a></div>
+                                                    <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/weibo.jpg" title="微博登录" /></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 input-effect">
+                                                <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                                <label class="input-effect-text">Email</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect" style="margin-bottom:0px;margin-top:10px;">
+                                                <input class="effect-16 input-effect-text" type="password" placeholder="">
+                                                <label class="input-effect-text">Pass word</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect" style="margin-top:0px;">
+                                                <!--<input class="effect-16 input-effect-text" type="text" placeholder="">
+                                    <label class="input-effect-text">Validate code</label>
+                                    <span class="focus-border"></span>-->
+                                                <div style="width:100%;height:75px;">
+                                                    <span style="font-size:12px;color:#ccc;">验证(这里准备换一种验证方式，不用输入验证码的)</span>
+                                                    <div style="width:100%;height:60px;">
+                                                        <span class="text-center" style="font-size:34px;font-weight:700;">WHAT THE FUCK</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right" style="width:60%;margin-right:17px;">
+                                                <div><button class="btn btn-success" style="width:100%;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="signUp">
+                                            <div class="pull-right" style="width:33%;">
+                                                <img src="../Images/user-ceshi.jpg" class="img-circle img-thumbnail" />
+                                            </div>
+                                            <div class="col-3 input-effect pull-left">
+                                                <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                                <label class="input-effect-text">Email</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect pull-left" style="margin-bottom:0px;margin-top:10px;">
+                                                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                                                <label class="input-effect-text">Nick name</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect pull-left" style="margin-top:0px;">
+                                                <!--<input class="effect-17 input-sm" type="text" placeholder="">
+                                    <label class="input-effect-text">Validate code</label>
+                                    <span class="focus-border" style="width:150px;"></span>
+                                    <img class="img-rounded" style="margin-bottom:3px;margin-left:2px;" width="150" height="30" src="../Images/user-ceshi.jpg" />-->
+                                                <div style="width:100%;height:75px;">
+                                                    <span style="font-size:12px;color:#ccc;">验证(这里准备换一种验证方式，不用输入验证码的)</span>
+                                                    <div style="width:100%;height:60px;">
+                                                        <span class="text-center" style="font-size:34px;font-weight:700;">WHAT THE FUCK</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-left" style="width:60%;">
+                                                <button class="btn btn-success" style="width:100%;margin-left:13px;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <!--<button type="button" class="btn btn-primary">提交更改</button>-->
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+
             <div class="header">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -190,7 +315,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="navbar-btn navbar-right" role="button" id="userBtn">
+                            <div class="navbar-btn navbar-right" role="button" id="userBtn"  data-target="#myModal" data-toggle="modal">
                                 <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user  popover-destroy" data-toggle="popover"></a>
                             </div>
                             <form class="navbar-form navbar-right" role="search">
@@ -277,14 +402,27 @@
             <div class="footer">
                 <div class="panel">
                     <div class="panel-body text-center text">
-                        个人网站演示|电话：66666666666|QQ:6666666666<br />
-                        什么号啊，什么那啥这啥地址啊啥的
+                        <span style="font-size:12px;color:#666;">
+                            个人网站演示 | 电话：66666666666 | QQ:6666666666<br />
+                            什么号啊，什么那啥这啥地址啊啥的
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript">
+        $(window).load(function () {
+            $(".col-3 input").val("");
+            $(".input-effect input").focusout(function () {
+                if ($(this).val() != "") {
+                    $(this).addClass("has-content");
+                } else {
+                    $(this).removeClass("has-content");
+                }
+            })
+        });
+
         $('#userId').each(function () {
             var element = $(this);
             var txt = '用户信息';
