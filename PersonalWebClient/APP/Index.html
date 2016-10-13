@@ -315,9 +315,15 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
-                                <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user  popover-destroy" data-toggle="popover"></a>
+                            <div class="navbar-btn navbar-right" role="button" id="userBtn"  data-target="#myModal" data-toggle="modal">
+                                <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user popover-destroy" data-toggle="popover">
+                                </a>
                             </div>
+                            <!--<div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
+                                <div>
+                                    <img width="35" class="img-circle img-responsive popover-destroy" src="../Images/user-ceshi.jpg" id="userId" data-toggle="popover" />
+                                </div>
+                            </div>-->
                             <form class="navbar-form navbar-right" role="search">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Search">
@@ -420,12 +426,14 @@
                 } else {
                     $(this).removeClass("has-content");
                 }
-            })
+            });
         });
 
         //这里进行改变是否登录了后的弹框
-        if (false) {
-            $('#userBtn').attr('data-target', 'ASAS');
+        function IsLogin(islogin) {
+            if (!islogin) {
+                $('#userBtn').attr('data-target', 'ASAS');
+            }
         }
 
         $('#userId').each(function () {
@@ -472,7 +480,7 @@
                       '<a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>' +
                   '</div>' +
                   '<div class="pull-left user-chick-p">' +
-                      '<button class="btn btn-default user-chick">签到</button>' +
+                      '<button class="btn btn-default user-chick" id="user-check">签到</button>' +
                   '</div>' +
               '</td>' +
           '</tr>' +
