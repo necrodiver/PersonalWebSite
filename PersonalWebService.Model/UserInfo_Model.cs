@@ -76,8 +76,7 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("验证码")]
-        [StringLength(6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
-        public string ValidateCode { get; set; }
+        public List<Coord> ValidateCode { get; set; }
     }
 
     /// <summary>
@@ -94,7 +93,7 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("验证码")]
         [StringLength(6, MinimumLength = 6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
-        public string ValidateCode { get; set; }
+        public List<Coord> ValidateCode { get; set; }
     }
 
     /// <summary>
@@ -239,5 +238,11 @@ namespace PersonalWebService.Model
         [DisplayName("个人简介")]
         [StringLength(300, MinimumLength = 1, ErrorMessage = "{0}长度不能超过300个字段，不能小于1个字段")]
         public string Introduce { get; set; }
+    }
+
+    public class Coord
+    {
+        public float x { get; set; }
+        public float y { get; set; }
     }
 }

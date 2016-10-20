@@ -22,10 +22,18 @@ namespace PersonalWebService.Controllers
         //登录
         public async Task<ReturnStatus_Model> Login([FromBody]UserLogin user)
         {
-            YZMHelper yz = new YZMHelper();
             return await Task.Run(() =>
             {
                 return accountBll.VerifyUserInfo(user);
+            });
+        }
+
+        [HttpPost]
+        [Route("GetVFC")]
+        public async Task<string> GetVarificationCode()
+        {
+            return await Task.Run(()=> {
+                return accountBll.GetVarificationCode();
             });
         }
 

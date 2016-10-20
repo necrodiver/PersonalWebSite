@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="APP\ClassifyList.html" />
     <Content Include="APP\Index.html" />
     <Content Include="App_GlobalResources\说明.txt" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -81,13 +82,41 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\input-style.css" />
+    <Content Include="Content\pieceNecc.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\c.png" />
+    <Content Include="Images\CeShiYanZheng.gif" />
+    <Content Include="Images\DM\test1.jpg" />
+    <Content Include="Images\DM\test10.jpg" />
+    <Content Include="Images\DM\test11.jpg" />
+    <Content Include="Images\DM\test12.jpg" />
+    <Content Include="Images\DM\test13.jpg" />
+    <Content Include="Images\DM\test14.jpg" />
+    <Content Include="Images\DM\test15.jpg" />
+    <Content Include="Images\DM\test16.jpg" />
+    <Content Include="Images\DM\test17.jpg" />
+    <Content Include="Images\DM\test18.jpg" />
+    <Content Include="Images\DM\test19.jpg" />
+    <Content Include="Images\DM\test2.jpg" />
+    <Content Include="Images\DM\test20.jpg" />
+    <Content Include="Images\DM\test21.jpg" />
+    <Content Include="Images\DM\test22.jpg" />
+    <Content Include="Images\DM\test23.jpg" />
+    <Content Include="Images\DM\test24.jpg" />
+    <Content Include="Images\DM\test3.jpg" />
+    <Content Include="Images\DM\test4.jpg" />
+    <Content Include="Images\DM\test5.jpg" />
+    <Content Include="Images\DM\test6.jpg" />
+    <Content Include="Images\DM\test7.jpg" />
+    <Content Include="Images\DM\test8.jpg" />
+    <Content Include="Images\DM\test9.jpg" />
     <Content Include="Images\erweima.png" />
     <Content Include="Images\qq.jpg" />
     <Content Include="Images\user-ceshi.jpg" />
     <Content Include="Images\bgImg.png" />
     <Content Include="Images\weibo.jpg" />
+    <Content Include="Images\x.png" />
     <Content Include="Scripts\angularjs\angular-animate.js" />
     <Content Include="Scripts\angularjs\angular-animate.min.js" />
     <Content Include="Scripts\angularjs\angular-aria.js" />
@@ -863,6 +892,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
     <Content Include="Scripts\grayscale.js" />
+    <Content Include="Scripts\Helper.js" />
     <Content Include="Scripts\hometitleAnimation.js" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />
@@ -963,6 +993,9 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.ja-jp.designer.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Index\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

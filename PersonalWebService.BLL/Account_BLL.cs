@@ -17,7 +17,6 @@ namespace PersonalWebService.BLL
         /// 每页显示的条数
         /// </summary>
         public static readonly int PageNum = 12;
-        private static YZMHelper yzM = new YZMHelper();
         private static AESEncryptS aesE = new AESEncryptS();
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
@@ -25,6 +24,17 @@ namespace PersonalWebService.BLL
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserInfo] WHERE {0}";
+        private static int[] index;
+
+        /// <summary>
+        /// 获取验证码
+        /// </summary>
+        /// <returns></returns>
+        public string GetVarificationCode()
+        {
+            return VerificationCode2_Helper.GetVerificationCodeAsImageDate(out index);
+        }
+
         /// <summary>
         /// 验证用户登录
         /// </summary>
@@ -38,10 +48,9 @@ namespace PersonalWebService.BLL
             rsModel.title = "用户登录";
 
             //验证码验证错误时
-            if (!user.ValidateCode.Equals(yzM.Text, StringComparison.OrdinalIgnoreCase))
+            if (VerificationCode2_Helper.IsPass(user.ValidateCode,index))
             {
                 rsModel.message = "验证码有误，请刷新验证码后重新输入";
-                yzM.CreateImage();
                 return rsModel;
             }
             UserInfo userInfo = new UserInfo();
@@ -54,7 +63,6 @@ namespace PersonalWebService.BLL
             {
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
                 rsModel.message = "服务器错误，请稍后重试";
-                yzM.CreateImage();
                 return rsModel;
             }
 
@@ -85,7 +93,6 @@ namespace PersonalWebService.BLL
                     rsModel.message = "用户名或密码有误，请重新输入登录账户";
                 }
             }
-            yzM.CreateImage();
             return rsModel;
         }
 
@@ -161,7 +168,6 @@ namespace PersonalWebService.BLL
                 rsModel.message = "服务器错误，请稍后重试";
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
-            yzM.CreateImage();
             return rsModel;
         }
 
@@ -327,7 +333,6 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
                 rsModel.message = "服务器错误，请稍后重试";
             }
-            yzM.CreateImage();
             return rsModel;
         }
         /// <summary>
