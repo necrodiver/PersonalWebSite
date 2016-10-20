@@ -35,7 +35,7 @@
 |NLog|4.0|错误日志记录功能|
 |Dapper|1.50.2|轻型的ORM框架，处理与数据库交互|
 |AES|*|使用32位密钥加密短字符串，这里用于加密用户密码|
-|GDI+绘图|*|生成自定义图片，这里用于处理生成验证码|
+|GDI+绘图|*|生成自定义图片，这里用于处理生成验证码，仿知乎的注册其中一个验证，[Demo地址](https://git.oschina.net/neclodiver/TestEleven/tree/master/VerificationCode?dir=1&filepath=VerificationCode&oid=eb0fc99d3b0d587336e71d1b5c64673115660ae6&sha=91b543fc8a6aa1939585942b8d74b40b55963a41)|
 |Trie|*|用于敏感词判断,[几个demo](http://git.oschina.net/neclodiver/TestEleven)|
 |BootStrap|3.3.0|用于搭建前端样式|
 
