@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
+    <style type="text/css">
+        .sss{
+            width:180px;
+            border:1px solid black;
+            margin:5px;
+            float:left;
+        }
+        img{
+            width:178px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="sss">asasas
+            <img />
+        </div>
+        <div class="sss">asasas<img/></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+        <div class="sss">asasas<img /></div>
+    </div>
+    <script>
+        $(function () {
+            var img = $('img');
+            for (var i = 1; i <= img.length; i++) {
+                $(img[i-1]).attr('src', '../Images/DM/test'+i+'.jpg');
+            }
+        });
+    </script>
+</body>
+</html>

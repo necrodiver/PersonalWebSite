@@ -894,6 +894,17 @@
     <Content Include="Scripts\grayscale.js" />
     <Content Include="Scripts\Helper.js" />
     <Content Include="Scripts\hometitleAnimation.js" />
+    <Content Include="Scripts\philter\jquery.philter.js" />
+    <Content Include="Scripts\philter\jquery.philter.min.js" />
+    <Content Include="Scripts\philter\philter.js" />
+    <Content Include="Scripts\philter\philter.min.js" />
+    <Content Include="Scripts\philter\svg\color.svg" />
+    <Content Include="Scripts\philter\svg\vintage-1.svg" />
+    <Content Include="Scripts\philter\svg\vintage-2.svg" />
+    <Content Include="Scripts\philter\svg\vintage-3.svg" />
+    <Content Include="Scripts\philter\svg\vintage-4.svg" />
+    <Content Include="Scripts\philter\svg\vintage-5.svg" />
+    <Content Include="Scripts\philter\svg\vintage-6.svg" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />
     <Content Include="Test\Index2.html" />
@@ -955,6 +966,8 @@
     <Content Include="Test\Test-input.html" />
     <Content Include="Test\Test6-css.html" />
     <Content Include="Test\Test7-ng-show.html" />
+    <Content Include="Test\Test_Float.html" />
+    <Content Include="Test\Test_Jottings.html" />
     <Content Include="Test\Test_User.html" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
+    <link href="../Content/pieceNecc.css" rel="stylesheet" />
+    <script src="../Scripts/philter/jquery.philter.js"></script>
+    <!--Masonry 用于创建瀑布流布局-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
+    <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
+    <style type="text/css">
+        .jotting_thumbnail {
+            width: 174px;
+            margin: 10px;
+            padding: 0;
+            border-width: 1px;
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            cursor: pointer;
+        }
+
+        .jotting_portrait {
+            padding: 10px;
+        }
+
+        .jotting_caption {
+            padding: 0 10px;
+        }
+
+        .jotting_portrait a .jotting_img {
+            padding: 10px;
+        }
+
+        .jotting_thumbnail .jotting_caption {
+            background-color: #fff;
+            font-size: 13px;
+        }
+
+            .jotting_thumbnail .jotting_caption .jotting_title {
+                font-size: 13px;
+                font-weight: bold;
+                margin: 5px 0;
+                text-align: left;
+            }
+
+            .jotting_thumbnail .jotting_caption .jotting_author {
+                font-size: 11px;
+                text-align: right;
+            }
+
+        .jotting_thumbnail:hover {
+            animation: myfirst 1.5s;
+            -moz-transform: rotate(-15deg);
+            -webkit-transform: rotate(-15deg);
+            -o-transform: rotate(-15deg);
+            -ms-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+        .jotting_img:hover{
+            -moz-transform: rotate(375deg);
+            -webkit-transform: rotate(375deg);
+            -o-transform: rotate(375deg);
+            -ms-transform: rotate(375deg);
+            transform: rotate(375deg);
+
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">论如何与逗比相处</div>
+                <div class="jotting_content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                </div>
+            </div>
+        </div>
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">论如何与逗比相处</div>
+                <div class="jotting_content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                </div>
+            </div>
+        </div>
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">论如何与逗比相处</div>
+                <div class="jotting_content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                </div>
+            </div>
+        </div>
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">论如何与逗比相处</div>
+                <div class="jotting_content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $.philter();
+        $('.parent').masonry();
+    </script>
+</body>
+</html>

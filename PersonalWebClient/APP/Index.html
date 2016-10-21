@@ -13,11 +13,18 @@
     <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
 
-    <!--lightbox-->
+    <!--Masonry 用于创建瀑布流布局-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
+    <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
+    <!--lightbox  用于图片扩大展示-->
     <script src="http://apps.bdimg.com/libs/lightbox/2.6/js/lightbox.min.js"></script>
     <link href="http://fineui.com/res/lightbox/css/lightbox.css" rel="stylesheet">
-    <!--imagesload-->
+    <!--imagesload  用于图片加载过程-->
     <script src="http://apps.bdimg.com/libs/imagesloaded/3.0.4/imagesloaded.pkgd.js"></script>
+
+
+    <!--用于图片灰度显示-->
+    <script src="../Scripts/philter/jquery.philter.js"></script>
     <style type="text/css">
         .all {
             max-width: 1000px;
@@ -166,14 +173,94 @@
             height:45px;
         }
     </style>
+
+    <style type="text/css">
+        .jotting_thumbnail {
+            width: 170px;
+            margin: 8px;
+            padding: 0;
+            border-width: 1px;
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            /*cursor: pointer;*/
+        }
+
+        .jotting_portrait {
+            padding: 10px;
+        }
+
+        .jotting_caption {
+            padding: 0 10px;
+        }
+
+        .jotting_portrait a .jotting_img {
+            padding: 10px;
+        }
+
+        .jotting_thumbnail .jotting_caption {
+            background-color: #fff;
+            font-size: 13px;
+        }
+
+            .jotting_thumbnail .jotting_caption .jotting_title {
+                font-size: 13px;
+                font-weight: bold;
+                margin: 5px 0;
+                text-align: left;
+            }
+
+            .jotting_thumbnail .jotting_caption .jotting_author {
+                font-size: 11px;
+                text-align: right;
+            }
+
+        .jotting_thumbnail:hover {
+            animation: myfirst 1.5s;
+            -moz-transform: rotate(-15deg);
+            -webkit-transform: rotate(-15deg);
+            -o-transform: rotate(-15deg);
+            -ms-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .jotting_img:hover {
+            -moz-transform: rotate(375deg);
+            -webkit-transform: rotate(375deg);
+            -o-transform: rotate(375deg);
+            -ms-transform: rotate(375deg);
+            transform: rotate(375deg);
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        .img_thumbnail:hover{
+            animation: myfirst 1.5s;
+            -moz-transform: rotate(-15deg);
+            -webkit-transform: rotate(-15deg);
+            -o-transform: rotate(-15deg);
+            -ms-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+    </style>
+
     <script type="text/template" id="Imageformat">
-        <div class="thumbnail pull-left">
-            <div class="imgs">
+        <div class="thumbnail img_thumbnail">
+            <div class="imgs" data-philter-grayscale="100 0">
                 <input type="hidden" value="test{0}.jpg">
             </div>
             <div class="caption">
                 <div class="title">图集第{0}张</div>
                 <div class="content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
                 </div>
                 <div class="author">
                     by <a target="_blank" href='http://www.notlives.cc/Image/Wallpaper/{0}.jpg'>NECC</a>
@@ -390,12 +477,176 @@
                             <div class="panel-body image-parent">
                                 <!--<img class="img-rounded modal-content" src="../Images/bgImg.png" />-->
                                 <!--8个子模块-->
+                                <div class="jotting_parent">
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">张三张三张三</div>
+                                            <div class="jotting_content">
+                                                张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">李四李四李四</div>
+                                            <div class="jotting_content">
+                                                李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">王五王五王五</div>
+                                            <div class="jotting_content">
+                                                王五王五王五王五王五王五王五王五王五王五王五王五
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">赵六赵六赵六</div>
+                                            <div class="jotting_content">
+                                                赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">论如何与逗比相处</div>
+                                            <div class="jotting_content">
+                                                大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">张三张三张三</div>
+                                            <div class="jotting_content">
+                                                张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">李四李四李四</div>
+                                            <div class="jotting_content">
+                                                李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">王五王五王五</div>
+                                            <div class="jotting_content">
+                                                王五王五王五王五王五王五王五王五王五王五王五王五
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">赵六赵六赵六</div>
+                                            <div class="jotting_content">
+                                                赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jotting_thumbnail thumbnail">
+                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
+                                            <a href="javascript:void(0);">
+                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="jotting_caption">
+                                            <div class="jotting_title">论如何与逗比相处</div>
+                                            <div class="jotting_content">
+                                                大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                                            </div>
+                                            <div class="jotting_author">
+                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="masonry" class="container-fluid">
-                                    <div class="thumbnail pull-left">
+                                </div>
+                                <div id="masonry_ghost" class="hide hidden">
+                                    <div class="thumbnail">
                                         <div class="imgs">
                                             <input type="hidden" value="linmeng1.png">
                                             <a href="../Images/DM/test1.jpg" data-lightbox="lightbox_" title="图集第1张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test1.jpg" />
+                                                <img src="../Images/DM/test1.jpg">
                                             </a>
                                         </div>
                                         <div class="caption">
@@ -404,77 +655,7 @@
                                                 简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
                                             </div>
                                             <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/65.jpg">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumbnail pull-left">
-                                        <div class="imgs">
-                                            <input type="hidden" value="linmeng1.png">
-                                            <a href="../Images/DM/test2.jpg" data-lightbox="lightbox_" title="图集第2张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test2.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="caption">
-                                            <div class="title">图集第2张</div>
-                                            <div class="content">
-                                                简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
-                                            </div>
-                                            <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/2.jpg">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumbnail pull-left">
-                                        <div class="imgs">
-                                            <input type="hidden" value="linmeng1.png">
-                                            <a href="../Images/DM/test3.jpg" data-lightbox="lightbox_" title="图集第3张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test3.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="caption">
-                                            <div class="title">图集第3张</div>
-                                            <div class="content">
-                                                简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
-                                            </div>
-                                            <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/3.jpg">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumbnail pull-left">
-                                        <div class="imgs">
-                                            <input type="hidden" value="linmeng1.png">
-                                            <a href="../Images/DM/test4.jpg" data-lightbox="lightbox_" title="图集第4张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test4.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="caption">
-                                            <div class="title">图集第4张</div>
-                                            <div class="content">
-                                                简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
-                                            </div>
-                                            <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/4.jpg">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="masonry_ghost" class="hide hidden">
-                                    <div class="thumbnail pull-left">
-                                        <div class="imgs">
-                                            <input type="hidden" value="linmeng1.png">
-                                            <a href="../Images/DM/test65.jpg" data-lightbox="lightbox_" title="图集第65张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test65.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="caption">
-                                            <div class="title">图集第65张</div>
-                                            <div class="content">
-                                                简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
-                                            </div>
-                                            <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/65.jpg">NECC</a>
+                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/1.jpg">NECC</a>
                                             </div>
                                         </div>
                                     </div>
@@ -540,6 +721,7 @@
             </div>
         </div>
     </div>
+    <script src="../Scripts/Helper.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
             $(".col-3 input").val("");
@@ -663,7 +845,7 @@
             '</div>';
         }
 
-        $('#userId').popover('toggle');
+        $('#userId').popover('hide');
 
         $.post('VCode.ashx', { 'M': 'A' }, function (e) {
             $('#img').attr('src', e);
@@ -711,6 +893,7 @@
             });
             $('.yz-span').remove();
         }
+        $('.jotting_parent').masonry();
     </script>
 </body>
 </html>

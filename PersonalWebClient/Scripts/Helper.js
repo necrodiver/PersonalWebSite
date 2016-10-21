@@ -18,7 +18,7 @@
 
 $(function () {
 
-    for (var i = 1; i < 224; i++) {
+    for (var i = 1; i < 9; i++) {
         var bd = "<div class='thumbnail'>" +
                "<div class='imgs'>" +
                     "<input type='hidden' value='test" + i + ".jpg'>" +
@@ -32,11 +32,11 @@ $(function () {
                    "</div>" +
                "</div>" +
             "</div>";
-        var data = $("#htmlformat").html().format(i);
-        $("#masonry_ghost").append(data);
+        var data = $("#Imageformat").html().format(i);
+        $("#masonry").append(data);
     }
 
-    var ghostNode = $('#masonry_ghost').find('.thumbnail'), i, ghostIndexArray = [];
+    var ghostNode = $('#masonry').find('.thumbnail'), i, ghostIndexArray = [];
     var ghostCount = ghostNode.length;
     for (i = 0; i < ghostCount; i++) {
         ghostIndexArray[i] = i;
@@ -56,7 +56,7 @@ $(function () {
 
     function getNewItems() {
         var newItemContainer = $('<div/>');
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 8; i++) {
             if (currentIndex < ghostCount) {
                 newItemContainer.append(ghostNode.get(ghostIndexArray[currentIndex]));
                 currentIndex++;
@@ -76,7 +76,7 @@ $(function () {
 
             var imgNames = imgsNode.find('input[type=hidden]').val().split(',');
             $.each(imgNames, function (index, item) {
-                imgsNode.append('<a href="Content/Images/' + item + '" data-lightbox="' + lightboxName + '" title="' + title + '"><img src="Content/Images/' + item + '" /></a>');
+                imgsNode.append('<a href="../Images/DM/' + item + '" data-lightbox="' + lightboxName + '" title="' + title + '"><img src="../Images/DM/' + item + '" /></a>');
             });
         });
     }
@@ -121,9 +121,7 @@ $(function () {
             if (!imagesLoading) {
                 appendToMasonry();
             }
-
         }
-
     });
 
     //此方法不可删除
@@ -134,4 +132,7 @@ $(function () {
         }
         return '#' + rand;
     }
+
+    //图片灰度展示
+    $.philter();
 });
