@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
+    <style type="text/css">
+        .con {
+            width: 1000px;
+            height: 600px;
+            background: #666;
+            color: white;
+            font-weight: 700;
+            border: 2px solid white;
+        }
+
+        .anchor_nav {
+            vertical-align: middle;
+            right: 20px;
+            top: 100px;
+            position: fixed;
+        }
+
+        .anchor_link {
+            color: #337ab7;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+
+            .anchor_link:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+        .anchor_title {
+            width: 65px;
+            height: 60px;
+            border: 1px solid gray;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            background-color: white;
+        }
+
+            .anchor_title i {
+                width: 65px;
+                text-align: center;
+                padding-right: 3px;
+                margin-top: 8px;
+                font-size: 20px;
+            }
+
+            .anchor_title div {
+                padding-right: 3px;
+                width: 65px;
+                text-align: center;
+            }
+
+            .anchor_title:hover {
+                -moz-transform: rotateY(330deg),rotateX(45dge);
+                -webkit-transform: rotateY(330deg);
+                -o-transform: rotateY(330deg);
+                -ms-transform: rotateY(330deg);
+                transform: rotateY(330deg);
+                -webkit-transition: all 0.7s ease-in-out;
+                -moz-transition: all 0.7s ease-in-out;
+                -o-transition: all 0.7s ease-in-out;
+                transition: all 0.7s ease-in-out;
+            }
+            .anchor_home,.anchor_goHome{
+                font-size:23px;
+                padding-top:15px;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="con" id="section-0">1</div>
+        <div class="con" id="section-1">2</div>
+        <div class="con" id="section-2">3</div>
+        <div class="con" id="section-3">4</div>
+        <div class="con" id="section-4">5</div>
+        <div class="con" id="section-5">6</div>
+        <div class="con" id="section-6">7</div>
+    </div>
+
+    <div class="anchor_nav affix" data-spy="affix">
+        <a class="anchor_link" href="#section-0">
+            <div class="anchor_title" title="首页">
+                <div class="glyphicon glyphicon-home anchor_home"></div>
+            </div>
+        </a>
+        <a class="anchor_link" href="#section-2">
+            <div class="anchor_title">
+                <i class="glyphicon glyphicon-thumbs-up"></i>
+                <div>热门</div>
+            </div>
+        </a>
+        <a class="anchor_link" href="#section-3">
+            <div class="anchor_title">
+                <i class="glyphicon glyphicon-leaf"></i>
+                <div>最新</div>
+            </div>
+        </a>
+        <a class="anchor_link" href="#section-4">
+            <div class="anchor_title">
+                <i class="glyphicon glyphicon-star-empty"></i>
+                <div>推荐</div>
+            </div>
+        </a>
+        <a class="anchor_link" href="#section-5">
+            <div class="anchor_title"  title="回顶部">
+                <div class="glyphicon glyphicon-plane anchor_goHome"></div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

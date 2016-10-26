@@ -1,0 +1,63 @@
+﻿.moduleParent {
+    padding: 0;
+    min-height: 350px;
+    margin: 0 auto;
+}
+
+    .moduleParent .thumbnail {
+        width: 214px;
+        margin: 10px;
+        padding: 0;
+        border-width: 1px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    }
+
+        .moduleParent .thumbnail .imgs {
+            padding: 10px;
+        }
+
+            .moduleParent .thumbnail .imgs img {
+                margin-bottom: 5px;
+                width: 240px;
+            }
+
+        .moduleParent .thumbnail .caption {
+            background-color: #fff;
+            padding-top: 0;
+            font-size: 13px;
+        }
+
+            .moduleParent .thumbnail .caption .title {
+                font-size: 13px;
+                font-weight: bold;
+                margin: 5px 0;
+                text-align: left;
+            }
+
+            .moduleParent .thumbnail .caption .author {
+                font-size: 11px;
+                text-align: right;
+            }
+
+.lightbox .lb-image {
+    max-width: none;
+}
+
+/*这个属性在bootstrap v2.1.1中存在，但是到了v3.3.4中被替换了，不知道此属性是否被模块化到另一部分中*/
+.thumbnail {
+    display: block;
+    padding: 4px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}

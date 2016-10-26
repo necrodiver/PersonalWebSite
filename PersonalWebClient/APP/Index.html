@@ -12,6 +12,7 @@
     <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
 
     <!--Masonry 用于创建瀑布流布局-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
@@ -175,7 +176,7 @@
     </style>
 
     <style type="text/css">
-        .jotting_thumbnail {
+        .jotting_parent .jotting_thumbnail {
             width: 170px;
             margin: 8px;
             padding: 0;
@@ -225,6 +226,7 @@
             -moz-transition: all 0.1s ease-in-out;
             -o-transition: all 0.1s ease-in-out;
             transition: all 0.1s ease-in-out;
+            z-index:2;
         }
 
         .jotting_img:hover {
@@ -249,6 +251,68 @@
             -moz-transition: all 0.1s ease-in-out;
             -o-transition: all 0.1s ease-in-out;
             transition: all 0.1s ease-in-out;
+            z-index:2;
+        }
+    </style>
+
+    <style type="text/css">
+        .anchor_nav {
+            vertical-align: middle;
+            right: 20px;
+            top: 150px;
+            position: fixed;
+            z-index:100;
+        }
+         
+        .anchor_link {
+            color: #337ab7;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+
+            .anchor_link:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+        .anchor_title {
+            width: 65px;
+            height: 60px;
+            border: 1px solid gray;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+            background-color: white;
+        }
+
+            .anchor_title i {
+                width: 65px;
+                text-align: center;
+                padding-right: 3px;
+                margin-top: 8px;
+                font-size: 20px;
+            }
+
+            .anchor_title div {
+                padding-right: 3px;
+                width: 65px;
+                text-align: center;
+            }
+
+            .anchor_title:hover {
+                -moz-transform: rotateY(330deg);
+                -webkit-transform: rotateY(330deg);
+                -o-transform: rotateY(330deg);
+                -ms-transform: rotateY(330deg);
+                transform: rotateY(330deg);
+                -webkit-transition: all 0.7s ease-in-out;
+                -moz-transition: all 0.7s ease-in-out;
+                -o-transition: all 0.7s ease-in-out;
+                transition: all 0.7s ease-in-out;
+            }
+
+        .anchor_home, .anchor_goHome {
+            font-size: 23px;
+            padding-top: 15px;
         }
     </style>
 
@@ -256,6 +320,7 @@
         <div class="thumbnail img_thumbnail">
             <div class="imgs" data-philter-grayscale="100 0">
                 <input type="hidden" value="test{0}.jpg">
+                <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
             </div>
             <div class="caption">
                 <div class="title">图集第{0}张</div>
@@ -263,13 +328,31 @@
                     大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
                 </div>
                 <div class="author">
-                    by <a target="_blank" href='http://www.notlives.cc/Image/Wallpaper/{0}.jpg'>NECC</a>
+                    by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="Jottingformat">
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">张三张三张三{0}</div>
+                <div class="jotting_content">
+                    张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
                 </div>
             </div>
         </div>
     </script>
 
-    <link href="../Content/pieceNecc.css" rel="stylesheet" />
+    <link href="../Content/imgbox.css" rel="stylesheet" />
 
     <!--参考自：http://how2j.cn/k/boostrap/boostrap-paging/492.html
     and    http://bootswatch.com/lumen/#navbar-->
@@ -277,8 +360,39 @@
 <body>
     <div class="all" id="all">
         <div class="col-md-12">
-
             <div class="supplement">
+                <!--侧边导航-->
+                <div class="anchor_nav affix" data-spy="affix">
+                    <!--<a class="anchor_link" href="#all">
+                        <div class="anchor_title" title="首页">
+                            <div class="glyphicon glyphicon-home anchor_home"></div>
+                        </div>
+                    </a>-->
+                    <a class="anchor_link" href="#cont-top">
+                        <div class="anchor_title">
+                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                            <div>热门</div>
+                        </div>
+                    </a>
+                    <a class="anchor_link" href="#cont-new">
+                        <div class="anchor_title">
+                            <i class="glyphicon glyphicon-leaf"></i>
+                            <div>最新</div>
+                        </div>
+                    </a>
+                    <a class="anchor_link" href="#cont-recommend">
+                        <div class="anchor_title">
+                            <i class="glyphicon glyphicon-star-empty"></i>
+                            <div>推荐</div>
+                        </div>
+                    </a>
+                    <a class="anchor_link" href="#all">
+                        <div class="anchor_title" title="回顶部">
+                            <div class="glyphicon glyphicon-plane anchor_goHome"></div>
+                        </div>
+                    </a>
+                </div>
+
                 <style type="text/css">
                     .login-modelbody {
                         z-index: 0;
@@ -404,7 +518,6 @@
                     </div><!-- /.modal -->
                 </div>
             </div>
-
             <div class="header">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -464,205 +577,6 @@
             <div class="content">
                 <div>
                     <!--class="well"-->
-                    <div class="cont cont-new" id="cont-new">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="nav">
-                                    <div class="pull-left">NEW</div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn-link">more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-body image-parent">
-                                <!--<img class="img-rounded modal-content" src="../Images/bgImg.png" />-->
-                                <!--8个子模块-->
-                                <div class="jotting_parent">
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">张三张三张三</div>
-                                            <div class="jotting_content">
-                                                张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">李四李四李四</div>
-                                            <div class="jotting_content">
-                                                李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">王五王五王五</div>
-                                            <div class="jotting_content">
-                                                王五王五王五王五王五王五王五王五王五王五王五王五
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">赵六赵六赵六</div>
-                                            <div class="jotting_content">
-                                                赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">论如何与逗比相处</div>
-                                            <div class="jotting_content">
-                                                大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">张三张三张三</div>
-                                            <div class="jotting_content">
-                                                张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">李四李四李四</div>
-                                            <div class="jotting_content">
-                                                李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四李四
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">王五王五王五</div>
-                                            <div class="jotting_content">
-                                                王五王五王五王五王五王五王五王五王五王五王五王五
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">赵六赵六赵六</div>
-                                            <div class="jotting_content">
-                                                赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六赵六
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jotting_thumbnail thumbnail">
-                                        <div class="jotting_portrait" data-philter-grayscale="70 0">
-                                            <a href="javascript:void(0);">
-                                                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="jotting_caption">
-                                            <div class="jotting_title">论如何与逗比相处</div>
-                                            <div class="jotting_content">
-                                                大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
-                                            </div>
-                                            <div class="jotting_author">
-                                                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="masonry" class="container-fluid">
-                                </div>
-                                <div id="masonry_ghost" class="hide hidden">
-                                    <div class="thumbnail">
-                                        <div class="imgs">
-                                            <input type="hidden" value="linmeng1.png">
-                                            <a href="../Images/DM/test1.jpg" data-lightbox="lightbox_" title="图集第1张&nbsp;&nbsp;(by NECC)">
-                                                <img src="../Images/DM/test1.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="caption">
-                                            <div class="title">图集第1张</div>
-                                            <div class="content">
-                                                简介建借鉴借鉴结。。。说啊说啊刷说爱简单单大卡卡是逗你玩end
-                                            </div>
-                                            <div class="author">
-                                                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/1.jpg">NECC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="cont cont-top" id="cont-top">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -674,14 +588,29 @@
                                 </div>
                             </div>
                             <div class="panel-body image-parent">
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
+                                <div id="jotting_Top" class="jotting_parent">
+                                </div>
+                                <div id="scrawl_Top" class="container-fluid moduleParent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont cont-new" id="cont-new">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="nav">
+                                    <div class="pull-left">NEW</div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn-link">more</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body image-parent">
+                                <!--子模块-->
+                                <div id="jotting_New" class="jotting_parent">
+                                </div>
+                                <div id="scrawl_New" class="container-fluid moduleParent">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -696,14 +625,10 @@
                                 </div>
                             </div>
                             <div class="panel-body image-parent">
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
-                                <img class="img-rounded modal-content" src="../Images/bgImg.png" />
+                                <div id="jotting_RE" class="jotting_parent">
+                                </div>
+                                <div id="scrawl_RE" class="container-fluid moduleParent">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -721,179 +646,6 @@
             </div>
         </div>
     </div>
-    <script src="../Scripts/Helper.js"></script>
-    <script type="text/javascript">
-        $(window).load(function () {
-            $(".col-3 input").val("");
-            $(".input-effect input").focusout(function () {
-                if ($(this).val() != "") {
-                    $(this).addClass("has-content");
-                } else {
-                    $(this).removeClass("has-content");
-                }
-            });
-        });
-
-        //这里进行改变是否登录了后的弹框
-        function IsLogin(islogin) {
-            if (!islogin) {
-                $('#userBtn').attr('data-target', 'ASAS');
-            }
-        }
-
-        $('#userId').each(function () {
-            var element = $(this);
-            var txt = '用户信息';
-            element.popover({
-                trigger: 'manual',
-                placement: 'bottom', //top, bottom, left or right
-                title: txt,
-                html: 'true',
-                content: ContentMethod1(),
-            }).on("mouseenter", function () {
-                var _this = this;
-                $(this).popover("show");
-                $(this).siblings(".popover").on("mouseleave", function () {
-                    $(_this).popover('hide');
-                });
-            }).on("mouseleave", function () {
-                var _this = this;
-                setTimeout(function () {
-                    if (!$(".popover:hover").length) {
-                        $(_this).popover("hide")
-                    }
-                }, 100);
-            });
-        });
-        function ContentMethod() {
-            return '<table class="table table-default" style="width:200px;">' +
-                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-user"></i> 昵称</td><td>STAR</td></tr>' +
-                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-star-empty"></i> 等级</td><td>lv.4</td></tr>' +
-                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-bell"></i> 消息</td><td><a href="javascript:(0);">12</a></td></tr>' +
-                        '<tr><td style="width:80px;">涂鸦</td><td><a href="javascript:(0);">53</a></td></tr>' +
-                        '<tr><td colspan="2" text-align="center"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-signout"></i> 退出</button></td></tr>'
-            '</table>';
-        }
-        function ContentMethod1() {
-            return '<table class="table table-default" style="width:248px;">' +
-          '<tr>' +
-              '<td colspan="3">' +
-                  '<div class="pull-left">' +
-                      '<a href="#"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>' +
-                  '</div>' +
-                  '<div class="pull-left user-name">' +
-                      '<a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>' +
-                  '</div>' +
-                  '<div class="pull-left user-chick-p">' +
-                      '<button class="btn btn-default user-chick" id="user-check">签到</button>' +
-                  '</div>' +
-              '</td>' +
-          '</tr>' +
-          '<tr>' +
-             '<td colspan="3">' +
-                  '<div class="pull-left user-dgf">' +
-                      '<a href="#" class="user-dgf-link">' +
-                          '<div class="user-dgf-link-1"><span>12314</span></div>' +
-                          '<div class="user-dgf-link-2"><span>动态</span></div>' +
-                      '</a>' +
-                  '</div>' +
-                  '<div class="pull-left user-dgf">' +
-                      '<a href="#" class="user-dgf-link">' +
-                          '<div class="user-dgf-link-1"><span>2423</span></div>' +
-                          '<div class="user-dgf-link-2"><span>关注</span></div>' +
-                     ' </a>' +
-                  '</div>' +
-                  '<div class="pull-left user-dgf-1">' +
-                      '<a href="#" class="user-dgf-link">' +
-                          '<div class="user-dgf-link-1"><span>236234</span></div>' +
-                          '<div class="user-dgf-link-2"><span>粉丝</span></div>' +
-                      '</a>' +
-                  '</div>' +
-              '</td>' +
-          '</tr>' +
-          '<tr>' +
-              '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-star-empty"></i> 等级</td>' +
-              '<td><a href="#">Lv.4<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
-          '</tr>' +
-          '<tr>' +
-              '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-bell"></i> 消息</td>' +
-              '<td><a href="#">12<i class="glyphicon glyphicon-chevron-right pull-right user-right"></i></a></td>' +
-          '</tr>' +
-          '<tr>' +
-              '<td colspan="3" class="user-dxg"><i class="glyphicon glyphicon-cog"></i> <a href="#" class="user-set">个人信息设置<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
-          '</tr>' +
-          '<tr>' +
-              '<td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> 退出</button></td>' +
-          '</tr>' +
-      '</table>'
-        }
-
-        function ContentMethod2() {
-            return '<div class="user-login-content">' +
-                '<div class="user-login-prompt">' +
-                    '<div class="pull-left">' +
-                        '<a href="#" title="当前未登录"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" / ></a>' +
-                    '</div>' +
-                '<div class="pull-left user-login-prompt-2">' +
-                    '<span>你的用户还未登录？</span>' +
-                '</div>' +
-            '</div>' +
-            '<div class="user-login-dp">' +
-                '<div><button class="btn btn-primary btn-sm user-login-d">登录<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
-                '<div><button class="btn btn-info btn-sm user-login-d">注册<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
-                '</div>' +
-            '</div>';
-        }
-
-        $('#userId').popover('hide');
-
-        $.post('VCode.ashx', { 'M': 'A' }, function (e) {
-            $('#img').attr('src', e);
-        });
-        $('#img').click(function (e) {
-            var x = e.offsetX - $('body').offset().top - 7;
-            var y = e.offsetY - $('body').offset().left - 7;
-            var style = 'style="left:' + x + 'px;top:' + y + 'px;"';
-            var span = '<span class="yz-span" ' + style + '></span>';
-            $('#yz-Content1').append(span);
-            bindingClick();
-        });
-        $('#img2').click(function (e) {
-            var x = e.offsetX - $('body').offset().top - 7;
-            var y = e.offsetY - $('body').offset().left - 7;
-            var style = 'style="left:' + x + 'px;top:' + y + 'px;"';
-            var span = '<span class="yz-span" ' + style + '></span>';
-            $('#yz-Content2').append(span);
-            bindingClick();
-        });
-        function bindingClick() {
-            $('.yz-span').on({
-                'click': function () {
-                    $(this).remove();
-                }
-            });
-        }
-
-        function Tijiao() {
-            var x1Str = $($('.yz-span')[0]).css('left');
-            var y1Str = $($('.yz-span')[0]).css('top');
-            var asas = 'adadadadad';
-            var x1 = x1Str.substr(0, x1Str.length - 2);
-            var y1 = y1Str.substr(0, y1Str.length - 2);
-            var x2 = x1;
-            var y2 = y1;
-            if ($('.yz-span').length > 1) {
-                var x2Str = $($('.yz-span')[1]).css('left');
-                var y2Str = $($('.yz-span')[1]).css('top');
-                x2 = x2Str.substr(0, x2Str.length - 2);
-                y2 = y2Str.substr(0, y2Str.length - 2);
-            }
-            $.post('VCode.ashx', { 'M': 'B', 'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2 }, function (e) {
-                alert(e);
-            });
-            $('.yz-span').remove();
-        }
-        $('.jotting_parent').masonry();
-    </script>
+    <script src="../Scripts/index.js"></script>
 </body>
 </html>
