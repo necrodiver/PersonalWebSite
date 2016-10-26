@@ -186,7 +186,6 @@ body {
     }
 
 .jotting_thumbnail:hover {
-    animation: myfirst 1.5s;
     -moz-transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -o-transform: rotate(-15deg);
@@ -212,17 +211,28 @@ body {
 }
 
 .img_thumbnail:hover {
-    animation: myfirst 1.5s;
     -moz-transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -o-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
     transform: rotate(-15deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.scrowl_img:hover{
+    -moz-transform:scale(0.95,0.95);
+    -webkit-transform: scale(0.95,0.95);
+    -o-transform: scale(0.95,0.95);
+    -ms-transform:scale(0.95,0.95);
+    transform:scale(0.95,0.95);
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-    z-index: 2;
 }
 
 /*侧边栏*/

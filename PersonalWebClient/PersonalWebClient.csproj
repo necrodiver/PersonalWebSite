@@ -933,6 +933,7 @@
     <Content Include="Scripts\philter\svg\vintage-4.svg" />
     <Content Include="Scripts\philter\svg\vintage-5.svg" />
     <Content Include="Scripts\philter\svg\vintage-6.svg" />
+    <Content Include="Test\cloud10.png" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />
     <Content Include="Test\Index2.html" />
@@ -995,6 +996,7 @@
     <Content Include="Test\Test6-css.html" />
     <Content Include="Test\Test7-ng-show.html" />
     <Content Include="Test\Test_affix.html" />
+    <Content Include="Test\Test_Cloud_Animation.html" />
     <Content Include="Test\Test_Float.html" />
     <Content Include="Test\Test_Jottings.html" />
     <Content Include="Test\Test_User.html" />
