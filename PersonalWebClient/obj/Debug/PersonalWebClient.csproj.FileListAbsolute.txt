@@ -49,3 +49,4 @@ F:\Codes\PersonalWebSite\PersonalWebClient\bin\zh-Hans\EntityFramework.resources
 F:\Codes\PersonalWebSite\PersonalWebClient\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 F:\Codes\PersonalWebSite\PersonalWebClient\obj\Debug\PersonalWebClient.dll
 F:\Codes\PersonalWebSite\PersonalWebClient\obj\Debug\PersonalWebClient.pdb
+F:\Codes\PersonalWebSite\PersonalWebClient\obj\Debug\PersonalWebClient.csprojResolveAssemblyReference.cache
