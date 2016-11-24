@@ -16,8 +16,9 @@
     }
 });
 
-$(function () {
 
+$(function () {
+    return;
     for (var i = 1; i < 9; i++) {
         var bd = "<div class='thumbnail'>" +
                "<div class='imgs'>" +

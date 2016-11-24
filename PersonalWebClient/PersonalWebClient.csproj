@@ -84,6 +84,8 @@
     <Content Include="Content\imgbox.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\input-style.css" />
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\list.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\c.png" />
@@ -139,6 +141,10 @@
     <Content Include="Images\DM\test8.jpg" />
     <Content Include="Images\DM\test9.jpg" />
     <Content Include="Images\erweima.png" />
+    <Content Include="Images\listbox\close.png" />
+    <Content Include="Images\listbox\loading.gif" />
+    <Content Include="Images\listbox\next.png" />
+    <Content Include="Images\listbox\prev.png" />
     <Content Include="Images\qq.jpg" />
     <Content Include="Images\user-ceshi.jpg" />
     <Content Include="Images\bgImg.png" />
@@ -921,7 +927,11 @@
     <Content Include="Scripts\grayscale.js" />
     <Content Include="Scripts\Helper.js" />
     <Content Include="Scripts\hometitleAnimation.js" />
+    <Content Include="Scripts\imagesloaded.pkgd-1.js" />
+    <Content Include="Scripts\imagesloaded.pkgd.js" />
     <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\lightbox.min.js" />
+    <Content Include="Scripts\masonry.pkgd.js" />
     <Content Include="Scripts\philter\jquery.philter.js" />
     <Content Include="Scripts\philter\jquery.philter.min.js" />
     <Content Include="Scripts\philter\philter.js" />
