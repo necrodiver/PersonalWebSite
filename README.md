@@ -38,6 +38,8 @@
 |GDI+绘图|*|生成自定义图片，这里用于处理生成验证码，仿知乎的注册其中一个验证，[Demo地址](https://git.oschina.net/neclodiver/TestEleven/tree/master/VerificationCode?dir=1&filepath=VerificationCode&oid=eb0fc99d3b0d587336e71d1b5c64673115660ae6&sha=91b543fc8a6aa1939585942b8d74b40b55963a41)|
 |Trie|*|用于敏感词判断,[几个demo](http://git.oschina.net/neclodiver/TestEleven)|
 |BootStrap|3.3.0|用于搭建前端样式|
+|TypeScript|*|用于前端代码展示|
+|AngularJS|2.0|用于前端框架搭建|
 
 
 ------
