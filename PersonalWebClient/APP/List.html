@@ -24,6 +24,14 @@
     <link href="../Content/index.css" rel="stylesheet" />
     <!--用于图片灰度显示-->
     <script src="../Scripts/philter/jquery.philter.js"></script>
+    <link href="../Content/list.css" rel="stylesheet" />
+    <link href="../Content/imgbox.css" rel="stylesheet" />
+    <script src="../Scripts/Helper.js"></script>
+    <script type="text/template" id="tagTemplate">
+        <button class="btn {0} btn-xs" type="button">
+            {1} <span class="badge">{2}</span>
+        </button>
+    </script>
     <script type="text/template" id="Imageformat">
         <div class="thumbnail img_thumbnail">
             <div class="imgs" data-philter-grayscale="100 0">
@@ -45,11 +53,11 @@
         <div class="jotting_thumbnail thumbnail">
             <div class="jotting_portrait" data-philter-grayscale="70 0">
                 <a href="javascript:void(0);">
-                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/Face/{0}.jpg" />
                 </a>
             </div>
             <div class="jotting_caption">
-                <div class="jotting_title">张三张三张三{0}</div>
+                <div class="jotting_title">张三张三张三{1}</div>
                 <div class="jotting_content">
                     张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
                 </div>
@@ -59,9 +67,6 @@
             </div>
         </div>
     </script>
-    <link href="../Content/list.css" rel="stylesheet" />
-    <link href="../Content/imgbox.css" rel="stylesheet" />
-    <script src="../Scripts/Helper.js"></script>
 </head>
 <body>
     <div class="all" id="all">
@@ -95,6 +100,14 @@
                     <a class="anchor_link" href="#all">
                         <div class="anchor_title" title="回顶部">
                             <div class="glyphicon glyphicon-plane anchor_goHome"></div>
+                        </div>
+                    </a>
+                </div>
+                <!--侧边导航List-->
+                <div class="anchor_Top affix panel" data-spy="affix">
+                    <a class="anchor_linkTop" href="#all">
+                        <div class="anchor_titleTop" title="回顶部">
+                            <div class="glyphicon glyphicon-arrow-up"></div>
                         </div>
                     </a>
                 </div>
@@ -291,117 +304,6 @@
             </div>
         </div>
     </div>
-    <script type="text/template" id="tagTemplate">
-        <button class="btn {0} btn-xs" type="button">
-            {1} <span class="badge">{2}</span>
-        </button>
-    </script>
-    <script type="text/template" id="Imageformat">
-        <div class="thumbnail img_thumbnail">
-            <div class="imgs" data-philter-grayscale="100 0">
-                <input type="hidden" value="test{0}.jpg">
-                <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
-            </div>
-            <div class="caption">
-                <div class="title">图集第{0}张</div>
-                <div class="content">
-                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
-                </div>
-                <div class="author">
-                    by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="Jottingformat">
-        <div class="jotting_thumbnail thumbnail">
-            <div class="jotting_portrait" data-philter-grayscale="70 0">
-                <a href="javascript:void(0);">
-                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                </a>
-            </div>
-            <div class="jotting_caption">
-                <div class="jotting_title">张三张三张三{0}</div>
-                <div class="jotting_content">
-                    张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
-                </div>
-                <div class="jotting_author">
-                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                </div>
-            </div>
-        </div>
-    </script>
-    <script>
-        var maxCount = 49;
-        var everyCount = 6;
-        var length = 0;
-        var imagesLoading = false;
-        var $container = $('#masonry');
-        //判断当前浏览器窗口滚动条是否离底部距离小于20
-        $(window).scroll(function () {
-            if ($(document).height() - $(window).height() - $(document).scrollTop() < 20) {
-                if (!imagesLoading) {
-                    imagesLoading = true;
-                    appendToMasonry();
-                    imagesLoading = false;
-                }
-            }
-        });
-        function appendToMasonry() {
-            var data = "";
-            var l = Math.ceil(everyCount * length);
-            var min = length * everyCount;
-            if (everyCount * (length + 1) < maxCount) {
-                var max = (length + 1) * everyCount;
-                for (var i = min + 1; i < max; i++) {
-                    data += $("#Imageformat").html().format(i);
-                    data += $("#Jottingformat").html().format(i);
-                }
-            }
-            else if (min < maxCount && everyCount * (length + 1) > maxCount) {
-                for (var j = min; j < maxCount; j++) {
-                    data += $("#Imageformat").html().format(j);
-                    data += $("#Jottingformat").html().format(i);
-                }
-            }
-            else
-                return;
-            ++length;
-
-            var $data = $(data);
-            if (length > 1) {
-                $container.imagesLoaded().always(function () {
-                    $container.append($data).masonry('appended', $data).masonry();
-                });
-                return;
-            }
-
-            $container.append($data);
-            $container.imagesLoaded(function () {
-                $container.masonry({
-                    itemSelector: '.thumbnail',
-                    isAnimated: true,
-                    transitionDuration: '0.6s'
-                });
-            });
-        }
-
-        $(function () {
-            var tagTemplate = $('#tagTemplate').html();
-            var tags = ["btn-info", "btn-success", "btn-warning", "btn-danger", "btn-inverse", "btn-default"];
-            var tags_text = ["涂鸦-原画", "涂鸦-插画", "涂鸦-试手", "涂鸦-漫画", "涂鸦-概念设计", "涂鸦-临摹"];
-            var randm = parseInt(Math.random() * 20);
-            for (var i = 0; i < randm; i++) {
-                var rand = parseInt(Math.random() * 5);
-                var evrandCount = parseInt(Math.random() * 10000);
-                $('.lb-tag-content').append(tagTemplate.format(tags[rand], tags_text[rand] + i, evrandCount));
-            }
-
-            appendToMasonry();
-
-            //图片灰度展示
-            $.philter();
-        });
-    </script>
+    <script src="../Scripts/list.js"></script>
 </body>
 </html>
