@@ -19,7 +19,7 @@
 
 $(function () {
     return;
-    for (var i = 1; i < 9; i++) {
+    for (var i = 1; i < 49; i++) {
         var bd = "<div class='thumbnail'>" +
                "<div class='imgs'>" +
                     "<input type='hidden' value='test" + i + ".jpg'>" +
@@ -33,7 +33,8 @@ $(function () {
                    "</div>" +
                "</div>" +
             "</div>";
-        var data = $("#Imageformat").html().format(i);
+        //var data = $("#Imageformat").html().format(i);
+        var data = bd.format(i);
         $("#masonry").append(data);
     }
 

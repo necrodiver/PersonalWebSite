@@ -91,7 +91,7 @@
 /*tag标签*/
 .lb-header {
     background-color: #f7f7f7;
-    padding-bottom:15px;
+    padding-bottom: 15px;
 }
 
 .lb-tag-header {
@@ -117,6 +117,24 @@
         margin-left: 5px;
         margin-top: 3px;
     }
-    .content .lb-content{
-        padding-left:15px;
-    }
+
+.content .lb-content {
+    padding-left: 15px;
+}
+
+/*排序方式*/
+.content .lb-sort {
+    background-color: #ddd;
+}
+
+.lb-sort .panel {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content .lb-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.lb-sort .panel .nav{
+}
