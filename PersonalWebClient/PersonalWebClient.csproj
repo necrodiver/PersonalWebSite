@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="APP\Detail.html" />
     <Content Include="APP\List.html" />
     <Content Include="APP\Index.html" />
     <Content Include="App_GlobalResources\说明.txt" />
