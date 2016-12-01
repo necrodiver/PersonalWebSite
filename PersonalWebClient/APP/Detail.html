@@ -64,15 +64,94 @@
     <link href="../Content/imgbox.css" rel="stylesheet" />
     <style type="text/css">
         .dt_header {
+            margin-bottom: 10px;
         }
-        .dt_user_img img{
-            width:45px;
-            margin:5px;
-        }
-        .dt_user_left{
-        }
-        .dt_user_right .dt_user_name{
 
+            .dt_header .panel-body {
+                padding: 0;
+            }
+
+        .dt_user {
+            min-height: 57px;
+        }
+
+        .dt_user_img img {
+            width: 45px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .dt_user_name p {
+            font-weight: 200;
+            font-size: 10px;
+            margin-top: 8px;
+            margin-bottom: 0;
+            color: gray;
+        }
+
+        .dt_user_weibo {
+            margin-top: 5px;
+            color: #ccc;
+        }
+
+        .dt_user_weiboLink:link {
+            color: #ccc;
+        }
+
+        .dt_user_weiboLink:visited {
+            color: #ccc;
+        }
+
+        .dt_user_weiboLink:active {
+            color: #ccc;
+        }
+
+        .dt_user_center {
+            width: 50%;
+            margin-left: 5px;
+        }
+
+        .dt_scrawl_name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .dt_user_left {
+            margin-left: 5px;
+        }
+
+        .dt_user_left2 {
+            margin-left: 5px;
+        }
+
+        .dt_user_right {
+            width: 155px;
+            margin-left: 5px;
+        }
+
+        .dt_click_List {
+            margin-top: 10px;
+        }
+
+        .dt_content {
+            margin-bottom: 10px;
+        }
+
+            .dt_content .dt_c_content {
+                padding: 0;
+            }
+
+        .dt_c_content .dt_c_circle {
+            padding: 10px;
+            margin: 0 auto;
+            display: block;
+            margin-top: 15px;
+            margin-bottom:10px;
+            -webkit-box-shadow: 0 6px 20px rgba(0,0,0,0.175);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.175);
         }
     </style>
 </head>
@@ -240,22 +319,49 @@
             </div>
             <div class="content">
                 <div class="dt_all">
-                    <div class="dt_header">
-                        <div class="dt_user panel panel-default">
-                            <div class="dt_user_left">
+                    <div class="dt_header panel">
+                        <div class="dt_user panel-body">
+                            <div class="dt_user_left pull-left">
                                 <a class="dt_user_img" href="javascript:void(0);">
-                                    <img class="img-rounded" src="../Images/user-ceshi.jpg" />
+                                    <img class="img-rounded" src="../Images/ceshi/pianpian.jpg" />
                                 </a>
                             </div>
-                            <div class="dt_user_right pull-left">
+                            <div class="dt_user_left2 pull-left">
                                 <div class="dt_user_name">
-                                    <p>NECLODIVER</p>
+                                    <p>bain-片片</p>
+                                </div>
+                                <div class="dt_user_weibo">
+                                    微博 戳：<a class="dt_user_weiboLink" href="http://weibo.com/bain2p">
+                                        http://weibo.com/bain2p
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="dt_user_center pull-left">
+                                <div class="dt_scrawl_name">
+                                    <p>乌鸦之死</p>
+                                </div>
+                            </div>
+                            <div class="dt_user_right pull-right">
+                                <div class="dt_click_List btn-group">
+                                    <!--<button type="button" class="btn btn-default btn-info"><em class="glyphicon"></em> 关注</button>-->
+                                    <button type="button" class="btn btn-default btn-danger"><em class="glyphicon glyphicon-heart"></em> 收藏 </button>
+                                    <button type="button" class="btn btn-default btn-warning"><em class="glyphicon glyphicon-pencil"></em> 评论</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dt_content"></div>
-                    <div class="dt_bottom"></div>
+                    <div class="dt_content panel">
+                        <div class="dt_c_content panel-body">
+                            <a target="_blank" href="../Images/ceshi/wuyahisi.jpg" title="点击查看大图">
+                                <img class="dt_c_circle img-thumbnail img-rounded" src="../Images/ceshi/wuyahisi.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="dt_bottom panel">
+                        <div class="dt_btm_user panel-body">
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer">

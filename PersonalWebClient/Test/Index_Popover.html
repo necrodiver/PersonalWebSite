@@ -24,7 +24,7 @@
         底部的 Popover2
     </button>
 
-    <div clas="container" style="padding: 100px 50px 10px;">
+    <div class="container" style="padding: 100px 50px 10px;">
         <button type="button" class="btn btn-primary popover-show"
                 title="Popover title" data-container="body"
                 data-toggle="popover"
@@ -32,6 +32,65 @@
             左侧的 Popover
         </button>
 
+    </div>
+    <hr />
+    <button type="button" class="btn btn-info" id="browserUser" style="margin-left:100px;">浏览部分信息</button>
+    <hr />
+    <style type="text/css">
+        .browse_user {
+            margin-left: 100px;
+            border: 1px solid black;
+            width: 400px;
+            height: 100px;
+        }
+
+        .browser_u_hp img {
+            margin-left: 10px;
+            margin-top: 5px;
+            width: 90px;
+        }
+
+        .browser_u_intro {
+            margin-left: 10px;
+        }
+
+        .browser_u_intro_name {
+            margin-top: 20px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #666;
+        }
+
+        .browser_u_intro_level {
+            font-size: 10px;
+            font-weight: 700;
+            color: #e8780b;
+        }
+
+        .browser_u_intro_pf {
+            margin-top: 2px;
+            font-size: 10px;
+            font-weight: 200;
+            color: #272727;
+        }
+    </style>
+    <div class="browse_user panel-default">
+        <div class="browse_u_left pull-left">
+            <div class="browser_u_hp pull-left">
+                <img class="img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+            </div>
+            <div class="browser_u_intro pull-left">
+                <div class="browser_u_intro_name" title="昵称">bain-片片</div>
+                <div class="browser_u_intro_level" title="等级">LV18</div>
+                <div class="browser_u_intro_pf" title="职业">插画</div>
+            </div>
+        </div>
+        <div class="browse_u_right pull-left">
+            <div class="">
+                
+            </div>
+            <div></div>
+        </div>
     </div>
     <script type="text/javascript">
         $(function () {
@@ -41,6 +100,41 @@
                 alert("当显示时警告消息");
             });
         });
+
+        $('#browserUser').each(function () {
+            var element = $(this);
+            var txt = '用户信息';
+            element.popover({
+                trigger: 'manual',
+                placement: 'right', //top, bottom, left or right
+                title: txt,
+                html: 'true',
+                content: ContentMethod(),
+            }).on("mouseenter", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
+        });
+
+        function ContentMethod() {
+            return '<table class="table table-default" style="width:200px;">' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-user"></i> 昵称</td><td>STAR</td></tr>' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-star-empty"></i> 等级</td><td>lv.4</td></tr>' +
+                        '<tr><td style="width:80px;"><i class="glyphicon glyphicon-bell"></i> 消息</td><td><a href="javascript:(0);">12</a></td></tr>' +
+                        '<tr><td style="width:80px;">涂鸦</td><td><a href="javascript:(0);">53</a></td></tr>' +
+                        '<tr><td colspan="2" text-align="center"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-signout"></i> 退出</button></td></tr>'
+            '</table>';
+        }
     </script>
 </body>
 </html>
