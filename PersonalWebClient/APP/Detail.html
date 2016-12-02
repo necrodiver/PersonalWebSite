@@ -25,42 +25,6 @@
     <link href="../Content/index.css" rel="stylesheet" />
     <!--用于图片灰度显示-->
     <script src="../Scripts/philter/jquery.philter.js"></script>
-    <script type="text/template" id="Imageformat">
-        <div class="thumbnail img_thumbnail">
-            <div class="imgs" data-philter-grayscale="100 0">
-                <input type="hidden" value="test{0}.jpg">
-                <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
-            </div>
-            <div class="caption">
-                <div class="title">图集第{0}张</div>
-                <div class="content">
-                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
-                </div>
-                <div class="author">
-                    by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="Jottingformat">
-        <div class="jotting_thumbnail thumbnail">
-            <div class="jotting_portrait" data-philter-grayscale="70 0">
-                <a href="javascript:void(0);">
-                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                </a>
-            </div>
-            <div class="jotting_caption">
-                <div class="jotting_title">张三张三张三{0}</div>
-                <div class="jotting_content">
-                    张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
-                </div>
-                <div class="jotting_author">
-                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                </div>
-            </div>
-        </div>
-    </script>
-
     <link href="../Content/imgbox.css" rel="stylesheet" />
     <link href="../Content/detail.css" rel="stylesheet" />
     <script type="text/template" id="userIntroTemplate">
@@ -250,13 +214,40 @@
                     </div>
                 </nav>
             </div>
+            <style type="text/css">
+                .dt_btm_user {
+                    padding: 15px;
+                }
+
+                    .dt_btm_user hr {
+                        margin: 0;
+                    }
+
+                .dt_btmu_said {
+                    padding-top: 10px;
+                    padding-bottom: 0;
+                    margin: 0;
+                }
+
+                .dt_btmu_name p {
+                    font-size:16px;
+                    font-weight:700;
+                    color:#666;
+                }
+
+                .dt_btmu_said p {
+                    font-size:10px;
+                    font-weight:200;
+                    color:#808080;
+                }
+            </style>
             <div class="content">
                 <div class="dt_all">
                     <div class="dt_header panel">
                         <div class="dt_user panel-body">
                             <div class="dt_user_left pull-left">
                                 <a class="dt_user_img" href="javascript:void(0);">
-                                    <img data-toggle="popover" class="img-rounded popover-destroy"  id="userIntro" src="../Images/ceshi/pianpian.jpg" />
+                                    <img data-toggle="popover" class="img-rounded popover-destroy" id="userIntro" src="../Images/ceshi/pianpian.jpg" />
                                 </a>
                             </div>
                             <div class="dt_user_left2 pull-left">
@@ -290,9 +281,18 @@
                             </a>
                         </div>
                     </div>
-                    <div class="dt_bottom panel">
-                        <div class="dt_btm_user panel-body">
-
+                    <div class="dt_bottom">
+                        <div class="dt_btm_user panel">
+                            <div class="dt_btmu_name panel-title">
+                                <p class="glyphicon glyphicon-pencil"> bain-片片：</p>
+                            </div>
+                            <hr />
+                            <div class="dt_btmu_said panel-body">
+                                <p>
+                                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
