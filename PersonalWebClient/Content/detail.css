@@ -1,0 +1,186 @@
+﻿/*detail大体布局样式
+    包括上边用户，中间展示图片，下方粗略说明
+*/
+.dt_header {
+    margin-bottom: 10px;
+}
+
+    .dt_header .panel-body {
+        padding: 0;
+    }
+
+.dt_user {
+    min-height: 57px;
+}
+
+.dt_user_img img {
+    width: 45px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.dt_user_name p {
+    font-weight: 200;
+    font-size: 10px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    color: gray;
+}
+
+.dt_user_weibo {
+    margin-top: 5px;
+    color: #ccc;
+}
+
+.dt_user_weiboLink:link {
+    color: #ccc;
+}
+
+.dt_user_weiboLink:visited {
+    color: #ccc;
+}
+
+.dt_user_weiboLink:active {
+    color: #ccc;
+}
+
+.dt_user_center {
+    width: 50%;
+}
+
+.dt_scrawl_name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.dt_user_left {
+    margin-left: 5px;
+}
+
+.dt_user_left2 {
+    margin-left: 5px;
+}
+
+.dt_user_right {
+    width: 155px;
+    margin-left: 5px;
+}
+
+.dt_click_List {
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+.dt_content {
+    margin-bottom: 10px;
+}
+
+    .dt_content .dt_c_content {
+        padding: 10px;
+    }
+
+.dt_c_content a .dt_c_circle {
+    padding: 7px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 6px 20px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.175);
+    max-width:100%;
+}
+/*粗略说明*/
+
+
+
+
+/*弹出用户详细表弹框的样式*/
+.browse_user {
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+.browser_u_hp a img {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.browser_u_intro {
+    margin-left: 10px;
+}
+
+.browser_u_intro_name {
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #666;
+}
+
+.browser_u_intro_level {
+    font-size: 10px;
+    font-weight: 700;
+    color: #e8780b;
+}
+
+.browser_u_intro_pf {
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 200;
+    color: #272727;
+}
+
+.browse_u_right {
+    margin-left: 20px;
+    margin-top: 28px;
+    margin-right: 10px;
+}
+
+.browse_u_r_message {
+    margin-right: 10px;
+    height: 45px;
+}
+
+    .browse_u_r_message div {
+    }
+
+        .browse_u_r_message div p {
+            margin-bottom: 0;
+        }
+
+.browser_urm_partition {
+    border-right: 1px solid #e7e8ea;
+    padding-right: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.browser_urmp_num {
+    font-size: 15px;
+    color: black;
+    font-weight: 700;
+}
+
+.browser_urmp_title {
+    font-size: 14px;
+    color: #a3a3a3;
+    font-weight: 500;
+}
+
+.browser_urm_plast {
+    text-align: center;
+}
+
+.browse_u_attention {
+    margin-top: 55px;
+}

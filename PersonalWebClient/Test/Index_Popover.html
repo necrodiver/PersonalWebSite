@@ -40,13 +40,15 @@
         .browse_user {
             margin-left: 100px;
             border: 1px solid black;
-            width: 400px;
-            height: 100px;
+            width: auto;
+            height: auto;
+            padding: 0;
         }
 
-        .browser_u_hp img {
+        .browser_u_hp a img {
             margin-left: 10px;
             margin-top: 5px;
+            margin-bottom: 5px;
             width: 90px;
         }
 
@@ -73,25 +75,75 @@
             font-weight: 200;
             color: #272727;
         }
+
+        .browse_u_right {
+            margin-left: 20px;
+            margin-top: 28px;
+            margin-right: 10px;
+        }
+
+        .browse_u_r_message {
+            margin-right: 10px;
+            height: 45px;
+        }
+
+            .browse_u_r_message div {
+            }
+
+                .browse_u_r_message div p {
+                    margin-bottom: 0;
+                }
+
+        .browser_urm_partition {
+            border-right: 1px solid #e7e8ea;
+            padding-right: 10px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .browser_urmp_num {
+            font-size: 15px;
+            color: black;
+            font-weight: 700;
+        }
+
+        .browser_urmp_title {
+            font-size: 14px;
+            color: #a3a3a3;
+            font-weight: 500;
+        }
+
+        .browser_urm_plast {
+            text-align: center;
+        }
+        .browse_u_attention{
+            margin-top:55px;
+        }
     </style>
-    <div class="browse_user panel-default">
-        <div class="browse_u_left pull-left">
-            <div class="browser_u_hp pull-left">
-                <img class="img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+    <script type="text/template" id="userpTemplate">
+        <div class="browse_user panel panel-body" style="width:500px;">
+            <div class="browse_u_left pull-left">
+                <div class="browser_u_hp pull-left">
+                    <a href="javascript:void(0);" title="点击查看详细"><img class="img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" /></a>
+                </div>
+                <div class="browser_u_intro pull-left">
+                    <div class="browser_u_intro_name" title="昵称">bain-片片</div>
+                    <div class="browser_u_intro_level" title="等级">LV18</div>
+                    <div class="browser_u_intro_pf" title="职业">插画</div>
+                </div>
             </div>
-            <div class="browser_u_intro pull-left">
-                <div class="browser_u_intro_name" title="昵称">bain-片片</div>
-                <div class="browser_u_intro_level" title="等级">LV18</div>
-                <div class="browser_u_intro_pf" title="职业">插画</div>
+            <div class="browse_u_attention pull-left">
+                <button class="btn btn-primary btn-xs"><em class="glyphicon glyphicon-plus"></em> 关注</button>
+            </div>
+            <div class="browse_u_right pull-right">
+                <div class="browse_u_r_message">
+                    <div class="pull-left browser_urm_partition"><p class="browser_urmp_num"><em>999999</em></p><p class="browser_urmp_title">浏览</p></div>
+                    <div class="pull-left browser_urm_partition"><p class="browser_urmp_num"><em>99999</em></p><p class="browser_urmp_title">收藏</p></div>
+                    <div class="pull-left browser_urm_plast"><p class="browser_urmp_num"><em>99999</em></p><p class="browser_urmp_title">评论</p></div>
+                </div>
             </div>
         </div>
-        <div class="browse_u_right pull-left">
-            <div class="">
-                
-            </div>
-            <div></div>
-        </div>
-    </div>
+    </script>
     <script type="text/javascript">
         $(function () {
             $('[data-toggle="popover"]').popover('hide');
@@ -109,7 +161,7 @@
                 placement: 'right', //top, bottom, left or right
                 title: txt,
                 html: 'true',
-                content: ContentMethod(),
+                content: $('#userpTemplate').html(),
             }).on("mouseenter", function () {
                 var _this = this;
                 $(this).popover("show");

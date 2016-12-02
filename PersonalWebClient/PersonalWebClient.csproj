@@ -82,6 +82,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\detail.css" />
     <Content Include="Content\imgbox.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\input-style.css" />
@@ -946,6 +947,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="Scripts\detail.js" />
     <Content Include="Scripts\grayscale.js" />
     <Content Include="Scripts\Helper.js" />
     <Content Include="Scripts\hometitleAnimation.js" />
