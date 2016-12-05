@@ -15,13 +15,12 @@
     <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
 
     <!--Masonry 用于创建瀑布流布局-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
-    <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
+    <script src="../Scripts/masonry.pkgd.js"></script>
+    <script src="../Scripts/imagesloaded.pkgd.js"></script>
     <!--lightbox  用于图片扩大展示-->
-    <script src="http://apps.bdimg.com/libs/lightbox/2.6/js/lightbox.min.js"></script>
-    <link href="http://fineui.com/res/lightbox/css/lightbox.css" rel="stylesheet">
-    <!--imagesload  用于图片加载过程-->
-    <script src="http://apps.bdimg.com/libs/imagesloaded/3.0.4/imagesloaded.pkgd.js"></script>
+    <script src="../Scripts/lightbox.min.js"></script>
+    <link href="../Content/lightbox.css" rel="stylesheet" />
+
     <link href="../Content/index.css" rel="stylesheet" />
     <!--用于图片灰度显示-->
     <script src="../Scripts/philter/jquery.philter.js"></script>
@@ -230,15 +229,33 @@
                 }
 
                 .dt_btmu_name p {
-                    font-size:16px;
-                    font-weight:700;
-                    color:#666;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #666;
                 }
 
                 .dt_btmu_said p {
-                    font-size:10px;
-                    font-weight:200;
-                    color:#808080;
+                    font-size: 14px;
+                    font-weight: 100;
+                    color: #666;
+                    font-family: YBJKT;
+                }
+
+                @font-face {
+                    font-family: 'YBJKT';
+                    src: url('../Content/YBJKT.ttf') format('truetype');
+                }
+
+                .dt_c_circle:hover {
+                    -moz-transform: scale(1.02,1.02);
+                    -webkit-transform: scale(1.02,1.02);
+                    -o-transform: scale(1.02,1.02);
+                    -ms-transform: scale(1.02,1.02);
+                    transform: scale(1.02,1.02);
+                    -webkit-transition: all 0.1s ease-in-out;
+                    -moz-transition: all 0.1s ease-in-out;
+                    -o-transition: all 0.1s ease-in-out;
+                    transition: all 0.1s ease-in-out;
                 }
             </style>
             <div class="content">
@@ -279,6 +296,9 @@
                             <a target="_blank" href="../Images/ceshi/wuyahisi.jpg" title="点击查看大图">
                                 <img class="dt_c_circle img-thumbnail img-rounded" src="../Images/ceshi/wuyahisi.jpg" />
                             </a>
+                            <a target="_blank" href="../Images/ceshi/en.jpg" title="点击查看大图">
+                                <img class="dt_c_circle img-thumbnail img-rounded" src="../Images/ceshi/en.jpg" />
+                            </a>
                         </div>
                     </div>
                     <div class="dt_bottom">
@@ -289,9 +309,23 @@
                             <hr />
                             <div class="dt_btmu_said panel-body">
                                 <p>
-                                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                    &nbsp;&nbsp;大河向东流哇
+                                    天上的星星参北斗哇
+                                    说走咱就走你有我有全都有
+                                    路见不平一声吼哇
+                                    该出手时就出手哇
+                                    风风火火闯九州哇
+                                    嘿呀依儿呀唉嘿唉嘿依儿呀
+                                    路见不平一声吼哇
+                                    该出手时就出手哇
+                                    风风火火闯九州哇
                                 </p>
+                            </div>
+                        </div>
+                        <div class="dt_btm_comment panel">
+                            <div class="panel-title">评论标题</div>
+                            <div class="panel-body">
+                                评论内容，一堆
                             </div>
                         </div>
                     </div>

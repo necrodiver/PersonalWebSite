@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/input-style.css" rel="stylesheet" />
+    <!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
+    <script src="../Scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-transition.js"></script>
+
+    <!--Masonry 用于创建瀑布流布局-->
+    <script src="../Scripts/masonry.pkgd.js"></script>
+    <script src="../Scripts/imagesloaded.pkgd.js"></script>
+    <!--lightbox  用于图片扩大展示-->
+    <script src="../Scripts/lightbox.min.js"></script>
+    <link href="../Content/lightbox.css" rel="stylesheet" />
+
+    <link href="../Content/index.css" rel="stylesheet" />
+    <!--用于图片灰度显示-->
+    <script src="../Scripts/philter/jquery.philter.js"></script>
+    <link href="../Content/imgbox.css" rel="stylesheet" />
+    <link href="../Content/detail.css" rel="stylesheet" />
+    <style type="text/css">
+        .content {
+            margin-top: 10px;
+        }
+
+        .dt_btm_comment {
+            min-width: 350px;
+        }
+
+        .dt_btmc_content .alter_parent {
+            padding: 5px;
+            margin-left:10px;
+            margin-right:10px;
+            -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+            box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+        }
+
+        .alert_left {
+            width: 70px;
+        }
+
+            .alert_left img {
+                width: 70px;
+            }
+
+            .alert_left a {
+                text-decoration: none;
+                color: #227e9c;
+            }
+
+                .alert_left a:link {
+                    text-decoration: none;
+                    color: #227e9c;
+                }
+
+                .alert_left a:visited {
+                    text-decoration: none;
+                    color: #227e9c;
+                }
+
+                .alert_left a:hover {
+                    text-decoration: none;
+                    color: #227e9c;
+                }
+
+                .alert_left a:active {
+                    text-decoration: none;
+                    color: #227e9c;
+                }
+
+        .alter_img_picture {
+            -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+            box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+        }
+
+        .alert_left:hover {
+            -moz-transform: scale(1.2,1.2) rotate(10deg);
+            -webkit-transform: scale(1.2,1.2) rotate(10deg);
+            -o-transform: scale(1.2,1.2) rotate(10deg);
+            -ms-transform: scale(1.2,1.2) rotate(10deg);
+            transform: scale(1.2,1.2) rotate(10deg);
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .alert_center {
+            margin-left: 10px;
+            text-align: left;
+            width: 70%;
+        }
+
+        .alter_l_n {
+            font-size: 13px;
+            margin-bottom: 0px;
+            font-weight: 700;
+            text-shadow: -2px 5px 1.5px rgba(0,0,0,0.175);
+        }
+
+        .dt_btmc_content .alter_parent {
+            height: auto;
+            border-bottom: 1px dashed gray;
+        }
+
+        .alter_right {
+            width: 10%;
+            margin-left: 10px;
+        }
+
+        .alter_c_content {
+            margin-top: 5px;
+        }
+
+            .alter_c_content p {
+                color: #666;
+                font-size: 11px;
+                text-shadow: -2px 4px 3px rgba(0,0,0,0.1);
+            }
+
+        .alter_l_nt {
+            margin-top: 7px;
+        }
+
+        .alter_l_n p, .alter_l_t p {
+            margin: 0;
+        }
+
+        .alter_l_t {
+            color: #000;
+            font-size: 10px;
+            margin-left: 10px;
+            text-shadow: -2px 4px 1px rgba(0,0,0,0.175);
+        }
+
+        .alter_right .btn {
+            -webkit-box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+            box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+        }
+    </style>
+</head>
+<body>
+    <div class="content col-md-10 col-md-offset-1">
+        <div class="dt_btm_comment panel">
+            <div class="panel-title">评论标题</div>
+            <div class="dt_btmc_content">
+                <div class="alter_parent alert alert-info" role="alert">
+                    <div class="alert_left pull-left">
+                        <a href="javascript:void(0);">
+                            <img class="alter_img_picture img-rounded img-thumbnail" src="../Images/Face/1.jpg" />
+                        </a>
+                    </div>
+                    <div class="alert_center pull-left">
+                        <div class="alter_l_nt">
+                            <div class="alter_l_n pull-left"><p>张三</p></div>
+                            <div class="alter_l_t pull-left"><p>2016-12-5 17:17</p></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="alter_c_content">
+                            <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大河向东流哇
+                                天上的星星参北斗哇
+                                说走咱就走你有我有全都有
+                                路见不平一声吼哇
+                                该出手时就出手哇
+                                风风火火闯九州哇
+                                嘿呀依儿呀唉嘿唉嘿依儿呀
+                                路见不平一声吼哇
+                                该出手时就出手哇
+                                风风火火闯九州哇
+                                再来一遍
+                                大河向东流哇
+                                天上的星星参北斗哇
+                                说走咱就走你有我有全都有
+                                路见不平一声吼哇
+                                该出手时就出手哇
+                                风风火火闯九州哇
+                                嘿呀依儿呀唉嘿唉嘿依儿呀
+                                路见不平一声吼哇
+                                该出手时就出手哇
+                                风风火火闯九州哇
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alter_right pull-right">
+                        <button class="btn btn-default btn-sm pull-right">回复</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
