@@ -23,3 +23,11 @@
     });
     $('#userIntro').popover('hide');
 });
+
+$(function () {
+    var userCommpntTemplate = $('#userCommentTemplate');
+    for (var i = 1; i < 6; i++) {
+        var templateBu = userCommpntTemplate.html().format(i, "张三" + i, "2016-12-5 17:17", i + "wahahahahahahhaha哇哈哈哈哈" + i);
+        $('#userCommont').append(templateBu);
+    }
+});

@@ -73,7 +73,7 @@
 
 .dt_click_List {
     margin-top: 10px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 .dt_content {
@@ -92,7 +92,7 @@
     margin-bottom: 10px;
     -webkit-box-shadow: 0 6px 20px rgba(0,0,0,0.175);
     box-shadow: 0 6px 20px rgba(0,0,0,0.175);
-    max-width:100%;
+    max-width: 100%;
 }
 /*粗略说明*/
 
@@ -183,4 +183,196 @@
 
 .browse_u_attention {
     margin-top: 55px;
+}
+
+
+/*评论内容*/
+.dt_btm_user {
+    padding: 15px;
+}
+
+    .dt_btm_user hr {
+        margin: 0;
+    }
+
+.dt_btmu_said {
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.dt_btmu_name p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+}
+
+.dt_btmu_said p {
+    font-size: 14px;
+    font-weight: 100;
+    color: #666;
+    font-family: YBJKT;
+}
+
+@font-face {
+    font-family: 'YBJKT';
+    src: url('../Content/YBJKT.ttf') format('truetype');
+}
+
+.dt_c_circle:hover {
+    -moz-transform: scale(1.02,1.02);
+    -webkit-transform: scale(1.02,1.02);
+    -o-transform: scale(1.02,1.02);
+    -ms-transform: scale(1.02,1.02);
+    transform: scale(1.02,1.02);
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+
+
+.content {
+    margin-top: 10px;
+}
+
+.dt_btm_comment {
+    min-width: 350px;
+}
+
+.dt_btm_title {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.dt_btm_comment .dt_btm_title p{
+    font-size:16px;
+    color:#666;
+    font-weight:600;
+}
+
+.dt_btmc_content .alter_parent {
+    margin-bottom: 10px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    cursor:pointer;
+}
+
+.alter_parent:hover {
+    -moz-transform: rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.alert_left {
+    width: 70px;
+}
+
+    .alert_left img {
+        width: 70px;
+    }
+
+    .alert_left a {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+        .alert_left a:link {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:visited {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:hover {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:active {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+.alter_img_picture {
+    -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+}
+
+.alert_left:hover {
+    -moz-transform: scale(1.2,1.2) rotate(10deg);
+    -webkit-transform: scale(1.2,1.2) rotate(10deg);
+    -o-transform: scale(1.2,1.2) rotate(10deg);
+    -ms-transform: scale(1.2,1.2) rotate(10deg);
+    transform: scale(1.2,1.2) rotate(10deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.alert_center {
+    margin-left: 10px;
+    text-align: left;
+    width: 70%;
+    border-bottom: 1px dashed gray;
+}
+
+.alter_l_n {
+    font-size: 13px;
+    margin-bottom: 0px;
+    font-weight: 700;
+    text-shadow: -2px 5px 1.5px rgba(0,0,0,0.175);
+}
+
+.alter_right {
+    width: 10%;
+    margin-left: 10px;
+}
+
+.alter_c_content {
+    margin-top: 5px;
+}
+
+    .alter_c_content p {
+        color: #666;
+        font-size: 11px;
+        text-shadow: -2px 4px 3px rgba(0,0,0,0.1);
+    }
+
+.alter_l_nt {
+    margin-top: 7px;
+}
+
+.alter_l_n p, .alter_l_t p {
+    margin: 0;
+}
+
+.alter_l_t {
+    color: #000;
+    font-size: 10px;
+    margin-left: 10px;
+    text-shadow: -2px 4px 1px rgba(0,0,0,0.175);
+}
+
+.alter_right .btn {
+    -webkit-box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+}
+
+.dt_btmcf nav ul {
+    margin: 0;
+    position: relative;
 }

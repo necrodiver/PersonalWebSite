@@ -14,6 +14,8 @@
     <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
 
+
+    <script src="../Scripts/Helper.js"></script>
     <!--Masonry 用于创建瀑布流布局-->
     <script src="../Scripts/masonry.pkgd.js"></script>
     <script src="../Scripts/imagesloaded.pkgd.js"></script>
@@ -48,6 +50,30 @@
                     <div class="pull-left browser_urm_plast"><p class="browser_urmp_num"><em>99999</em></p><p class="browser_urmp_title">评论</p></div>
                 </div>
             </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="userCommentTemplate">
+        <div class="alter_parent alert alert-info" role="alert">
+            <div class="alert_left pull-left">
+                <a href="javascript:void(0);">
+                    <img class="alter_img_picture img-rounded img-thumbnail" src="../Images/Face/{0}.jpg" />
+                </a>
+            </div>
+            <div class="alert_center pull-left">
+                <div class="alter_l_nt">
+                    <div class="alter_l_n pull-left"><p>{1}</p></div>
+                    <div class="alter_l_t pull-left"><p>{2}</p></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="alter_c_content">
+                    <p>{3}</p>
+                </div>
+            </div>
+            <div class="alter_right pull-right">
+                <button class="btn btn-default btn-sm pull-right">回复</button>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </script>
 </head>
@@ -213,51 +239,6 @@
                     </div>
                 </nav>
             </div>
-            <style type="text/css">
-                .dt_btm_user {
-                    padding: 15px;
-                }
-
-                    .dt_btm_user hr {
-                        margin: 0;
-                    }
-
-                .dt_btmu_said {
-                    padding-top: 10px;
-                    padding-bottom: 0;
-                    margin: 0;
-                }
-
-                .dt_btmu_name p {
-                    font-size: 16px;
-                    font-weight: 700;
-                    color: #666;
-                }
-
-                .dt_btmu_said p {
-                    font-size: 14px;
-                    font-weight: 100;
-                    color: #666;
-                    font-family: YBJKT;
-                }
-
-                @font-face {
-                    font-family: 'YBJKT';
-                    src: url('../Content/YBJKT.ttf') format('truetype');
-                }
-
-                .dt_c_circle:hover {
-                    -moz-transform: scale(1.02,1.02);
-                    -webkit-transform: scale(1.02,1.02);
-                    -o-transform: scale(1.02,1.02);
-                    -ms-transform: scale(1.02,1.02);
-                    transform: scale(1.02,1.02);
-                    -webkit-transition: all 0.1s ease-in-out;
-                    -moz-transition: all 0.1s ease-in-out;
-                    -o-transition: all 0.1s ease-in-out;
-                    transition: all 0.1s ease-in-out;
-                }
-            </style>
             <div class="content">
                 <div class="dt_all">
                     <div class="dt_header panel">
@@ -272,7 +253,7 @@
                                     <p>bain-片片</p>
                                 </div>
                                 <div class="dt_user_weibo">
-                                    微博 戳：<a class="dt_user_weiboLink" href="http://weibo.com/bain2p">
+                                    微博 戳：<a class="dt_user_weiboLink" target="_blank" href="http://weibo.com/bain2p">
                                         http://weibo.com/bain2p
                                     </a>
                                 </div>
@@ -322,10 +303,27 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="dt_btm_writeCommont panel">
+
+                        </div>
                         <div class="dt_btm_comment panel">
-                            <div class="panel-title">评论标题</div>
-                            <div class="panel-body">
-                                评论内容，一堆
+                            <div class="panel-title dt_btm_title"><p><em class="glyphicon glyphicon-comment"></em> 评论内容</p></div>
+                            <div class="dt_btmc_content panel-body" id="userCommont">
+                                
+                            </div>
+                            <div class="dt_btmcf panel-footer">
+                                <nav class="col-md-4 col-md-offset-4">
+                                    <ul class="pagination">
+                                        <li><a href="#">&laquo;</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">&raquo;</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
