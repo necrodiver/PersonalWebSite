@@ -94,6 +94,7 @@
     <Content Include="Images\CeShiYanZheng.gif" />
     <Content Include="Images\ceshi\en.jpg" />
     <Content Include="Images\ceshi\pianpian.jpg" />
+    <Content Include="Images\ceshi\QRcode.png" />
     <Content Include="Images\ceshi\wuyahisi.jpg" />
     <Content Include="Images\DM\test1.jpg" />
     <Content Include="Images\DM\test10.jpg" />

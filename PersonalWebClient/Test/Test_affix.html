@@ -8,6 +8,8 @@
     <script src="../Scripts/jquery/jquery-1.10.2.js"></script>
     <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
     <style type="text/css">
         .con {
             width: 1000px;
@@ -139,11 +141,11 @@
 
         .anchor_ico:hover {
             transform-origin: bottom left;
-            -moz-transform: rotate(-70deg);
-            -webkit-transform: rotate(-70deg);
-            -o-transform: rotate(-70deg);
-            -ms-transform: rotate(-70deg);
-            transform: rotate(-70deg);
+            -moz-transform: rotate(-95deg);
+            -webkit-transform: rotate(-95deg);
+            -o-transform: rotate(-95deg);
+            -ms-transform: rotate(-95deg);
+            transform: rotate(-95deg);
             -webkit-transition: all 0.2s ease-in-out;
             -moz-transition: all 0.2s ease-in-out;
             -o-transition: all 0.2s ease-in-out;
@@ -152,6 +154,9 @@
 
         .anchor_ico {
             z-index: 100;
+            -moz-border-radius: 10px; /* Gecko browsers */
+            -webkit-border-radius: 10px; /* Webkit browsers */
+            border-radius: 10px; /* W3C syntax */
             transform-origin: bottom left;
             -moz-transform: rotate(0deg);
             -webkit-transform: rotate(0deg);
@@ -217,28 +222,60 @@
     <div class="anchor_Top affix panel" data-spy="affix">
         <a class="anchor_child">
             <div>
-                <div class="anchor_child_name">打赏</div>
-                <div class="anchor_PlayTour anchor_ico glyphicon glyphicon-qrcode"></div>
+                <div class="anchor_child_name anchor_PlayTour">打赏</div>
+                <div class="anchor_ico glyphicon glyphicon-qrcode"></div>
             </div>
         </a>
         <a class="anchor_child">
             <div>
-                <div class="anchor_child_name">评论</div>
-                <div class="anchor_Commont anchor_ico glyphicon glyphicon-comment"></div>
+                <div class="anchor_child_name anchor_Commont">评论</div>
+                <div class="anchor_ico glyphicon glyphicon-comment"></div>
             </div>
         </a>
         <a class="anchor_child">
             <div>
-                <div class="anchor_child_name">收藏</div>
-                <div class="anchor_collect anchor_ico glyphicon glyphicon-heart"></div>
+                <div class="anchor_child_name anchor_collect">收藏</div>
+                <div class="anchor_ico glyphicon glyphicon-heart"></div>
             </div>
         </a>
         <a class="anchor_child">
             <div>
-                <div class="anchor_child_name anchor_child_linkTopName">回顶部</div>
-                <div class="anchor_linkTop anchor_ico glyphicon glyphicon-arrow-up"></div>
+                <div class="anchor_child_name anchor_child_linkTopName anchor_linkTop">回顶部</div>
+                <div class="anchor_ico glyphicon glyphicon-arrow-up"></div>
             </div>
         </a>
     </div>
+    <script type="text/template" id="QRcodeTemplate">
+        <div class="QRcode" style="width:150px;">
+            <img class="QRcode_img img-thumbnail" style="width:150px;" src="../Images/ceshi/QRcode.png" />
+        </div>
+    </script>
+    <script type="text/javascript">
+        $('.anchor_PlayTour').each(function () {
+            var element = $(this);
+            var txt = '扫码打赏';
+            element.popover({
+                trigger: 'manual',
+                placement: 'left', //top, bottom, left or right
+                title: txt,
+                html: 'true',
+                content: $('#QRcodeTemplate').html(),
+            }).on("mousedown", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
+        });
+        $('.anchor_PlayTour').popover('hide');
+    </script>
 </body>
 </html>
