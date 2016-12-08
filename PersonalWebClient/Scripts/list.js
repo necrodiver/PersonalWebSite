@@ -5,6 +5,17 @@ var imagesLoading = false;
 var $container = $('#masonry');
 //判断当前浏览器窗口滚动条是否离底部距离小于20
 $(window).scroll(function () {
+
+    //下边这一段不知道影响性能不
+    $container.imagesLoaded(function () {
+        $container.masonry({
+            itemSelector: '.thumbnail',
+            isAnimated: true,
+            transitionDuration: '0.6s'
+        });
+    });
+    //上方这段
+
     if ($(document).height() - $(window).height() - $(document).scrollTop() < 20) {
         if (!imagesLoading) {
             imagesLoading = true;
