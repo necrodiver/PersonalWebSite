@@ -100,6 +100,10 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.175);
     max-width: 100%;
 }
+
+.dt_c_content_txt{
+    padding:10px;
+}
 /*粗略说明*/
 
 
