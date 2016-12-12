@@ -972,6 +972,7 @@
     <Content Include="Scripts\philter\svg\vintage-4.svg" />
     <Content Include="Scripts\philter\svg\vintage-5.svg" />
     <Content Include="Scripts\philter\svg\vintage-6.svg" />
+    <Content Include="Scripts\userProfiles.js" />
     <Content Include="Test\cloud10.png" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />

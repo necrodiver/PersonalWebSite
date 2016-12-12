@@ -3,6 +3,7 @@ var everyCount = 6;
 var length = 0;
 var imagesLoading = false;
 var $container = $('#masonry');
+var isP
 //判断当前浏览器窗口滚动条是否离底部距离小于20
 $(window).scroll(function () {
 
@@ -66,18 +67,6 @@ function appendToMasonry() {
 }
 
 $(function () {
-    var tagTemplate = $('#tagTemplate').html();
-    var tags = ["btn-info", "btn-success", "btn-warning", "btn-danger", "btn-inverse", "btn-default"];
-    var tags_text = ["涂鸦-原画", "涂鸦-插画", "涂鸦-试手", "涂鸦-漫画", "涂鸦-概念设计", "涂鸦-临摹"];
-    var randm = parseInt(Math.random() * 20);
-    for (var i = 0; i < randm; i++) {
-        var rand = parseInt(Math.random() * 5);
-        var evrandCount = parseInt(Math.random() * 10000);
-        $('.lb-tag-content').append(tagTemplate.format(tags[rand], tags_text[rand] + i, evrandCount));
-    }
-
     appendToMasonry();
-
-    //图片灰度展示
     $.philter();
 });
