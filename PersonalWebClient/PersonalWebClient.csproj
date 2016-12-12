@@ -77,6 +77,7 @@
     <Content Include="APP\Detail.html" />
     <Content Include="APP\List.html" />
     <Content Include="APP\Index.html" />
+    <Content Include="APP\UserProfiles.html" />
     <Content Include="App_GlobalResources\说明.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -89,6 +90,7 @@
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\list.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\userProfiles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\c.png" />
     <Content Include="Images\CeShiYanZheng.gif" />
