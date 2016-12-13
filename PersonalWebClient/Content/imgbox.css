@@ -61,3 +61,220 @@
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+
+/*文章模块和图片模块的css及其交互动画效果*/
+.jotting_parent .jotting_thumbnail {
+    width: 170px;
+    margin: 8px;
+    padding: 0;
+    border-width: 1px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.jotting_portrait {
+    padding: 10px;
+}
+
+.jotting_caption {
+    padding: 0 10px;
+}
+
+.jotting_portrait a .jotting_img {
+    padding: 10px;
+    background-color: #efefef;
+}
+
+.jotting_thumbnail .jotting_caption {
+    background-color: #fff;
+    font-size: 13px;
+}
+
+    .jotting_thumbnail .jotting_caption .jotting_title {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    .jotting_thumbnail .jotting_caption .jotting_author {
+        font-size: 11px;
+        text-align: right;
+    }
+
+.jotting_thumbnail {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+    .jotting_thumbnail:hover {
+        -moz-transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+        -o-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -o-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        z-index: 2;
+    }
+
+.jotting_img {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+}
+
+    .jotting_img:hover {
+        -moz-transform: rotate(375deg);
+        -webkit-transform: rotate(375deg);
+        -o-transform: rotate(375deg);
+        -ms-transform: rotate(375deg);
+        transform: rotate(375deg);
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+
+.img_thumbnail:hover {
+    -moz-transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+    -o-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    z-index: 2;
+}
+
+
+/*a标签去掉样式*/
+.linkstyle {
+    text-decoration: none;
+    color: #227e9c;
+}
+
+    .linkstyle:link {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:visited {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:hover {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:active {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+/*个人作品里的涂鸦作品模块*/
+.work_thumbnail {
+}
+
+.work_portrait {
+    padding: 10px;
+}
+
+.work_caption {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.work_tips {
+}
+
+    .work_tips span {
+        font-size: 14px;
+    }
+
+    .work_tips .tips_hot {
+        color: #e00000;
+        border: 1px solid;
+    }
+
+    .work_tips .tips_digest {
+        color: #03c707;
+        border: 1px solid;
+    }
+
+.work_title_content p {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.work_info_top div p {
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: #666;
+}
+
+.work_info_love {
+    margin-right: 10px;
+}
+
+.work_info_comment {
+    margin-right: 10px;
+}
+
+.work_info_bottom {
+    margin-top: 5px;
+}
+
+/*个人作品里的随笔作品*/
+.workArticle_thumbnail.thumbnail {
+    padding: 10px;
+    width: auto;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.work_article_title {
+    width: auto;
+    border-bottom: 1px dashed #eee;
+}
+
+    .work_article_title a p {
+        font-size: 14px;
+        font-weight: 700;
+        color: #808080;
+        position: relative;
+        white-space: nowrap; /*强制显示在一行*/
+        overflow: hidden; /*溢出部分隐藏*/
+        text-overflow: ellipsis; /*省略号*/
+    }
+
+/*.work_article_content {
+                    width: auto;
+                }
+
+                    .work_article_content a p {
+                        width: auto;
+                        font-size: 12px;
+                        font-weight: 200;
+                        color: #7e7e7e;
+                        white-space: normal;
+                    }*/
