@@ -33,8 +33,8 @@ function appendToMasonry() {
         var max = (length + 1) * everyCount;
         for (var i = min + 1; i < max; i++) {
             var r = parseInt(Math.random() * 18) + 1;
-            data += $("#Imageformat").html().format(i);
-            data += $("#Jottingformat").html().format(r, i);
+            //data += $("#Imageformat").html().format(i);
+            //data += $("#Jottingformat").html().format(r, i);
             data += $('#workTemplate').html().format(i);
             data += $('#workArticleTemplate').html().format(i);
             data += $('#userTemplate').html().format(i);
@@ -44,8 +44,8 @@ function appendToMasonry() {
     else if (min < maxCount && everyCount * (length + 1) > maxCount) {
         for (var j = min; j < maxCount; j++) {
             var r = parseInt(Math.random() * 19);
-            data += $("#Imageformat").html().format(j);
-            data += $("#Jottingformat").html().format(r, j);
+            //data += $("#Imageformat").html().format(j);
+            //data += $("#Jottingformat").html().format(r, j);
             data += $('#workTemplate').html().format(i);
             data += $('#workArticleTemplate').html().format(i);
             data += $('#userTemplate').html().format(i);
