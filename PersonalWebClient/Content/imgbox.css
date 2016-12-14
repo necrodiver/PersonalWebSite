@@ -247,6 +247,7 @@
 /*个人作品里的随笔作品*/
 .moduleParent .workArticle_thumbnail{
     padding: 10px;
+    /*width: auto;*//*发现一个问题，外层宽度不能设置自动的，如果设置成auto，使用瀑布流将会有错误*/
     min-width: 214px;
     max-width: 480px;
     padding-bottom:0px;
