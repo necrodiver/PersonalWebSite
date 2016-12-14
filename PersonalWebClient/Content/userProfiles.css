@@ -116,7 +116,7 @@
     max-width: 580px;
     margin-left: 10px;
     margin-right: 10px;
-    width:60%;
+    width: 60%;
 }
 
     .user_li_hi p {
@@ -132,7 +132,12 @@
     font-weight: 600;
     text-shadow: -2px 5px 4px rgba(0,0,0,0.175);
 }
-
+.user_li_site p{
+    color: #666;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: -2px 5px 4px rgba(0,0,0,0.175);
+}
 .user_lia_bottom {
     margin-top: 5px;
     margin-left: 30px;
@@ -147,3 +152,16 @@
     .user_lia_bottom .btn-default {
         color: #666;
     }
+
+.user_parent {
+    margin-bottom: 10px;
+}
+
+.user_content {
+    margin-bottom: 10px;
+}
+
+.user_bottom {
+    margin-bottom: 0px;
+    padding: 10px;
+}

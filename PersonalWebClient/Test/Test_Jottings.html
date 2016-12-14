@@ -120,12 +120,12 @@
 
                 .work_tips .tips_hot {
                     color: #e00000;
-                    border:1px solid;
+                    border: 1px solid;
                 }
 
                 .work_tips .tips_digest {
-                    color: #03c707;
-                    border:1px solid;
+                    color: #000;
+                    border: 1px solid;
                 }
 
             .work_title_content p {
@@ -135,17 +135,20 @@
 
             .work_info_top div p {
                 margin-bottom: 0px;
-                font-size:10px;
-                color:#666;
+                font-size: 10px;
+                color: #666;
             }
-            .work_info_love{
-                margin-right:10px;
+
+            .work_info_love {
+                margin-right: 10px;
             }
-            .work_info_comment{
-                margin-right:10px;
+
+            .work_info_comment {
+                margin-right: 10px;
             }
-            .work_info_bottom{
-                margin-top:5px;
+
+            .work_info_bottom {
+                margin-top: 5px;
             }
         </style>
 
@@ -178,7 +181,7 @@
                         <div class="work_info_bottom">
                             <div class="work_tips pull-left">
                                 <span class="tips_hot glyphicon glyphicon-fire" title="热门"></span>
-                                <span class="tips_digest glyphicon glyphicon-leaf" title="精品"></span>
+                                <span class="tips_digest glyphicon glyphicon-bookmark" title="精品"></span>
                             </div>
                             <div class="work_info_time pull-right">
                                 <p><em class="glyphicon glyphicon-time"></em> 1000天前</p>
@@ -256,7 +259,7 @@
                     <div class="work_info_bottom">
                         <div class="work_tips pull-left">
                             <span class="tips_hot glyphicon glyphicon-fire" title="热门"></span>
-                            <span class="tips_digest glyphicon glyphicon-leaf" title="精品"></span>
+                            <span class="tips_digest glyphicon glyphicon-bookmark" title="精品"></span>
                         </div>
                         <div class="work_info_time pull-right">
                             <p><em class="glyphicon glyphicon-time"></em> 1000天前</p>
@@ -265,7 +268,106 @@
                 </div>
             </div>
 
+
+            <style type="text/css">
+                .moduleParent .user_thumbnail {
+                    width: 295px;
+                    margin: 10px;
+                    padding: 10px;
+                }
+
+                .user_thumbnail .user_portrait {
+                }
+
+                .user_portrait a .user_img {
+                    padding: 7px;
+                    background-color: #efefef;
+                }
+
+                .user_thumbnail .user_info {
+                    margin-top: 5px;
+                    margin-left: 10px;
+                }
+
+                .user_info_name a p {
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: #666;
+                }
+
+                .user_info_site p {
+                    margin-top:10px;
+                    font-size: 13px;
+                    font-weight: 200;
+                    color: #808080;
+                }
+                .user_info_top{
+                    margin-top:8px;
+                }
+                .user_info_top div p {
+                    margin-bottom: 5px;
+                }
+
+                .user_info_work p {
+                    font-size: 12px;
+                    font-weight: 200;
+                    color: #808080;
+                }
+
+                .user_info_popularity {
+                    margin-left: 10px;
+                }
+
+                    .user_info_popularity p {
+                        font-size: 12px;
+                        font-weight: 200;
+                        color: #808080;
+                    }
+
+                .user_info_signature p{
+                    font-size: 12px;
+                    font-weight: 200;
+                    width: 150px;
+                    color: #666;
+                    white-space: nowrap; /*强制显示在一行*/
+                    overflow: hidden; /*溢出部分隐藏*/
+                    text-overflow: ellipsis; /*省略号*/
+                }
+            </style>
+
+            <div class="user_thumbnail thumbnail">
+                <div class="user_portrait pull-left" data-philter-grayscale="70 0">
+                    <a href="javascript:void(0);">
+                        <img width="130" class="user_img img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+                    </a>
+                </div>
+                <div class="user_info pull-left">
+                    <div class="user_info_top">
+                        <div class="user_info_name">
+                            <a href="javascript:void(0);"><p>bain-片片</p></a>
+                        </div>
+                        <div class="user_info_site">
+                            <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏</p>
+                        </div>
+                        <div class="user_info_workparent">
+                            <div class="user_info_work pull-left">
+                                <p title="作品"><em class="glyphicon glyphicon glyphicon-book"></em> <a>10000</a></p>
+                            </div>
+                            <div class="user_info_popularity pull-left">
+                                <p title="人气"><em class="glyphicon glyphicon glyphicon-sort-by-attributes-alt"></em> <a>10000000</a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user_info_signature">
+                            <p title="签名"><em class="glyphicon glyphicon-edit"></em> 大河向东流啊，天上的星星参北斗~~~</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
         </div>
+
     </div>
     <script type="text/javascript">
         $.philter();

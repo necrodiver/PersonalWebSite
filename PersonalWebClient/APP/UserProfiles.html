@@ -19,12 +19,12 @@
     <!--lightbox  用于图片扩大展示-->
     <script src="../Scripts/lightbox.min.js"></script>
     <link href="../Content/lightbox.css" rel="stylesheet" />
-
-    <link href="../Content/userProfiles.css" rel="stylesheet" />
-    <link href="../Content/index.css" rel="stylesheet" />
     <!--用于图片灰度显示-->
     <script src="../Scripts/philter/jquery.philter.js"></script>
+
+    <link href="../Content/index.css" rel="stylesheet" />
     <link href="../Content/imgbox.css" rel="stylesheet" />
+    <link href="../Content/userProfiles.css" rel="stylesheet" />
     <script src="../Scripts/Helper.js"></script>
     <script type="text/template" id="tagTemplate">
         <button class="btn {0} btn-xs" type="button">
@@ -67,23 +67,122 @@
             </div>
         </div>
     </script>
-    <style type="text/css">
-        .user_parent {
-            margin-bottom: 10px;
-        }
+    <script type="text/template" id="workTemplate">
+        <div class="work_thumbnail thumbnail">
+            <div class="work_portrait" data-philter-grayscale="70 0">
+                <a href="../Images/ceshi/wuyahisi.jpg" data-lightbox="lightbox_">
+                    <img class="work_img" src="../Images/ceshi/wuyahisi.jpg" />
+                </a>
+            </div>
+            <div class="work_caption">
+                <div class="work_title">
+                    <div class="work_title_content pull-left">
+                        <a class="linkstyle" href="javascript:void(0);"><p>大河向东流啊！天上的星星参北斗！{0}</p></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="work_info">
+                    <div class="work_info_top">
+                        <div class="work_info_love pull-left">
+                            <p><em class="glyphicon glyphicon-heart"></em> 1000{0}</p>
+                        </div>
+                        <div class="work_info_comment pull-left">
+                            <p><em class="glyphicon glyphicon-comment"></em> 1000{0}</p>
+                        </div>
+                        <div class="work_info_look pull-left">
+                            <p><em class="glyphicon glyphicon-eye-open"></em> 1000{0}</p>
+                        </div>
+                    </div>
+                    <div class="work_info_bottom">
+                        <div class="work_tips pull-left">
+                            <span class="tips_hot glyphicon glyphicon-fire" title="热门"></span>
+                            <span class="tips_digest glyphicon glyphicon-bookmark" title="精品"></span>
+                        </div>
+                        <div class="work_info_time pull-right">
+                            <p><em class="glyphicon glyphicon-time"></em> 1000{0}天前</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="workArticleTemplate">
+        <div class="workArticle_thumbnail thumbnail">
+            <div class="work_article">
+                <div class="work_article_title">
+                    <a class="linkstyle" href="javascript:void(0);"><p>大河向东流，天上的星星参北斗！{0}</p></a>
+                </div>
+                <div class="work_article_content hide">
+                    <a class="linkstyle" href="javascript:void(0);">
+                        <p>
+                            大河向东流哇
+                            天上的星星参北斗哇
+                            说走咱就走你有我有全都有
+                            路见不平一声吼哇
+                            该出手时就出手哇
+                            大河向东流哇{0}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="work_info">
+                <div class="work_info_top">
+                    <div class="work_info_love pull-left">
+                        <p><em class="glyphicon glyphicon-heart"></em> 1000{0}</p>
+                    </div>
+                    <div class="work_info_comment pull-left">
+                        <p><em class="glyphicon glyphicon-comment"></em> 1000{0}</p>
+                    </div>
+                    <div class="work_info_look pull-left">
+                        <p><em class="glyphicon glyphicon-eye-open"></em> 1000{0}</p>
+                    </div>
+                </div>
+                <br />
+                <div class="work_info_bottom">
+                    <div class="work_tips pull-left">
+                        <span class="tips_hot glyphicon glyphicon-fire" title="热门"></span>
+                        <span class="tips_digest glyphicon glyphicon-bookmark" title="精品"></span>
+                    </div>
+                    <div class="work_info_time pull-right">
+                        <p><em class="glyphicon glyphicon-time"></em> 1000{0}天前</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="userTemplate">
+        <div class="user_thumbnail thumbnail">
+            <div class="user_portrait pull-left" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="110" class="user_img img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+                </a>
+            </div>
+            <div class="user_info pull-left">
+                <div class="user_info_top">
+                    <div class="user_info_name">
+                        <a href="javascript:void(0);"><p>bain-片片{0}</p></a>
+                    </div>
+                    <div class="user_info_site">
+                        <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏{0}</p>
+                    </div>
+                    <div class="user_info_workparent">
+                        <div class="user_info_work pull-left">
+                            <p title="作品"><em class="glyphicon glyphicon glyphicon-book"></em> <a>10000{0}</a></p>
+                        </div>
+                        <div class="user_info_popularity pull-left">
+                            <p title="人气"><em class="glyphicon glyphicon glyphicon-sort-by-attributes-alt"></em> <a>100000{0}</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="user_info_signature">
+                        <p title="签名"><em class="glyphicon glyphicon-edit"></em> {0}大河向东流啊，天上的星星参北斗~~~</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </script>
 
-        .user_content {
-            margin-bottom: 10px;
-        }
-
-        .user_bottom {
-            margin-bottom: 0px;
-            padding: 10px;
-        }
-
-            .user_bottom .user_b_child {
-            }
-    </style>
 </head>
 <body>
     <div class="all" id="all">
@@ -303,6 +402,9 @@
                                 <div class="user_li_level">
                                     <p>Lv.18</p>
                                 </div>
+                                <div class="user_li_site">
+                                    <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏</p>
+                                </div>
                             </div>
                             <div class="user_li_about pull-right">
                                 <div class="user_lia_top clearfix">
@@ -327,7 +429,7 @@
                         </div>
                         <div class="user_li_hi pull-left">
                             <div class="user_lih_content">
-                                <p>插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                                <p><em class="glyphicon glyphicon-edit"></em> 插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
