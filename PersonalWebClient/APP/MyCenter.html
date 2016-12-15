@@ -1,11 +1,392 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/input-style.css" rel="stylesheet" />
+    <!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
+    <script src="../Scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-popover.js"></script>
+    <script src="../Scripts/bootstrap/bootstrap-affix.js"></script>
+
+    <!--Masonry 用于创建瀑布流布局-->
+    <script src="../Scripts/masonry.pkgd.js"></script>
+    <script src="../Scripts/imagesloaded.pkgd.js"></script>
+    <!--lightbox  用于图片扩大展示-->
+    <script src="../Scripts/lightbox.min.js"></script>
+    <link href="../Content/lightbox.css" rel="stylesheet" />
+
+    <link href="../Content/index.css" rel="stylesheet" />
+    <!--用于图片灰度显示-->
+    <script src="../Scripts/philter/jquery.philter.js"></script>
+
+
+    <link href="../Content/imgbox.css" rel="stylesheet" />
+    <link href="../Content/myCenter.css" rel="stylesheet" />
+    <script src="../Scripts/Helper.js"></script>
+    <script type="text/template" id="tagTemplate">
+        <button class="btn {0} btn-xs" type="button">
+            <em class="glyphicon glyphicon-tag"></em>
+            {1} <span class="badge">{2}</span>
+        </button>
+    </script>
+    <script type="text/template" id="Imageformat">
+        <div class="thumbnail img_thumbnail">
+            <div class="imgs" data-philter-grayscale="100 0">
+                <input type="hidden" value="test{0}.jpg">
+                <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
+            </div>
+            <div class="caption">
+                <div class="title">图集第{0}张</div>
+                <div class="content">
+                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+                </div>
+                <div class="author">
+                    by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="Jottingformat">
+        <div class="jotting_thumbnail thumbnail">
+            <div class="jotting_portrait" data-philter-grayscale="70 0">
+                <a href="javascript:void(0);">
+                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/Face/{0}.jpg" />
+                </a>
+            </div>
+            <div class="jotting_caption">
+                <div class="jotting_title">张三张三张三{1}</div>
+                <div class="jotting_content">
+                    张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
+                </div>
+                <div class="jotting_author">
+                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+                </div>
+            </div>
+        </div>
+    </script>
 </head>
 <body>
+    <div class="all" id="all">
+        <div class="col-md-12">
+            <div class="supplement">
+                <!--侧边导航List-->
+                <div class="anchor_Top affix panel" data-spy="affix">
+                    <a class="anchor_linkTop" href="#all">
+                        <div class="anchor_titleTop" title="回顶部">
+                            <div class="glyphicon glyphicon-arrow-up"></div>
+                        </div>
+                    </a>
+                </div>
+                <!--模态框-->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-user"></i> Sign In&Sign Up</h4>
+                            </div>
+                            <!--Content-->
+                            <div class="modal-body login-modelbody">
+                                <div class="login-content">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#signIn" data-target="#signIn" data-toggle="tab">Sign In</a>
+                                        </li>
+                                        <li>
+                                            <a href="#signUp" data-target="#signUp" data-toggle="tab">Sign Up</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content login-content-child">
+                                        <div class="tab-pane active" id="signIn">
+                                            <div class="pull-left" style="width:30%;">
+                                                <i class="text-info">扫码登录</i>
+                                                <img src="../Images/erweima.png" class="img-thumbnail" />
+                                                <div style="margin-top:10px;">
+                                                    <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/qq.jpg" title="QQ登录" /></a></div>
+                                                    <div class="pull-left text-center" style="width:50%"><a href="javascript:void(0);"><img style="width:40px;" class="img-circle" src="../Images/weibo.jpg" title="微博登录" /></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 input-effect">
+                                                <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                                <label class="input-effect-text">Email</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect" style="margin-bottom:0px;margin-top:10px;">
+                                                <input class="effect-16 input-effect-text" type="password" placeholder="">
+                                                <label class="input-effect-text">Pass word</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect" style="margin-top:0px;">
+                                                <!--<input class="effect-16 input-effect-text" type="text" placeholder="">
+                                                <label class="input-effect-text">Validate code</label>
+                                                <span class="focus-border"></span>-->
+                                                <div style="width:100%;height:75px;">
+                                                    <span style="font-size:12px;color:#ccc;">请点击下面倒立的字</span>
+                                                    <div style="width:100%;height:60px;">
+                                                        <div class="yz-Content" id="yz-Content1">
+                                                            <img id="img" height="60" src="../Images/CeShiYanZheng.gif" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right" style="width:60%;margin-right:17px;">
+                                                <div><button class="btn btn-success" style="width:100%;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="signUp">
+                                            <div class="pull-right" style="width:33%;">
+                                                <img src="../Images/user-ceshi.jpg" class="img-circle img-thumbnail" />
+                                            </div>
+                                            <div class="col-3 input-effect pull-left">
+                                                <input class="effect-16 input-effect-text" type="email" placeholder="">
+                                                <label class="input-effect-text">Email</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect pull-left" style="margin-bottom:0px;margin-top:10px;">
+                                                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                                                <label class="input-effect-text">Nick name</label>
+                                                <span class="focus-border"></span>
+                                            </div>
+                                            <div class="col-3 input-effect pull-left" style="margin-top:0px;">
+                                                <!--<input class="effect-17 input-sm" type="text" placeholder="">
+                                                <label class="input-effect-text">Validate code</label>
+                                                <span class="focus-border" style="width:150px;"></span>
+                                                <img class="img-rounded" style="margin-bottom:3px;margin-left:2px;" width="150" height="30" src="../Images/user-ceshi.jpg" />-->
+                                                <div style="width:100%;height:75px;">
+                                                    <span style="font-size:12px;color:#ccc;">请点击下面倒立的字</span>
+                                                    <div style="width:100%;height:60px;">
+                                                        <div class="yz-Content" id="yz-Content2">
+                                                            <img id="img2" height="60" src="../Images/CeShiYanZheng.gif" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-left" style="width:60%;">
+                                                <button class="btn btn-success" style="width:100%;margin-left:13px;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <!--<button type="button" class="btn btn-primary">提交更改</button>-->
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <!--背景动画-->
+                <div class="anim_content">
+                </div>
+            </div>
+            <div class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href=".">
+                                <i class="glyphicon glyphicon-home"></i> Home
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-picture"></i> Scrawl<span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> Jottings</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th-large"></span> Dropdown <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#" data-target="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign in | Sign up</a>
+                                        </li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
+                                <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user popover-destroy" data-toggle="popover">
+                                </a>
+                            </div>
+                            <!--<div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
+                                <div>
+                                    <img width="35" class="img-circle img-responsive popover-destroy" src="../Images/user-ceshi.jpg" id="userId" data-toggle="popover" />
+                                </div>
+                            </div>-->
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="content">
+                <style type="text/css">
+                    .mycenter {
+                    }
 
+                        .mycenter .mycenter_left {
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+                            box-shadow: -4px 6px 12px rgba(0,0,0,0.175);
+                            -webkit-box-shadow: -4px 6px 12px rgba(0,0,0,0.175);
+                        }
+
+                    .mycenter_right {
+                        box-shadow: 4px 6px 12px rgba(0,0,0,0.175);
+                        -webkit-box-shadow: 4px 6px 12px rgba(0,0,0,0.175);
+                    }
+
+                    .mycenter_tabs {
+                        margin: 15px 10px;
+                        padding: 0 5px;
+                        width: 100%;
+                        /*border-bottom:3px solid #eee;*/
+                        border-right: 2px solid #e67e22;
+                         box-shadow: 2px 2px 5px rgba(0,0,0,0.175);
+                        -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.175);
+
+                        -moz-transform: scale(1) rotate(0deg);
+                        -webkit-transform: scale(1) rotate(0deg);
+                        -o-transform: scale(1) rotate(0deg);
+                        -ms-transform: scale(1) rotate(0deg);
+                        transform: scale(1) rotate(0deg);
+                        -webkit-transition: all 0.7s ease-in-out;
+                        -moz-transition: all 0.7s ease-in-out;
+                        -o-transition: all 0.7s ease-in-out;
+                        transition: all 0.7s ease-in-out;
+                    }
+
+                        .mycenter_tabs:hover {
+                            border-left:1px solid #eee;
+                            -moz-transform: scale(1.2,1.2) rotate(5deg);
+                            -webkit-transform: scale(1.2,1.2) rotate(5deg);
+                            -o-transform: scale(1.2,1.2) rotate(5deg);
+                            -ms-transform: scale(1.2,1.2) rotate(5deg);
+                            transform: scale(1.2,1.2) rotate(5deg);
+                            -webkit-transition: all 0.2s ease-in-out;
+                            -moz-transition: all 0.2s ease-in-out;
+                            -o-transition: all 0.2s ease-in-out;
+                            transition: all 0.2s ease-in-out;
+                            z-index: 10;
+                        }
+
+                    .mycenter_tab_china {
+                        font-size: 15px;
+                        font-weight: 700;
+                        color: #777;
+                    }
+
+                        .mycenter_tab_china p {
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                            .mycenter_tab_china p span {
+                                font-size: 17px;
+                            }
+
+                    .mycenter_tab_english p {
+                        padding: 0;
+                        margin: 0;
+                        font-size: 12px;
+                        color: #a3a3a3;
+                    }
+                </style>
+                <div class="mycenter">
+                    <div class="mycenter_left panel panel-default pull-left col-md-3">
+                        <div class="mycenter_tabs mycenter_news">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;消息中心</p></div>
+                                <div class="mycenter_tab_english"><p>Message center</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_partition"></div>
+                        <div class="mycenter_tabs mycenter_newScrawl">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;新涂鸦/新随笔</p></div>
+                                <div class="mycenter_tab_english"><p>Add new scrawl and jottings</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_tabs mycenter_Scrawl">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;我的涂鸦/随笔</p></div>
+                                <div class="mycenter_tab_english"><p>My scrawl and jottings</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_tabs mycenter_collectScrawl">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;收藏的涂鸦/随笔</p></div>
+                                <div class="mycenter_tab_english"><p>Collection of the scrawl and jottings</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_partition"></div>
+                        <div class="mycenter_tabs mycenter_attentionPerson">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;关注的人</p></div>
+                                <div class="mycenter_tab_english"><p>Attention of the people</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_tabs mycenter_myFans">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-leaf"></span>&nbsp;&nbsp;我的粉丝</p></div>
+                                <div class="mycenter_tab_english"><p>My Fans</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_partition"></div>
+                        <div class="mycenter_tabs mycenter_personalInformation">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人基本信息</p></div>
+                                <div class="mycenter_tab_english"><p>Personal Information</p></div>
+                            </a>
+                        </div>
+                        <div class="mycenter_tabs mycenter_editInformation">
+                            <a class="linkstyle" href="javascript:void(0)">
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改资料</p></div>
+                                <div class="mycenter_tab_english"><p>Modify personal information</p></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mycenter_right panel panel-default pull-right  col-md-9">
+                        <div style="height:600px;width:500px;">
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="panel">
+                    <div class="panel-body text-center text">
+                        <span style="font-size:12px;color:#666;">
+                            个人网站演示 | 电话：66666666666 | QQ:6666666666<br />
+                            什么号啊，什么那啥这啥地址啊啥的
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/list.js"></script>
 </body>
 </html>

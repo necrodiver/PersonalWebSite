@@ -90,6 +90,7 @@
     <Content Include="Content\input-style.css" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\list.css" />
+    <Content Include="Content\myCenter.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\userProfiles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
