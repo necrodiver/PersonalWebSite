@@ -65,6 +65,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -78,8 +79,10 @@
     <Content Include="APP\List.html" />
     <Content Include="APP\Index.html" />
     <Content Include="APP\MyCenter.html" />
+    <Content Include="APP\MyCenterOperation\MessageCenter.html" />
     <Content Include="APP\UserProfiles.html" />
     <Content Include="App_GlobalResources\说明.txt" />
+    <Content Include="Content\bootstrap-table.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -950,6 +953,8 @@
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
     <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-table-zh-CN.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />

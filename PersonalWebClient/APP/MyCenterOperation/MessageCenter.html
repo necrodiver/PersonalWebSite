@@ -1,0 +1,148 @@
+﻿<link href="../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../Content/input-style.css" rel="stylesheet" />
+<!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-affix.js"></script>
+
+<script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
+<link href="../../Content/bootstrap-table.css" rel="stylesheet" />
+<script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+<style type="text/css">
+    .spanbadge {
+        background-color: #6ec29d;
+    }
+
+    .mc .panel-body {
+        padding: 0px;
+    }
+</style>
+<div class="child_all">
+    <div class="child_header">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#mc_privateLetter" data-toggle="tab">私信<span class="badge spanbadge"></span></a>
+            </li>
+            <li role="presentation">
+                <a href="#mc_atRemind" data-toggle="tab">@提醒<span class="badge spanbadge">42</span></a>
+            </li>
+            <li role="presentation">
+                <a href="#mc_worksComment" data-toggle="tab">作品评论<span class="badge spanbadge">42</span></a>
+            </li>
+            <li role="presentation">
+                <a href="#mc_worksLike" data-toggle="tab">作品喜欢<span class="badge spanbadge">99+</span></a>
+            </li>
+            <li role="presentation">
+                <a href="#mc_fans" data-toggle="tab">粉丝<span class="badge spanbadge"></span></a>
+            </li>
+            <li role="presentation">
+                <a href="#mc_systemInforms" data-toggle="tab">系统通知<span class="badge spanbadge">10</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="child_content mc">
+        <div class="tab-content">
+            <div class="tab-pane active" id="mc_privateLetter">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <button id="btn_delete" type="button" class="btn btn-default hidden">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                    </button>
+                    <table id="tb_departments"></table>
+                </div>
+            </div>
+            <div class="tab-pane" id="mc_atRemind"></div>
+            <div class="tab-pane" id="mc_worksComment"></div>
+            <div class="tab-pane" id="mc_worksLike"></div>
+            <div class="tab-pane" id="mc_fans"></div>
+            <div class="tab-pane" id="mc_systemInforms"></div>
+        </div>
+    </div>
+    <div class="child_bottom"></div>
+    <script type="text/javascript">
+        $(function () {
+
+            //1.初始化Table
+            var oTable = new TableInit();
+            oTable.Init();
+
+            //2.初始化Button的点击事件
+            var oButtonInit = new ButtonInit();
+            oButtonInit.Init();
+
+        });
+
+
+        var TableInit = function () {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function () {
+                $('#tb_departments').bootstrapTable({
+                    url: '../../Test/Handler1.ashx/GetDepartment',         //请求后台的URL（*）
+                    method: 'post',                      //请求方式（*）
+                    toolbar: '#toolbar',                //工具按钮用哪个容器
+                    striped: true,                      //是否显示行间隔色
+                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                    pagination: true,                   //是否显示分页（*）
+                    sortable: false,                     //是否启用排序
+                    sortOrder: "asc",                   //排序方式
+                    queryParams: oTableInit.queryParams,//传递参数（*）
+                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                    pageNumber: 1,                       //初始化加载第一页，默认第一页
+                    pageSize: 15,                       //每页的记录行数（*）
+                    search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                    showColumns: false,                  //是否显示所有的列,部分列选择
+                    showRefresh: false,                  //是否显示刷新按钮
+                    minimumCountColumns: 2,             //最少允许的列数
+                    clickToSelect: true,                //是否启用点击选中行
+                    height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                    uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+                    showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
+                    cardView: false,                    //是否显示详细视图
+                    detailView: false,                   //是否显示父子表
+                    columns: [{
+                        checkbox: true
+                    }, {
+                        field: 'Name',
+                        title: '消息发送者'
+                    }, {
+                        field: 'ParentName',
+                        title: '消息内容'
+                    }, {
+                        field: 'Level',
+                        title: '发送时间'
+                    }, {
+                        field: 'Desc',
+                        title: '描述'
+                    }, ]
+                });
+            };
+
+            //得到查询的参数
+            oTableInit.queryParams = function (params) {
+                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    limit: params.limit,   //页面大小
+                    offset: params.offset,  //页码
+                    departmentname: $("#txt_search_departmentname").val(),
+                    statu: $("#txt_search_statu").val()
+                };
+                return temp;
+            };
+            return oTableInit;
+        };
+
+
+        var ButtonInit = function () {
+            var oInit = new Object();
+            var postdata = {};
+
+            oInit.Init = function () {
+                //初始化页面上面的按钮事件
+            };
+
+            return oInit;
+        };
+
+    </script>
+</div>
