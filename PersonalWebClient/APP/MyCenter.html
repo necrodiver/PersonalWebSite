@@ -252,16 +252,16 @@
                 </style>
                 <div class="mycenter">
                     <div class="mycenter_left panel panel-default pull-left col-md-3">
-                        <div class="mycenter_tabs mycenter_news">
+                        <div class="mycenter_tabs mycenter_news" id="mycenter_news">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;消息中心</p></div>
                                 <div class="mycenter_tab_english"><p>Message center</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
-                        <div class="mycenter_tabs mycenter_newScrawl">
+                        <div class="mycenter_tabs mycenter_newScrawl" id="mycenter_newScrawl">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;新涂鸦/新随笔</p></div>
+                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;新涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>Add new scrawl and jottings</p></div>
                             </a>
                         </div>
@@ -305,7 +305,7 @@
                         </div>
                     </div>
                     <div class="mycenter_right panel panel-default pull-right  col-md-9">
-                        <iframe class="mycenter_right_content" src="MyCenterOperation/MessageCenter.html" frameborder="0" scrolling="no"></iframe>
+                        <iframe class="mycenter_right_content" src="MyCenterOperation/NewScrawlAndJottings.html" frameborder="0" scrolling="no"></iframe>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -322,6 +322,13 @@
             </div>
         </div>
     </div>
-    <script src="../Scripts/list.js"></script>
+    <script type="text/javascript">
+        $('#mycenter_news').click(function () {
+            $('.mycenter_right_content').attr('src', 'MyCenterOperation/MessageCenter.html');
+        });
+        $('#mycenter_newScrawl').click(function () {
+            $('.mycenter_right_content').attr('src', 'MyCenterOperation/NewScrawlAndJottings.html');
+        });
+    </script>
 </body>
 </html>
