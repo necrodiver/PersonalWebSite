@@ -20,19 +20,21 @@
         margin-top: 20px;
     }
 
-        .new_sc_header .col-3 {
-            float: none;
-            margin: 15px;
-        }
+    .new_sc_header .col-3 {
+        float: none;
+        margin: 15px;
+    }
 
     .new_sc_content {
         margin: 10px;
         width: 95%;
         height: auto;
     }
-    .new_sch_t{
-        width:250px;
+
+    .new_sch_t {
+        width: 250px;
     }
+
     .new_sct_c {
         margin: 10px;
         resize: none;
@@ -40,26 +42,30 @@
         border: 1px solid #eee;
         height: 100px;
     }
-    .file-drop-zone{
-        height:auto;
-    }
-    .new_sc_ctitle p{
-        font-size:15px;
-        font-weight:700;
-        color:#666;
-        margin-bottom:5px;
-    }
-    .new_sc_ctitle p em{
-        font-size:13px;
-        font-weight:200;
-        color:#808080;
+
+    .file-drop-zone {
+        height: auto;
     }
 
-    .new_sc_bottom button{
-        margin-right:20px;
+    .new_sc_ctitle p {
+        font-size: 15px;
+        font-weight: 700;
+        color: #666;
+        margin-bottom: 5px;
     }
-    .new_sch_tag{
-        width:250px;
+
+        .new_sc_ctitle p em {
+            font-size: 13px;
+            font-weight: 200;
+            color: #808080;
+        }
+
+    .new_sc_bottom button {
+        margin-right: 20px;
+    }
+
+    .new_sch_tag {
+        width: 250px;
     }
 </style>
 <div class="new_parent">
@@ -91,7 +97,7 @@
                         <div class="new_sc_txtcontent">
                             <textarea maxlength="500" class="new_sct_c" placeholder="填写你想要说的,最多只有500字哦~~"></textarea>
                         </div>
-                       
+
                     </div>
                     <div class="new_sc_content clearfix">
                         <div>
@@ -106,21 +112,28 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="new_jottings"></div>
+            <div class="tab-pane" id="new_jottings">
+                <div class="new_jottings_header">
+                    <div class="what"></div>
+                </div>
+                <div class="new_jottings_content"></div>
+                <div class="new_jottings_bottom"></div>
+            </div>
         </div>
     </div>
     <div class="new_bottom"></div>
 </div>
 <script type="text/javascript">
+    $('#what').wysiwyg();
     $("#file-1").fileinput({
         uploadUrl: '#', // you must set a valid URL here else you will get an error
         allowedFileExtensions: ['jpg', 'png', 'gif'],
         overwriteInitial: false,
         maxFileSize: 10000,
         maxFilesNum: 20,
-        language: 'zh',
+        language: 'zh',
         allowedFileTypes: ['image'],
-        msgFilesTooMany:"aasasdasdasd",
+        msgFilesTooMany: "aasasdasdasd",
         slugCallback: function (filename) {
             return filename.replace('(', '_').replace(']', '_');
         }

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Summernote</title>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+    <link href="summernote.css" rel="stylesheet">
+    <script src="summernote.js"></script>
+    <script src="lang/summernote-zh-CN.js"></script>
+</head>
+<body>
+    <div id="summernote"></div>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                lang: 'zh-CN',
+                fontNames: ['宋体', '微软雅黑', '楷体', '黑体', '隶书', 'andale mono', 'arial', 'arial black', 'comic sans ms', 'impact'],
+                //keyMap: {
+                //    pc: {
+                //        'ENTER': '用换行覆盖当前选中区',
+                //        'CTRL+Z': '取消',
+                //        'CTRL+Y': '重做',
+                //        'TAB': '标签',
+                //        'SHIFT+TAB': '非标签',
+                //        'CTRL+B': '粗体',
+                //        'CTRL+I': '斜体',
+                //        'CTRL+U': '下划线',
+                //        'CTRL+SHIFT+S': '删除线',
+                //        'CTRL+BACKSLASH': '清除格式',
+                //        'CTRL+SHIFT+L': '左对齐',
+                //        'CTRL+SHIFT+E': '居中对齐',
+                //        'CTRL+SHIFT+R': '右对齐',
+                //        'CTRL+SHIFT+J': '两端对齐',
+                //        'CTRL+SHIFT+NUM7': '无序列表',
+                //        'CTRL+SHIFT+NUM8': '有序列表',
+                //        'CTRL+LEFTBRACKET': '减少缩进',
+                //        'CTRL+RIGHTBRACKET': '缩进',
+                //        'CTRL+NUM0': '格式位',
+                //        'CTRL+NUM1': 'H1格式',
+                //        'CTRL+NUM2': 'H2',
+                //        'CTRL+NUM3': 'H3格式',
+                //        'CTRL+NUM4': 'H4格式',
+                //        'CTRL+NUM5': 'H5格式',
+                //        'CTRL+NUM6': 'H6格式',
+                //        'CTRL+ENTER': '用水平线覆盖当前选中区',
+                //        'CTRL+K': '链接会话框显示'
+                //    }
+                //}
+            });
+        });
+    </script>
+</body>
+</html>
