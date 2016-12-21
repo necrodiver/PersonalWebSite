@@ -92,6 +92,20 @@
         transition: all 0.2s ease-in-out;
         z-index: 10;
     }
+        .mycenter_tabs_click {
+            background-color:#ffd800;
+        border-left: 1px solid #eee;
+        -moz-transform: scale(1.2,1.2) rotate(5deg);
+        -webkit-transform: scale(1.2,1.2) rotate(5deg);
+        -o-transform: scale(1.2,1.2) rotate(5deg);
+        -ms-transform: scale(1.2,1.2) rotate(5deg);
+        transform: scale(1.2,1.2) rotate(5deg);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        z-index: 10;
+    }
 
 .mycenter_tab_china {
     font-size: 15px;

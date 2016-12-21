@@ -1,0 +1,150 @@
+﻿
+<link href="../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../Content/input-style.css" rel="stylesheet" />
+<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-affix.js"></script>
+
+<!--Masonry 用于创建瀑布流布局-->
+<script src="../../Scripts/masonry.pkgd.js"></script>
+<script src="../../Scripts/imagesloaded.pkgd.js"></script>
+<!--lightbox  用于图片扩大展示-->
+<script src="../../Scripts/lightbox.min.js"></script>
+<link href="../../Content/lightbox.css" rel="stylesheet" />
+
+<!--用于图片灰度显示-->
+<script src="../../Scripts/philter/jquery.philter.js"></script>
+<link href="../../Content/list.css" rel="stylesheet" />
+<link href="../../Content/imgbox.css" rel="stylesheet" />
+<script src="../../Scripts/Helper.js"></script>
+<script type="text/template" id="userTemplate">
+    <div class="user_thumbnail thumbnail">
+        <div class="user_portrait pull-left" data-philter-grayscale="70 0">
+            <a href="javascript:void(0);">
+                <img width="110" class="user_img img-circle img-thumbnail" src="../../Images/ceshi/pianpian.jpg" />
+            </a>
+        </div>
+        <div class="user_info pull-left">
+            <div class="user_info_top">
+                <div class="user_info_name">
+                    <a href="javascript:void(0);"><p>bain-片片{0}</p></a>
+                </div>
+                <div class="user_info_site">
+                    <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏{0}</p>
+                </div>
+                <div class="user_info_workparent">
+                    <div class="user_info_work pull-left">
+                        <p title="作品"><em class="glyphicon glyphicon glyphicon-book"></em> <a>10000{0}</a></p>
+                    </div>
+                    <div class="user_info_popularity pull-left">
+                        <p title="人气"><em class="glyphicon glyphicon glyphicon-sort-by-attributes-alt"></em> <a>100000{0}</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="user_info_signature">
+                    <p title="签名"><em class="glyphicon glyphicon-edit"></em> {0}大河向东流啊，天上的星星参北斗~~~</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<style type="text/css">
+    .lb-sort {
+        box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
+        -webkit-box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
+    }
+</style>
+<div class="lb-sort">
+    <div class="panel panel-default">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation"><a href="#">默认排序<p class="glyphicon glyphicon-sort-by-alphabet"></p></a></li>
+            <li role="presentation"><a href="#">按作品数排序<p class="glyphicon glyphicon-arrow-up"></p></a></li>
+            <li role="presentation"><a href="#">按人气排序<p class="glyphicon glyphicon-sort-by-attributes"></p></a></li>
+        </ul>
+    </div>
+</div>
+<div class="lb-content moduleParent" id="masonry">
+
+</div>
+<script type="text/javascript">
+    var maxCount = 49;
+    var everyCount = 6;
+    var length = 0;
+    var imagesLoading = false;
+    var $container = $('#masonry');
+    var isShowScrawl = true;//显示涂鸦
+    var isShowJottings = true;//显示随笔
+    //判断当前浏览器窗口滚动条是否离底部距离小于20
+    $(window).scroll(function () {
+
+        //下边这一段不知道影响性能不
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.thumbnail',
+                isAnimated: true,
+                transitionDuration: '0.6s'
+            });
+        });
+        //上方这段
+
+        if ($(document).height() - $(window).height() - $(document).scrollTop() < 50) {
+            if (!imagesLoading) {
+                imagesLoading = true;
+                appendToMasonry();
+                imagesLoading = false;
+            }
+        }
+    });
+    function appendToMasonry() {
+        var data = "";
+        var l = Math.ceil(everyCount * length);
+        var min = length * everyCount;
+        if (everyCount * (length + 1) < maxCount) {
+            var max = (length + 1) * everyCount;
+            for (var i = min + 1; i < max; i++) {
+                var r = parseInt(Math.random() * 18) + 1;
+                data += $("#userTemplate").html().format(i);
+            }
+        }
+        else if (min < maxCount && everyCount * (length + 1) > maxCount) {
+            for (var j = min; j < maxCount; j++) {
+                var r = parseInt(Math.random() * 19);
+                data += $("#userTemplate").html().format(i);
+            }
+        }
+        else
+            return;
+        ++length;
+
+        var $data = $(data);
+        if (length > 1) {
+            $container.imagesLoaded().always(function () {
+                $container.append($data).masonry('appended', $data).masonry();
+            });
+            return;
+        }
+
+        $container.append($data);
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.thumbnail',
+                isAnimated: true,
+                transitionDuration: '0.6s'
+            });
+        });
+    }
+
+    $(function () {
+
+        $container.html('');
+        appendToMasonry();
+
+        //图片灰度展示
+        $.philter();
+    });
+</script>

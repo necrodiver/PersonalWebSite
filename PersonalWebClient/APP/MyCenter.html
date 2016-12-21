@@ -247,7 +247,7 @@
                         margin-top: 15px;
                         margin-bottom: 15px;
                         width: 100%;
-                        height:1000px;
+                        height: 1000px;
                     }
                 </style>
                 <div class="mycenter">
@@ -259,39 +259,39 @@
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
-                        <div class="mycenter_tabs mycenter_newScrawl" id="mycenter_newScrawl">
+                        <div class="mycenter_tabs mycenter_newScrawlJottings" id="mycenter_newScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;新涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>Add new scrawl and jottings</p></div>
                             </a>
                         </div>
-                        <div class="mycenter_tabs mycenter_Scrawl">
+                        <div class="mycenter_tabs mycenter_ScrawlJottings" id="mycenter_ScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;我的涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>My scrawl and jottings</p></div>
                             </a>
                         </div>
-                        <div class="mycenter_tabs mycenter_collectScrawl">
+                        <div class="mycenter_tabs mycenter_collectScrawlJottings" id="mycenter_collectScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;收藏的涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>Collection of the scrawl and jottings</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
-                        <div class="mycenter_tabs mycenter_attentionPerson">
+                        <div class="mycenter_tabs mycenter_attentionPerson" id="mycenter_attentionPerson">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;关注的人</p></div>
                                 <div class="mycenter_tab_english"><p>Attention of the people</p></div>
                             </a>
                         </div>
-                        <div class="mycenter_tabs mycenter_myFans">
+                        <div class="mycenter_tabs mycenter_myFans" id="mycenter_myFans">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-leaf"></span>&nbsp;&nbsp;我的粉丝</p></div>
                                 <div class="mycenter_tab_english"><p>My Fans</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
-                        <div class="mycenter_tabs mycenter_personalInformation">
+                        <div class="mycenter_tabs mycenter_personalInformation" id="mycenter_personalInformation">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人基本信息</p></div>
                                 <div class="mycenter_tab_english"><p>Personal Information</p></div>
@@ -305,7 +305,7 @@
                         </div>
                     </div>
                     <div class="mycenter_right panel panel-default pull-right  col-md-9">
-                        <iframe class="mycenter_right_content" src="MyCenterOperation/NewScrawlAndJottings.html" frameborder="0" scrolling="no"></iframe>
+                        <iframe class="mycenter_right_content" src="MyCenterOperation/MessageCenter.html" frameborder="0" scrolling="no"></iframe>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -323,12 +323,35 @@
         </div>
     </div>
     <script type="text/javascript">
-        $('#mycenter_news').click(function () {
-            $('.mycenter_right_content').attr('src', 'MyCenterOperation/MessageCenter.html');
+        $(function () {
+
+            $('#mycenter_news').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/MessageCenter.html');
+            });
+            $('#mycenter_newScrawlJottings').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/NewScrawlAndJottings.html');
+            });
+            $('#mycenter_ScrawlJottings').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/MyScrawlAndJottings.html');
+            });
+            $('#mycenter_collectScrawlJottings').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/CollectScrawlAndJottings.html');
+            });
+            $('#mycenter_attentionPerson').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/AttentionPerson.html');
+            });
+            $('#mycenter_myFans').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/MyFans.html');
+            });
+            $('#mycenter_personalInformation').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/PersonalInformation.html');
+            });
+            $('.mycenter_tabs').click(function () {
+                $('.mycenter_tabs').removeClass('mycenter_tabs_click');
+                $(this).addClass('mycenter_tabs_click');
+            });
         });
-        $('#mycenter_newScrawl').click(function () {
-            $('.mycenter_right_content').attr('src', 'MyCenterOperation/NewScrawlAndJottings.html');
-        });
+
     </script>
 </body>
 </html>
