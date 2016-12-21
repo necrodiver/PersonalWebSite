@@ -24,7 +24,6 @@
     <!--用于图片灰度显示-->
     <script src="../Scripts/philter/jquery.philter.js"></script>
 
-
     <link href="../Content/imgbox.css" rel="stylesheet" />
     <link href="../Content/myCenter.css" rel="stylesheet" />
     <script src="../Scripts/Helper.js"></script>
@@ -297,7 +296,7 @@
                                 <div class="mycenter_tab_english"><p>Personal Information</p></div>
                             </a>
                         </div>
-                        <div class="mycenter_tabs mycenter_editInformation">
+                        <div class="mycenter_tabs mycenter_editInformation" id="mycenter_editInformation">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改资料</p></div>
                                 <div class="mycenter_tab_english"><p>Modify personal information</p></div>
@@ -346,6 +345,10 @@
             $('#mycenter_personalInformation').click(function () {
                 $('.mycenter_right_content').attr('src', 'MyCenterOperation/PersonalInformation.html');
             });
+            $('#mycenter_editInformation').click(function () {
+                $('.mycenter_right_content').attr('src', 'MyCenterOperation/EditInformation.html');
+            });
+
             $('.mycenter_tabs').click(function () {
                 $('.mycenter_tabs').removeClass('mycenter_tabs_click');
                 $(this).addClass('mycenter_tabs_click');

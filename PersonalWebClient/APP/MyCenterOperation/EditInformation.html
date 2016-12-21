@@ -1,0 +1,121 @@
+﻿<link href="../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../Content/input-style.css" rel="stylesheet" />
+<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-affix.js"></script>
+
+<link href="../../Content/bootstrap-table.css" rel="stylesheet" />
+<script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+
+
+<style type="text/css">
+    .new_content {
+        margin-top: 20px;
+    }
+
+    .new_sc_header .col-3 {
+        float: none;
+        margin: 15px;
+    }
+
+    .new_sc_content {
+        margin: 10px;
+        width: 95%;
+        height: auto;
+    }
+
+    .new_sch_t {
+        width: 250px;
+    }
+
+    .new_sct_c {
+        margin: 10px;
+        resize: none;
+        width: 95%;
+        border: 1px solid #eee;
+        height: 100px;
+    }
+
+    .file-drop-zone {
+        height: auto;
+    }
+
+    .new_sc_ctitle p {
+        font-size: 15px;
+        font-weight: 700;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+        .new_sc_ctitle p em {
+            font-size: 13px;
+            font-weight: 200;
+            color: #808080;
+        }
+
+    .new_sc_bottom button {
+        margin-right: 20px;
+    }
+
+    .new_sch_tag {
+        width: 250px;
+    }
+
+    .new_jottings_header div .col-3 {
+        float: none;
+        margin: 15px;
+    }
+
+    .new_sch_t, .new_sch_tag, .new_jn_content, .new_jt_content {
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }
+
+    .new_jn_name, .new_jt_tag {
+        width: 250px;
+    }
+
+    .new_jottings_content, .new_jbottom_click {
+        margin: 15px;
+    }
+
+        .new_jbottom_click .btn {
+            margin-left: 20px;
+        }
+</style>
+
+<div class="tab-pane active" id="new_scrawl">
+    <div class="new_scrawl_content">
+        <div class="new_sc_header">
+            <div class="col-3 input-effect new_sch_t">
+                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                <label class="input-effect-text">涂鸦主题名称</label>
+                <span class="focus-border"></span>
+            </div>
+            <div class="col-3 input-effect new_sch_tag">
+                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                <label class="input-effect-text">涂鸦标签(请用英文逗号隔开)</label>
+                <span class="focus-border"></span>
+            </div>
+            <div class="new_sc_txtcontent">
+                <textarea maxlength="500" class="new_sct_c form-control" placeholder="填写你想要说的,最多只有500字哦~~"></textarea>
+            </div>
+
+        </div>
+        <div class="new_sc_content clearfix">
+            <div>
+                <div class="new_sc_ctitle"><p>上传图片<em>(最大上传数量为20张)</em></p></div>
+                <input id="imgUpload" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+            </div>
+            <div>ps:作品保护就不添加了，图片没法进行保护，有点网页基础的菜鸟都能获取到（不知道涂鸦王国为毛整作品保护）</div>
+        </div>
+        <div class="new_sc_bottom">
+            <button class="btn btn-success pull-right">发布</button>
+            <button class="btn btn-default pull-right">取消</button>
+        </div>
+    </div>
+</div>

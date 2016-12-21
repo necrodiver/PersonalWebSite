@@ -81,6 +81,7 @@
     <Content Include="APP\MyCenter.html" />
     <Content Include="APP\MyCenterOperation\AttentionPerson.html" />
     <Content Include="APP\MyCenterOperation\CollectScrawlAndJottings.html" />
+    <Content Include="APP\MyCenterOperation\EditInformation.html" />
     <Content Include="APP\MyCenterOperation\MessageCenter.html" />
     <Content Include="APP\MyCenterOperation\MyFans.html" />
     <Content Include="APP\MyCenterOperation\MyScrawlAndJottings.html" />
