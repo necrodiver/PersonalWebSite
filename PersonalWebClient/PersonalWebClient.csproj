@@ -1029,6 +1029,11 @@
     <Content Include="Scripts\summernote\summernote.min.js" />
     <Content Include="Scripts\userProfiles.js" />
     <Content Include="Test\cloud10.png" />
+    <Content Include="Test\ImageUpload.html" />
+    <Content Include="Test\imageUpload\cropper\cropper.min.css" />
+    <Content Include="Test\imageUpload\cropper\cropper.min.js" />
+    <Content Include="Test\imageUpload\sitelogo\sitelogo.css" />
+    <Content Include="Test\imageUpload\sitelogo\sitelogo.js" />
     <Content Include="Test\Index.html" />
     <Content Include="Test\Index1.html" />
     <Content Include="Test\Index2.html" />

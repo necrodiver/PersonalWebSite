@@ -113,7 +113,7 @@ $(function () {
           '<td><a href="#">12<i class="glyphicon glyphicon-chevron-right pull-right user-right"></i></a></td>' +
       '</tr>' +
       '<tr>' +
-          '<td colspan="3" class="user-dxg"><i class="glyphicon glyphicon-cog"></i> <a href="#" class="user-set">个人信息设置<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
+          '<td colspan="3" class="user-dxg"><i class="glyphicon glyphicon-cog"></i> <a href="http://localhost:10841/Client/APP/MyCenter.html" class="user-set">个人信息设置<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
       '</tr>' +
       '<tr>' +
           '<td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> 退出</button></td>' +
