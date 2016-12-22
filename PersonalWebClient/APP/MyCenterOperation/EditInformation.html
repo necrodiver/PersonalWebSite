@@ -13,40 +13,194 @@
 
 
 <style type="text/css">
-    .edit_content {
-        margin-top: 20px;
+    .edit_parent, .edit_sreality {
+        margin: 20px;
+        min-width: 400px;
+    }
+
+    .edit_ch_nickname {
+    }
+
+    .edit_c {
+        margin-top: 13px;
+    }
+
+        .edit_c p {
+            text-shadow: 3px 4px 4px rgba(0,0,0,0.175);
+        }
+
+    .edit_cn_l, .edit_cs_l {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 5px;
+        width: 100px;
+    }
+
+    .edit_cn_c {
+        font-size: 15px;
+        font-weight: 200;
+        margin: 0 15px;
+        width: 250px;
+    }
+
+    .edit_cn_r, .edit_img, .edit_cs_c select {
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.175);
+        -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.175);
+    }
+
+    .edit_img {
+        width: 100px;
+    }
+
+    .edit_cn_l_picturename {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 100px;
+        padding-top: 80px;
+    }
+
+    .edit_cn_r_state {
+        font-size: 13px;
+        font-weight: 200;
+        color: #8f8f8f;
+        padding-top: 80px;
+    }
+
+    .edit_cs_c select {
+        width: 100px;
+        margin-left: 15px;
     }
 </style>
 <div class="edit_parent">
-    <div class="edit_title">
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#edit_common" data-toggle="tab">基本信息修改<span class="badge spanbadge"></span></a>
-            </li>
-            <li role="presentation">
-                <a href="#edit_pwd" data-toggle="tab">密码修改<span class="badge spanbadge"></span></a>
-            </li>
-            <li role="presentation">
-                <a href="#edit_picture" data-toggle="tab">头像修改<span class="badge spanbadge"></span></a>
-            </li>
-        </ul>
-    </div>
-    <div class="edit_content">
-        <div class="tab-content">
-            <div class="tab-pane active" id="edit_common">
-                <div class="edit_common_header">
-                    <div class="edit_ch_nickname"></div>
-                </div>
-                <div class="edit_common_header"></div>
-                <div class="edit_common_header"></div>
-            </div>
-            <div class="tab-pane" id="edit_pwd">
-                密码修改
-            </div>
-            <div class="tab-pane" id="edit_picture">
-                头像修改
-            </div>
+    <div class="edit_common">
+        <div class="edit_c edit_ch_nickname clearfix">
+            <p class="edit_cn_l pull-left">昵称</p>
+            <p class="edit_cn_c pull-left">bain-片片</p>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+        </div>
+        <div class="edit_c edit_c_domain clearfix">
+            <p class="edit_cn_l pull-left">个性域名</p>
+            <p class="edit_cn_c pull-left">www.notlives.cc/pianpian</p>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+        </div>
+        <div class="edit_c edit_c_email clearfix">
+            <p class="edit_cn_l pull-left">邮件地址</p>
+            <p class="edit_cn_c pull-left">neclodiver@live.com</p>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
         </div>
     </div>
-    <div class="edit_bottom"></div>
+    <div class="edit_c edit_c_picture clearfix">
+        <p class="edit_cn_l_picturename pull-left">头像</p>
+        <div class="edit_cn_c pull-left">
+            <img class="edit_img img-thumbnail" src="../../Images/user-ceshi.jpg" />
+        </div>
+        <p class="edit_cn_r_state pull-left">（可点击图片来修改头像）</p>
+    </div>
+</div>
+<div class="edit_sreality">
+    <div class="edit_c edit_c_area clearfix">
+        <p class="edit_cs_l pull-left">地区</p>
+        <div class="edit_cs_c">
+            <select class="form-control pull-left">
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="guangzhou" selected>广州</option>
+                <option value="wuhan">武汉</option>
+                <option value="hangkong">香港</option>
+            </select>
+            <select class="form-control pull-left">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    <div class="edit_c edit_c_introduce">个人签名</div>
+
+    <div class="edit_s edit_s_name">姓名</div>
+    <div class="edit_s edit_s_qq">QQ</div>
+    <div class="edit_s edit_s_mobileno">电话</div>
+    <div class="edit_s edit_s_sex">性别</div>
+</div>
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Legend</legend>
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Checkbox
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="textArea"></textarea>
+                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Radios</label>
+            <div class="col-lg-10">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                        Option one is this
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Option two can be something else
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">Selects</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br>
+                <select multiple="" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
 </div>
