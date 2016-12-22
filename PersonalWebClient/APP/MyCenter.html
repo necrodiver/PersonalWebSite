@@ -240,15 +240,57 @@
                 </nav>
             </div>
             <div class="content">
-                <style type="text/css">
-                    .mycenter_right_content {
-                        border: none;
-                        margin-top: 15px;
-                        margin-bottom: 15px;
-                        width: 100%;
-                        height: 1000px;
-                    }
-                </style>
+                <div class="content_user">
+                    <div class="user_parent panel">
+                        <div class="user_l pull-left">
+                            <div class="user_ld pull-left">
+                                <img class="user_ld_img img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+                            </div>
+                            <div class="user_l_intro pull-left">
+                                <div class="user_li_ntl pull-left">
+                                    <div class="user_li_name">
+                                        <p>bain-片片</p>
+                                    </div>
+                                    <div class="user_li_title">
+                                        <p>星·插画师</p>
+                                    </div>
+                                    <div class="user_li_level">
+                                        <p>Lv.18</p>
+                                    </div>
+                                    <div class="user_li_site">
+                                        <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏</p>
+                                    </div>
+                                </div>
+                                <div class="user_li_about pull-right">
+                                    <div class="user_lia_top clearfix">
+                                        <div class="user_liawaf pull-left">
+                                            <div class="user_liawaf_num"><p>999999</p></div>
+                                            <div class="user_liawaf_title"><p>作品</p></div>
+                                        </div>
+                                        <div class="user_liawaf pull-left">
+                                            <div class="user_liawaf_num"><p>999999</p></div>
+                                            <div class="user_liawaf_title"><p>关注</p></div>
+                                        </div>
+                                        <div class="user_liawaf user_liawaf_end pull-left">
+                                            <div class="user_liawaf_num"><p>9999999</p></div>
+                                            <div class="user_liawaf_title"><p>粉丝</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="user_lia_bottom">
+                                        <button class="btn btn-success btn-xs pull-right" id="editInformation"><em class="glyphicon glyphicon-edit"></em> 修改资料</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user_li_hi pull-left">
+                                <div class="user_lih_content">
+                                    <p><em class="glyphicon glyphicon-edit"></em> 插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
                 <div class="mycenter">
                     <div class="mycenter_left panel panel-default pull-left col-md-3">
                         <div class="mycenter_tabs mycenter_news" id="mycenter_news">
@@ -290,12 +332,6 @@
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
-                        <div class="mycenter_tabs mycenter_personalInformation" id="mycenter_personalInformation">
-                            <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人基本信息</p></div>
-                                <div class="mycenter_tab_english"><p>Personal Information</p></div>
-                            </a>
-                        </div>
                         <div class="mycenter_tabs mycenter_editInformation" id="mycenter_editInformation">
                             <a class="linkstyle" href="javascript:void(0)">
                                 <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改资料</p></div>
@@ -342,11 +378,11 @@
             $('#mycenter_myFans').click(function () {
                 $('.mycenter_right_content').attr('src', 'MyCenterOperation/MyFans.html');
             });
-            $('#mycenter_personalInformation').click(function () {
-                $('.mycenter_right_content').attr('src', 'MyCenterOperation/PersonalInformation.html');
-            });
-            $('#mycenter_editInformation').click(function () {
+
+            $('#mycenter_editInformation,#editInformation').click(function () {
                 $('.mycenter_right_content').attr('src', 'MyCenterOperation/EditInformation.html');
+                $('.mycenter_tabs').removeClass('mycenter_tabs_click');
+                $('#mycenter_editInformation').addClass('mycenter_tabs_click');
             });
 
             $('.mycenter_tabs').click(function () {
