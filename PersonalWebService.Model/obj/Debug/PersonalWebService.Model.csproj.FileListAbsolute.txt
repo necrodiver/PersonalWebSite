@@ -6,3 +6,4 @@ F:\Codes\PersonalWebSite\PersonalWebService.Model\bin\Debug\PersonalWebService.M
 F:\Codes\PersonalWebSite\PersonalWebService.Model\bin\Debug\PersonalWebService.Model.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.Model\obj\Debug\PersonalWebService.Model.dll
 F:\Codes\PersonalWebSite\PersonalWebService.Model\obj\Debug\PersonalWebService.Model.pdb
+F:\Codes\PersonalWebSite\PersonalWebService.Model\obj\Debug\PersonalWebService.Model.csprojResolveAssemblyReference.cache

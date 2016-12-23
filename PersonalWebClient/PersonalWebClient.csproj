@@ -95,6 +95,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\detail.css" />
     <Content Include="Content\fileinput.css" />
+    <Content Include="Content\imageUpload\cropper\cropper.min.css" />
+    <Content Include="Content\imageUpload\cropper\cropper.min.js" />
+    <Content Include="Content\imageUpload\sitelogo\sitelogo.css" />
+    <Content Include="Content\imageUpload\sitelogo\sitelogo.js" />
     <Content Include="Content\imgbox.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\input-style.css" />
