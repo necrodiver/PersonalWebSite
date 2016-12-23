@@ -10,8 +10,6 @@
 <link href="../../Content/bootstrap-table.css" rel="stylesheet" />
 <script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
-
-
 <style type="text/css">
     .edit_parent, .edit_sreality {
         margin: 20px;
@@ -74,23 +72,174 @@
         width: 100px;
         margin-left: 15px;
     }
+
+    .edit_s .col-3 {
+        float: none;
+        margin: 15px 7px;
+        width: 250px;
+    }
+
+    .edit_cnl_introduce {
+        margin: 5px 10px 0px 7px;
+    }
+
+    .edit_cut {
+        margin-top: 25px;
+    }
+
+    .edit_cut_l {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 0;
+    }
+
+    .edit_cut_r {
+        font-size: 12px;
+        font-weight: 200;
+        color: #808080;
+        margin-bottom: 0;
+    }
+
+    .radio_content input {
+        margin-left: 10px;
+    }
+
+    .edit_ss_cont {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 5px;
+        width: 80px;
+    }
+
+    .edit_ss_cont, .edit_cut_l, .edit_cut_r, .radio_content {
+        text-shadow: 3px 4px 4px rgba(0,0,0,0.175);
+    }
+
+    .edit_s .col-3 {
+        margin-top: 0px;
+    }
+
+    .edit_s_name {
+        margin-top: 15px;
+    }
+
+    .edit_secrecy {
+        margin-left: 10px;
+    }
+
+    .edit_submit {
+        margin-left: 350px;
+        margin-top: 20px;
+    }
+
+    .nickname_edit_content, .domain_edit_content {
+        z-index: 0;
+    }
+
+        .nickname_edit_content .col-3, .domain_edit_content .col-3 {
+            float: none;
+            width: 250px;
+        }
+
+        .nickname_edit_content div, .domain_edit_content div {
+            margin: 10px 3%;
+        }
+
+    .edit_nickname_state, .edit_domain_state {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    .edit_domain_old {
+        font-size: 14px;
+        font-weight: 200;
+        color: #033185;
+    }
+
+    .edit_domain_old_txt {
+        font-size: 14px;
+        font-weight: 700;
+        color: #126489;
+    }
 </style>
+<div class="help">
+    <!--修改昵称-->
+    <div class="modal fade" id="edit_nickname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">昵称修改</h4>
+                </div>
+                <div class="modal-body nickname_edit_content">
+                    <div class="edit_nickname_state">提示：昵称90天才能改一次，请认真修改~</div>
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">请输入新的昵称</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="edit_nickname_state2">2-10个字符 支持中英文、数字、"_"或减号</div>
+                    <div class="edit_nickname_submit clearfix"><button class="btn btn-success btn-lg pull-right">保存</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改域名-->
+    <div class="modal fade" id="edit_domain" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">个性域名修改</h4>
+                </div>
+                <div class="modal-body domain_edit_content">
+                    <div class="edit_domain_state">提示：个性域名180天才能改一次，请认真修改~</div>
+                    <div class="edit_domain_old clearfix"><p class="pull-left">当前使用的个性域名为：www.notlives.cc/</p><p class="pull-left edit_domain_old_txt">bainbain</p></div>
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">www.notlives.cc/</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="edit_nickname_state2">2-10个字符 支持中英文、数字、"_"</div>
+                    <div class="edit_nickname_submit clearfix"><button class="btn btn-success btn-lg pull-right">保存</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改邮件地址-->
+    <div class="modal fade" id="edit_email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">邮件地址修改</h4>
+                </div>
+                <div class="modal-body domain_edit_content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="edit_parent">
     <div class="edit_common">
         <div class="edit_c edit_ch_nickname clearfix">
             <p class="edit_cn_l pull-left">昵称</p>
             <p class="edit_cn_c pull-left">bain-片片</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_nickname"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
         </div>
         <div class="edit_c edit_c_domain clearfix">
             <p class="edit_cn_l pull-left">个性域名</p>
             <p class="edit_cn_c pull-left">www.notlives.cc/pianpian</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_domain"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
         </div>
         <div class="edit_c edit_c_email clearfix">
             <p class="edit_cn_l pull-left">邮件地址</p>
             <p class="edit_cn_c pull-left">neclodiver@live.com</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs"  data-toggle="modal" data-target="#edit_email"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
         </div>
     </div>
     <div class="edit_c edit_c_picture clearfix">
@@ -102,105 +251,88 @@
     </div>
 </div>
 <div class="edit_sreality">
-    <div class="edit_c edit_c_area clearfix">
-        <p class="edit_cs_l pull-left">地区</p>
-        <div class="edit_cs_c">
-            <select class="form-control pull-left">
-                <option value="beijing">北京</option>
-                <option value="shanghai">上海</option>
-                <option value="guangzhou" selected>广州</option>
-                <option value="wuhan">武汉</option>
-                <option value="hangkong">香港</option>
-            </select>
-            <select class="form-control pull-left">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </div>
-    </div>
-    <div class="edit_c edit_c_introduce">个人签名</div>
-
-    <div class="edit_s edit_s_name">姓名</div>
-    <div class="edit_s edit_s_qq">QQ</div>
-    <div class="edit_s edit_s_mobileno">电话</div>
-    <div class="edit_s edit_s_sex">性别</div>
+    <form class="form-horizontal form_content">
+        <fieldset>
+            <div class="edit_c edit_c_area clearfix">
+                <p class="edit_cs_l pull-left">地区</p>
+                <div class="edit_cs_c">
+                    <select class="form-control pull-left">
+                        <option value="beijing">北京</option>
+                        <option value="shanghai">上海</option>
+                        <option value="guangzhou" selected>广州</option>
+                        <option value="wuhan">武汉</option>
+                        <option value="hangkong">香港</option>
+                    </select>
+                    <select class="form-control pull-left">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="edit_c edit_c_introduce">
+                <p class="edit_cn_l">个性签名</p>
+                <textarea class="form-control edit_cnl_introduce" placeholder="请填写你的个性签名（300字以内~~）"></textarea>
+            </div>
+            <hr />
+            <div class="edit_cut">
+                <p class="edit_cut_l">真实信息</p><p class="edit_cut_r">(真实信息为非必填项，且真实信息将不会公开显示，仅用官方活动或项目合作联系)</p>
+            </div>
+            <div class="edit_secrecy">
+                <div class="edit_s edit_s_name clearfix">
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">姓名</label>
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="edit_s edit_s_qq">
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">QQ</label>
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="edit_s edit_s_mobileno">
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="tel" placeholder="">
+                        <label class="input-effect-text">电话</label>
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="edit_s edit_s_sex clearfix">
+                    <p class="edit_ss_cont pull-left">性别：</p>
+                    <div class="radio_content pull-left">
+                        <input type="radio" name="radio_sex" /> 保密
+                        <input type="radio" name="radio_sex" /> 男
+                        <input type="radio" name="radio_sex" /> 女
+                    </div>
+                </div>
+                <div class="edit_submit clearfix">
+                    <button class="btn btn-success" type="submit">保存</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".col-3 input").val("");
 
-
-
-<form class="form-horizontal">
-    <fieldset>
-        <legend>Legend</legend>
-        <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Checkbox
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-            <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Radios</label>
-            <div class="col-lg-10">
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                        Option one is this
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Option two can be something else
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="select" class="col-lg-2 control-label">Selects</label>
-            <div class="col-lg-10">
-                <select class="form-control" id="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-                <br>
-                <select multiple="" class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </fieldset>
-</form>
-</div>
+        $(".input-effect input").focusout(function () {
+            if ($(this).val() != "") {
+                $(this).addClass("has-content");
+            } else {
+                $(this).removeClass("has-content");
+            }
+        })
+    });
+    $(function () {
+        $('#edit_nickname,#edit_domain,#edit_email').modal({
+            keyboard: true,
+            show: false
+        });
+    });
+</script>
