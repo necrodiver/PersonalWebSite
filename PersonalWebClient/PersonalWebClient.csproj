@@ -86,6 +86,7 @@
     <Content Include="APP\MyCenterOperation\MyFans.html" />
     <Content Include="APP\MyCenterOperation\MyScrawlAndJottings.html" />
     <Content Include="APP\MyCenterOperation\NewScrawlAndJottings.html" />
+    <Content Include="APP\SignUp.html" />
     <Content Include="APP\UserProfiles.html" />
     <Content Include="App_GlobalResources\说明.txt" />
     <Content Include="Content\bootstrap-table.css" />
@@ -970,6 +971,14 @@
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="Scripts\bootstrap\validator.js" />
+    <Content Include="Scripts\bootstrap\validator.min.js" />
+    <Content Include="Scripts\cloudJs\cloud.js" />
+    <Content Include="Scripts\cloudJs\cloud10.png" />
+    <Content Include="Scripts\cloudJs\Detector.js" />
+    <Content Include="Scripts\cloudJs\RequestAnimationFrame.js" />
+    <Content Include="Scripts\cloudJs\ThreeExtras.js" />
+    <Content Include="Scripts\cloudJs\ThreeWebGL.js" />
     <Content Include="Scripts\detail.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
@@ -1034,6 +1043,12 @@
     <Content Include="Scripts\summernote\summernote.min.js" />
     <Content Include="Scripts\userProfiles.js" />
     <Content Include="Test\cloud10.png" />
+    <Content Include="Test\CloudTest\cloud.html" />
+    <Content Include="Test\CloudTest\cloudJs\cloud10.png" />
+    <Content Include="Test\CloudTest\cloudJs\Detector.js" />
+    <Content Include="Test\CloudTest\cloudJs\RequestAnimationFrame.js" />
+    <Content Include="Test\CloudTest\cloudJs\ThreeExtras.js" />
+    <Content Include="Test\CloudTest\cloudJs\ThreeWebGL.js" />
     <Content Include="Test\ImageUpload.html" />
     <Content Include="Test\imageUpload\cropper\cropper.min.css" />
     <Content Include="Test\imageUpload\cropper\cropper.min.js" />
