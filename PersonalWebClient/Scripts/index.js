@@ -1,21 +1,4 @@
-﻿if (!String.prototype.format) {
-    String.prototype.format = function () {
-        /// <summary>
-        /// 这是一个实例方法，用法类似于C#的String.Format
-        /// </summary>
-        /// <param name="arguments" type="arguments">要设置格式的对象.</param>
-        var args = arguments;
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined'
-                ? args[number]
-                : match
-            ;
-        });
-    };
-}
-
-
-$(function () {
+﻿$(function () {
     $(window).load(function () {
         $(".col-3 input").val("");
         $(".input-effect input").focusout(function () {
@@ -42,7 +25,7 @@ $(function () {
             placement: 'bottom', //top, bottom, left or right
             title: txt,
             html: 'true',
-            content: ContentMethod1(),
+            content: ContentMethod(),
         }).on("mouseenter", function () {
             var _this = this;
             $(this).popover("show");
@@ -58,84 +41,13 @@ $(function () {
             }, 100);
         });
     });
+
     function ContentMethod() {
-        return '<table class="table table-default" style="width:200px;">' +
-                    '<tr><td style="width:80px;"><i class="glyphicon glyphicon-user"></i> 昵称</td><td>STAR</td></tr>' +
-                    '<tr><td style="width:80px;"><i class="glyphicon glyphicon-star-empty"></i> 等级</td><td>lv.4</td></tr>' +
-                    '<tr><td style="width:80px;"><i class="glyphicon glyphicon-bell"></i> 消息</td><td><a href="javascript:(0);">12</a></td></tr>' +
-                    '<tr><td style="width:80px;">涂鸦</td><td><a href="javascript:(0);">53</a></td></tr>' +
-                    '<tr><td colspan="2" text-align="center"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-signout"></i> 退出</button></td></tr>'
-        '</table>';
-    }
-    function ContentMethod1() {
-        return '<table class="table table-default" style="width:248px;">' +
-      '<tr>' +
-          '<td colspan="3">' +
-              '<div class="pull-left">' +
-                  '<a href="#"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>' +
-              '</div>' +
-              '<div class="pull-left user-name">' +
-                  '<a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>' +
-              '</div>' +
-              '<div class="pull-left user-chick-p">' +
-                  '<button class="btn btn-default user-chick" id="user-check">签到</button>' +
-              '</div>' +
-          '</td>' +
-      '</tr>' +
-      '<tr>' +
-         '<td colspan="3">' +
-              '<div class="pull-left user-dgf">' +
-                  '<a href="#" class="user-dgf-link">' +
-                      '<div class="user-dgf-link-1"><span>12314</span></div>' +
-                      '<div class="user-dgf-link-2"><span>动态</span></div>' +
-                  '</a>' +
-              '</div>' +
-              '<div class="pull-left user-dgf">' +
-                  '<a href="#" class="user-dgf-link">' +
-                      '<div class="user-dgf-link-1"><span>2423</span></div>' +
-                      '<div class="user-dgf-link-2"><span>关注</span></div>' +
-                 ' </a>' +
-              '</div>' +
-              '<div class="pull-left user-dgf-1">' +
-                  '<a href="#" class="user-dgf-link">' +
-                      '<div class="user-dgf-link-1"><span>236234</span></div>' +
-                      '<div class="user-dgf-link-2"><span>粉丝</span></div>' +
-                  '</a>' +
-              '</div>' +
-          '</td>' +
-      '</tr>' +
-      '<tr>' +
-          '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-star-empty"></i> 等级</td>' +
-          '<td><a href="#">Lv.4<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
-      '</tr>' +
-      '<tr>' +
-          '<td colspan="2" class="user-dxg"><i class="glyphicon glyphicon-bell"></i> 消息</td>' +
-          '<td><a href="#">12<i class="glyphicon glyphicon-chevron-right pull-right user-right"></i></a></td>' +
-      '</tr>' +
-      '<tr>' +
-          '<td colspan="3" class="user-dxg"><i class="glyphicon glyphicon-cog"></i> <a href="http://localhost:10841/Client/APP/MyCenter.html" class="user-set">个人信息设置<i class="glyphicon glyphicon-chevron-right pull-right  user-right"></i></a></td>' +
-      '</tr>' +
-      '<tr>' +
-          '<td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> 退出</button></td>' +
-      '</tr>' +
-  '</table>'
+        return $('#loggedOnUserTemplate').html();
     }
 
     function ContentMethod2() {
-        return '<div class="user-login-content">' +
-            '<div class="user-login-prompt">' +
-                '<div class="pull-left">' +
-                    '<a href="#" title="当前未登录"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" / ></a>' +
-                '</div>' +
-            '<div class="pull-left user-login-prompt-2">' +
-                '<span>你的用户还未登录？</span>' +
-            '</div>' +
-        '</div>' +
-        '<div class="user-login-dp">' +
-            '<div><button class="btn btn-primary btn-sm user-login-d">登录<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
-            '<div><button class="btn btn-info btn-sm user-login-d">注册<i class="glyphicon glyphicon-chevron-right pull-right"></i></button></div>' +
-            '</div>' +
-        '</div>';
+        return $('#signInTemplate').html();
     }
 
     $('#userId').popover('hide');

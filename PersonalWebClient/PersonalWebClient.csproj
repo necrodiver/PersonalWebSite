@@ -982,6 +982,7 @@
     <Content Include="Scripts\lightbox.min.js" />
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
+    <Content Include="Scripts\mycenter.js" />
     <Content Include="Scripts\philter\jquery.philter.js" />
     <Content Include="Scripts\philter\jquery.philter.min.js" />
     <Content Include="Scripts\philter\philter.js" />
@@ -1194,9 +1195,7 @@
       <LastGenOutput>Resource.ja-jp.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\Index\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
