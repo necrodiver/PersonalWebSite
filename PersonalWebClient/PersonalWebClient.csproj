@@ -86,7 +86,7 @@
     <Content Include="APP\MyCenterOperation\MyFans.html" />
     <Content Include="APP\MyCenterOperation\MyScrawlAndJottings.html" />
     <Content Include="APP\MyCenterOperation\NewScrawlAndJottings.html" />
-    <Content Include="APP\SignUp.html" />
+    <Content Include="APP\SignUpAndSignIn.html" />
     <Content Include="APP\UserProfiles.html" />
     <Content Include="App_GlobalResources\说明.txt" />
     <Content Include="Content\bootstrap-table.css" />
@@ -94,6 +94,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapValidator.css" />
+    <Content Include="Content\bootstrapValidator.min.css" />
     <Content Include="Content\detail.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\imageUpload\cropper\cropper.min.css" />
@@ -971,8 +973,9 @@
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
-    <Content Include="Scripts\bootstrap\validator.js" />
-    <Content Include="Scripts\bootstrap\validator.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator_zh_CN.js" />
     <Content Include="Scripts\cloudJs\cloud.js" />
     <Content Include="Scripts\cloudJs\cloud10.png" />
     <Content Include="Scripts\cloudJs\Detector.js" />
