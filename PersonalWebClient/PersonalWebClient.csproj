@@ -78,6 +78,7 @@
     <Content Include="APP\Detail.html" />
     <Content Include="APP\List.html" />
     <Content Include="APP\Index.html" />
+    <Content Include="APP\Manager\Index.html" />
     <Content Include="APP\MyCenter.html" />
     <Content Include="APP\MyCenterOperation\AttentionPerson.html" />
     <Content Include="APP\MyCenterOperation\CollectScrawlAndJottings.html" />
@@ -193,6 +194,7 @@
     <Content Include="Images\listbox\loading.gif" />
     <Content Include="Images\listbox\next.png" />
     <Content Include="Images\listbox\prev.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\qq.jpg" />
     <Content Include="Images\user-ceshi.jpg" />
     <Content Include="Images\bgImg.png" />

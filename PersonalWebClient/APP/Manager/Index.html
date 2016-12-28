@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../../Content/input-style.css" rel="stylesheet" />
+    <!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+    <script src="../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../../Scripts/bootstrap/bootstrap-popover.js"></script>
+    <script src="../../Scripts/bootstrap/bootstrap-affix.js"></script>
+    <!--helper-->
+    <script src="../../Scripts/Helper.js"></script>
+    <!--Masonry 用于创建瀑布流布局-->
+    <script src="../../Scripts/masonry.pkgd.js"></script>
+    <script src="../../Scripts/imagesloaded.pkgd.js"></script>
+    <!--lightbox  用于图片扩大展示-->
+    <script src="../../Scripts/lightbox.min.js"></script>
+    <link href="../../Content/lightbox.css" rel="stylesheet" />
+    <link href="../../Content/imgbox.css" rel="stylesheet" />
+    <style type="text/css">
+        p {
+            margin-bottom: 0;
+        }
+
+        .safemessage_top {
+            height: 60px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .safemessage_top_logo, .safemessage_top_admin_context {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .top_logo_img {
+            width: 250px;
+            height: 60px;
+        }
+
+        .top_admin_child {
+            width: auto;
+            height: auto;
+        }
+
+            .top_admin_child .linkstyle {
+                color: #999;
+            }
+
+                .top_admin_child .linkstyle p {
+                    height: 60px;
+                    line-height: 50px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    padding-top:2px;
+                }
+
+                    .top_admin_child .linkstyle p em.glyphicon {
+                        margin-top: 3px;
+                    }
+
+            .top_admin_child:hover {
+                background-color: #eee;
+            }
+            .safemessage_tauc_picture{
+                width:50px;
+                margin-top:3px;
+                border:4px solid #eee;
+            }
+            .safemessage_left{
+                width:235px;
+                height:500px;
+                background-color:#eee;
+                margin:10px;
+            }
+            .safemessage_right{
+                width:auto;
+                height:800px;
+                background-color:#eee;
+                 margin:10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="safemessage_header">
+            <div class="panel panel-default col-sm-12 safemessage_top">
+                <div class="safemessage_top_logo col-sm-3">
+                    <img class="top_logo_img" src="../../Images/logo.png" />
+                </div>
+                <div class="safemessage_top_admin_context col-sm-5 col-sm-offset-4">
+                    <div class="top_admin_child safemessage_top_admin_remind col-sm-2 col-sm-offset-1">
+                        <a href="javascript:;" class="linkstyle">
+                            <p><em class="glyphicon glyphicon-bell"></em> 提醒 <span class="badge-success">99+</span></p>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safemessage_top_admin_information col-sm-2">
+                        <a href="javascript:;" class="linkstyle">
+                            <p><em class="glyphicon glyphicon-comment"></em> 消息 <span class="badge-danger">99+</span></p>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safemessage_top_admin_user col-sm-3">
+                        <a href="javascript:;" class="linkstyle">
+                            <div class="safemessage_tau_content clearfix">
+                                <img class="img-circle safemessage_tauc_picture pull-left" src="../../Images/user-ceshi.jpg"/>
+                                <p class="pull-left">&nbsp;neclodiver <span class="badge-danger">99+</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safemessage_top_admin_user col-sm-2">
+                        <a href="javascript:;" class="linkstyle">
+                            <p class="safemessage_tauc_exit"><em class="glyphicon glyphicon-log-out" title="退出"></em></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="safemessage_left col-sm-3"></div>
+        <div class="safemessage_right col-sm-9"></div>
+    </div>
+</body>
+</html>

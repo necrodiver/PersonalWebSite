@@ -409,3 +409,41 @@
     text-overflow: ellipsis; /*省略号*/
 }
 
+/*自定义颜色角标*/
+.badge-danger, .badge-success, .badge-warning, .badge-primary, .badge-info {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+}
+
+    .badge-danger:empty, .badge-danger:empty, .badge-success:empty, .badge-warning:empty, .badge-primary:empty, .badge-info：empty {
+        display: none;
+    }
+
+.badge-danger {
+    background-color: #8E44AD !important;
+}
+
+.badge-info {
+    background-color: #5bc0de !important;
+}
+
+.badge-warning {
+    background-color: #f0ad4e !important;
+}
+
+.badge-success {
+    background-color: #5cb85c !important;
+}
+
+.badge-primary {
+    background-color: #8E44AD !important;
+}
