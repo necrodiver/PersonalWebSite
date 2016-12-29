@@ -100,6 +100,9 @@
     <Content Include="Content\bootstrapValidator.min.css" />
     <Content Include="Content\detail.css" />
     <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fontAwesome\font-awesome.css" />
+    <Content Include="Content\fontAwesome\font-awesome.min.css" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.svg" />
     <Content Include="Content\imageUpload\cropper\cropper.min.css" />
     <Content Include="Content\imageUpload\cropper\cropper.min.js" />
     <Content Include="Content\imageUpload\sitelogo\sitelogo.css" />
@@ -109,6 +112,7 @@
     <Content Include="Content\input-style.css" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\list.css" />
+    <Content Include="Content\manager\safe-index.css" />
     <Content Include="Content\myCenter.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\summernote\summernote.css" />
@@ -1103,6 +1107,11 @@
     <Content Include="Content\summernote\summernote.eot" />
     <Content Include="Content\summernote\summernote.ttf" />
     <Content Include="Content\summernote\summernote.woff" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\fontAwesome\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
