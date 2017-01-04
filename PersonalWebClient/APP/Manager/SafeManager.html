@@ -23,7 +23,7 @@
     <link href="../../Content/lightbox.css" rel="stylesheet" />
     <link href="../../Content/imgbox.css" rel="stylesheet" />
 
-    <link href="../../Content/manager/safe-index.css" rel="stylesheet" />
+    <link href="../../Content/manager/safe-manager.css" rel="stylesheet" />
 </head>
 <body>
     <div class="all">
@@ -59,90 +59,6 @@
                 </div>
             </div>
         </div>
-        <style type="text/css">
-            body {
-                background-color: #e9ecf3;
-            }
-
-            .safe_left_navbar {
-                margin: 0;
-                padding: 0;
-            }
-
-            .safe_ln_item {
-                padding: 0;
-                border: none;
-            }
-
-            .safe_lni_content {
-                margin-left: -3px;
-                padding: 15px 15px;
-                color: #485a6a;
-                cursor: pointer;
-            }
-
-            i {
-                color: #a7bdcd;
-            }
-
-            .safe_lni_content:hover {
-                color: #5C9ACF;
-                padding-left: 12px;
-                background-color: #f2f6f9;
-                border-left: 3px solid #5C9ACF !important;
-            }
-
-            .safe_ln_item .safe_lni_content_select {
-                color: #5C9ACF;
-                padding-left: 12px;
-                background-color: #f2f6f9;
-                border-left: 3px solid #5C9ACF !important;
-            }
-
-            .safe_lni_content .safe_linc_ico {
-                font-size: 18px;
-            }
-
-            .safe_lni_content span {
-                font-size: 14px;
-                padding-left: 5px;
-            }
-
-            .safe_lni_content .safe_lnic_right {
-                font-size: 14px;
-                margin-top: 3px;
-            }
-
-            .list_child_group {
-                margin: 0;
-                padding: 0;
-                color: #485a6a;
-            }
-
-            .list_child_item {
-                cursor: pointer;
-                list-style: none;
-                padding: 10px 15px 10px 30px;
-            }
-
-                .list_child_item:hover {
-                    color: #5C9ACF;
-                    margin-right: -2px;
-                    background-color: #f2f6f9;
-                    border-right: 2px solid #5C9ACF !important;
-                }
-
-            .list_child_item_select {
-                color: #5C9ACF;
-                margin-right: -2px;
-                background-color: #f2f6f9;
-                border-right: 2px solid #5C9ACF !important;
-            }
-
-            .list_child_item span {
-                padding-left: 5px;
-            }
-        </style>
         <div class="safe_left col-xs-3">
             <ul class="list-group safe_left_navbar">
 
@@ -218,41 +134,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.safe_lni_content').click(function () {
-                $('.list_child_group').addClass('hidden');
-                if ($(this).children('.safe_lnic_right').hasClass('fa-chevron-right')) {
-                    $('.list_child_item').removeClass('list_child_item_select');
-                    $('.safe_lnic_right').removeClass('fa-chevron-down');
-                    $('.safe_lnic_right').addClass('fa-chevron-right');
-                    $('.safe_lni_content').removeClass('safe_lni_content_select');
-                    $(this).children('.safe_lnic_right').removeClass('fa-chevron-right');
-                    $(this).children('.safe_lnic_right').addClass('fa-chevron-down');
-                    $(this).addClass('safe_lni_content_select');
-                    $(this).next('.list_child_group').removeClass('hidden');
-                } else {
-                    $(this).children('.safe_lnic_right').removeClass('fa-chevron-down');
-                    $(this).children('.safe_lnic_right').addClass('fa-chevron-right');
-                    $(this).removeClass('safe_lni_content_select');
-                }
-            });
-            $('.list_child_item').click(function () {
-                if (!$(this).hasClass('list_child_item_select')) {
-                    $('.list_child_item').removeClass('list_child_item_select');
-                    $(this).addClass('list_child_item_select');
-
-                    $('.safe_lni_content').removeClass('safe_lni_content_select');
-                    $('.safe_lnic_right').removeClass('fa-chevron-down');
-                    $('.safe_lnic_right').addClass('fa-chevron-right');
-
-                    $(this).parent('.list_child_group').prev('.safe_lni_content').children('.safe_lnic_right').addClass('fa-chevron-down');
-                    $(this).parent('.list_child_group').prev('.safe_lni_content').addClass('safe_lni_content_select');
-
-                }
-            });
-        });
-
-    </script>
+    <script src="../../Scripts/manage/safe-manager.js"></script>
 </body>
 </html>
