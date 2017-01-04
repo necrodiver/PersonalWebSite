@@ -79,6 +79,7 @@
     <Content Include="APP\List.html" />
     <Content Include="APP\Index.html" />
     <Content Include="APP\Manager\ManagerOperation\Index.html" />
+    <Content Include="APP\Manager\ManagerOperation\Message.html" />
     <Content Include="APP\Manager\SafeManager.html" />
     <Content Include="APP\MyCenter.html" />
     <Content Include="APP\MyCenterOperation\AttentionPerson.html" />

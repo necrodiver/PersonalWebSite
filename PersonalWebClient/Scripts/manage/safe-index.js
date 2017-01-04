@@ -112,7 +112,6 @@ $(document).ready(function () {
             }
         ]
     };
-
     visitChart.setOption(visitOption);
     signupChart.setOption(signupOption);
 });
