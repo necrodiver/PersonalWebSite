@@ -1,0 +1,100 @@
+﻿<link href="../../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../../Content/input-style.css" rel="stylesheet" />
+<link href="../../../Content/fontAwesome/font-awesome.css" rel="stylesheet" />
+<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-affix.js"></script>
+
+<!--时间插件-->
+<link href="../../../Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<!--helper-->
+<script src="../../../Scripts/Helper.js"></script>
+
+<link href="../../../Content/imgbox.css" rel="stylesheet" />
+<style type="text/css">
+    .safe_newmail_top {
+    }
+
+    .safe_nt_search {
+        width: 100%;
+    }
+
+    .safe_nts {
+        margin: 0 10px;
+    }
+
+    .safe_nts_name p {
+        height: 34px;
+        line-height: 34px;
+    }
+    .safe_nts_text{
+        width:225px;
+    }
+    .form-group{
+        margin:0;
+    }
+    .safe_newmail_center{
+        margin:0 10px;
+    }
+    .safe_nts_name{
+        font-size:12px;
+        font-weight:700;
+    }
+</style>
+<div class="safe_newmail_all">
+    <div class="safe_newmail_top">
+        <div class="safe_nt_search clearfix">
+            <div class="safe_nts pull-left">
+                <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                <div class="safe_nts_text pull-left"><input type="text" class="form-control" /></div>
+            </div>
+            <div class="safe_nts pull-left">
+                <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                <div class="safe_nts_text pull-left">
+                    <div class="form-group">
+                        <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_time" value="" /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_newmail_center">
+        <div class="safe_nc_title">
+            <div class="btn-group safe_nct_content pull-left">
+                <button type="button" class="btn btn-default btn-sm"><em class="fa fa-trash"></em> 删除</button>
+                <button type="button" class="btn btn-default btn-sm"><em class="fa fa-plus"></em> 新增</button>
+                <button type="button" class="btn btn-default btn-sm"><em class="fa fa-paper-plane-o"></em> 回复</button>
+            </div>
+            <div class="btn-group safe_nct_content pull-right">
+               <button type="button" class="btn btn-default btn-sm">暂定</button>
+            </div>
+        </div>
+        <div class="safe_nc_context">
+
+        </div>
+
+    </div>
+    <div class="safe_newmail_bottom"></div>
+</div>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".form_datetime").datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            language: 'zh-CN'
+        });
+        $.getJSON('../../../Test/data1.json', function (data) {
+
+        });
+    });
+
+</script>

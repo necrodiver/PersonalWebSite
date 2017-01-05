@@ -12,7 +12,7 @@ $(document).ready(function () {
         },
         legend: {
             show: true,
-            data: ['直接访问', '搜索引擎']
+            data: ['直接访问', '搜索引擎访问']
         },
         toolbox: {
             show: true,
@@ -44,7 +44,7 @@ $(document).ready(function () {
                 data: [12000, 13002, 10001, 13004, 9000, 23000, 21000]
             },
             {
-                name: '搜索引擎',
+                name: '搜索引擎访问',
                 type: 'line',
                 stack: '总量',
                 data: [22000, 18002, 19001, 23004, 29000, 33000, 31000]
