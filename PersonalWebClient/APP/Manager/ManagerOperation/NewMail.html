@@ -77,15 +77,12 @@
         padding-left: 5px;
     }
 
-    .table_Edit_context {
-        margin-top: 10px;
+    .table_edit_read, .table_edit_delete {
+        cursor: pointer;
+        color: #4ca0c6;
+        margin-left: 5px;
+        margin-top:10px;
     }
-
-        .table_Edit_context span {
-            cursor: pointer;
-            color: #4ca0c6;
-            margin-left: 5px;
-        }
 </style>
 <script type="text/template" id="sendPeopleTejmplate">
     <div class="send_people clearfix">
@@ -96,10 +93,8 @@
     </div>
 </script>
 <script type="text/template" id="tableEditTemplate">
-    <div class="table_Edit_context">
-        <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
-        <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
-    </div>
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
+    <a class="delete" href="javascript:;"><span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span></a>
 </script>
 <div class="safe_newmail_all">
     <style type="text/css">
@@ -269,10 +264,6 @@
                 title: "id",
                 checkbox: true,
                 width: '5%'
-                //,
-                //formatter: function (value, row, index) {
-                //    return value + ' <em class="fa fa-envelope-o"></em>';
-                //}
             }, {
                 title: '阅读状态',
                 align: 'center',
@@ -304,7 +295,7 @@
                     return value;
                 }
             }, {
-                field: 'id',
+                field: null,
                 title: '操作',
                 width: '10%',
                 align: 'center',
@@ -312,8 +303,32 @@
                     return $('#tableEditTemplate').html().format(value);
                 },
                 events: {
-                    'click .download': function (e, value, row, index) {
-                        window.open('${aapi}/orderVip/downLoad/' + row.orderNo, '_self');
+                    'click .delete': function (e, value, row, index) {
+                        var mailId = index;
+                        var ids = $.map(mailId, function (row) {
+                            return row.id;
+                        });
+                        swal({
+                            title: "你确认要删除选中的消息？" + mailId,
+                            text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "是的，删除",
+                            cancelButtonText: "不，让我再想想",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                $mailTable.bootstrapTable('remove', {
+                                    field: 'id',
+                                    values: ids
+                                });
+                                swal("已删除！", "所选中的项删除成功！", "success");
+                            } else {
+                                swal.close();
+                            }
+                        });
                     }
 
                 }
@@ -357,30 +372,6 @@
                     }
                 });
             }
-        });
-        $('.table_edit_delete').click(function () {
-            var mailId = $(this).attr('editId');
-            swal({
-                title: "你确认要删除选中的消息？" + mailId,
-                text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "是的，删除",
-                cancelButtonText: "不，让我再想想",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            }, function (isConfirm) {
-                if (isConfirm) {
-                    $mailTable.bootstrapTable('remove', {
-                        field: 'id',
-                        values: ids
-                    });
-                    swal("已删除！", "所选中的项删除成功！", "success");
-                } else {
-                    swal.close();
-                }
-            });
         });
         $.getJSON('../../../Test/data1.json', function (data) {
 
