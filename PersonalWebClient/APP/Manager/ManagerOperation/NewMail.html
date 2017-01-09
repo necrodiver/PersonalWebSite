@@ -10,6 +10,7 @@
 <!--table插件-->
 <link href="../../../Content/bootstrap-table.css" rel="stylesheet" />
 <script src="../../../Scripts/bootstrap/bootstrap-table.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
 <!--选择对话框-->
 <link href="../../../Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
 <script src="../../../Scripts/sweetalert/sweetalert-dev.js"></script>
@@ -55,8 +56,123 @@
         font-size: 12px;
         font-weight: 700;
     }
+
+    /*下边是table send_people*/
+    .send_people {
+        width: 150px;
+        height: 35px;
+    }
+
+    .send_people_img {
+        height: 35px;
+        border: 1px solid gray;
+        margin: 2px;
+    }
+
+    .send_people_name {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 35px;
+        height: 33px;
+        padding-left: 5px;
+    }
+
+    .table_Edit_context {
+        margin-top: 10px;
+    }
+
+        .table_Edit_context span {
+            cursor: pointer;
+            color: #4ca0c6;
+            margin-left: 5px;
+        }
 </style>
+<script type="text/template" id="sendPeopleTejmplate">
+    <div class="send_people clearfix">
+        <a href="javascript:;" class="linkstyle">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+    </div>
+</script>
+<script type="text/template" id="tableEditTemplate">
+    <div class="table_Edit_context">
+        <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
+        <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+    </div>
+</script>
 <div class="safe_newmail_all">
+    <style type="text/css">
+        .user_reply {
+            padding: 7px;
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+            box-shadow: 3px 4px 6px rgba(0,0,0,0.175);
+            -webkit-box-shadow: 3px 4px 6px rgba(0,0,0,0.175);
+            margin-bottom: 10px;
+        }
+
+        .user_r_content p {
+            margin-bottom: 0px;
+        }
+
+        .input_textareaAsnwer {
+            margin-top: 7px;
+            resize: none;
+            width: 100%;
+            border: 1px solid #eee;
+            height: 60px;
+        }
+
+        .user_r_title {
+            font-size: 12px;
+        }
+
+        .user_rt_time {
+            color: #b9b9b9;
+        }
+
+        .user_rt_name {
+            padding-left: 10px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .my_answer_btn {
+            margin-top: 5px;
+        }
+    </style>
+    <div class="help">
+        <div class="modal fade" id="letter_dialogBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">xxx-消息内容</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="user_reply">
+                            <div class="user_r_title">
+                                <div class="pull-left user_rt_time">[2016-12-19 10:37]</div>
+                                <div class="pull-left user_rt_name"> 张三 ：</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user_r_content">
+                                <p>请问原画基础需要从哪里入手</p>
+                            </div>
+                        </div>
+                        <div class="my_answer">
+                            <textarea maxlength="500" class="input_textareaAsnwer" placeholder="填写您的回复，500字以内哦~~"></textarea>
+                            <div class="my_answer_button">
+                                <button class="btn btn-success btn-sm pull-right my_answer_btn">发送</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="safe_newmail_top">
         <div class="safe_nt_search clearfix">
             <div class="safe_nts pull-right">
@@ -81,88 +197,191 @@
     <style type="text/css">
         .safe_nc_title {
             margin-bottom: 10px;
-            padding-bottom: 10px;
+        }
+
+        .table_index {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .table_edit {
+            cursor: pointer;
+        }
+
+        .edit_isRead {
+            margin-top: 10px;
         }
     </style>
     <div class="safe_newmail_center">
-        <div class="safe_nc_title">
+        <div class="safe_nc_title clearfix">
             <div class="btn-group safe_nct_content pull-left">
                 <button type="button" class="btn btn-default btn-sm" id="btn_DeleteMail"><em class="fa fa-trash"></em> 删除</button>
                 <button type="button" class="btn btn-default btn-sm" id="btn_NewMail"><em class="fa fa-plus"></em> 新增</button>
                 <button type="button" class="btn btn-default btn-sm" id="btn_ReplyMail"><em class="fa fa-paper-plane-o"></em> 回复</button>
             </div>
             <div class="btn-group safe_nct_content pull-right">
-                <button type="button" class="btn btn-default btn-sm">暂定</button>
+                <button type="button" class="btn btn-default btn-lg"><em class="fa fa-refresh"></em></button>
             </div>
         </div>
         <style type="text/css">
         </style>
         <div class="safe_nc_context">
-            <table id="newMailTable"
-                   data-toggle="table"
-                   data-toolbar="#toolbar"
-                   data-height="460"
-                   data-click-to-select="true"
-                   data-url="../../../Test/data1.json">
-                <thead>
-                    <tr>
-                        <th data-field="state" data-checkbox="true"></th>
-                        <th data-field="id">发件人</th>
-                        <th data-field="name">消息标题</th>
-                        <th data-field="name">接收时间</th>
-                        <th data-field="price">Item Price</th>
-                    </tr>
-                </thead>
-            </table>
+            <table id="newMailTable"></table>
         </div>
-
     </div>
     <div class="safe_newmail_bottom"></div>
 
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#newMailTable').bootstrapTable({
+            method: 'get',
+            toggle: 'table',
+            dataType: "json",
+            url: "../../../Test/data1.json",
+            height: $(window).height() - 200,
+            striped: true,
+            dataType: "json",
+            pagination: true,
+            pageSize: 20,
+            pageList: [10, 25, 50, 100],
+            pageNumber: 1,
+            sortable: true,
+            sortOrder: 'desc',
+            //sidePagination: "server",//分页条件
+            queryParams: function (params) {//查询参数，用于自定义查询传的条件参数
+                var subcompany = $('#subcompany option:selected').val();
+                var name = $('#name').val();
+                return {
+                    pageNumber: params.offset + 1,
+                    pageSize: params.limit,
+                    companyId: subcompany,
+                    name: name
+                };
+            },
+            search: false,
+            idField: "id",
+            queryParamsType: "limit", //参数格式,发送标准的RESTFul类型的参数请求
+            showRefresh: false, //显示 刷新按钮
+            searchOnEnterKey: true,  //设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
+            columns: [{
+                field: 'id',
+                title: "id",
+                checkbox: true,
+                width: '5%'
+                //,
+                //formatter: function (value, row, index) {
+                //    return value + ' <em class="fa fa-envelope-o"></em>';
+                //}
+            }, {
+                title: '阅读状态',
+                align: 'center',
+                width: '5%',
+                formatter: function (value, row, index) {
+                    return '<em class="fa fa-envelope-o edit_isRead"></em>';
+                }
+            }, {
+                field: 'name',
+                width: '10%',
+                title: '发送人',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return $('#sendPeopleTejmplate').html().format('../../../Images/user-ceshi.jpg', value + ' ');
+                }
+            },
+            {
+                field: 'name',
+                title: '消息标题',
+                width: '25%',
+                formatter: function (value, row, index) {
+                    return value;
+                }
+            }, {
+                field: 'price',
+                title: '消息内容',
+                width: '45%',
+                formatter: function (value, row, index) {
+                    return value;
+                }
+            }, {
+                field: 'id',
+                title: '操作',
+                width: '10%',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return $('#tableEditTemplate').html().format(value);
+                },
+                events: {
+                    'click .download': function (e, value, row, index) {
+                        window.open('${aapi}/orderVip/downLoad/' + row.orderNo, '_self');
+                    }
+
+                }
+            }]
+
+        });
         $(".form_datetime").datetimepicker({
             format: 'yyyy-mm-dd hh:ii',
             language: 'zh-CN'
         });
 
-        var $mailTable = $('#MailTable'),
+        var $mailTable = $('#newMailTable'),
         $deleteMail = $('#btn_DeleteMail');
-
-        swal({
-            title: "你确认要删除选中的消息？",
-            text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的文件",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function (isConfirm) {
-            if (isConfirm) {
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
-            } else {
-                swal("Cancelled", "Your imaginary file is safe :)", "error");
-            }
-        });
 
         $deleteMail.click(function () {
             var ids = $.map($mailTable.bootstrapTable('getSelections'), function (row) {
                 return row.id;
             });
             if (ids.length <= 0) {
-
                 return;
             } else {
-                $mailTable.bootstrapTable('remove', {
-                    field: 'id',
-                    values: ids
+                swal({
+                    title: "你确认要删除选中的消息？",
+                    text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "是的，删除",
+                    cancelButtonText: "不，让我再想想",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $mailTable.bootstrapTable('remove', {
+                            field: 'id',
+                            values: ids
+                        });
+                        swal("已删除！", "所选中的项删除成功！", "success");
+                    } else {
+                        swal.close();
+                    }
                 });
             }
         });
-
+        $('.table_edit_delete').click(function () {
+            var mailId = $(this).attr('editId');
+            swal({
+                title: "你确认要删除选中的消息？" + mailId,
+                text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，删除",
+                cancelButtonText: "不，让我再想想",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $mailTable.bootstrapTable('remove', {
+                        field: 'id',
+                        values: ids
+                    });
+                    swal("已删除！", "所选中的项删除成功！", "success");
+                } else {
+                    swal.close();
+                }
+            });
+        });
         $.getJSON('../../../Test/data1.json', function (data) {
 
         });
