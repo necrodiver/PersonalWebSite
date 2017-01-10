@@ -81,6 +81,7 @@
     <Content Include="APP\Manager\ManagerOperation\Index.html" />
     <Content Include="APP\Manager\ManagerOperation\Message.html" />
     <Content Include="APP\Manager\ManagerOperation\NewMail.html" />
+    <Content Include="APP\Manager\ManagerOperation\WorkReminder.html" />
     <Content Include="APP\Manager\SafeManager.html" />
     <Content Include="APP\MyCenter.html" />
     <Content Include="APP\MyCenterOperation\AttentionPerson.html" />
@@ -119,6 +120,7 @@
     <Content Include="Content\list.css" />
     <Content Include="Content\manager\safe-index.css" />
     <Content Include="Content\manager\safe-manager.css" />
+    <Content Include="Content\msgManager.css" />
     <Content Include="Content\myCenter.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\summernote\summernote.css" />
@@ -1076,6 +1078,7 @@
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-manager.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
+    <Content Include="Scripts\msgManager.js" />
     <Content Include="Scripts\mycenter.js" />
     <Content Include="Scripts\philter\jquery.philter.js" />
     <Content Include="Scripts\philter\jquery.philter.min.js" />
