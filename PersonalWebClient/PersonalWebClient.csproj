@@ -120,7 +120,7 @@
     <Content Include="Content\list.css" />
     <Content Include="Content\manager\safe-index.css" />
     <Content Include="Content\manager\safe-manager.css" />
-    <Content Include="Content\msgManager.css" />
+    <Content Include="Content\manager\msgManager.css" />
     <Content Include="Content\myCenter.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\summernote\summernote.css" />

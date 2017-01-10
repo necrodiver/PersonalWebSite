@@ -78,13 +78,16 @@ p {
         margin-bottom: 0px;
         -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
         box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+        border-top: 2px solid #5C9ACF;
     }
 
 .safe_right_title {
     font-size: 15px;
     color: #666;
     font-weight: 700;
-    padding: 3px 10px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
 }
 
 .safe_right_context {
