@@ -94,7 +94,7 @@
 </script>
 <script type="text/template" id="tableEditTemplate">
     <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
-    <a class="delete" href="javascript:;"><span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span></a>
+    <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
 </script>
 <div class="safe_newmail_all">
     <style type="text/css">
@@ -303,11 +303,8 @@
                     return $('#tableEditTemplate').html().format(value);
                 },
                 events: {
-                    'click .delete': function (e, value, row, index) {
-                        var mailId = index;
-                        var ids = $.map(mailId, function (row) {
-                            return row.id;
-                        });
+                    'click .table_edit_delete': function (e, value, row, index) {
+                        var ids = [true,index];
                         swal({
                             title: "你确认要删除选中的消息？" + mailId,
                             text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
