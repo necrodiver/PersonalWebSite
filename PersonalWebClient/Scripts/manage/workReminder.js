@@ -40,15 +40,23 @@ $(document).ready(function () {
             checkbox: true,
             width: '5%'
         }, {
-            title: '阅读状态',
+            title: '状态',
             align: 'center',
-            width: '5%',
+            width: '2.5%',
             formatter: function (value, row, index) {
-                return '<em class="fa fa-envelope-o edit_isRead"></em>';
+                return '<em class="fa fa-envelope-o edit_isRead" title="未读"></em>';
+            }
+        }, {
+            title: '完成状态',
+            align: 'center',
+            width: '2.5%',
+            formatter: function (value, row, index) {
+                return '<em class="fa fa-square-o edit_isRead" title="未完成"></em>';
+                //return '<em class="fa fa-check-square-o edit_isRead" title="已完成"></em>';
             }
         }, {
             field: 'name',
-            width: '10%',
+            width: '5%',
             title: '发送人',
             align: 'center',
             formatter: function (value, row, index) {
@@ -58,21 +66,41 @@ $(document).ready(function () {
         {
             field: 'name',
             title: '消息标题',
-            width: '20%',
+            width: '15%',
             formatter: function (value, row, index) {
-                return value;
+                return '<p style="font-size:10px;">' + value + '</p>';
             }
         }, {
             field: 'price',
             title: '消息内容',
-            width: '40%',
+            width: '35%',
             formatter: function (value, row, index) {
-                return value;
+                return '<p class="font-size:10px;">' + value + '</p>';
             }
         }, {
             field: 'time',
             title: '接收时间',
             width: '10%',
+            fontSize:'12px',
+            formatter: function (value, row, index) {
+                var myDate = new Date();
+                var year = myDate.getFullYear();
+                var month = myDate.getMonth() + 1;
+                var date = myDate.getDate();
+                var h = myDate.getHours();
+                var m = myDate.getMinutes();
+                var s = myDate.getSeconds();
+                function p(s) {
+                    return s < 10 ? '0' + s : s;
+                }
+                var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
+                return '<p style="font-size:10px;">' + now + '</p>';
+            }
+        }, {
+            field: 'time',
+            width: '10%',
+            title: '完成时间',
+            align: 'center',
             formatter: function (value, row, index) {
                 var myDate = new Date();
                 var year = myDate.getFullYear();
@@ -90,7 +118,7 @@ $(document).ready(function () {
         }, {
             field: null,
             title: '操作',
-            width: '10%',
+            width: '15%',
             align: 'center',
             formatter: function (value, row, index) {
                 return $('#tableEditTemplate').html().format(value);
@@ -116,8 +144,26 @@ $(document).ready(function () {
                             swal.close();
                         }
                     });
+                },
+                'click .table_edit_accomplish': function () {
+                    var $accomplish = $(this);
+                    if ($accomplish.hasClass('no-accomplish'))
+                    {
+                        swal({
+                            title: "你确定标记为已完成？",
+                            text: "提醒：当前标记为已完成后将不能够再次进行修改！",
+                            type: "warning", showCancelButton: true,
+                            confirmButtonColor: "##8CD4F5",
+                            confirmButtonText: "是的，确定",
+                            closeOnConfirm: false
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                $accomplish.removeClass('no-accomplish').addClass('accomplish');
+                                swal("标记成功", "感谢你的努力~", "success");
+                            }
+                        });
+                    }
                 }
-
             }
         }]
 

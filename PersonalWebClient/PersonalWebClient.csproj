@@ -81,6 +81,7 @@
     <Content Include="APP\Manager\ManagerOperation\Index.html" />
     <Content Include="APP\Manager\ManagerOperation\Message.html" />
     <Content Include="APP\Manager\ManagerOperation\NewMail.html" />
+    <Content Include="APP\Manager\ManagerOperation\UserMessage.html" />
     <Content Include="APP\Manager\ManagerOperation\WorkReminder.html" />
     <Content Include="APP\Manager\SafeManager.html" />
     <Content Include="APP\MyCenter.html" />
@@ -1077,6 +1078,7 @@
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-manager.js" />
+    <Content Include="Scripts\manage\workReminder.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
     <Content Include="Scripts\manage\msgManager.js" />
     <Content Include="Scripts\mycenter.js" />

@@ -49,13 +49,18 @@
     padding-right: 5px;
 }
 
-.table_edit_read, .table_edit_delete {
+.table_edit_read, .table_edit_delete,.table_edit_accomplish{
     cursor: pointer;
     color: #4ca0c6;
     margin-left: 5px;
     margin-top: 10px;
 }
-
+.table_edit_delete{
+    color:#CD4F39;
+}
+.table_edit_accomplish{
+    color:gray;
+}
 .user_reply {
     padding: 7px;
     border-top: 1px solid #eee;
@@ -174,4 +179,11 @@ p {
 
 .new_mail_bottom button {
     margin-right: 10px;
+}
+
+.no-accomplish{
+    color:#BDBDBD;
+}
+.accomplish{
+    color:#A2CD5A;
 }
