@@ -15,6 +15,8 @@
             $(this).children('.safe_lnic_right').addClass('fa-chevron-right');
             $(this).removeClass('safe_lni_content_select');
         }
+        if ($(this).hasClass('select_index'))
+            $('.safe_rc_iframe').attr('src', 'ManagerOperation/Index.html');
     });
     $('.list_child_item').click(function () {
         if (!$(this).hasClass('list_child_item_select')) {
@@ -27,6 +29,14 @@
 
             $(this).parent('.list_child_group').prev('.safe_lni_content').children('.safe_lnic_right').addClass('fa-chevron-down');
             $(this).parent('.list_child_group').prev('.safe_lni_content').addClass('safe_lni_content_select');
+
+            if ($(this).hasClass('select_newMail'))
+                $('.safe_rc_iframe').attr('src', 'ManagerOperation/NewMail.html');
+            else if ($(this).hasClass('select_workRemind'))
+                $('.safe_rc_iframe').attr('src', 'ManagerOperation/WorkReminder.html');
+            else if ($(this).hasClass('select_userMessage'))
+                $('.safe_rc_iframe').attr('src', 'ManagerOperation/WorkReminder.html');
+           
 
         }
     });

@@ -1078,7 +1078,7 @@
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-manager.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
-    <Content Include="Scripts\msgManager.js" />
+    <Content Include="Scripts\manage\msgManager.js" />
     <Content Include="Scripts\mycenter.js" />
     <Content Include="Scripts\philter\jquery.philter.js" />
     <Content Include="Scripts\philter\jquery.philter.min.js" />

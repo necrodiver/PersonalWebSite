@@ -2,10 +2,6 @@
     margin: 10px;
 }
 
-.safe_nt_search {
-    width: 100%;
-}
-
 .safe_nts {
     margin: 0 10px;
 }
@@ -97,10 +93,6 @@
 
 .my_answer_btn {
     margin-top: 5px;
-}
-
-.safe_nc_title {
-    margin-bottom: 10px;
 }
 
 .table_index {

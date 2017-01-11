@@ -54,16 +54,34 @@ $(document).ready(function () {
         {
             field: 'name',
             title: '消息标题',
-            width: '25%',
+            width: '20%',
             formatter: function (value, row, index) {
                 return value;
             }
         }, {
             field: 'price',
             title: '消息内容',
-            width: '45%',
+            width: '40%',
             formatter: function (value, row, index) {
                 return value;
+            }
+        }, {
+            field: null,
+            title: '接收时间',
+            width: '10%',
+            formatter: function (value, row, index) {
+                var myDate = new Date();
+                var year = myDate.getFullYear();
+                var month = myDate.getMonth() + 1;
+                var date = myDate.getDate();
+                var h = myDate.getHours();
+                var m = myDate.getMinutes();
+                var s = myDate.getSeconds();
+                function p(s) {
+                    return s < 10 ? '0' + s : s;
+                }
+                var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
+                return '<p style="font-size:10px;">'+now+'</p>';
             }
         }, {
             field: null,
@@ -115,7 +133,7 @@ $(document).ready(function () {
         var ids = $.map($mailTable.bootstrapTable('getSelections'), function (row) {
             return row.id;
         });
-        if(ids.length>=2){
+        if (ids.length >= 1) {
             swal({
                 title: "你确认要删除选中的消息？",
                 text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
@@ -161,7 +179,7 @@ $(document).ready(function () {
     });
     $('#btnUserType').change(function () {
         var val = $(this).children('.active.focus').children('input').val();
-        if (val == '1'||val=='2')
+        if (val == '1' || val == '2')
             $('.new_mail_userCtrl').addClass('hidden');
         else
             $('.new_mail_userCtrl').removeClass('hidden');

@@ -137,27 +137,6 @@
             </div>
         </div>
     </div>
-    <div class="safe_newmail_top">
-        <div class="safe_nt_search clearfix">
-            <div class="safe_nts pull-right">
-                <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
-                <div class="safe_nts_text pull-left">
-                    <div class="form-group">
-                        <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
-                            <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
-                            <span class="input-group-addon"><span class="fa fa-times"></span></span>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
-                        </div>
-                        <input type="hidden" id="dtp_time" value="" /><br />
-                    </div>
-                </div>
-            </div>
-            <div class="safe_nts pull-right">
-                <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
-                <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
-            </div>
-        </div>
-    </div>
     <div class="safe_newmail_center">
         <div class="safe_nc_title clearfix">
             <div class="btn-group safe_nct_content pull-left">
@@ -165,8 +144,27 @@
                 <button type="button" class="btn btn-default" id="btn_NewMail" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-plus"></em> 新增</button>
                 <button type="button" class="btn btn-default" id="btn_ReplyMail"  data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-paper-plane-o"></em> 回复</button>
             </div>
+            <div class="safe_nt_search pull-left">
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                    <div class="safe_nts_text pull-left">
+                        <div class="form-group">
+                            <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                                <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                                <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_time" value="" /><br />
+                        </div>
+                    </div>
+                </div>
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
+                </div>
+            </div>
             <div class="btn-group safe_nct_content pull-right">
-                <button type="button" class="btn btn-default" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
             </div>
         </div>
         <style type="text/css">
@@ -177,4 +175,4 @@
     </div>
     <div class="safe_newmail_bottom"></div>
 </div>
-<script src="../../../Scripts/msgManager.js"></script>
+<script src="../../../Scripts/manage/msgManager.js"></script>
