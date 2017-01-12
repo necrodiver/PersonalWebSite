@@ -1,9 +1,9 @@
 ﻿//NewMail
 $(document).ready(function () {
-    var $mailTable = $('#newMailTable'),
-    $deleteMail = $('#btn_DeleteMail');
-
-    $mailTable.bootstrapTable({
+    var $userTable = $('#userTable'),
+    $deleteUser = $('#btn_DeleteUser');
+    $frozenUser = $('#btn_FrozenUser');
+    $userTable.bootstrapTable({
         method: 'get',
         toggle: 'table',
         dataType: "json",
@@ -111,7 +111,7 @@ $(document).ready(function () {
                         closeOnCancel: false
                     }, function (isConfirm) {
                         if (isConfirm) {
-                            $mailTable.bootstrapTable('removeByUniqueId', num);
+                            $userTable.bootstrapTable('removeByUniqueId', num);
                             swal("已删除！", "所选中的项删除成功！", "success");
                         } else {
                             swal.close();
@@ -132,7 +132,7 @@ $(document).ready(function () {
                         closeOnCancel: false
                     }, function (isConfirm) {
                         if (isConfirm) {
-                            $mailTable.bootstrapTable('removeByUniqueId', num);
+                            //这里添加改变状态的方法
                             swal("已冻结！", "当前用户已冻结！", "success");
                         } else {
                             swal.close();
@@ -149,8 +149,8 @@ $(document).ready(function () {
         language: 'zh-CN'
     });
 
-    $deleteMail.click(function () {
-        var ids = $.map($mailTable.bootstrapTable('getSelections'), function (row) {
+    $deleteUser.click(function () {
+        var ids = $.map($userTable.bootstrapTable('getSelections'), function (row) {
             return row.id;
         });
         if (ids.length >= 1) {
@@ -166,7 +166,7 @@ $(document).ready(function () {
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    $mailTable.bootstrapTable('remove', {
+                    $userTable.bootstrapTable('remove', {
                         field: 'id',
                         values: ids
                     });
@@ -180,6 +180,38 @@ $(document).ready(function () {
             swal("删除提示", "请先选择要删除的项~~", "info");
         }
     });
+    $frozenUser.click(function () {
+        var ids = $.map($userTable.bootstrapTable('getSelections'), function (row) {
+            return row.id;
+        });
+        if (ids.length >= 1) {
+            swal({
+                title: "你确认要冻结选中的消息？",
+                text: "被选中的用户将会被冻结，您可以以管理员的权限来解锁被冻结的账号",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，冻结",
+                cancelButtonText: "不，让我再想想",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $userTable.bootstrapTable('remove', {
+                        field: 'id',
+                        values: ids
+                    });
+                    swal("已删除！", "所选中的项删除成功！", "success");
+                } else {
+                    swal.close();
+                }
+            });
+        } else {
+            //['error', 'warning', 'info', 'success', 'input', 'prompt']
+            swal("删除提示", "请先选择要删除的项~~", "info");
+        }
+    });
+
     $('#newMailContext').summernote({
         lang: 'zh-CN',
         fontNames: ['宋体', '微软雅黑', '楷体', '黑体', '隶书', 'andale mono', 'arial', 'arial black', 'comic sans ms', 'impact']
@@ -206,6 +238,89 @@ $(document).ready(function () {
     });
 
     $('#btnTableRefresh').click(function () {
-        $mailTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
+        $userTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
+    });
+
+    $('#signUp').bootstrapValidator({
+        message: '这个值是无效的',
+        feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {/*验证*/
+            username: {
+                message: '用户名无效',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        min: 4,
+                        max: 20,
+                        message: '用户名长度必须在4到20之间'
+                    },
+                    regexp: {
+                        regexp: /^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5-\-\·a-zA-Z0-9_\.]+$/,
+                        message: '用户名只能是中文、字母、数字、_、-、·的组合，以中文或字母开头'
+                    },
+                    different: {
+                        field: 'password',
+                        message: '用户名不能和密码相同'
+                    }
+                    //,
+                    //remote: {/*远程验证*/
+                    //    url: 'remote.aspx',
+                    //    message: '此用户名已被占用，请换一个尝试'
+                    //}
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: '电子邮件是必填的'
+                    },
+                    emailAddress: {
+                        message: '输入的不是一个有效的电子邮件地址'
+                    }
+                    //,
+                    //remote: {/*远程验证*/
+                    //    url: 'remote.aspx',
+                    //    message: '此电子邮箱已被使用，请输入正确的邮箱地址'
+                    //}
+                }
+            },
+            password: {
+                message: '密码无效',
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 20,
+                        message: '密码长度必须在6到20之间'
+                    },
+                    different: {
+                        field: 'username',
+                        message: '密码不能和用户名相同'
+                    },
+                    regexp: {
+                        regexp: /^((?!\d+$)(?![a-zA-Z]+$)[a-zA-Z\d@#$%^&_+].{5,19})+$/,
+                        message: '密码只能由字母、数字、字符的最少两个组合'
+                    }
+                }
+            }, confirmPassword: {
+                message: '重复密码无效',
+                validators: {
+                    notEmpty: {},
+                    identical: {
+                        field: 'password',
+                        message: '两次输入的密码不一致'
+                    }
+                }
+            }
+
+        }
     });
 });
