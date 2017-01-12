@@ -47,8 +47,9 @@
     </div>
 </script>
 <script type="text/template" id="tableEditTemplate">
-    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
+    <span class="fa fa-address-card table_edit_read" title="查看详细" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
     <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+    <span class="fa fa-ban table_edit_frozen" title="冻结" editId="{0}"></span>
 </script>
 <div class="safe_newmail_all">
     <div class="help">
@@ -140,9 +141,9 @@
     <div class="safe_newmail_center">
         <div class="safe_nc_title clearfix">
             <div class="btn-group safe_nct_content pull-left">
-                <button type="button" class="btn btn-default" id="btn_DeleteMail"><em class="fa fa-trash"></em> 删除</button>
-                <button type="button" class="btn btn-default" id="btn_NewMail" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-plus"></em> 新增</button>
-                <button type="button" class="btn btn-default" id="btn_ReplyMail"  data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-paper-plane-o"></em> 回复</button>
+                <button type="button" class="btn btn-default" id="btn_DeleteUser"><em class="fa fa-user-times em_delete"></em> 删除</button>
+                <button type="button" class="btn btn-default" id="btn_NewUser" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_FrozenUser" data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-ban"></em> 冻结</button>
             </div>
             <div class="safe_nt_search pull-left">
                 <div class="safe_nts pull-right">
@@ -175,4 +176,4 @@
     </div>
     <div class="safe_newmail_bottom"></div>
 </div>
-<script src="../../../Scripts/manage/msgManager.js"></script>
+<script src="../../../Scripts/userCtrl.js"></script>

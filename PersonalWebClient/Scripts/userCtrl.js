@@ -40,16 +40,17 @@ $(document).ready(function () {
             checkbox: true,
             width: '5%'
         }, {
-            title: '阅读状态',
+            title: '状态',
             align: 'center',
             width: '5%',
             formatter: function (value, row, index) {
-                return '<em class="fa fa-envelope-o edit_isRead"></em>';
+                //return '<em class="fa fa-ban edit_isRead" title="冻结"></em>';
+                return '<em class="fa fa-id-badge edit_isRead" style="color:#7CCD7C;" title="正常"></em>';
             }
         }, {
             field: 'name',
             width: '10%',
-            title: '发送人',
+            title: '用户名/昵称',
             align: 'center',
             formatter: function (value, row, index) {
                 return $('#sendPeopleTemplate').html().format('../../../Images/user-ceshi.jpg', value + ' ');
@@ -57,7 +58,7 @@ $(document).ready(function () {
         },
         {
             field: 'name',
-            title: '消息标题',
+            title: '邮箱地址',
             width: '20%',
             formatter: function (value, row, index) {
                 return value;
@@ -65,13 +66,13 @@ $(document).ready(function () {
         }, {
             field: 'price',
             title: '消息内容',
-            width: '40%',
+            width: '30%',
             formatter: function (value, row, index) {
                 return value;
             }
         }, {
             field: 'time',
-            title: '接收时间',
+            title: '创建日期',
             width: '10%',
             formatter: function (value, row, index) {
                 var myDate = new Date();
@@ -90,7 +91,7 @@ $(document).ready(function () {
         }, {
             field: null,
             title: '操作',
-            width: '10%',
+            width: '20%',
             align: 'center',
             formatter: function (value, row, index) {
                 return $('#tableEditTemplate').html().format(value);
@@ -112,6 +113,27 @@ $(document).ready(function () {
                         if (isConfirm) {
                             $mailTable.bootstrapTable('removeByUniqueId', num);
                             swal("已删除！", "所选中的项删除成功！", "success");
+                        } else {
+                            swal.close();
+                        }
+                    });
+                },
+                'click .table_edit_frozen': function (e, value, row, index) {
+                    var num = $(this).attr('editId');
+                    swal({
+                        title: "你确认要冻结选当前用户？" + index,
+                        text: "用户冻结后不可进行登录，可由管理员进行解冻，为了防止盗号等行为",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "是的，冻结",
+                        cancelButtonText: "不，暂时不冻结",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            $mailTable.bootstrapTable('removeByUniqueId', num);
+                            swal("已冻结！", "当前用户已冻结！", "success");
                         } else {
                             swal.close();
                         }

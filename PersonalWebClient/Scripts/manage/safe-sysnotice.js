@@ -1,9 +1,9 @@
 ﻿//NewMail
 $(document).ready(function () {
-    var $workReminderTable = $('#newMailTable'),
-    $deleteReminder = $('#btn_DeleteReminder');
+    var $mailTable = $('#newMailTable'),
+    $deleteMail = $('#btn_DeleteMail');
 
-    $workReminderTable.bootstrapTable({
+    $mailTable.bootstrapTable({
         method: 'get',
         toggle: 'table',
         dataType: "json",
@@ -42,22 +42,13 @@ $(document).ready(function () {
         }, {
             title: '状态',
             align: 'center',
-            width: '2.5%',
+            width: '5%',
             formatter: function (value, row, index) {
                 return '<em class="fa fa-envelope-o edit_isRead" style="color:#7CCD7C;" title="未读"></em>';
             }
         }, {
-            title: '完成状态',
-            align: 'center',
-            width: '2.5%',
-            formatter: function (value, row, index) {
-                //return '<em class="fa fa-hourglass-start edit_isRead em_begin" title="未开始"></em>';
-                //return '<em class="fa fa-hourglass-end edit_isRead em_end" title="已结束"></em>';
-                return '<em class="fa fa-hourglass-half edit_isRead em_half" title="正在努力"></em>';
-            }
-        }, {
             field: 'name',
-            width: '5%',
+            width: '10%',
             title: '发送人',
             align: 'center',
             formatter: function (value, row, index) {
@@ -66,42 +57,22 @@ $(document).ready(function () {
         },
         {
             field: 'name',
-            title: '消息标题',
-            width: '15%',
+            title: '公告标题',
+            width: '20%',
             formatter: function (value, row, index) {
-                return '<p style="font-size:10px;">' + value + '</p>';
+                return value;
             }
         }, {
             field: 'price',
-            title: '消息内容',
-            width: '35%',
+            title: '公告内容',
+            width: '40%',
             formatter: function (value, row, index) {
-                return '<p class="font-size:10px;">' + value + '</p>';
+                return value;
             }
         }, {
             field: 'time',
             title: '接收时间',
             width: '10%',
-            fontSize:'12px',
-            formatter: function (value, row, index) {
-                var myDate = new Date();
-                var year = myDate.getFullYear();
-                var month = myDate.getMonth() + 1;
-                var date = myDate.getDate();
-                var h = myDate.getHours();
-                var m = myDate.getMinutes();
-                var s = myDate.getSeconds();
-                function p(s) {
-                    return s < 10 ? '0' + s : s;
-                }
-                var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
-                return '<p style="font-size:10px;">' + now + '</p>';
-            }
-        }, {
-            field: 'time',
-            width: '10%',
-            title: '完成时间',
-            align: 'center',
             formatter: function (value, row, index) {
                 var myDate = new Date();
                 var year = myDate.getFullYear();
@@ -119,7 +90,7 @@ $(document).ready(function () {
         }, {
             field: null,
             title: '操作',
-            width: '15%',
+            width: '10%',
             align: 'center',
             formatter: function (value, row, index) {
                 return $('#tableEditTemplate').html().format(value);
@@ -139,32 +110,14 @@ $(document).ready(function () {
                         closeOnCancel: false
                     }, function (isConfirm) {
                         if (isConfirm) {
-                            $workReminderTable.bootstrapTable('removeByUniqueId', num);
+                            $mailTable.bootstrapTable('removeByUniqueId', num);
                             swal("已删除！", "所选中的项删除成功！", "success");
                         } else {
                             swal.close();
                         }
                     });
-                },
-                'click .table_edit_accomplish': function () {
-                    var $accomplish = $(this);
-                    if ($accomplish.hasClass('no-accomplish'))
-                    {
-                        swal({
-                            title: "你确定标记为已完成？",
-                            text: "提醒：当前标记为已完成后将不能够再次进行修改！",
-                            type: "warning", showCancelButton: true,
-                            confirmButtonColor: "##8CD4F5",
-                            confirmButtonText: "是的，确定",
-                            closeOnConfirm: false
-                        }, function (isConfirm) {
-                            if (isConfirm) {
-                                $accomplish.removeClass('no-accomplish').addClass('accomplish');
-                                swal("标记成功", "感谢你的努力~", "success");
-                            }
-                        });
-                    }
                 }
+
             }
         }]
 
@@ -174,8 +127,8 @@ $(document).ready(function () {
         language: 'zh-CN'
     });
 
-    $deleteReminder.click(function () {
-        var ids = $.map($workReminderTable.bootstrapTable('getSelections'), function (row) {
+    $deleteMail.click(function () {
+        var ids = $.map($mailTable.bootstrapTable('getSelections'), function (row) {
             return row.id;
         });
         if (ids.length >= 1) {
@@ -191,7 +144,7 @@ $(document).ready(function () {
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    $workReminderTable.bootstrapTable('remove', {
+                    $mailTable.bootstrapTable('remove', {
                         field: 'id',
                         values: ids
                     });
@@ -231,6 +184,6 @@ $(document).ready(function () {
     });
 
     $('#btnTableRefresh').click(function () {
-        $workReminderTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
+        $mailTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
     });
 });

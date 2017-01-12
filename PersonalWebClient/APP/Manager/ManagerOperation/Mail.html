@@ -68,7 +68,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="user_r_content">
-                                <p>想问一下这些工作的一些小问题，这个bug具体是？</p>
+                                <p>请问原画基础需要从哪里入手</p>
                             </div>
                         </div>
                         <div class="my_answer">
@@ -98,6 +98,9 @@
                                     <div class="btn-group pull-left">
                                         <div class="btn-group" id="btnUserType" data-toggle="buttons">
                                             <label class="btn btn-default">
+                                                <input type="radio" class="toggle" id="btnAllUsers" value="1"> 全体用户
+                                            </label>
+                                            <label class="btn btn-default">
                                                 <input type="radio" class="toggle" id="btnAllAdmin" value="2"> 全体工作人员
                                             </label>
                                             <label class="btn btn-default">
@@ -121,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="new_mail_center">
-                                <div class="new_mail_title"><p>提醒内容:</p></div>
+                                <div class="new_mail_title"><p>邮件内容:</p></div>
                                 <div id="newMailContext"></div>
                             </div>
                             <div class="new_mail_bottom clearfix">
@@ -138,7 +141,8 @@
         <div class="safe_nc_title clearfix">
             <div class="btn-group safe_nct_content pull-left">
                 <button type="button" class="btn btn-default" id="btn_DeleteMail"><em class="fa fa-trash em_delete"></em> 删除</button>
-                <button type="button" class="btn btn-default" id="btn_ReplyMail" data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-paper-plane-o em_reply"></em> 回复</button>
+                <button type="button" class="btn btn-default" id="btn_NewMail" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_ReplyMail"  data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-paper-plane-o em_reply"></em> 回复</button>
             </div>
             <div class="safe_nt_search pull-left">
                 <div class="safe_nts pull-right">
@@ -156,11 +160,11 @@
                 </div>
                 <div class="safe_nts pull-right">
                     <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
-                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或反馈标题" /></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
                 </div>
             </div>
             <div class="btn-group safe_nct_content pull-right">
-                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh em_refresh"></em></button>
             </div>
         </div>
         <style type="text/css">
@@ -171,4 +175,4 @@
     </div>
     <div class="safe_newmail_bottom"></div>
 </div>
-<script src="../../../Scripts/manage/userMessage.js"></script>
+<script src="../../../Scripts/manage/safe-mail.js"></script>

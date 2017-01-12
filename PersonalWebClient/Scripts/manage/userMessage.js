@@ -1,9 +1,9 @@
 ﻿//NewMail
 $(document).ready(function () {
-    var $workReminderTable = $('#newMailTable'),
-    $deleteReminder = $('#btn_DeleteReminder');
+    var $mailTable = $('#newMailTable'),
+    $deleteMail = $('#btn_DeleteMail');
 
-    $workReminderTable.bootstrapTable({
+    $mailTable.bootstrapTable({
         method: 'get',
         toggle: 'table',
         dataType: "json",
@@ -47,15 +47,6 @@ $(document).ready(function () {
                 return '<em class="fa fa-envelope-o edit_isRead" style="color:#7CCD7C;" title="未读"></em>';
             }
         }, {
-            title: '完成状态',
-            align: 'center',
-            width: '2.5%',
-            formatter: function (value, row, index) {
-                //return '<em class="fa fa-hourglass-start edit_isRead em_begin" title="未开始"></em>';
-                //return '<em class="fa fa-hourglass-end edit_isRead em_end" title="已结束"></em>';
-                return '<em class="fa fa-hourglass-half edit_isRead em_half" title="正在努力"></em>';
-            }
-        }, {
             field: 'name',
             width: '5%',
             title: '发送人',
@@ -66,14 +57,14 @@ $(document).ready(function () {
         },
         {
             field: 'name',
-            title: '消息标题',
+            title: '反馈标题',
             width: '15%',
             formatter: function (value, row, index) {
                 return '<p style="font-size:10px;">' + value + '</p>';
             }
         }, {
             field: 'price',
-            title: '消息内容',
+            title: '反馈内容',
             width: '35%',
             formatter: function (value, row, index) {
                 return '<p class="font-size:10px;">' + value + '</p>';
@@ -83,25 +74,6 @@ $(document).ready(function () {
             title: '接收时间',
             width: '10%',
             fontSize:'12px',
-            formatter: function (value, row, index) {
-                var myDate = new Date();
-                var year = myDate.getFullYear();
-                var month = myDate.getMonth() + 1;
-                var date = myDate.getDate();
-                var h = myDate.getHours();
-                var m = myDate.getMinutes();
-                var s = myDate.getSeconds();
-                function p(s) {
-                    return s < 10 ? '0' + s : s;
-                }
-                var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
-                return '<p style="font-size:10px;">' + now + '</p>';
-            }
-        }, {
-            field: 'time',
-            width: '10%',
-            title: '完成时间',
-            align: 'center',
             formatter: function (value, row, index) {
                 var myDate = new Date();
                 var year = myDate.getFullYear();
@@ -139,7 +111,7 @@ $(document).ready(function () {
                         closeOnCancel: false
                     }, function (isConfirm) {
                         if (isConfirm) {
-                            $workReminderTable.bootstrapTable('removeByUniqueId', num);
+                            $mailTable.bootstrapTable('removeByUniqueId', num);
                             swal("已删除！", "所选中的项删除成功！", "success");
                         } else {
                             swal.close();
@@ -174,8 +146,8 @@ $(document).ready(function () {
         language: 'zh-CN'
     });
 
-    $deleteReminder.click(function () {
-        var ids = $.map($workReminderTable.bootstrapTable('getSelections'), function (row) {
+    $deleteMail.click(function () {
+        var ids = $.map($mailTable.bootstrapTable('getSelections'), function (row) {
             return row.id;
         });
         if (ids.length >= 1) {
@@ -191,7 +163,7 @@ $(document).ready(function () {
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    $workReminderTable.bootstrapTable('remove', {
+                    $mailTable.bootstrapTable('remove', {
                         field: 'id',
                         values: ids
                     });
@@ -231,6 +203,6 @@ $(document).ready(function () {
     });
 
     $('#btnTableRefresh').click(function () {
-        $workReminderTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
+        $mailTable.bootstrapTable('refresh', { url: '../../../Test/data1.json' });
     });
 });

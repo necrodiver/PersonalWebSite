@@ -447,3 +447,29 @@
 .badge-primary {
     background-color: #8E44AD !important;
 }
+/*自定义图标颜色*/
+.em_delete {
+    color: #ff0000;
+}
+
+.em_add {
+    color: #1bba14;
+}
+
+.em_reply {
+    color: #36b6f7;
+}
+
+.em_refresh {
+    color: #0cc179;
+}
+
+.em_begin{
+    color:#44ccf1;
+}
+.em_half{
+    color:#1d897f;
+}
+.em_end{
+    color:#12aa80;
+}
