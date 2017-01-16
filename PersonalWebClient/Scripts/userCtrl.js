@@ -197,11 +197,7 @@ $(document).ready(function () {
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    $userTable.bootstrapTable('remove', {
-                        field: 'id',
-                        values: ids
-                    });
-                    swal("已删除！", "所选中的项删除成功！", "success");
+                    swal("已冻结！", "所选中的项冻结成功！", "success");
                 } else {
                     swal.close();
                 }

@@ -52,10 +52,10 @@
     </div>
 </script>
 <script type="text/template" id="tableEditTemplate">
-    <span class="fa fa-address-card table_edit_read" title="查看详细" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
+    <span class="fa fa-address-card table_edit_read" title="查看详细" editId="{0}" data-target="#read_User" data-toggle="modal"></span>
     <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
     <span class="fa fa-ban table_edit_frozen" title="冻结" editId="{0}"></span>
-    <span class="fa fa-edit table_edit_edit" title="修改信息" editId="{0}"></span>
+    <span class="fa fa-edit table_edit_edit" title="修改信息" editId="{0}" data-target="#edit_User" data-toggle="modal"></span>
 </script>
 <div class="safe_newmail_all">
     <style type="text/css">
@@ -67,10 +67,52 @@
         .btn_submit {
             margin-top: 10px;
         }
+
+        .check_uc_page {
+            width: 80%;
+            margin: 0 auto;
+            margin-top:5px;
+        }
+
+        .check_up_left {
+            width: 150px;
+            font-size: 14px;
+            color: #808080;
+            line-height: 34px;
+            font-weight: 700;
+        }
+
+        .check_up_right {
+            margin-left: 10px;
+        }
+
+            .check_up_right p {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 34px;
+            }
+
+            .check_up_right img {
+                width: 150px;
+            }
+
+        .line {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .instructions_about{
+            font-size:12px;
+            color:#671d1d;
+            text-align:center;
+        }
+        .check_userInfo_context{
+            margin-bottom:10px;
+        }
     </style>
     <div class="help">
         <!--新增用户-->
-        <div class="modal fade" id="new_Mail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="add_User" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -108,7 +150,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-lg-12 clearfix">
-                                                <button class="btn btn-success pull-right btn_submit" type="submit">注册</button>
+                                                <button class="btn btn-success pull-right btn_submit" type="submit">添加用户</button>
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +162,7 @@
             </div>
         </div>
         <!--查看用户信息-->
-        <div class="modal fade" id="new_Mail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="read_User" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -129,7 +171,46 @@
                     </div>
                     <div class="modal-body">
                         <div class="check_userInfo_context">
-
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">昵称:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">张三大佬</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">邮箱地址:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">neclodiver@live.com</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">个性域名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">www.notlives.cc/pianpian</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">头像:</p></div>
+                                <div class="check_up_right pull-left">
+                                    <img class="img-thumbnail img-rounded" src="../../../Images/user-ceshi.jpg" />
+                                </div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">个性域名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">www.notlives.cc/pianpian</p></div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="instructions_about">（提示说明：以下内容为隐私，请勿泄露，你的操作都会有系统记录）</div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">姓名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">王大锤</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">QQ:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">123456789</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">电话:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">12345678912</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">性别:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">保密</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +221,7 @@
         <div class="safe_nc_title clearfix">
             <div class="btn-group safe_nct_content pull-left">
                 <button type="button" class="btn btn-default" id="btn_DeleteUser"><em class="fa fa-user-times em_delete"></em> 删除</button>
-                <button type="button" class="btn btn-default" id="btn_NewUser" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_NewUser" data-target="#add_User" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
                 <button type="button" class="btn btn-default" id="btn_FrozenUser"><em class="fa fa-ban em_frozen"></em> 冻结</button>
             </div>
             <div class="safe_nt_search pull-left">

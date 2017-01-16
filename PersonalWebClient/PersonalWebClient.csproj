@@ -85,6 +85,7 @@
     <Content Include="APP\Manager\ManagerOperation\UserMessage.html" />
     <Content Include="APP\Manager\ManagerOperation\WorkReminder.html" />
     <Content Include="APP\Manager\SafeManager.html" />
+    <Content Include="APP\Manager\UserControl\EditUser.html" />
     <Content Include="APP\Manager\UserControl\UserCtrl.html" />
     <Content Include="APP\MyCenter.html" />
     <Content Include="APP\MyCenterOperation\AttentionPerson.html" />
