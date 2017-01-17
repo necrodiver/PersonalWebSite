@@ -1139,7 +1139,7 @@
     <Content Include="Scripts\sweetalert\sweetalert-dev.js" />
     <Content Include="Scripts\sweetalert\sweetalert.css" />
     <Content Include="Scripts\sweetalert\sweetalert.min.js" />
-    <Content Include="Scripts\userCtrl.js" />
+    <Content Include="Scripts\userControl\userCtrl.js" />
     <Content Include="Scripts\userProfiles.js" />
     <Content Include="Test\cloud10.png" />
     <Content Include="Test\CloudTest\cloud.html" />

@@ -138,6 +138,10 @@ $(document).ready(function () {
                             swal.close();
                         }
                     });
+                },
+                'click .table_edit_edit': function (e, value, row, index) {
+                    var userId = $(this).attr('editId');
+                    location.href = "EditUser.html?userId=" + userId;
                 }
 
             }
