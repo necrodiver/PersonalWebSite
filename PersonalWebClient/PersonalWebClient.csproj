@@ -84,6 +84,8 @@
     <Content Include="APP\Manager\ManagerOperation\SystemNotice.html" />
     <Content Include="APP\Manager\ManagerOperation\UserMessage.html" />
     <Content Include="APP\Manager\ManagerOperation\WorkReminder.html" />
+    <Content Include="APP\Manager\ProductionOperation\JottingsManage.html" />
+    <Content Include="APP\Manager\ProductionOperation\ScrawlManage.html" />
     <Content Include="APP\Manager\SafeManager.html" />
     <Content Include="APP\Manager\UserControl\EditUser.html" />
     <Content Include="APP\Manager\UserControl\UserCtrl.html" />
@@ -1098,6 +1100,7 @@
     <Content Include="Scripts\philter\svg\vintage-4.svg" />
     <Content Include="Scripts\philter\svg\vintage-5.svg" />
     <Content Include="Scripts\philter\svg\vintage-6.svg" />
+    <Content Include="Scripts\productionOpration\scrawlManage.js" />
     <Content Include="Scripts\summernote\lang\summernote-ar-AR.js" />
     <Content Include="Scripts\summernote\lang\summernote-bg-BG.js" />
     <Content Include="Scripts\summernote\lang\summernote-ca-ES.js" />

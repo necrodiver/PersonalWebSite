@@ -52,6 +52,14 @@
                 $('.safe_rc_iframe').attr('src', 'ManagerOperation/SystemNotice.html');
                 $('.safe_right_title p').text('系统公告');
             }
+            else if ($(this).hasClass('select_Scrawl')) {
+                $('.safe_rc_iframe').attr('src', 'ProductionOperation/ScrawlManage.html');
+                $('.safe_right_title p').text('涂鸦管理');
+            }
+            else if ($(this).hasClass('select_Jottings')) {
+                $('.safe_rc_iframe').attr('src', 'ProductionOperation/JottingsManage.html');
+                $('.safe_right_title p').text('随笔管理');
+            }
            
 
         }

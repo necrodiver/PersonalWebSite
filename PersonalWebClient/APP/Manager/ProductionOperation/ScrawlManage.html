@@ -1,0 +1,210 @@
+﻿<link href="../../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../../Content/input-style.css" rel="stylesheet" />
+<link href="../../../Content/fontAwesome/font-awesome.css" rel="stylesheet" />
+<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-affix.js"></script>
+<!--table插件-->
+<link href="../../../Content/bootstrap-table.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrap-table.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+<!--选择对话框-->
+<link href="../../../Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+<script src="../../../Scripts/sweetalert/sweetalert-dev.js"></script>
+<!--时间插件-->
+<link href="../../../Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--富文本编辑器-->
+<link href="../../../Content/summernote/summernote.css" rel="stylesheet" />
+<script src="../../../Scripts/summernote/summernote.js"></script>
+<script src="../../../Scripts/summernote/lang/summernote-zh-CN.js"></script>
+<!--表单验证-->
+<link href="../../../Content/bootstrapValidator.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrapValidator.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrapValidator_zh_CN.js"></script>
+<!--上传图片工具-->
+<link href="../../../Content/fileinput.css" rel="stylesheet" />
+<script src="../../../Scripts/fileinput.min.js"></script>
+<script src="../../../Scripts/fileinput_locale_zh.js"></script>
+<!--helper-->
+<script src="../../../Scripts/Helper.js"></script>
+
+<link href="../../../Content/imgbox.css" rel="stylesheet" />
+<link href="../../../Content/manager/msgManager.css" rel="stylesheet" />
+<script type="text/template" id="sendPeopleTemplate">
+    <div class="send_people clearfix">
+        <a href="javascript:;" class="linkstyle">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+    </div>
+</script>
+<script type="text/template" id="userSearchTemplate">
+    <div class="users_context panel panel-default pull-left">
+        <a href="javascript:;" class="linkstyle pull-left">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+        <div class="pull-right remove_user">
+            <em class="fa fa-remove"></em>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="tableEditTemplate">
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}"></span>
+    <span class="fa fa-reply-all table_edit_frozen" title="驳回" editId="{0}"></span>
+    <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+    <span class="fa fa-thumbs-o-up table_edit_accomplish" title="推荐" editId="{0}"></span>
+</script>
+<div class="safe_newmail_all">
+    <style type="text/css">
+        .addUser_Context {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .btn_submit {
+            margin-top: 10px;
+        }
+
+        .check_uc_page {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+
+        .check_up_left {
+            width: 150px;
+            font-size: 14px;
+            color: #808080;
+            line-height: 34px;
+            font-weight: 700;
+        }
+
+        .check_up_right {
+            margin-left: 10px;
+        }
+
+            .check_up_right p {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 34px;
+            }
+
+            .check_up_right img {
+                width: 150px;
+            }
+
+        .line {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .instructions_about {
+            font-size: 12px;
+            color: #671d1d;
+            text-align: center;
+        }
+
+        .check_userInfo_context {
+            margin-bottom: 10px;
+        }
+
+        .form_title p {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .form_onecontent {
+            margin-bottom: 10px;
+        }
+        .btn_submit{
+            width:100%;
+        }
+    </style>
+    <div class="help">
+        <!--新增涂鸦-->
+        <div class="modal fade" id="add_Content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">新增涂鸦</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦主题名称</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦主题名称" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦标签</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦标签，多个标签请用英文逗号标记" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>说明</p></div>
+                                <div class="form_onecontent">
+                                    <textarea maxlength="500" class="new_sct_c form-control" placeholder="填写说明~~"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input id="imgUpload" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn_submit" type="submit"><em class="fa fa-plus"></em> 添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_newmail_center">
+        <div class="safe_nc_title clearfix">
+            <div class="btn-group safe_nct_content pull-left">
+                <button type="button" class="btn btn-default" id="btn_DeleteContent"><em class="fa fa-user-times em_delete"></em> 删除</button>
+                <button type="button" class="btn btn-default" id="btn_NewContent" data-target="#add_Content" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_FrozenContent"><em class="fa fa-ban em_frozen"></em> 冻结</button>
+            </div>
+            <div class="safe_nt_search pull-left">
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                    <div class="safe_nts_text pull-left">
+                        <div class="form-group">
+                            <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                                <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                                <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_time" value="" /><br />
+                        </div>
+                    </div>
+                </div>
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
+                </div>
+            </div>
+            <div class="btn-group safe_nct_content pull-right">
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
+            </div>
+        </div>
+        <style type="text/css">
+        </style>
+        <div class="safe_nc_context">
+            <table id="contextTable"></table>
+        </div>
+    </div>
+    <div class="safe_newmail_bottom"></div>
+</div>
+<script src="../../../Scripts/productionOpration/scrawlManage.js"></script>

@@ -1,0 +1,260 @@
+﻿<link href="../../../Content/bootstrap.css" rel="stylesheet" />
+<link href="../../../Content/input-style.css" rel="stylesheet" />
+<link href="../../../Content/fontAwesome/font-awesome.css" rel="stylesheet" />
+<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<script src="../../../Scripts/jquery/jquery-1.10.2.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-popover.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-affix.js"></script>
+<!--table插件-->
+<link href="../../../Content/bootstrap-table.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrap-table.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+<!--选择对话框-->
+<link href="../../../Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+<script src="../../../Scripts/sweetalert/sweetalert-dev.js"></script>
+<!--时间插件-->
+<link href="../../../Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--富文本编辑器-->
+<link href="../../../Content/summernote/summernote.css" rel="stylesheet" />
+<script src="../../../Scripts/summernote/summernote.js"></script>
+<script src="../../../Scripts/summernote/lang/summernote-zh-CN.js"></script>
+<!--表单验证-->
+<link href="../../../Content/bootstrapValidator.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrapValidator.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrapValidator_zh_CN.js"></script>
+
+<!--helper-->
+<script src="../../../Scripts/Helper.js"></script>
+
+<link href="../../../Content/imgbox.css" rel="stylesheet" />
+<link href="../../../Content/manager/msgManager.css" rel="stylesheet" />
+<script type="text/template" id="sendPeopleTemplate">
+    <div class="send_people clearfix">
+        <a href="javascript:;" class="linkstyle">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+    </div>
+</script>
+<script type="text/template" id="userSearchTemplate">
+    <div class="users_context panel panel-default pull-left">
+        <a href="javascript:;" class="linkstyle pull-left">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+        <div class="pull-right remove_user">
+            <em class="fa fa-remove"></em>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="tableEditTemplate">
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#read_User" data-toggle="modal"></span>
+    <span class="fa fa-reply-all table_edit_frozen" title="驳回" editId="{0}"></span>
+    <span class="fa fa-edit table_edit_edit" title="修改内容" editId="{0}" data-target="#edit_User" data-toggle="modal"></span>
+    <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+</script>
+<div class="safe_newmail_all">
+    <style type="text/css">
+        .addUser_Context {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .btn_submit {
+            margin-top: 10px;
+        }
+
+        .check_uc_page {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+
+        .check_up_left {
+            width: 150px;
+            font-size: 14px;
+            color: #808080;
+            line-height: 34px;
+            font-weight: 700;
+        }
+
+        .check_up_right {
+            margin-left: 10px;
+        }
+
+            .check_up_right p {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 34px;
+            }
+
+            .check_up_right img {
+                width: 150px;
+            }
+
+        .line {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .instructions_about {
+            font-size: 12px;
+            color: #671d1d;
+            text-align: center;
+        }
+
+        .check_userInfo_context {
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="help">
+        <!--新增用户-->
+        <div class="modal fade" id="add_Work" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="addUser_Context">
+                            <div class="addUser_center">
+                                <form role="form" id="signUp" method="post" class="form-horizontal">
+                                    <div class="signup_content">
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-lg-offset-2 control-label">新增账号</label>
+                                            <div class="col-lg-5">
+                                                <input type="email" class="form-control" name="email" placeholder="请输入用于注册的邮箱地址" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-lg-offset-2 control-label">用户名</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="username" placeholder="显示的昵称/用户名" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-lg-offset-2 control-label">密码</label>
+                                            <div class="col-lg-5">
+                                                <input type="password" class="form-control" name="password" placeholder="请输入新的密码" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-lg-offset-2 control-label">确认密码</label>
+                                            <div class="col-lg-5">
+                                                <input type="password" class="form-control" name="confirmPassword" placeholder="请再输入一遍上面的密码" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-12 clearfix">
+                                                <button class="btn btn-success pull-right btn_submit" type="submit">添加用户</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--查看用户信息-->
+        <div class="modal fade" id="read_Work" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">用户详细信息查看</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="check_userInfo_context">
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">昵称:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">张三大佬</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">邮箱地址:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">neclodiver@live.com</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">个性域名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">www.notlives.cc/pianpian</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">头像:</p></div>
+                                <div class="check_up_right pull-left">
+                                    <img class="img-thumbnail img-rounded" src="../../../Images/user-ceshi.jpg" />
+                                </div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">个性域名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">www.notlives.cc/pianpian</p></div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="instructions_about">（提示说明：以下内容为隐私，请勿泄露，你的操作都会有系统记录）</div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">姓名:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">王大锤</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">QQ:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">123456789</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">电话:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">12345678912</p></div>
+                            </div>
+                            <div class="check_uc_page clearfix">
+                                <div class="check_up_left pull-left"><p class="pull-right">性别:</p></div>
+                                <div class="check_up_right pull-left"><p class="pull-left">保密</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_newmail_center">
+        <div class="safe_nc_title clearfix">
+            <div class="btn-group safe_nct_content pull-left">
+                <button type="button" class="btn btn-default" id="btn_DeleteContent"><em class="fa fa-user-times em_delete"></em> 删除</button>
+                <button type="button" class="btn btn-default" id="btn_NewUser" data-target="#add_User" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_FrozenContent"><em class="fa fa-ban em_frozen"></em> 冻结</button>
+            </div>
+            <div class="safe_nt_search pull-left">
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                    <div class="safe_nts_text pull-left">
+                        <div class="form-group">
+                            <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                                <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                                <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_time" value="" /><br />
+                        </div>
+                    </div>
+                </div>
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
+                </div>
+            </div>
+            <div class="btn-group safe_nct_content pull-right">
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
+            </div>
+        </div>
+        <style type="text/css">
+        </style>
+        <div class="safe_nc_context">
+            <table id="contextTable"></table>
+        </div>
+    </div>
+    <div class="safe_newmail_bottom"></div>
+</div>
+<script src="../../../Scripts/productionOpration/scrawlManage.js"></script>
