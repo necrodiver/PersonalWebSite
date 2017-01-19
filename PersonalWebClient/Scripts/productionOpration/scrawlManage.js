@@ -2,7 +2,7 @@
 $(document).ready(function () {
     var $contextTable = $('#contextTable'),
     $deleteContent = $('#btn_DeleteContent');
-    $frozenContent = $('#btn_FrozenContent');
+    $passContent = $('#btn_PassContent');
     $contextTable.bootstrapTable({
         method: 'get',
         toggle: 'table',
@@ -69,14 +69,14 @@ $(document).ready(function () {
         {
             field: 'name',
             title: '作者昵称',
-            width: '20%',
+            width: '15%',
             formatter: function (value, row, index) {
                 return $('#sendPeopleTemplate').html().format('../../../Images/user-ceshi.jpg', value + ' ');
             }
         }, {
             field: 'price',
             title: '涂鸦说明',
-            width: '20%',
+            width: '15%',
             formatter: function (value, row, index) {
                 return value;
             }
@@ -108,7 +108,7 @@ $(document).ready(function () {
         }, {
             field: null,
             title: '操作',
-            width: '20%',
+            width: '30%',
             align: 'center',
             formatter: function (value, row, index) {
                 return $('#tableEditTemplate').html().format(value);
@@ -138,30 +138,76 @@ $(document).ready(function () {
                         }
                     });
                 },
-                'click .table_edit_frozen': function (e, value, row, index) {
+                'click .table_edit_reject': function (e, value, row, index) {
                     var num = $(this).attr('editId');
                     swal({
-                        title: "你确认要冻结选当前用户？" + index,
-                        text: "用户冻结后不可进行登录，可由管理员进行解冻，为了防止盗号等行为",
-                        type: "warning",
+                        title: "你确认要冻驳回当前作品？" + index,
+                        text: "驳回后用户将可进行修改并重新上传",
+                        type: "input",
                         showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "是的，冻结",
-                        cancelButtonText: "不，暂时不冻结",
                         closeOnConfirm: false,
-                        closeOnCancel: false
-                    }, function (isConfirm) {
-                        if (isConfirm) {
-                            //这里添加改变状态的方法
-                            swal("已冻结！", "当前用户已冻结！", "success");
-                        } else {
-                            swal.close();
+                        animation: "slide-from-top",
+                        inputPlaceholder: "请输入驳回理由"
+                    }, function (inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "" || inputValue.length < 2) {
+                            swal.showInputError("请输入驳回理由才能进行驳回操作！");
+                            return false;
                         }
+                        else {
+                            swal('驳回成功', '当前作品驳回成功', 'success');
+                            return true;
+                        }
+                        return false;
                     });
                 },
                 'click .table_edit_edit': function (e, value, row, index) {
                     var userId = $(this).attr('editId');
                     location.href = "EditUser.html?userId=" + userId;
+                },
+                'click .table_edit_recommend': function (e, value, row, index) {
+                    var userId = $(this).attr('editId');
+                    swal({
+                        title: "你确认要推荐当前用户？" + index,
+                        text: "当前用户推荐后将会在首页展示，但不允许推荐第二次",
+                        type: "input",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        animation: "slide-from-top",
+                        inputPlaceholder: "请输入推荐理由"
+                    }, function (inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "" || inputValue.length < 2) {
+                            swal.showInputError("请输入推荐理由才能进行推荐操作！");
+                            return false;
+                        }
+                        else {
+                            swal('推荐成功', '当前推荐驳回成功', 'success');
+                            return true;
+                        }
+                        return false;
+                    });
+                },
+                'click .table_edit_pass': function (e, value, row, index) {
+                    swal({
+                        title: "确定设置当前用户涂鸦通过？" + index,
+                        text: "当前用户涂鸦通过后将会面当大众展示",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "通过",
+                        cancelButtonText: "不，暂时不进行操作",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            //这里添加改变状态的方法
+                            swal("已通过！", "当前用户涂鸦通过成功！", "success");
+                        } else {
+                            swal.close();
+                        }
+                    });
                 }
 
             }
@@ -205,24 +251,23 @@ $(document).ready(function () {
             swal("删除提示", "请先选择要删除的项~~", "info");
         }
     });
-    $frozenContent.click(function () {
+    $passContent.click(function () {
         var ids = $.map($contextTable.bootstrapTable('getSelections'), function (row) {
             return row.id;
         });
         if (ids.length >= 1) {
             swal({
-                title: "你确认要冻结选中的消息？",
-                text: "被选中的用户将会被冻结，您可以以管理员的权限来解锁被冻结的账号",
+                title: "你确认要执行通过选中的作品？",
+                text: "被选中的用户将会通过，这些作品将会面向大众",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "是的，冻结",
+                confirmButtonText: "是的，通过",
                 cancelButtonText: "不，让我再想想",
                 closeOnConfirm: false,
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    swal("已冻结！", "所选中的项冻结成功！", "success");
+                    swal("已通过！", "所有选中的项通过成功！", "success");
                 } else {
                     swal.close();
                 }

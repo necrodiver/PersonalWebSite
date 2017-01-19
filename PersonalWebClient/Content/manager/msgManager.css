@@ -49,7 +49,7 @@
     padding-right: 5px;
 }
 
-.table_edit_read, .table_edit_delete,.table_edit_accomplish,.table_edit_frozen,.table_edit_edit,.table_edit_accomplish{
+.table_edit_read, .table_edit_delete,.table_edit_accomplish,.table_edit_frozen,.table_edit_edit,.table_edit_accomplish,.table_edit_recommend,.table_edit_pass{
     cursor: pointer;
     color: #4ca0c6;
     margin-left: 5px;
@@ -69,6 +69,12 @@
 }
 .table_edit_accomplish{
     color:#53a91f;
+}
+.table_edit_recommend{
+    color:#c67a03;
+}
+.table_edit_pass{
+    color:#00f341;
 }
 .user_reply {
     padding: 7px;
