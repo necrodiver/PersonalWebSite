@@ -7,6 +7,8 @@
 <script src="../../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
 <script src="../../../Scripts/bootstrap/bootstrap-popover.js"></script>
 <script src="../../../Scripts/bootstrap/bootstrap-affix.js"></script>
+<!--搜索建议插件-->
+<script src="../../../Scripts/bootstrap/bootstrap-suggest.js"></script>
 <!--table插件-->
 <link href="../../../Content/bootstrap-table.css" rel="stylesheet" />
 <script src="../../../Scripts/bootstrap/bootstrap-table.js"></script>
@@ -32,7 +34,6 @@
 <script src="../../../Scripts/fileinput_locale_zh.js"></script>
 <!--helper-->
 <script src="../../../Scripts/Helper.js"></script>
-
 <link href="../../../Content/imgbox.css" rel="stylesheet" />
 <link href="../../../Content/manager/msgManager.css" rel="stylesheet" />
 <script type="text/template" id="sendPeopleTemplate">
@@ -55,12 +56,12 @@
     </div>
 </script>
 <script type="text/template" id="tableEditTemplate">
-    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}"  data-target="#read_Content" data-toggle="modal"></span>
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#read_Content" data-toggle="modal"></span>
     <span class="fa fa-mail-forward table_edit_pass" title="通过" editId="{0}"></span>
     <span class="fa fa-reply-all table_edit_reject" title="驳回" editId="{0}"></span>
     <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
     <span class="fa fa-thumbs-o-up table_edit_recommend" title="推荐" editId="{0}"></span>
-    <span class="fa fa-pencil-square-o table_edit_edit" title="修改" editId="{0}"  data-target="#edit_Content" data-toggle="modal"></span>
+    <span class="fa fa-pencil-square-o table_edit_edit" title="修改" editId="{0}" data-target="#edit_Content" data-toggle="modal"></span>
 </script>
 <div class="safe_newmail_all">
     <style type="text/css">
@@ -126,74 +127,75 @@
         .form_onecontent {
             margin-bottom: 10px;
         }
-        .btn_submit{
-            width:100%;
+
+        .btn_submit {
+            width: 100%;
         }
 
-         .sj_u_img {
-        width: 40px;
-        border: 1px solid gray;
-        margin: 5px;
-    }
-
-    .sj_u_nickname {
-        margin-top: 5px;
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-        .sj_u_nickname .linkstyle {
-            color: #000;
+        .sj_u_img {
+            width: 40px;
+            border: 1px solid gray;
+            margin: 5px;
         }
 
-    .sj_u_weibo {
-        color: #b5b5b5;
-    }
-
-
-    .browse_u_r_message {
-        margin-right: 10px;
-        margin-top: 5px;
-        height: 45px;
-    }
-
-        .browse_u_r_message div {
+        .sj_u_nickname {
+            margin-top: 5px;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-            .browse_u_r_message div p {
-                margin-bottom: 0;
+            .sj_u_nickname .linkstyle {
+                color: #000;
             }
 
-    .browser_urm_partition {
-        border-right: 1px solid #e7e8ea;
-        padding-right: 10px;
-        margin-right: 10px;
-        text-align: center;
-    }
-
-    .browser_urmp_num {
-        font-size: 15px;
-        color: black;
-        font-weight: 700;
-    }
-
-        .browser_urmp_num em .linkstyle {
-            color: #000000;
+        .sj_u_weibo {
+            color: #b5b5b5;
         }
 
-    .browser_urmp_title {
-        font-size: 14px;
-        color: #a3a3a3;
-        font-weight: 500;
-    }
 
-    .browser_urm_plast {
-        text-align: center;
-    }
+        .browse_u_r_message {
+            margin-right: 10px;
+            margin-top: 5px;
+            height: 45px;
+        }
 
-    .browse_u_attention {
-        margin-top: 55px;
-    }
+            .browse_u_r_message div {
+            }
+
+                .browse_u_r_message div p {
+                    margin-bottom: 0;
+                }
+
+        .browser_urm_partition {
+            border-right: 1px solid #e7e8ea;
+            padding-right: 10px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .browser_urmp_num {
+            font-size: 15px;
+            color: black;
+            font-weight: 700;
+        }
+
+            .browser_urmp_num em .linkstyle {
+                color: #000000;
+            }
+
+        .browser_urmp_title {
+            font-size: 14px;
+            color: #a3a3a3;
+            font-weight: 500;
+        }
+
+        .browser_urm_plast {
+            text-align: center;
+        }
+
+        .browse_u_attention {
+            margin-top: 55px;
+        }
     </style>
     <div class="help">
         <!--新增涂鸦-->
@@ -209,7 +211,15 @@
                             <div class="form-group">
                                 <div class="form_title"><p>用户昵称</p></div>
                                 <div class="form_onecontent">
-                                    <input type="text" class="form-control" placeholder="请输入用户昵称" />
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="inputUserName" placeholder="这的样式好蛋疼">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

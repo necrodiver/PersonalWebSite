@@ -412,4 +412,20 @@ $(document).ready(function () {
 
         }
     });
+    $("#inputUserName").bsSuggest('init', {
+        /*url: "/rest/sys/getuserlist?keyword=",
+        effectiveFields: ["userName", "email"],
+        searchFields: [ "shortAccount"],
+        effectiveFieldsAlias:{userName: "姓名"},*/
+        clearable: true,
+        url: "../../../Test/bootstrapSuggestPlugin/data.json",
+        idField: "userId",
+        keyField: "userName"
+    }).on('onDataRequestSuccess', function (e, result) {
+        console.log('onDataRequestSuccess: ', result);
+    }).on('onSetSelectValue', function (e, keyword, data) {
+        console.log('onSetSelectValue: ', keyword, data);//F:\Codes\PersonalWebSite\PersonalWebClient\Test/bootstrapSuggestPlugin/data.json
+    }).on('onUnsetSelectValue', function () {
+        console.log('onUnsetSelectValue');
+    });
 });
