@@ -86,6 +86,7 @@
     <Content Include="APP\Manager\ManagerOperation\WorkReminder.html" />
     <Content Include="APP\Manager\ProductionOperation\JottingsManage.html" />
     <Content Include="APP\Manager\ProductionOperation\ScrawlManage.html" />
+    <Content Include="APP\Manager\ProductionOperation\ScrawlView.html" />
     <Content Include="APP\Manager\SafeManager.html" />
     <Content Include="APP\Manager\UserControl\EditUser.html" />
     <Content Include="APP\Manager\UserControl\UserCtrl.html" />
@@ -989,6 +990,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
     <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-suggest.js" />
     <Content Include="Scripts\bootstrap\bootstrap-table-zh-CN.js" />
     <Content Include="Scripts\bootstrap\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
@@ -1144,6 +1146,8 @@
     <Content Include="Scripts\sweetalert\sweetalert.min.js" />
     <Content Include="Scripts\userControl\userCtrl.js" />
     <Content Include="Scripts\userProfiles.js" />
+    <Content Include="Test\bootstrapSuggestPlugin\demo.js" />
+    <Content Include="Test\bootstrapSuggestPlugin\index.html" />
     <Content Include="Test\cloud10.png" />
     <Content Include="Test\CloudTest\cloud.html" />
     <Content Include="Test\CloudTest\cloudJs\cloud10.png" />
@@ -1205,6 +1209,7 @@
     <Content Include="Content\fontAwesome\fontawesome-webfont.woff2" />
     <Content Include="Content\fontAwesome\FontAwesome.otf" />
     <Content Include="Test\data1.json" />
+    <Content Include="Test\bootstrapSuggestPlugin\data.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

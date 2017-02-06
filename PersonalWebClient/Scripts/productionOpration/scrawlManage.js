@@ -114,28 +114,32 @@ $(document).ready(function () {
                 return $('#tableEditTemplate').html().format(value);
             },
             events: {
-                'click .table_edit_read': function (e, value, row, index) {
-                    alert("这里需要写个链接传涂鸦内容");
-                },
+                //'click .table_edit_read': function (e, value, row, index) {
+                //    alert("这里需要写个链接传涂鸦内容");
+                //},
                 'click .table_edit_delete': function (e, value, row, index) {
                     var num = $(this).attr('editId');
                     swal({
-                        title: "你确认要删除选中的消息？" + index,
-                        text: "这些消息将会被删除而无法找到，请确认是否存在未读消息，或者有未接收的附件",
-                        type: "warning",
+                        title: "你确定要删除选中的项？",
+                        text: "请输入删除操作key:",
+                        type: "input",
                         showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "是的，删除",
-                        cancelButtonText: "不，让我再想想",
                         closeOnConfirm: false,
-                        closeOnCancel: false
-                    }, function (isConfirm) {
-                        if (isConfirm) {
-                            $contextTable.bootstrapTable('removeByUniqueId', num);
-                            swal("已删除！", "所选中的项删除成功！", "success");
-                        } else {
-                            swal.close();
+                        animation: "slide-from-top",
+                        inputPlaceholder: "删除操作key"
+                    }, function (inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "") {
+                            swal.showInputError("请输入操作key才能执行删除操作！");
+                            return false
                         }
+                        if (inputValue === "666") {
+                            swal("删除成功!", "你已删除所有选中项！", "success");
+                            return true;
+                        }
+                        swal.showInputError("请输入正确的执行key！");
+                        return false;
                     });
                 },
                 'click .table_edit_reject': function (e, value, row, index) {
@@ -162,10 +166,10 @@ $(document).ready(function () {
                         return false;
                     });
                 },
-                'click .table_edit_edit': function (e, value, row, index) {
-                    var userId = $(this).attr('editId');
-                    location.href = "EditUser.html?userId=" + userId;
-                },
+                //'click .table_edit_edit': function (e, value, row, index) {
+                //    var userId = $(this).attr('editId');
+                //    location.href = "EditUser.html?userId=" + userId;
+                //},
                 'click .table_edit_recommend': function (e, value, row, index) {
                     var userId = $(this).attr('editId');
                     swal({
