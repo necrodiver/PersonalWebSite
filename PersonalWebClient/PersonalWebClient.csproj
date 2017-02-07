@@ -88,6 +88,7 @@
     <Content Include="APP\Manager\ProductionOperation\ScrawlManage.html" />
     <Content Include="APP\Manager\ProductionOperation\ScrawlView.html" />
     <Content Include="APP\Manager\SafeManager.html" />
+    <Content Include="APP\Manager\Statistics\VisitStatistics.html" />
     <Content Include="APP\Manager\UserControl\EditUser.html" />
     <Content Include="APP\Manager\UserControl\UserCtrl.html" />
     <Content Include="APP\MyCenter.html" />
@@ -1086,6 +1087,7 @@
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-sysnotice.js" />
     <Content Include="Scripts\manage\safe-manager.js" />
+    <Content Include="Scripts\manage\statistics-visit.js" />
     <Content Include="Scripts\manage\userMessage.js" />
     <Content Include="Scripts\manage\workReminder.js" />
     <Content Include="Scripts\masonry.pkgd.js" />

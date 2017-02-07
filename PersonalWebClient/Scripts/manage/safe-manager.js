@@ -60,6 +60,10 @@
                 $('.safe_rc_iframe').attr('src', 'ProductionOperation/JottingsManage.html');
                 $('.safe_right_title p').text('随笔管理');
             }
+            else if ($(this).hasClass('select_visit')) {
+                $('.safe_rc_iframe').attr('src', 'Statistics/VisitStatistics.html');
+                $('.safe_right_title p').text('访问统计');
+            }
            
 
         }
