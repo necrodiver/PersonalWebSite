@@ -417,7 +417,7 @@ $(document).ready(function () {
         effectiveFields: ["userName", "email"],
         searchFields: [ "shortAccount"],
         effectiveFieldsAlias:{userName: "姓名"},*/
-        clearable: true,
+        clearable: false,
         url: "../../../Test/bootstrapSuggestPlugin/data.json",
         idField: "userId",
         keyField: "userName"
