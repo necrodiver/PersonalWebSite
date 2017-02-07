@@ -64,6 +64,10 @@
                 $('.safe_rc_iframe').attr('src', 'Statistics/VisitStatistics.html');
                 $('.safe_right_title p').text('访问统计');
             }
+            else if ($(this).hasClass('select_error')) {
+                $('.safe_rc_iframe').attr('src', 'Statistics/ErrorStatistics.html');
+                $('.safe_right_title p').text('访问统计');
+            }
            
 
         }

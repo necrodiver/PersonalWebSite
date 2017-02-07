@@ -88,6 +88,7 @@
     <Content Include="APP\Manager\ProductionOperation\ScrawlManage.html" />
     <Content Include="APP\Manager\ProductionOperation\ScrawlView.html" />
     <Content Include="APP\Manager\SafeManager.html" />
+    <Content Include="APP\Manager\Statistics\ErrorStatistics.html" />
     <Content Include="APP\Manager\Statistics\VisitStatistics.html" />
     <Content Include="APP\Manager\UserControl\EditUser.html" />
     <Content Include="APP\Manager\UserControl\UserCtrl.html" />
