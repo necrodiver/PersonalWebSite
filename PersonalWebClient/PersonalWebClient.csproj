@@ -1102,6 +1102,7 @@
     <Content Include="Scripts\philter\svg\vintage-4.svg" />
     <Content Include="Scripts\philter\svg\vintage-5.svg" />
     <Content Include="Scripts\philter\svg\vintage-6.svg" />
+    <Content Include="Scripts\productionOpration\jottingsManage.js" />
     <Content Include="Scripts\productionOpration\scrawlManage.js" />
     <Content Include="Scripts\summernote\lang\summernote-ar-AR.js" />
     <Content Include="Scripts\summernote\lang\summernote-bg-BG.js" />
