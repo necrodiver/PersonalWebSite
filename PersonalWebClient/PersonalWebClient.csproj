@@ -113,7 +113,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapValidator.css" />
     <Content Include="Content\bootstrapValidator.min.css" />
-    <Content Include="Content\detail.css" />
+    <Content Include="Content\app\detail.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fontAwesome\font-awesome.css" />
     <Content Include="Content\fontAwesome\font-awesome.min.css" />
@@ -123,17 +123,17 @@
     <Content Include="Content\imageUpload\sitelogo\sitelogo.css" />
     <Content Include="Content\imageUpload\sitelogo\sitelogo.js" />
     <Content Include="Content\imgbox.css" />
-    <Content Include="Content\index.css" />
+    <Content Include="Content\app\index.css" />
     <Content Include="Content\input-style.css" />
     <Content Include="Content\lightbox.css" />
-    <Content Include="Content\list.css" />
+    <Content Include="Content\app\list.css" />
     <Content Include="Content\manager\safe-index.css" />
     <Content Include="Content\manager\safe-manager.css" />
     <Content Include="Content\manager\msgManager.css" />
-    <Content Include="Content\myCenter.css" />
+    <Content Include="Content\app\myCenter.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\summernote\summernote.css" />
-    <Content Include="Content\userProfiles.css" />
+    <Content Include="Content\app\userProfiles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\c.png" />
     <Content Include="Images\CeShiYanZheng.gif" />
@@ -1082,9 +1082,9 @@
     <Content Include="Scripts\hometitleAnimation.js" />
     <Content Include="Scripts\imagesloaded.pkgd-1.js" />
     <Content Include="Scripts\imagesloaded.pkgd.js" />
-    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\app\index.js" />
     <Content Include="Scripts\lightbox.min.js" />
-    <Content Include="Scripts\list.js" />
+    <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\manage\statistics-error.js" />
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-sysnotice.js" />
@@ -1094,7 +1094,7 @@
     <Content Include="Scripts\manage\workReminder.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
     <Content Include="Scripts\manage\safe-mail.js" />
-    <Content Include="Scripts\mycenter.js" />
+    <Content Include="Scripts\app\mycenter.js" />
     <Content Include="Scripts\philter\jquery.philter.js" />
     <Content Include="Scripts\philter\jquery.philter.min.js" />
     <Content Include="Scripts\philter\philter.js" />
@@ -1150,7 +1150,7 @@
     <Content Include="Scripts\sweetalert\sweetalert.css" />
     <Content Include="Scripts\sweetalert\sweetalert.min.js" />
     <Content Include="Scripts\userControl\userCtrl.js" />
-    <Content Include="Scripts\userProfiles.js" />
+    <Content Include="Scripts\app\userProfiles.js" />
     <Content Include="Test\bootstrapSuggestPlugin\demo.js" />
     <Content Include="Test\bootstrapSuggestPlugin\index.html" />
     <Content Include="Test\cloud10.png" />
@@ -1329,7 +1329,9 @@
       <LastGenOutput>Resource.ja-jp.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\bootstrap\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -17,6 +17,7 @@
         }
     }
 
+
     $('#userId').each(function () {
         var element = $(this);
         var txt = '用户信息';
@@ -112,7 +113,7 @@
         var data = $("#Imageformat").html().format(i);
         $("#scrawl_RE").append(data);
     }
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 6; i++) {
         var data = $("#Jottingformat").html().format(i);
         $("#jotting_New").append(data);
         $("#jotting_Top").append(data);
