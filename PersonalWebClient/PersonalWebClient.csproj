@@ -104,15 +104,15 @@
     <Content Include="APP\SignUpAndSignIn.html" />
     <Content Include="APP\UserProfiles.html" />
     <Content Include="App_GlobalResources\说明.txt" />
-    <Content Include="Content\bootstrap-datetimepicker.css" />
-    <Content Include="Content\bootstrap-datetimepicker.min.css" />
-    <Content Include="Content\bootstrap-table.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrapValidator.css" />
-    <Content Include="Content\bootstrapValidator.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-table.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrapValidator.css" />
+    <Content Include="Content\bootstrap\bootstrapValidator.min.css" />
     <Content Include="Content\app\detail.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fontAwesome\font-awesome.css" />
@@ -1192,14 +1192,14 @@
     <Content Include="Scripts\angularjs\angular-aria.min.js.map" />
     <Content Include="Scripts\angularjs\angular-animate.min.js.map" />
     <Content Include="Content\variables.less" />
-    <Content Include="Content\bootswatch.less" />
-    <Content Include="Content\_variables.scss" />
-    <Content Include="Content\_bootswatch.scss" />
+    <Content Include="Content\bootstrap\bootswatch.less" />
+    <Content Include="Content\bootstrap\_variables.scss" />
+    <Content Include="Content\bootstrap\_bootswatch.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\app\YBJKT.ttf" />
     <Content Include="Content\FZTJLJ.ttf" />
     <Content Include="Test\summernote\font\summernote.eot" />
@@ -1329,9 +1329,7 @@
       <LastGenOutput>Resource.ja-jp.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\bootstrap\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

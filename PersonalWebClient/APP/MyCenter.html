@@ -4,9 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <meta charset="utf-8" />
-    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="../Content/input-style.css" rel="stylesheet" />
-    <!--<link href="../Content/bootstrap-theme.css" rel="stylesheet" />-->
+    <link href="../Content/fontAwesome/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="../Content/bootstrap/bootstrap-theme.css" rel="stylesheet" />-->
     <script src="../Scripts/jquery/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap/bootstrap-tooltip.js"></script>
@@ -29,7 +30,7 @@
     <script src="../Scripts/Helper.js"></script>
     <script type="text/template" id="tagTemplate">
         <button class="btn {0} btn-xs" type="button">
-            <em class="glyphicon glyphicon-tag"></em>
+            <em class="fa fa-tag"></em>
             {1} <span class="badge">{2}</span>
         </button>
     </script>
@@ -77,7 +78,7 @@
                 <div class="anchor_Top affix panel" data-spy="affix">
                     <a class="anchor_linkTop" href="#all">
                         <div class="anchor_titleTop" title="回顶部">
-                            <div class="glyphicon glyphicon-arrow-up"></div>
+                            <div class="fa fa-rocket"></div>
                         </div>
                     </a>
                 </div>
@@ -87,7 +88,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-user"></i> Sign In&Sign Up</h4>
+                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Sign In&Sign Up</h4>
                             </div>
                             <!--Content-->
                             <div class="modal-body login-modelbody">
@@ -134,7 +135,7 @@
                                                 </div>
                                             </div>
                                             <div class="pull-right" style="width:60%;margin-right:17px;">
-                                                <div><button class="btn btn-success" style="width:100%;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button></div>
+                                                <div><button class="btn btn-success" style="width:100%;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button></div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="signUp">
@@ -166,7 +167,7 @@
                                                 </div>
                                             </div>
                                             <div class="pull-left" style="width:60%;">
-                                                <button class="btn btn-success" style="width:100%;margin-left:13px;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                <button class="btn btn-success" style="width:100%;margin-left:13px;">Sign In&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -194,22 +195,22 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href=".">
-                                <i class="glyphicon glyphicon-home"></i> Home
+                                <i class="fa fa-home"></i> Home
                             </a>
                         </div>
                         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                             <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">
-                                        <i class="glyphicon glyphicon-picture"></i> Scrawl<span class="sr-only">(current)</span>
+                                        <i class="fa fa-picture-o"></i> Scrawl<span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> Jottings</a></li>
+                                <li><a href="#"><i class="fa fa-pencil"></i> Jottings</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th-large"></span> Dropdown <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-th-large"></span> Dropdown <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="#" data-target="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign in | Sign up</a>
+                                            <a href="#" data-target="#myModal" data-toggle="modal"><span class="fa fa-user"></span> Sign in | Sign up</a>
                                         </li>
                                         <li><a href="#">Another action</a></li>
                                         <li><a href="#">Something else here</a></li>
@@ -221,7 +222,7 @@
                                 </li>
                             </ul>
                             <div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
-                                <a href="javascript:void(0);" id="userId" class="btn btn-default glyphicon glyphicon-user popover-destroy" data-toggle="popover">
+                                <a href="javascript:void(0);" id="userId" class="btn btn-default fa fa-user-circle popover-destroy" data-toggle="popover">
                                 </a>
                             </div>
                             <!--<div class="navbar-btn navbar-right" role="button" id="userBtn" data-target="#myModal" data-toggle="modal">
@@ -233,7 +234,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Search">
                                 </div>
-                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Submit</button>
+                                <button type="submit" class="btn btn-info"><span class="fa fa-search"></span> Submit</button>
                             </form>
                         </div>
                     </div>
@@ -258,7 +259,7 @@
                                         <p>Lv.18</p>
                                     </div>
                                     <div class="user_li_site">
-                                        <p><em class="glyphicon glyphicon-map-marker"></em> china 江苏</p>
+                                        <p><em class="fa fa-map-marker"></em> china 江苏</p>
                                     </div>
                                 </div>
                                 <div class="user_li_about pull-right">
@@ -277,13 +278,13 @@
                                         </div>
                                     </div>
                                     <div class="user_lia_bottom">
-                                        <button class="btn btn-success btn-xs pull-right" id="editInformation"><em class="glyphicon glyphicon-edit"></em> 修改资料</button>
+                                        <button class="btn btn-success btn-xs pull-right" id="editInformation"><em class="fa fa-edit"></em> 修改资料</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="user_li_hi pull-left">
                                 <div class="user_lih_content">
-                                    <p><em class="glyphicon glyphicon-edit"></em> 插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                                    <p><em class="fa fa-edit"></em> 插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
@@ -295,46 +296,46 @@
                     <div class="mycenter_left panel panel-default pull-left col-md-3">
                         <div class="mycenter_tabs mycenter_news" id="mycenter_news">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;消息中心</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-envelope"></span>&nbsp;&nbsp;消息中心</p></div>
                                 <div class="mycenter_tab_english"><p>Message center</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
                         <div class="mycenter_tabs mycenter_newScrawlJottings" id="mycenter_newScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;新涂鸦/随笔</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-pencil"></span>&nbsp;&nbsp;新涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>Add new scrawl and jottings</p></div>
                             </a>
                         </div>
                         <div class="mycenter_tabs mycenter_ScrawlJottings" id="mycenter_ScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;我的涂鸦/随笔</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-book"></span>&nbsp;&nbsp;我的涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>My scrawl and jottings</p></div>
                             </a>
                         </div>
                         <div class="mycenter_tabs mycenter_collectScrawlJottings" id="mycenter_collectScrawlJottings">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;收藏的涂鸦/随笔</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-th-large"></span>&nbsp;&nbsp;收藏的涂鸦/随笔</p></div>
                                 <div class="mycenter_tab_english"><p>Collection of the scrawl and jottings</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
                         <div class="mycenter_tabs mycenter_attentionPerson" id="mycenter_attentionPerson">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;关注的人</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-heart"></span>&nbsp;&nbsp;关注的人</p></div>
                                 <div class="mycenter_tab_english"><p>Attention of the people</p></div>
                             </a>
                         </div>
                         <div class="mycenter_tabs mycenter_myFans" id="mycenter_myFans">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-leaf"></span>&nbsp;&nbsp;我的粉丝</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-leaf"></span>&nbsp;&nbsp;我的粉丝</p></div>
                                 <div class="mycenter_tab_english"><p>My Fans</p></div>
                             </a>
                         </div>
                         <div class="mycenter_partition"></div>
                         <div class="mycenter_tabs mycenter_editInformation" id="mycenter_editInformation">
                             <a class="linkstyle" href="javascript:void(0)">
-                                <div class="mycenter_tab_china"><p><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改资料</p></div>
+                                <div class="mycenter_tab_china"><p><span class="fa fa-edit"></span>&nbsp;&nbsp;修改资料</p></div>
                                 <div class="mycenter_tab_english"><p>Modify personal information</p></div>
                             </a>
                         </div>
