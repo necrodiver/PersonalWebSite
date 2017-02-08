@@ -23,6 +23,10 @@
             $('.safe_rc_iframe').attr('src', 'UserControl/UserCtrl.html');
             $('.safe_right_title p').text('用户管理');
         }
+        else if ($(this).hasClass('select_system')) {
+            $('.safe_rc_iframe').attr('src', 'UserControl/system.html');
+            $('.safe_right_title p').text('系统设定   ——暂时为空，以后根据需求逐步添加');
+        }
     });
     $('.list_child_item').click(function () {
         if (!$(this).hasClass('list_child_item_select')) {
@@ -67,9 +71,7 @@
             else if ($(this).hasClass('select_error')) {
                 $('.safe_rc_iframe').attr('src', 'Statistics/ErrorStatistics.html');
                 $('.safe_right_title p').text('访问统计');
-            }
-           
-
+            }   
         }
     });
 });
