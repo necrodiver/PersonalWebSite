@@ -227,7 +227,7 @@
 
 @font-face {
     font-family: 'YBJKT';
-    src: url('../Content/YBJKT.ttf') format('truetype');
+    src: url('YBJKT.ttf') format('truetype');
 }
 
 .dt_c_circle:hover {
