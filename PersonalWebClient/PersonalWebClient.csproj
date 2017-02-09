@@ -1202,6 +1202,7 @@
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\app\YBJKT.ttf" />
     <Content Include="Content\FZTJLJ.ttf" />
+    <Content Include="Test\oneLoginDemo.html" />
     <Content Include="Test\summernote\font\summernote.eot" />
     <Content Include="Test\summernote\font\summernote.ttf" />
     <Content Include="Test\summernote\font\summernote.woff" />

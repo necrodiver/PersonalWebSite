@@ -1,21 +1,21 @@
-﻿<link href="../../Content/bootstrap.css" rel="stylesheet" />
+﻿<link href="../../Content/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="../../Content/input-style.css" rel="stylesheet" />
 <script src="../../Scripts/jquery/jquery-1.10.2.min.js"></script>
-
+<link href="../../Content/fontAwesome/font-awesome.min.css" rel="stylesheet" />
 <!--上传头像插件-->
 <link href="../../Content/imageUpload/sitelogo/sitelogo.css" rel="stylesheet" />
 <script src="../../Content/imageUpload/sitelogo/sitelogo.js"></script>
 <link href="../../Content/imageUpload/cropper/cropper.min.css" rel="stylesheet" />
 <script src="../../Content/imageUpload/cropper/cropper.min.js"></script>
 
-<!--<link href="../../Content/bootstrap-theme.css" rel="stylesheet" />-->
+<!--<link href="../../Content/bootstrap/bootstrap-theme.css" rel="stylesheet" />-->
 
 <script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap-tooltip.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap-popover.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap-affix.js"></script>
 
-<link href="../../Content/bootstrap-table.css" rel="stylesheet" />
+<link href="../../Content/bootstrap/bootstrap-table.css" rel="stylesheet" />
 <script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
 
@@ -211,17 +211,13 @@
             margin-top: 10px;
         }
 
-    .model_edit {
-        width: 500px;
-    }
-
     .edit_ehc_submit {
         margin-right: 5px;
     }
 </style>
 <div class="help">
     <!--修改昵称-->
-    <div class="modal fade model_edit" id="edit_nickname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit_nickname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -377,17 +373,17 @@
         <div class="edit_c edit_ch_nickname clearfix">
             <p class="edit_cn_l pull-left">昵称</p>
             <p class="edit_cn_c pull-left">bain-片片</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_nickname"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_nickname"><em class="fa fa-wrench"></em> 修改</button>
         </div>
         <div class="edit_c edit_c_domain clearfix">
             <p class="edit_cn_l pull-left">个性域名</p>
             <p class="edit_cn_c pull-left">www.notlives.cc/pianpian</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_domain"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_domain"><em class="fa fa-wrench"></em> 修改</button>
         </div>
         <div class="edit_c edit_c_email clearfix">
             <p class="edit_cn_l pull-left">邮件地址</p>
             <p class="edit_cn_c pull-left">neclodiver@live.com</p>
-            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_email"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_email"><em class="fa fa-wrench"></em> 修改</button>
         </div>
     </div>
     <div class="edit_c edit_c_picture clearfix">
@@ -453,9 +449,9 @@
                 <div class="edit_s edit_s_sex clearfix">
                     <p class="edit_ss_cont pull-left">性别：</p>
                     <div class="radio_content pull-left">
-                        <input type="radio" name="radio_sex" /> 保密
-                        <input type="radio" name="radio_sex" /> 男
-                        <input type="radio" name="radio_sex" /> 女
+                        <input type="radio" name="radio_sex" /> <em class="fa fa-genderless"></em> 保密
+                        <input type="radio" name="radio_sex" /> <em class="fa fa-mars"></em> 男
+                        <input type="radio" name="radio_sex" /> <em class="fa fa-venus"></em> 女
                     </div>
                 </div>
                 <div class="edit_submit clearfix">
