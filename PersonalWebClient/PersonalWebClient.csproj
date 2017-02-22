@@ -1084,6 +1084,7 @@
     <Content Include="Scripts\app\index.js" />
     <Content Include="Scripts\lightbox.min.js" />
     <Content Include="Scripts\app\list.js" />
+    <Content Include="Scripts\linkServer\server.js" />
     <Content Include="Scripts\manage\statistics-error.js" />
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-sysnotice.js" />

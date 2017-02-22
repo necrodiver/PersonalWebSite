@@ -30,7 +30,7 @@ namespace PersonalWebService.BLL
         /// 获取验证码
         /// </summary>
         /// <returns></returns>
-        public string GetVarificationCode()
+        public string GetVerificationCode()
         {
             return VerificationCode2_Helper.GetVerificationCodeAsImageDate(out index);
         }

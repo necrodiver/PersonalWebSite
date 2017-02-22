@@ -30,10 +30,10 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("GetVFC")]
-        public async Task<string> GetVarificationCode()
+        public async Task<string> GetVerificationCode()
         {
             return await Task.Run(()=> {
-                return accountBll.GetVarificationCode();
+                return accountBll.GetVerificationCode();
             });
         }
 

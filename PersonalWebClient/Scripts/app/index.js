@@ -1,4 +1,9 @@
-﻿$(function () {
+﻿/// <reference path="../linkServer/server.js" />
+
+//测试一下服务器链接情况，获取时间
+
+$server.ceshi(100);
+$(function () {
     $(window).load(function () {
         $(".col-3 input").val("");
         $(".input-effect input").focusout(function () {
@@ -9,14 +14,16 @@
             }
         });
     });
-
+    var userInfoModel = null;
     //这里进行改变是否登录了后的弹框
     function IsLogin(islogin) {
         if (!islogin) {
             $('#userBtn').attr('data-target', 'ASAS');
         }
     }
-
+    if (userInfoModel == null || userInfoModel == '' || userInfoModel == undefined) {
+        IsLogin(false);
+    }
 
     $('#userId').each(function () {
         var element = $(this);
