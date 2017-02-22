@@ -14,16 +14,14 @@ $(function () {
             }
         });
     });
-    var userInfoModel = null;
+
     //这里进行改变是否登录了后的弹框
     function IsLogin(islogin) {
         if (!islogin) {
             $('#userBtn').attr('data-target', 'ASAS');
         }
     }
-    if (userInfoModel == null || userInfoModel == '' || userInfoModel == undefined) {
-        IsLogin(false);
-    }
+
 
     $('#userId').each(function () {
         var element = $(this);
@@ -60,9 +58,6 @@ $(function () {
 
     $('#userId').popover('hide');
 
-    $.post('VCode.ashx', { 'M': 'A' }, function (e) {
-        $('#img').attr('src', e);
-    });
     $('#img').click(function (e) {
         var x = e.offsetX - $('body').offset().top - 7;
         var y = e.offsetY - $('body').offset().left - 7;
@@ -101,9 +96,7 @@ $(function () {
             x2 = x2Str.substr(0, x2Str.length - 2);
             y2 = y2Str.substr(0, y2Str.length - 2);
         }
-        $.post('VCode.ashx', { 'M': 'B', 'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2 }, function (e) {
-            alert(e);
-        });
+
         $('.yz-span').remove();
     }
 

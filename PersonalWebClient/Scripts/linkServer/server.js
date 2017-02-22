@@ -36,7 +36,7 @@ $server.get = function () {
         var status;
         try {
             status = $.parseJSON(data);
-            if (status['UserId'].length === 32) {
+            if (status['UserId'].length == 32) {
                 userInfo = status;
             }
         } catch (e) {
@@ -119,8 +119,8 @@ $server.vertifyCode = function (email, validatecode, password) {
 }
 
 $server.ceshi = function (num) {
-    $.post(serverUrl + 'Account/GetTestValues', { 'DM': num }, function (data) {
-        console.log(data);
+    $.get(serverUrl + 'Account/GetTestValues', { DM: num }, function (data) {
+        console.log('从服务器获取的时间：'+data);
     });
 }
 function consoleLog(status) {
