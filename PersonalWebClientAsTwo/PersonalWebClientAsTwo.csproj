@@ -437,6 +437,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_Layout - 复制.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_Image.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_Jotting.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_loggedOnUser.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_signIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

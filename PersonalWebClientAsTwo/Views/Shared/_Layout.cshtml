@@ -11,108 +11,16 @@
     <!--<link href="../Content/bootstrap/bootstrap-theme.css" rel="stylesheet" />-->
 
     <script type="text/template" id="Imageformat">
-        <div class="thumbnail img_thumbnail">
-            <div class="imgs" data-philter-grayscale="100 0">
-                <input type="hidden" value="test{0}.jpg">
-                <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
-            </div>
-            <div class="caption">
-                <div class="title">图集第{0}张</div>
-                <div class="content">
-                    大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
-                </div>
-                <div class="author">
-                    by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("PartialView/format_Image")
     </script>
     <script type="text/template" id="Jottingformat">
-        <div class="jotting_thumbnail thumbnail">
-            <div class="jotting_portrait" data-philter-grayscale="70 0">
-                <a href="javascript:void(0);">
-                    <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/user-ceshi.jpg" />
-                </a>
-            </div>
-            <div class="jotting_caption">
-                <div class="jotting_title">张三张三张三{0}</div>
-                <div class="jotting_content">
-                    张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
-                </div>
-                <div class="jotting_author">
-                    —— by <a target="_blank" href="javascript:void(0);">NECC</a>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("PartialView/format_Jotting")
     </script>
     <script type="text/template" id="loggedOnUserTemplate">
-        <table class="table table-default" style="width:248px;">
-            <tr>
-                <td colspan="3">
-                    <div class="pull-left">
-                        <a href="#"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>
-                    </div>
-                    <div class="pull-left user-name">
-                        <a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>
-                    </div>
-                    <div class="pull-left user-check-p">
-                        <button class="btn btn-default user-check" id="user-check">签到</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="pull-left user-dgf">
-                        <a href="#" class="user-dgf-link">
-                            <div class="user-dgf-link-1"><span>12314</span></div>
-                            <div class="user-dgf-link-2"><span>动态</span></div>
-                        </a>
-                    </div>
-                    <div class="pull-left user-dgf">
-                        <a href="#" class="user-dgf-link">
-                            <div class="user-dgf-link-1"><span>2423</span></div>
-                            <div class="user-dgf-link-2"><span>关注</span></div>
-                        </a>
-                    </div>
-                    <div class="pull-left user-dgf-1">
-                        <a href="#" class="user-dgf-link">
-                            <div class="user-dgf-link-1"><span>236234</span></div>
-                            <div class="user-dgf-link-2"><span>粉丝</span></div>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="user-dxg"><i class="fa fa-star-o"></i> 等级</td>
-                <td><a href="#">Lv.4<i class="fa fa-chevron-right pull-right  user-right"></i></a></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="user-dxg"><i class="fa fa-bell-o"></i> 消息</td>
-                <td><a href="#">12<i class="fa fa-chevron-right pull-right user-right"></i></a></td>
-            </tr>
-            <tr>
-                <td colspan="3" class="user-dxg"><i class="fa fa-cog"></i> <a href="http://localhost:10841/Client/APP/MyCenter.html" class="user-set">个人信息设置<i class="fa fa-chevron-right pull-right  user-right"></i></a></td>
-            </tr>
-            <tr>
-                <td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> 退出</button></td>
-            </tr>
-        </table>
+        @Html.Partial("PartialView/format_loggedOnUser")
     </script>
     <script type="text/template" id="signInTemplate">
-        <div class="user-login-content">
-            <div class="user-login-prompt">
-                <div class="pull-left">
-                    <a href="#" title="当前未登录"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>
-                </div>
-                <div class="pull-left user-login-prompt-2">
-                    <span>你的用户还未登录？</span>
-                </div>
-            </div>
-            <div class="user-login-dp">
-                <div><button class="btn btn-primary btn-sm user-login-d">登录<i class="fa fa-chevron-right pull-right"></i></button></div>
-                <div><button class="btn btn-info btn-sm user-login-d">注册<i class="fa fa-chevron-right pull-right"></i></button></div>
-            </div>
-        </div>
+        @Html.Partial("PartialView/format_signIn")
     </script>
 </head>
 <body>

@@ -49,6 +49,9 @@ namespace PersonalWebClientAsTwo
 
             bundles.Add(new StyleBundle("~/Content/index").Include(
                       "~/Content/app/index.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap-theme").Include(
+                       "~/Content/bootstrap/bootstrap-theme.css"));
         }
     }
 }

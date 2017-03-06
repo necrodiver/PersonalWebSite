@@ -44,3 +44,4 @@ F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\bin\zh-Hans\System.Web.WebPages.
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClientAsTwo.dll
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClientAsTwo.pdb
+F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClientAsTwo.csprojResolveAssemblyReference.cache

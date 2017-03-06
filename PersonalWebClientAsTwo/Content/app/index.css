@@ -169,7 +169,7 @@ body {
     top: 150px;
     position: fixed;
     z-index: 100;
-    background-color:#fff;
+    /*background-color:#fff;*/
 }
 
 .anchor_link {
