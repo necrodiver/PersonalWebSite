@@ -42,7 +42,7 @@
 |Trie|*|用于敏感词判断,[几个demo](http://git.oschina.net/neclodiver/TestEleven)|
 |BootStrap|3.3.0|用于搭建前端样式|
 |TypeScript|*|用于前端代码展示|
-|AngularJS|2.0|用于前端框架搭建|
+|前端直接由ASP.NET MVC|
 
 
 ------
