@@ -1,0 +1,122 @@
+﻿
+p {
+    margin: 0;
+}
+
+.safe_index {
+}
+
+.safe_index_child {
+    color: #fff;
+}
+
+.safe_icb_link {
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+}
+
+    .safe_icb_link span em {
+        padding-right: 10px;
+        font-size: 14px;
+        padding-top: 2px;
+    }
+
+.safe_ic_top {
+    padding-bottom: 15px;
+}
+
+.safe_ic_bottom {
+    width: 100%;
+    padding: 5px 0px 5px 8px;
+    opacity: .7;
+}
+
+.safe_ic_number {
+    margin-top: 15px;
+    margin-right: 15px;
+    font-size: 34px;
+    line-height: 36px;
+    font-weight: 300;
+    font-family: "Segoe UI";
+}
+
+.safe_index_context {
+    padding: 10px;
+}
+
+.linkstyle {
+    cursor: pointer;
+}
+
+    .linkstyle:link {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .linkstyle:visited {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .linkstyle:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .linkstyle:active {
+        text-decoration: none;
+        color: #fff;
+    }
+
+.safe_icbl_name {
+    width: 100%;
+}
+
+.safe_ic_name {
+    padding-right: 16px;
+}
+
+.safe_ic_top_ico {
+    margin-top: 30px;
+    font-size: 100px;
+    opacity: .1;
+    height: 50px;
+    margin-left: -25px;
+}
+
+.safe_index_xiaoxi {
+    background-color: #3598dc;
+}
+
+    .safe_index_xiaoxi .safe_ic_bottom {
+        background-color: #258fd7;
+    }
+
+.safe_index_child {
+    margin-left: 20px;
+}
+
+.safe_index_cuowu {
+    background-color: #8E44AD;
+}
+
+    .safe_index_cuowu .safe_ic_bottom {
+        background-color: #823e9e;
+    }
+
+.safe_index_fangwen {
+    background-color: #e7505a;
+}
+
+    .safe_index_fangwen .safe_ic_bottom {
+        background-color: #e53e49;
+    }
+
+.safe_index_zhuce {
+    background-color: #32c5d2;
+}
+
+    .safe_index_zhuce .safe_ic_bottom {
+        background-color: #2bb8c4;
+    }

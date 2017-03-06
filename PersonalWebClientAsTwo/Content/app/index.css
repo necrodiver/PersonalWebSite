@@ -1,0 +1,258 @@
+﻿.all {
+    max-width: 80%;
+    /*max-width:1300px;*/
+    margin: 0 auto;
+}
+
+.header {
+    margin-top: 10px;
+}
+
+.content {
+    margin-bottom: 10px;
+}
+/*.content .footer {
+            margin-top: -8px;
+        }*/
+
+body {
+    background-color: #eaeaea;
+    background-image: url("../../Images/bgImg.png");
+}
+
+/*.image-parent > img {
+            margin-left: 4.5px;
+            margin-top: 4px;
+        }*/
+
+.image-parent > img {
+    margin-left: 23px;
+    margin-bottom: 15px;
+}
+
+.subjoin {
+    margin-left: 100px;
+}
+
+#userBtn {
+    margin-top: 7px;
+    margin-left: 8px;
+    color: gray;
+}
+
+/*验证码*/
+.yz-Content {
+    width: 250px;
+    height: 60px;
+    /*background-color: #dbdbdb;*/
+    /*border: 1px solid red;*/
+    position: relative;
+}
+
+.yz-span {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background-image: url('../../Images/c.png');
+}
+
+    .yz-span:hover {
+        background-image: url('../../Images/x.png');
+    }
+
+
+/*用户相关*/
+.user-img {
+    width: 40px;
+}
+
+.user-check {
+    height: 25px;
+    padding-top: 3px;
+    font-size: 9px;
+    font-weight: 500;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.user-name {
+    padding-top: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    width: 131px;
+    margin-left: 5px;
+}
+
+.user-check-p {
+    width: 50px;
+}
+
+.user-dgf {
+    width: 32%;
+    text-align: center;
+    border-right: 1px solid black;
+}
+
+.user-dgf-1 {
+    width: 33%;
+    text-align: center;
+}
+
+.user-dgf-link {
+    color: black;
+}
+
+.user-dgf-link-1 span {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.user-dgf-link-2 span {
+    font-size: 10px;
+}
+
+.user-dxg {
+    width: 80px;
+    padding-left: 15px;
+}
+
+.user-set {
+    color: black;
+    text-decoration: none;
+}
+
+.user-right {
+    color: #eaeaea;
+}
+
+/*登录相关*/
+.user-login-content {
+    width: 250px;
+}
+
+.user-login-d {
+    margin-top: 5px;
+    width: 250px;
+}
+
+.user-login-prompt-2 {
+    font-size: 13px;
+    padding-top: 11px;
+    padding-left: 5px;
+}
+
+.user-login-dp {
+    padding-top: 3px;
+    border-top: 1px solid #dedede;
+}
+
+.user-login-prompt {
+    height: 45px;
+}
+
+/*.scrowl_img:hover {
+    -moz-transform: scale(0.95,0.95);
+    -webkit-transform: scale(0.95,0.95);
+    -o-transform: scale(0.95,0.95);
+    -ms-transform: scale(0.95,0.95);
+    transform: scale(0.95,0.95);
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}*/
+
+/*侧边栏*/
+.anchor_nav {
+    vertical-align: middle;
+    right: 20px;
+    top: 150px;
+    position: fixed;
+    z-index: 100;
+    background-color:#fff;
+}
+
+.anchor_link {
+    color: #337ab7;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+    .anchor_link:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+.anchor_title {
+    width: 65px;
+    height: 60px;
+    border: 1px solid #eaeaea;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    background-color: white;
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+    .anchor_title i {
+        width: 65px;
+        text-align: center;
+        padding-right: 3px;
+        margin-top: 8px;
+        font-size: 20px;
+    }
+
+    .anchor_title div {
+        padding-right: 3px;
+        width: 65px;
+        text-align: center;
+    }
+
+    .anchor_title:hover {
+        -moz-transform: rotateY(330deg);
+        -webkit-transform: rotateY(330deg);
+        -o-transform: rotateY(330deg);
+        -ms-transform: rotateY(330deg);
+        transform: rotateY(330deg);
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+
+.anchor_home, .anchor_goHome {
+    font-size: 23px;
+    padding-top: 15px;
+}
+
+/*弹出层，模态框*/
+.login-modelbody {
+    z-index: 0;
+}
+
+.login-content {
+    margin: 0 auto;
+    height: 300px;
+    width: 90%;
+}
+
+.login-content-child {
+    margin-top: 20px;
+}
+
+#myModalLabel {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}

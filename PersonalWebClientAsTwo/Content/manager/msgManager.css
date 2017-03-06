@@ -1,0 +1,204 @@
+﻿.safe_newmail_all {
+    margin: 10px;
+}
+
+.safe_nts {
+    margin: 0 10px;
+}
+
+.safe_nts_name p {
+    height: 34px;
+    line-height: 34px;
+}
+
+.safe_nts_text {
+    width: 225px;
+}
+
+.form-group {
+    margin: 0;
+}
+
+.safe_newmail_center {
+    margin: 0 10px;
+}
+
+.safe_nts_name {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/*下边是table send_people*/
+.send_people {
+    width: 150px;
+    height: 35px;
+}
+
+.send_people_img {
+    height: 35px;
+    border: 1px solid gray;
+    margin: 2px;
+}
+
+.send_people_name {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 35px;
+    height: 33px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.table_edit_read, .table_edit_delete,.table_edit_accomplish,.table_edit_frozen,.table_edit_edit,.table_edit_accomplish,.table_edit_recommend,.table_edit_pass,.table_edit_reject{
+    cursor: pointer;
+    color: #4ca0c6;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.table_edit_delete{
+    color:#CD4F39;
+}
+.table_edit_frozen{
+    color:#b9b9b9;
+}
+.table_edit_accomplish{
+    color:gray;
+}
+.table_edit_edit{
+    color:#53a91f;
+}
+.table_edit_accomplish{
+    color:#53a91f;
+}
+.table_edit_recommend{
+    color:#c67a03;
+}
+.table_edit_pass{
+    color:#00f341;
+}
+.user_reply {
+    padding: 7px;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    box-shadow: 3px 4px 6px rgba(0,0,0,0.175);
+    -webkit-box-shadow: 3px 4px 6px rgba(0,0,0,0.175);
+    margin-bottom: 10px;
+}
+
+.user_r_content p {
+    margin-bottom: 0px;
+}
+
+.input_textareaAsnwer {
+    margin-top: 7px;
+    resize: none;
+    width: 100%;
+    border: 1px solid #eee;
+    height: 60px;
+}
+
+.user_r_title {
+    font-size: 12px;
+}
+
+.user_rt_time {
+    color: #b9b9b9;
+}
+
+.user_rt_name {
+    padding-left: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.my_answer_btn {
+    margin-top: 5px;
+}
+
+.table_index {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.table_edit {
+    cursor: pointer;
+}
+
+.edit_isRead {
+    margin-top: 10px;
+}
+
+.users_context {
+    margin: 3px;
+}
+
+.remove_user {
+    font-size: 25px;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.new_mail_top, .new_mail_center {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.user_nickname {
+    width: 300px;
+}
+
+.new_mail_l {
+    width: 30%;
+}
+
+    .new_mail_l p, .new_mail_t p {
+        height: 35px;
+        line-height: 35px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+.new_mail_r {
+    margin-left: 10px;
+    width: 65%;
+}
+
+.new_mail_context {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.new_mail_title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.user_nickname_explain {
+    width: 100%;
+}
+
+    .user_nickname_explain p {
+        font-size: 12px;
+        color: #808080;
+    }
+
+.new_mail_type {
+    margin-bottom: 10px;
+}
+
+.new_mail_bottom button {
+    margin-right: 10px;
+}
+
+.no-accomplish{
+    color:#BDBDBD;
+}
+.accomplish{
+    color:#A2CD5A;
+}

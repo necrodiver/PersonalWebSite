@@ -1,0 +1,476 @@
+﻿.moduleParent {
+    padding: 0;
+    min-height: 350px;
+    margin: 0 auto;
+}
+
+    .moduleParent .thumbnail {
+        width: 214px;
+        margin: 10px;
+        padding: 0;
+        border-width: 1px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    }
+
+        .moduleParent .thumbnail .imgs {
+            padding: 10px;
+        }
+
+            .moduleParent .thumbnail .imgs img {
+                margin-bottom: 5px;
+                width: 240px;
+            }
+
+        .moduleParent .thumbnail .caption {
+            background-color: #fff;
+            padding-top: 0;
+            font-size: 13px;
+        }
+
+            .moduleParent .thumbnail .caption .title {
+                font-size: 13px;
+                font-weight: bold;
+                margin: 5px 0;
+                text-align: left;
+            }
+
+            .moduleParent .thumbnail .caption .author {
+                font-size: 11px;
+                text-align: right;
+            }
+
+.lightbox .lb-image {
+    max-width: none;
+}
+
+/*这个属性在bootstrap v2.1.1中存在，但是到了v3.3.4中被替换了，不知道此属性是否被模块化到另一部分中*/
+.thumbnail {
+    display: block;
+    padding: 4px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+/*文章模块和图片模块的css及其交互动画效果*/
+.jotting_parent .jotting_thumbnail {
+    width: 170px;
+    margin: 8px;
+    padding: 0;
+    border-width: 1px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.jotting_portrait {
+    padding: 10px;
+}
+
+.jotting_caption {
+    padding: 0 10px;
+}
+
+.jotting_portrait a .jotting_img {
+    padding: 10px;
+    background-color: #efefef;
+}
+
+.jotting_thumbnail .jotting_caption {
+    background-color: #fff;
+    font-size: 13px;
+}
+
+    .jotting_thumbnail .jotting_caption .jotting_title {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    .jotting_thumbnail .jotting_caption .jotting_author {
+        font-size: 11px;
+        text-align: right;
+    }
+
+.jotting_thumbnail {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+    .jotting_thumbnail:hover {
+        -moz-transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+        -o-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -o-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        z-index: 2;
+    }
+
+.img_thumbnail, .jotting_img, .workArticle_thumbnail, .work_thumbnail, .user_thumbnail {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+}
+
+    .jotting_img:hover {
+        -moz-transform: rotate(375deg);
+        -webkit-transform: rotate(375deg);
+        -o-transform: rotate(375deg);
+        -ms-transform: rotate(375deg);
+        transform: rotate(375deg);
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .img_thumbnail:hover {
+        -moz-transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+        -o-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        z-index: 2;
+    }
+
+
+/*a标签去掉样式*/
+.linkstyle {
+    text-decoration: none;
+    color: #227e9c;
+}
+
+    .linkstyle:link {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:visited {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:hover {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+    .linkstyle:active {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+/*个人作品里的涂鸦作品模块*/
+.work_thumbnail {
+}
+
+.work_portrait {
+    padding: 10px;
+}
+
+.work_caption {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.work_tips {
+}
+
+    .work_tips span {
+        font-size: 14px;
+    }
+
+    .work_tips .tips_hot {
+        color: #e00000;
+    }
+
+    .work_tips .tips_digest {
+        color: #000;
+    }
+
+.work_title_content p {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.work_info_top div p {
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: #666;
+}
+
+.work_info_love {
+    margin-right: 10px;
+}
+
+.work_info_comment {
+    margin-right: 10px;
+}
+
+.work_info_bottom {
+    margin-top: 5px;
+}
+
+/*个人作品里的随笔作品*/
+.moduleParent .workArticle_thumbnail {
+    padding: 10px;
+    /*width: auto;*/ /*发现一个问题，外层宽度不能设置自动的，如果设置成auto，使用瀑布流将会有错误*/
+    min-width: 214px;
+    max-width: 480px;
+    padding-bottom: 0px;
+}
+
+.work_article_title {
+    width: auto;
+    border-bottom: 1px dashed #eee;
+}
+
+    .work_article_title a p {
+        font-size: 14px;
+        font-weight: 700;
+        color: #808080;
+        position: relative;
+        white-space: nowrap; /*强制显示在一行*/
+        overflow: hidden; /*溢出部分隐藏*/
+        text-overflow: ellipsis; /*省略号*/
+    }
+
+/*.work_article_content {
+    width: auto;
+}
+
+    .work_article_content a p {
+        width: auto;
+        font-size: 12px;
+        font-weight: 200;
+        color: #7e7e7e;
+        white-space: normal;
+    }*/
+
+/*.workArticle_thumbnail, .work_thumbnail {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}*/
+
+.workArticle_thumbnail:hover {
+    -moz-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.work_thumbnail:hover {
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+
+
+/*用户小模块*/
+.moduleParent .user_thumbnail {
+    width: 295px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.user_thumbnail:hover {
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.user_thumbnail .user_portrait:hover {
+    -moz-transform: rotate(370deg);
+    -webkit-transform: rotate(370deg);
+    -o-transform: rotate(370deg);
+    -ms-transform: rotate(370deg);
+    transform: rotate(370deg);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    z-index: 10;
+}
+
+.user_portrait a .user_img {
+    padding: 7px;
+    background-color: #efefef;
+}
+
+.user_thumbnail .user_info {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.user_info_name a p {
+    font-size: 15px;
+    font-weight: 700;
+    color: #666;
+}
+
+.user_info_site p {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 200;
+    color: #808080;
+}
+
+.user_info_top {
+    margin-top: 8px;
+}
+
+    .user_info_top div p {
+        margin-bottom: 5px;
+    }
+
+.user_info_work p {
+    font-size: 12px;
+    font-weight: 200;
+    color: #808080;
+}
+
+.user_info_popularity {
+    margin-left: 10px;
+}
+
+    .user_info_popularity p {
+        font-size: 12px;
+        font-weight: 200;
+        color: #808080;
+    }
+
+.user_info_signature p {
+    font-size: 12px;
+    font-weight: 200;
+    width: 150px;
+    color: #666;
+    white-space: nowrap; /*强制显示在一行*/
+    overflow: hidden; /*溢出部分隐藏*/
+    text-overflow: ellipsis; /*省略号*/
+}
+
+/*自定义颜色角标*/
+.badge-danger, .badge-success, .badge-warning, .badge-primary, .badge-info {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+}
+
+    .badge-danger:empty, .badge-danger:empty, .badge-success:empty, .badge-warning:empty, .badge-primary:empty, .badge-info：empty {
+        display: none;
+    }
+
+.badge-danger {
+    background-color: #8E44AD !important;
+}
+
+.badge-info {
+    background-color: #5bc0de !important;
+}
+
+.badge-warning {
+    background-color: #f0ad4e !important;
+}
+
+.badge-success {
+    background-color: #5cb85c !important;
+}
+
+.badge-primary {
+    background-color: #8E44AD !important;
+}
+/*自定义图标颜色*/
+.em_delete {
+    color: #ff0000;
+}
+
+.em_add {
+    color: #1bba14;
+}
+
+.em_reply {
+    color: #36b6f7;
+}
+
+.em_refresh {
+    color: #0cc179;
+}
+
+.em_begin{
+    color:#44ccf1;
+}
+.em_half{
+    color:#1d897f;
+}
+.em_end{
+    color:#12aa80;
+}
+.em_frozen{
+    color:#808080;
+}

@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{142DF18C-BD32-4806-8435-3C1803BB7CBA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonalWebClientAsTwo</RootNamespace>
+    <AssemblyName>PersonalWebClientAsTwo</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\app\detail.css" />
+    <Content Include="Content\app\index.css" />
+    <Content Include="Content\app\list.css" />
+    <Content Include="Content\app\myCenter.css" />
+    <Content Include="Content\app\userProfiles.css" />
+    <Content Include="Content\bootstrap\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-table.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrapValidator.css" />
+    <Content Include="Content\bootstrap\bootstrapValidator.min.css" />
+    <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fontAwesome\font-awesome.css" />
+    <Content Include="Content\fontAwesome\font-awesome.min.css" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.svg" />
+    <Content Include="Content\imageUpload\cropper\cropper.min.css" />
+    <Content Include="Content\imageUpload\cropper\cropper.min.js" />
+    <Content Include="Content\imageUpload\sitelogo\sitelogo.css" />
+    <Content Include="Content\imageUpload\sitelogo\sitelogo.js" />
+    <Content Include="Content\imgbox.css" />
+    <Content Include="Content\input-style.css" />
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\manager\msgManager.css" />
+    <Content Include="Content\manager\safe-index.css" />
+    <Content Include="Content\manager\safe-manager.css" />
+    <Content Include="Content\summernote\summernote.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\bgImg.png" />
+    <Content Include="Images\c.png" />
+    <Content Include="Images\CeShiYanZheng.gif" />
+    <Content Include="Images\ceshi\en.jpg" />
+    <Content Include="Images\ceshi\pianpian.jpg" />
+    <Content Include="Images\ceshi\QRcode.png" />
+    <Content Include="Images\ceshi\wuyahisi.jpg" />
+    <Content Include="Images\DM\test1.jpg" />
+    <Content Include="Images\DM\test10.jpg" />
+    <Content Include="Images\DM\test11.jpg" />
+    <Content Include="Images\DM\test12.jpg" />
+    <Content Include="Images\DM\test13.jpg" />
+    <Content Include="Images\DM\test14.jpg" />
+    <Content Include="Images\DM\test15.jpg" />
+    <Content Include="Images\DM\test16.jpg" />
+    <Content Include="Images\DM\test17.jpg" />
+    <Content Include="Images\DM\test18.jpg" />
+    <Content Include="Images\DM\test19.jpg" />
+    <Content Include="Images\DM\test2.jpg" />
+    <Content Include="Images\DM\test20.jpg" />
+    <Content Include="Images\DM\test21.jpg" />
+    <Content Include="Images\DM\test22.jpg" />
+    <Content Include="Images\DM\test23.jpg" />
+    <Content Include="Images\DM\test24.jpg" />
+    <Content Include="Images\DM\test25.jpg" />
+    <Content Include="Images\DM\test26.jpg" />
+    <Content Include="Images\DM\test27.jpg" />
+    <Content Include="Images\DM\test28.jpg" />
+    <Content Include="Images\DM\test29.jpg" />
+    <Content Include="Images\DM\test3.jpg" />
+    <Content Include="Images\DM\test30.jpg" />
+    <Content Include="Images\DM\test31.jpg" />
+    <Content Include="Images\DM\test32.jpg" />
+    <Content Include="Images\DM\test33.jpg" />
+    <Content Include="Images\DM\test34.jpg" />
+    <Content Include="Images\DM\test35.jpg" />
+    <Content Include="Images\DM\test36.jpg" />
+    <Content Include="Images\DM\test37.jpg" />
+    <Content Include="Images\DM\test38.jpg" />
+    <Content Include="Images\DM\test39.jpg" />
+    <Content Include="Images\DM\test4.jpg" />
+    <Content Include="Images\DM\test40.jpg" />
+    <Content Include="Images\DM\test41.jpg" />
+    <Content Include="Images\DM\test42.jpg" />
+    <Content Include="Images\DM\test43.jpg" />
+    <Content Include="Images\DM\test44.jpg" />
+    <Content Include="Images\DM\test45.jpg" />
+    <Content Include="Images\DM\test46.jpg" />
+    <Content Include="Images\DM\test47.jpg" />
+    <Content Include="Images\DM\test48.jpg" />
+    <Content Include="Images\DM\test49.jpg" />
+    <Content Include="Images\DM\test5.jpg" />
+    <Content Include="Images\DM\test50.jpg" />
+    <Content Include="Images\DM\test6.jpg" />
+    <Content Include="Images\DM\test7.jpg" />
+    <Content Include="Images\DM\test8.jpg" />
+    <Content Include="Images\DM\test9.jpg" />
+    <Content Include="Images\erweima.png" />
+    <Content Include="Images\Face\1.jpg" />
+    <Content Include="Images\Face\10.jpg" />
+    <Content Include="Images\Face\11.jpg" />
+    <Content Include="Images\Face\12.jpg" />
+    <Content Include="Images\Face\13.jpg" />
+    <Content Include="Images\Face\14.jpg" />
+    <Content Include="Images\Face\15.jpg" />
+    <Content Include="Images\Face\16.jpg" />
+    <Content Include="Images\Face\17.jpg" />
+    <Content Include="Images\Face\18.jpg" />
+    <Content Include="Images\Face\19.jpg" />
+    <Content Include="Images\Face\2.jpg" />
+    <Content Include="Images\Face\3.jpg" />
+    <Content Include="Images\Face\4.jpg" />
+    <Content Include="Images\Face\5.jpg" />
+    <Content Include="Images\Face\6.jpg" />
+    <Content Include="Images\Face\7.jpg" />
+    <Content Include="Images\Face\8.jpg" />
+    <Content Include="Images\Face\9.jpg" />
+    <Content Include="Images\listbox\close.png" />
+    <Content Include="Images\listbox\loading.gif" />
+    <Content Include="Images\listbox\next.png" />
+    <Content Include="Images\listbox\prev.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\qq.jpg" />
+    <Content Include="Images\user-ceshi.jpg" />
+    <Content Include="Images\weibo.jpg" />
+    <Content Include="Images\x.png" />
+    <Content Include="Scripts\app\index.js" />
+    <Content Include="Scripts\app\list.js" />
+    <Content Include="Scripts\app\mycenter.js" />
+    <Content Include="Scripts\app\userProfiles.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-suggest.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-table-zh-CN.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-table.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrapValidator_zh_CN.js" />
+    <Content Include="Scripts\cloudJs\cloud.js" />
+    <Content Include="Scripts\cloudJs\cloud10.png" />
+    <Content Include="Scripts\cloudJs\Detector.js" />
+    <Content Include="Scripts\cloudJs\RequestAnimationFrame.js" />
+    <Content Include="Scripts\cloudJs\ThreeExtras.js" />
+    <Content Include="Scripts\cloudJs\ThreeWebGL.js" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\detail.js" />
+    <Content Include="Scripts\echarts\chart\bar.js" />
+    <Content Include="Scripts\echarts\chart\chord.js" />
+    <Content Include="Scripts\echarts\chart\eventRiver.js" />
+    <Content Include="Scripts\echarts\chart\force.js" />
+    <Content Include="Scripts\echarts\chart\funnel.js" />
+    <Content Include="Scripts\echarts\chart\gauge.js" />
+    <Content Include="Scripts\echarts\chart\heatmap.js" />
+    <Content Include="Scripts\echarts\chart\k.js" />
+    <Content Include="Scripts\echarts\chart\line.js" />
+    <Content Include="Scripts\echarts\chart\map.js" />
+    <Content Include="Scripts\echarts\chart\pie.js" />
+    <Content Include="Scripts\echarts\chart\radar.js" />
+    <Content Include="Scripts\echarts\chart\scatter.js" />
+    <Content Include="Scripts\echarts\chart\tree.js" />
+    <Content Include="Scripts\echarts\chart\treemap.js" />
+    <Content Include="Scripts\echarts\chart\venn.js" />
+    <Content Include="Scripts\echarts\chart\wordCloud.js" />
+    <Content Include="Scripts\echarts\echarts-all.js" />
+    <Content Include="Scripts\echarts\echarts.js" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\fileinput.min.js" />
+    <Content Include="Scripts\fileinput_locale_zh.js" />
+    <Content Include="Scripts\grayscale.js" />
+    <Content Include="Scripts\Helper.js" />
+    <Content Include="Scripts\hometitleAnimation.js" />
+    <Content Include="Scripts\imagesloaded.pkgd-1.js" />
+    <Content Include="Scripts\imagesloaded.pkgd.js" />
+    <Content Include="Scripts\jquery\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox.min.js" />
+    <Content Include="Scripts\linkServer\server.js" />
+    <Content Include="Scripts\manage\safe-index.js" />
+    <Content Include="Scripts\manage\safe-mail.js" />
+    <Content Include="Scripts\manage\safe-manager.js" />
+    <Content Include="Scripts\manage\safe-sysnotice.js" />
+    <Content Include="Scripts\manage\statistics-error.js" />
+    <Content Include="Scripts\manage\statistics-visit.js" />
+    <Content Include="Scripts\manage\userMessage.js" />
+    <Content Include="Scripts\manage\workReminder.js" />
+    <Content Include="Scripts\masonry.pkgd.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\philter\jquery.philter.js" />
+    <Content Include="Scripts\philter\jquery.philter.min.js" />
+    <Content Include="Scripts\philter\philter.js" />
+    <Content Include="Scripts\philter\philter.min.js" />
+    <Content Include="Scripts\philter\svg\color.svg" />
+    <Content Include="Scripts\philter\svg\vintage-1.svg" />
+    <Content Include="Scripts\philter\svg\vintage-2.svg" />
+    <Content Include="Scripts\philter\svg\vintage-3.svg" />
+    <Content Include="Scripts\philter\svg\vintage-4.svg" />
+    <Content Include="Scripts\philter\svg\vintage-5.svg" />
+    <Content Include="Scripts\philter\svg\vintage-6.svg" />
+    <Content Include="Scripts\productionOpration\jottingsManage.js" />
+    <Content Include="Scripts\productionOpration\scrawlManage.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Scripts\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Scripts\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Scripts\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Scripts\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Scripts\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Scripts\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Scripts\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Scripts\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Scripts\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Scripts\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Scripts\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Scripts\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Scripts\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Scripts\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Scripts\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Scripts\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Scripts\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Scripts\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Scripts\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Scripts\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Scripts\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Scripts\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Scripts\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Scripts\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Scripts\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Scripts\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Scripts\summernote\summernote.js" />
+    <Content Include="Scripts\summernote\summernote.min.js" />
+    <Content Include="Scripts\sweetalert\sweetalert-dev.js" />
+    <Content Include="Scripts\sweetalert\sweetalert.css" />
+    <Content Include="Scripts\sweetalert\sweetalert.min.js" />
+    <Content Include="Scripts\userControl\userCtrl.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\_Layout - 复制.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\app\YBJKT.ttf" />
+    <Content Include="Content\bootstrap\_bootswatch.scss" />
+    <Content Include="Content\bootstrap\_variables.scss" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootswatch.less" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fontAwesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\fontAwesome\FontAwesome.otf" />
+    <Content Include="Content\summernote\summernote.eot" />
+    <Content Include="Content\summernote\summernote.ttf" />
+    <Content Include="Content\summernote\summernote.woff" />
+    <Content Include="Content\variables.less" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4525</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4525/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

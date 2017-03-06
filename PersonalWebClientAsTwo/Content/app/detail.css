@@ -1,0 +1,538 @@
+﻿/*detail大体布局样式
+    包括上边用户，中间展示图片，下方粗略说明
+*/
+.dt_header {
+    margin-bottom: 10px;
+}
+
+    .dt_header .panel-body {
+        padding: 0;
+    }
+
+.dt_user {
+    min-height: 57px;
+}
+
+.dt_user_img img {
+    width: 45px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.dt_user_name p {
+    font-weight: 200;
+    font-size: 10px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    color: gray;
+}
+
+.dt_user_weibo {
+    margin-top: 5px;
+    color: #ccc;
+}
+
+.dt_user_weiboLink:link {
+    color: #ccc;
+}
+
+.dt_user_weiboLink:visited {
+    color: #ccc;
+}
+
+.dt_user_weiboLink:active {
+    color: #ccc;
+}
+
+.dt_user_center {
+    width: 50%;
+}
+
+.dt_scrawl_name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.dt_user_left {
+    margin-left: 5px;
+}
+
+.dt_user_left2 {
+    margin-left: 5px;
+}
+
+.dt_user_right {
+    width: 155px;
+    margin-left: 5px;
+}
+
+.dt_click_List {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dt_click_List .affix a{
+    text-decoration: none;
+    color:#fff;
+}
+
+
+.dt_content {
+    margin-bottom: 10px;
+}
+
+    .dt_content .dt_c_content {
+        padding: 10px;
+    }
+
+.dt_c_content a .dt_c_circle {
+    padding: 7px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 6px 20px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.175);
+    max-width: 100%;
+}
+
+.dt_c_content_txt{
+    padding:10px;
+}
+/*粗略说明*/
+
+
+
+
+/*弹出用户详细表弹框的样式*/
+.browse_user {
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+.browser_u_hp a img {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+
+.browser_u_intro {
+    margin-left: 10px;
+}
+
+.browser_u_intro_name {
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #666;
+}
+
+.browser_u_intro_level {
+    font-size: 10px;
+    font-weight: 700;
+    color: #e8780b;
+}
+
+.browser_u_intro_pf {
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 200;
+    color: #272727;
+}
+
+.browse_u_right {
+    margin-left: 20px;
+    margin-top: 28px;
+    margin-right: 10px;
+}
+
+.browse_u_r_message {
+    margin-right: 10px;
+    height: 45px;
+}
+
+    .browse_u_r_message div {
+    }
+
+        .browse_u_r_message div p {
+            margin-bottom: 0;
+        }
+
+.browser_urm_partition {
+    border-right: 1px solid #e7e8ea;
+    padding-right: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.browser_urmp_num {
+    font-size: 15px;
+    color: black;
+    font-weight: 700;
+}
+
+.browser_urmp_title {
+    font-size: 14px;
+    color: #a3a3a3;
+    font-weight: 500;
+}
+
+.browser_urm_plast {
+    text-align: center;
+}
+
+.browse_u_attention {
+    margin-top: 55px;
+}
+
+
+/*评论内容*/
+.dt_btm_user {
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+    .dt_btm_user hr {
+        margin: 0;
+    }
+
+.dt_btmu_said {
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.dt_btmu_name p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+}
+
+.dt_btmu_said p {
+    font-size: 14px;
+    font-weight: 100;
+    color: #666;
+    font-family: YBJKT;
+}
+
+@font-face {
+    font-family: 'YBJKT';
+    src: url('YBJKT.ttf') format('truetype');
+}
+
+.dt_c_circle:hover {
+    -moz-transform: scale(1.02,1.02);
+    -webkit-transform: scale(1.02,1.02);
+    -o-transform: scale(1.02,1.02);
+    -ms-transform: scale(1.02,1.02);
+    transform: scale(1.02,1.02);
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+
+
+.content {
+    margin-top: 10px;
+}
+
+.dt_btm_comment {
+    min-width: 350px;
+}
+
+.dt_btm_title {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.dt_btm_comment .dt_btm_title p {
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+}
+
+.dt_btmc_content .alter_parent {
+    margin-bottom: 10px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    cursor: pointer;
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+
+.alter_parent:hover {
+    -moz-transform: rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.alert_left {
+    width: 70px;
+    -moz-transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+    -ms-transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+    .alert_left img {
+        width: 70px;
+    }
+
+    .alert_left a {
+        text-decoration: none;
+        color: #227e9c;
+    }
+
+        .alert_left a:link {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:visited {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:hover {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+        .alert_left a:active {
+            text-decoration: none;
+            color: #227e9c;
+        }
+
+.alter_img_picture {
+    -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+}
+
+.alert_left:hover {
+    -moz-transform: scale(1.2,1.2) rotate(10deg);
+    -webkit-transform: scale(1.2,1.2) rotate(10deg);
+    -o-transform: scale(1.2,1.2) rotate(10deg);
+    -ms-transform: scale(1.2,1.2) rotate(10deg);
+    transform: scale(1.2,1.2) rotate(10deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.alert_center {
+    margin-left: 10px;
+    text-align: left;
+    width: 70%;
+    border-bottom: 1px dashed gray;
+}
+
+.alter_l_n {
+    font-size: 13px;
+    margin-bottom: 0px;
+    font-weight: 700;
+    text-shadow: -2px 5px 1.5px rgba(0,0,0,0.175);
+}
+
+.alter_right {
+    width: 10%;
+    margin-left: 10px;
+}
+
+.alter_c_content {
+    margin-top: 5px;
+}
+
+    .alter_c_content p {
+        color: #666;
+        font-size: 11px;
+        text-shadow: -2px 4px 3px rgba(0,0,0,0.1);
+    }
+
+.alter_l_nt {
+    margin-top: 7px;
+}
+
+.alter_l_n p, .alter_l_t p {
+    margin: 0;
+}
+
+.alter_l_t {
+    color: #000;
+    font-size: 10px;
+    margin-left: 10px;
+    text-shadow: -2px 4px 1px rgba(0,0,0,0.175);
+}
+
+.alter_right .btn {
+    -webkit-box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 6px rgba(0,0,0,0.175);
+}
+
+.dt_btmcf nav ul {
+    margin: 0;
+    position: relative;
+}
+
+/*用户评论框*/
+.dt_btmu_you {
+    margin-bottom: 10px;
+}
+
+.dt_btmuy_content {
+    padding: 0;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.dt_btmuycl_img img {
+    width: 60px;
+}
+
+.dt_btmuyc_right {
+    margin-left: 10px;
+    width: 80%;
+}
+
+.input_textarea {
+    margin-top: 7px;
+    resize: none;
+    width: 100%;
+    border: 1px solid #eee;
+    height: 60px;
+}
+.dt_btmuyct_txtlength{
+    color:#666;
+    font-size:10px;
+}
+
+
+/*侧边导航栏*/
+.anchor_Top {
+    z-index: 80;
+    vertical-align: middle;
+    right: 40px;
+    top: 20%;
+    position: fixed;
+    width: 65px;
+    -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+    box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+}
+
+.anchor_child {
+    cursor: pointer;
+    text-decoration: none;
+    color: #666;
+}
+
+    .anchor_child:link {
+        text-decoration: none;
+        color: #666;
+    }
+
+    .anchor_child:visited {
+        text-decoration: none;
+        color: #666;
+    }
+
+    .anchor_child:hover {
+        text-decoration: none;
+        color: #666;
+    }
+
+    .anchor_child:active {
+        text-decoration: none;
+        color: #666;
+    }
+
+    .anchor_child .anchor_child_name, .anchor_ico {
+        width: 63px;
+        height: 60px;
+        text-align: center;
+        padding-top: 18px;
+        background-color: #fff;
+        -webkit-box-shadow: -2px 6px 8px rgba(0,0,0,0.175);
+        box-shadow: -2px -2px 3px rgba(0,0,0,0.175);
+    }
+
+.anchor_ico {
+    font-size: 19px;
+}
+
+.anchor_child_name {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.anchor_child .anchor_child_linkTopName {
+    border-bottom: none;
+}
+
+.anchor_ico:hover {
+    transform-origin: bottom left;
+    -moz-transform: rotate(-95deg);
+    -webkit-transform: rotate(-95deg);
+    -o-transform: rotate(-95deg);
+    -ms-transform: rotate(-95deg);
+    transform: rotate(-95deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.anchor_ico {
+    z-index: 100;
+    -moz-border-radius: 10px; /* Gecko browsers */
+    -webkit-border-radius: 10px; /* Webkit browsers */
+    border-radius: 10px; /* W3C syntax */
+    transform-origin: bottom left;
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.dt_btmuyct_click{
+    margin-top:5px;
+}
