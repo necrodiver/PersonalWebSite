@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace PersonalWebClientAsTwo
+namespace PersonalWebClient
 {
     public class BundleConfig
     {
@@ -29,6 +29,9 @@ namespace PersonalWebClientAsTwo
 
             bundles.Add(new ScriptBundle("~/bundles/index").Include(
                       "~/Scripts/app/index.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/list").Include(
+                      "~/Scripts/app/list.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/service").Include(
                      "~/Scripts/linkServer/server.js"));

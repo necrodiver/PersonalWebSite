@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PersonalWebClientAsTwo.Controllers
+namespace PersonalWebClient.Controllers
 {
     public class HomeController : Controller
     {

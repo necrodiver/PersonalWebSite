@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PersonalWebClientAsTwo</RootNamespace>
-    <AssemblyName>PersonalWebClientAsTwo</AssemblyName>
+    <RootNamespace>PersonalWebClient</RootNamespace>
+    <AssemblyName>PersonalWebClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -120,7 +120,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Controllers\MyCenterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -441,11 +444,15 @@
     <Content Include="Views\Shared\PartialView\format_Jotting.cshtml" />
     <Content Include="Views\Shared\PartialView\format_loggedOnUser.cshtml" />
     <Content Include="Views\Shared\PartialView\format_signIn.cshtml" />
+    <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_Tag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Detail\" />
+    <Folder Include="Views\MyCenter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -464,7 +471,6 @@
     <Content Include="Content\summernote\summernote.ttf" />
     <Content Include="Content\summernote\summernote.woff" />
     <Content Include="Content\variables.less" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

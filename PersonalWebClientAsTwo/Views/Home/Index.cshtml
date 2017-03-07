@@ -1,6 +1,33 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+
+<!--侧边导航-->
+<div class="anchor_nav affix" data-spy="affix">
+    <a class="anchor_link" href="#cont-top">
+        <div class="anchor_title">
+            <i class="fa fa-thumbs-up"></i>
+            <div>热门</div>
+        </div>
+    </a>
+    <a class="anchor_link" href="#cont-new">
+        <div class="anchor_title">
+            <i class="fa fa-leaf"></i>
+            <div>最新</div>
+        </div>
+    </a>
+    <a class="anchor_link" href="#cont-recommend">
+        <div class="anchor_title">
+            <i class="fa fa-star"></i>
+            <div>推荐</div>
+        </div>
+    </a>
+    <a class="anchor_link" href="#all">
+        <div class="anchor_title" title="回顶部">
+            <div class="fa fa-rocket anchor_goHome"></div>
+        </div>
+    </a>
+</div>
 <div>
     <!--class="well"-->
     <div class="cont cont-top" id="cont-top">
@@ -59,3 +86,4 @@
         </div>
     </div>
 </div>
+@Scripts.Render("~/bundles/index")

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+<link href="../Content/app/list.css" rel="stylesheet" />
+<script type="text/template" id="tagTemplate">
+    @Html.Partial("PartialView/format_Tag")
+</script>
+
+
+<!--侧边导航List-->
+<div class="anchor_Top affix panel" data-spy="affix">
+    <a class="anchor_linkTop" href="#all">
+        <div class="anchor_titleTop" title="回顶部">
+            <div class="fa fa-rocket"></div>
+        </div>
+    </a>
+</div>
+<div class="content">
+    <div class="lb-header panel panel-default">
+        <div>
+            <p class="lb-tag-header"><em class="fa fa-tags"></em> 标签</p>
+            <hr />
+        </div>
+        <div class="lb-tag-content">
+        </div>
+    </div>
+    <div class="lb-sort">
+        <div class="panel panel-default">
+            <ul class="nav nav-pills" role="tablist">
+                <li role="presentation"><a href="#">默认排序<p class="fa fa-sort-alpha-asc"></p></a></li>
+                <li role="presentation"><a href="#">按时间排序<p class="fa fa-long-arrow-up"></p></a></li>
+                <li role="presentation"><a href="#">按热度排序<p class="fa fa-sort-amount-desc"></p></a></li>
+                <li role="presentation"><a href="#">按浏览量排序<p class="fa fa-sort-numeric-desc"></p></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="lb-content moduleParent panel panel-default" id="masonry">
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/list")

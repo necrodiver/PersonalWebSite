@@ -8,8 +8,14 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/index")
 
-    <!--<link href="../Content/bootstrap/bootstrap-theme.css" rel="stylesheet" />-->
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/helper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lightbox")
+    @Scripts.Render("~/bundles/waterfallFlowLayout")
+    @Scripts.Render("~/bundles/philter")
+    @Scripts.Render("~/bundles/service")
+    @*@Scripts.Render("~/bundles/bootstrap-theme")*@
     <script type="text/template" id="Imageformat">
         @Html.Partial("PartialView/format_Image")
     </script>
@@ -27,32 +33,6 @@
     <div class="all" id="all">
         <div class="col-md-12">
             <div class="supplement">
-                <!--侧边导航-->
-                <div class="anchor_nav affix" data-spy="affix">
-                    <a class="anchor_link" href="#cont-top">
-                        <div class="anchor_title">
-                            <i class="fa fa-thumbs-up"></i>
-                            <div>热门</div>
-                        </div>
-                    </a>
-                    <a class="anchor_link" href="#cont-new">
-                        <div class="anchor_title">
-                            <i class="fa fa-leaf"></i>
-                            <div>最新</div>
-                        </div>
-                    </a>
-                    <a class="anchor_link" href="#cont-recommend">
-                        <div class="anchor_title">
-                            <i class="fa fa-star"></i>
-                            <div>推荐</div>
-                        </div>
-                    </a>
-                    <a class="anchor_link" href="#all">
-                        <div class="anchor_title" title="回顶部">
-                            <div class="fa fa-rocket anchor_goHome"></div>
-                        </div>
-                    </a>
-                </div>
                 <!--模态框-->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -226,14 +206,6 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/helper")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/lightbox")
-    @Scripts.Render("~/bundles/waterfallFlowLayout")
-    @Scripts.Render("~/bundles/philter")
-    @Scripts.Render("~/bundles/service")
-    @Scripts.Render("~/bundles/index")
     @RenderSection("scripts", required: false)
 </body>
 </html>
