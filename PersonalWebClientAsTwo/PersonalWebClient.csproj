@@ -472,6 +472,15 @@
     <Content Include="Content\summernote\summernote.woff" />
     <Content Include="Content\variables.less" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PWC.Helper\PWC.Helper.csproj">
+      <Project>{2390708C-EDC2-4A40-9841-9B0E64684E43}</Project>
+      <Name>PWC.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

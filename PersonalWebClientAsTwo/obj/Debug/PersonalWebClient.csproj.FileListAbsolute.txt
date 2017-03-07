@@ -45,3 +45,5 @@ F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\bin\PersonalWebClient.pdb
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClient.dll
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClient.pdb
 F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\obj\Debug\PersonalWebClient.csprojResolveAssemblyReference.cache
+F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\bin\PWC.Helper.dll
+F:\Codes\PersonalWebSite\PersonalWebClientAsTwo\bin\PWC.Helper.pdb

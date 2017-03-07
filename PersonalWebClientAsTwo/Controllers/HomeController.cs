@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PWC.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,8 +10,11 @@ namespace PersonalWebClient.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            PWCHelper_HttpClientService hcs = new PWCHelper_HttpClientService();
+            string a=await hcs.TestDM(123);
+            ViewBag.a = a;
             return View();
         }
 
