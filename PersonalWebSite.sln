@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonalService", "Personal
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonalClient", "PersonalClient", "{A02EE8AF-B9AC-4918-8D7B-C01499ED319F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebClient", "PersonalWebClient\PersonalWebClient.csproj", "{F2C14603-DCE1-4135-8459-5570F3933419}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebClientDemo", "PersonalWebClient\PersonalWebClientDemo.csproj", "{F2C14603-DCE1-4135-8459-5570F3933419}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService.DAL", "PersonalWebService.DAL\PersonalWebService.DAL.csproj", "{988DD72A-73EF-4C71-9A24-081C098F719C}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService.Model", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebService.IDAL", "PersonalWebService.IDAL\PersonalWebService.IDAL.csproj", "{084E0ACC-7457-4B82-9CE7-7BA4B8AE1F64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebClientAsTwo", "PersonalWebClientAsTwo\PersonalWebClientAsTwo.csproj", "{142DF18C-BD32-4806-8435-3C1803BB7CBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWebClient", "PersonalWebClientAsTwo\PersonalWebClient.csproj", "{142DF18C-BD32-4806-8435-3C1803BB7CBA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWC.Helper", "PWC.Helper\PWC.Helper.csproj", "{2390708C-EDC2-4A40-9841-9B0E64684E43}"
 EndProject

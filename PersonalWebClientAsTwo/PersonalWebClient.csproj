@@ -484,7 +484,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4525</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4525/</IISUrl>
+          <IISUrl>http://localhost:4525/Client</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
