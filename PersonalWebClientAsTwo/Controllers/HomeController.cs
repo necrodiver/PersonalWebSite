@@ -13,7 +13,7 @@ namespace PersonalWebClient.Controllers
         public async Task<ActionResult> Index()
         {
             PWCHelper_HttpClientService hcs = new PWCHelper_HttpClientService();
-            string a=await hcs.TestDM(123);
+            string a=await hcs.TestDM2();
             ViewBag.a = a;
             return View();
         }
