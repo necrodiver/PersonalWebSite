@@ -17,6 +17,23 @@ namespace PersonalWebClient.Controllers
             ViewBag.a = a;
             return View();
         }
+        public ActionResult RetrievePassword()
+        {
+            return View();
+        }
+
+        public ActionResult SignUpAndSignIn()
+        {
+            return View();
+        }
+        public ActionResult UserProfiles()
+        {
+            return View();
+        }
+        public ActionResult List()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {
@@ -25,11 +42,5 @@ namespace PersonalWebClient.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

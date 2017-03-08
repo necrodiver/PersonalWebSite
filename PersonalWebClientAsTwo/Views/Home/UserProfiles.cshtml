@@ -1,0 +1,246 @@
+﻿<link href="../Content/app/userProfiles.css" rel="stylesheet" />
+<script type="text/template" id="tagTemplate">
+    <button class="btn {0} btn-xs" type="button">
+        <em class="fa fa-tag"></em>
+        {1} <span class="badge">{2}</span>
+    </button>
+</script>
+<script type="text/template" id="Imageformat">
+    <div class="thumbnail img_thumbnail">
+        <div class="imgs" data-philter-grayscale="100 0">
+            <input type="hidden" value="test{0}.jpg">
+            <a href="../Images/DM/test{0}.jpg" data-lightbox="lightbox_" title="图集第{0}张&nbsp;&nbsp;(by NECC)"><img src="../Images/DM/test{0}.jpg"></a>
+        </div>
+        <div class="caption">
+            <div class="title">图集第{0}张</div>
+            <div class="content">
+                大家一定有过与众多逗比相处的日子，逗比嘛，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，逗得不行，end...
+            </div>
+            <div class="author">
+                by <a target="_blank" href="http://www.notlives.cc/Image/Wallpaper/{0}.jpg">NECC</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="Jottingformat">
+    <div class="jotting_thumbnail thumbnail">
+        <div class="jotting_portrait" data-philter-grayscale="70 0">
+            <a href="javascript:void(0);">
+                <img width="130" class="jotting_img img-circle img-thumbnail" src="../Images/Face/{0}.jpg" />
+            </a>
+        </div>
+        <div class="jotting_caption">
+            <div class="jotting_title">张三张三张三{1}</div>
+            <div class="jotting_content">
+                张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三哈哈哈哈测试啊
+            </div>
+            <div class="jotting_author">
+                —— by <a target="_blank" href="javascript:void(0);">NECC</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="workTemplate">
+    <div class="work_thumbnail thumbnail">
+        <div class="work_portrait" data-philter-grayscale="70 0">
+            <a href="../Images/ceshi/wuyahisi.jpg" data-lightbox="lightbox_">
+                <img class="work_img" src="../Images/ceshi/wuyahisi.jpg" />
+            </a>
+        </div>
+        <div class="work_caption">
+            <div class="work_title">
+                <div class="work_title_content pull-left">
+                    <a class="linkstyle" href="javascript:void(0);"><p>大河向东流啊！天上的星星参北斗！{0}</p></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="work_info">
+                <div class="work_info_top">
+                    <div class="work_info_love pull-left">
+                        <p><em class="fa fa-heart"></em> 1000{0}</p>
+                    </div>
+                    <div class="work_info_comment pull-left">
+                        <p><em class="fa fa-comment"></em> 1000{0}</p>
+                    </div>
+                    <div class="work_info_look pull-left">
+                        <p><em class="fa fa-eye"></em> 1000{0}</p>
+                    </div>
+                </div>
+                <div class="work_info_bottom">
+                    <div class="work_tips pull-left">
+                        <span class="tips_hot fa fa-thermometer" title="热门"></span>
+                        <span class="tips_digest fa fa-bookmark" title="精品"></span>
+                    </div>
+                    <div class="work_info_time pull-right">
+                        <p><em class="fa fa-clock-o"></em> 1000{0}天前</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="workArticleTemplate">
+    <div class="workArticle_thumbnail thumbnail">
+        <div class="work_article">
+            <div class="work_article_title">
+                <a class="linkstyle" href="javascript:void(0);"><p>大河向东流，天上的星星参北斗！{0}</p></a>
+            </div>
+            <div class="work_article_content hide">
+                <a class="linkstyle" href="javascript:void(0);">
+                    <p>
+                        大河向东流哇
+                        天上的星星参北斗哇
+                        说走咱就走你有我有全都有
+                        路见不平一声吼哇
+                        该出手时就出手哇
+                        大河向东流哇{0}
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="work_info">
+            <div class="work_info_top">
+                <div class="work_info_love pull-left">
+                    <p><em class="fa fa-heart"></em> 1000{0}</p>
+                </div>
+                <div class="work_info_comment pull-left">
+                    <p><em class="fa fa-comment"></em> 1000{0}</p>
+                </div>
+                <div class="work_info_look pull-left">
+                    <p><em class="fa fa-eye"></em> 1000{0}</p>
+                </div>
+            </div>
+            <br />
+            <div class="work_info_bottom">
+                <div class="work_tips pull-left">
+                    <span class="tips_hot fa fa-thermometer" title="热门"></span>
+                    <span class="tips_digest fa fa-bookmark" title="精品"></span>
+                </div>
+                <div class="work_info_time pull-right">
+                    <p><em class="fa fa-clock-o"></em> 1000{0}天前</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="userTemplate">
+    <div class="user_thumbnail thumbnail">
+        <div class="user_portrait pull-left" data-philter-grayscale="70 0">
+            <a href="javascript:void(0);">
+                <img width="110" class="user_img img-circle img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+            </a>
+        </div>
+        <div class="user_info pull-left">
+            <div class="user_info_top">
+                <div class="user_info_name">
+                    <a href="javascript:void(0);"><p>bain-片片{0}</p></a>
+                </div>
+                <div class="user_info_site">
+                    <p><em class="fa fa-map-marker"></em> china 江苏{0}</p>
+                </div>
+                <div class="user_info_workparent">
+                    <div class="user_info_work pull-left">
+                        <p title="作品"><em class="fa fa-file"></em> <a>10000{0}</a></p>
+                    </div>
+                    <div class="user_info_popularity pull-left">
+                        <p title="人气"><em class="fa fa-sort-amount-desc"></em> <a>100000{0}</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="user_info_signature">
+                    <p title="签名"><em class="fa fa-edit"></em> {0}大河向东流啊，天上的星星参北斗~~~</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<!--侧边导航List-->
+<div class="anchor_Top affix panel" data-spy="affix">
+    <a class="anchor_linkTop" href="#all">
+        <div class="anchor_titleTop" title="回顶部">
+            <div class="fa fa-rocket"></div>
+        </div>
+    </a>
+</div>
+<!--模态框-->
+
+<div class="user_parent panel">
+    <div class="user_l pull-left">
+        <div class="user_ld pull-left">
+            <img class="user_ld_img img-thumbnail" src="../Images/ceshi/pianpian.jpg" />
+        </div>
+        <div class="user_l_intro pull-left">
+            <div class="user_li_ntl pull-left">
+                <div class="user_li_name">
+                    <p>bain-片片</p>
+                </div>
+                <div class="user_li_title">
+                    <p>星·插画师</p>
+                </div>
+                <div class="user_li_level">
+                    <p>Lv.18</p>
+                </div>
+                <div class="user_li_site">
+                    <p><em class="fa fa-map-marker"></em> china 江苏</p>
+                </div>
+            </div>
+            <div class="user_li_about pull-right">
+                <div class="user_lia_top clearfix">
+                    <div class="user_liawaf pull-left">
+                        <div class="user_liawaf_num"><p>999999</p></div>
+                        <div class="user_liawaf_title"><p>作品</p></div>
+                    </div>
+                    <div class="user_liawaf pull-left">
+                        <div class="user_liawaf_num"><p>999999</p></div>
+                        <div class="user_liawaf_title"><p>关注</p></div>
+                    </div>
+                    <div class="user_liawaf user_liawaf_end pull-left">
+                        <div class="user_liawaf_num"><p>9999999</p></div>
+                        <div class="user_liawaf_title"><p>粉丝</p></div>
+                    </div>
+                </div>
+                <div class="user_lia_bottom">
+                    <button class="btn btn-success btn-xs"><em class="fa fa-plus"></em> 关注</button>
+                    <button class="btn btn-default btn-xs"><em class="fa fa-envelope-o"></em> 私信</button>
+                </div>
+            </div>
+        </div>
+        <div class="user_li_hi pull-left">
+            <div class="user_lih_content">
+                <p><em class="fa fa-edit"></em> 插画师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="user_content panel panel-default">
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation"><a href="#"><p class="fa fa-list"></p> 我的作品 <p class="fa fa-sort-amount-desc"></p></a></li>
+        <li role="presentation"><a href="#"><p class="fa fa-eye"></p> 浏览最多</a></li>
+        <li role="presentation"><a href="#"><p class="fa fa-comments-o"></p> 评论最多</a></li>
+        <li role="presentation"><a href="#">关注作者<p class="fa fa-sort-amount-desc"></p></a></li>
+        <li role="presentation"><a href="#">收藏作品<p class="fa fa-sort-amount-desc"></p></a></li>
+        <li role="presentation"><a href="#">我的粉丝<p class="fa fa-sort-amount-desc"></p></a></li>
+        <li role="presentation">
+            <!--这里栏只有在点击我的作品和收藏作品时才显示，其他的不显示-->
+            <div class="mywork_check checkbox">
+                <label class="checkbox-inline mywork_checkbox">
+                    <input type="checkbox" id="Scrawl_checkbox" value="Scrawl"> 涂鸦
+                </label>
+                <label class="checkbox-inline mywork_checkbox">
+                    <input type="checkbox" id="Jottings_checkbox" value="Jottings"> 随笔
+                </label>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="user_bottom panel panel-default">
+    <div class="user_b_child moduleParent" id="masonry">
+
+    </div>
+</div>
+
+<script type="text/javascript" src="../Scripts/app/userProfiles.js"></script>

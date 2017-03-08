@@ -1,0 +1,314 @@
+﻿<!--表单验证-->
+<link href="../Content/bootstrap/bootstrapValidator.css" rel="stylesheet" />
+<script src="../Scripts/bootstrap/bootstrapValidator.js"></script>
+<script src="../Scripts/bootstrap/bootstrapValidator_zh_CN.js"></script>
+<style type="text/css">
+    a {
+        color: #0078ff;
+    }
+
+    canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background: url(data:image/png;base64,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);
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .signup_title {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    #signUp {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .link_loginIn {
+        font-size: 12px;
+        height: 34px;
+        line-height: 34px;
+        color: #808080;
+    }
+
+    .signin_title {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .signin_img {
+        width: 100px;
+        height: 34px;
+    }
+
+    .registerNotice {
+        font-size: 13px;
+        font-weight: 700;
+        height: 34px;
+        line-height: 34px;
+        color: #000;
+    }
+
+    #signIn {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .retrievePassword {
+        margin-right: 20px;
+        font-size: 12px;
+        color: #808080;
+    }
+
+    .form-control-feedback {
+        margin-top: 10px;
+    }
+</style>
+<div class="signup_context panel panel-default">
+    <div class="panel-heading signup_title clearfix">
+        <p class="pull-left">用户注册</p>
+    </div>
+    <div class="panel-body">
+        <form role="form" id="signUp" method="post" class="form-horizontal">
+            <div class="signup_content">
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">注册账号</label>
+                    <div class="col-lg-5">
+                        <input type="email" class="form-control" name="email" placeholder="请输入您的邮箱地址" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">用户名</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="username" placeholder="显示的昵称/用户名" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">密码</label>
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" name="password" placeholder="请输入新的密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">确认密码</label>
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" name="confirmPassword" placeholder="请再输入一遍上面的密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">验证码</label>
+                    <div class="col-lg-3">
+                        <input type="text" class="form-control" name="verificationCode" placeholder="请输入验证码" />
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary" type="button">发送验证码</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-3 col-lg-offset-4">
+                        <input type="checkbox" /><a href="javascript:void(0);" class="registerNotice"> 我已同意《xxxxxxxxx》规则</a>
+                    </div>
+                    <div class="col-lg-1">
+                        <button class="btn btn-success" type="submit">注册</button>
+                    </div>
+                    <div class="col-lg-2"><a class="link_loginIn" href="javascript:void(0);">已经有账号？点击登录</a></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="signIn_context panel panel-default hidden">
+    <div class="panel-heading signin_title">
+        <p>用户登录</p>
+    </div>
+    <div class="panel-body">
+        <form role="form" id="signIn" method="post" class="form-horizontal">
+            <div class="signin_content">
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">登录账号</label>
+                    <div class="col-lg-5">
+                        <input type="email" class="form-control" name="email" placeholder="请输入您的邮箱地址" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">密码</label>
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" name="password" placeholder="请输入密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">验证码</label>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" name="password" placeholder="请输入验证码" />
+                    </div>
+                    <div class="col-lg-2">
+                        <img class="signin_img" title="点击图片进行替换" src="123.png" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-lg-offset-6">
+                        <button class="btn btn-success" type="submit">登录</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-lg-offset-6">
+                        <a class="retrievePassword" href="javascript:void(0);">忘记密码？点击找回密码</a>
+                        <a class="retrievePassword" href="javascript:void(0);">没有账号？点击注册</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#signIn').bootstrapValidator({
+            message: '这个值是无效的',
+            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                valid: 'fa fa-check',
+                invalid: 'fa fa-close',
+                validating: 'fa fa-refresh'
+            },
+            fields: {/*验证*/
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入登录账号'
+                        },
+                        emailAddress: {
+                            message: '输入的不是一个有效的电子邮件地址'
+                        }
+                        //,
+                        //remote: {/*远程验证*/
+                        //    url: 'remote.aspx',
+                        //    message: '此电子邮箱已被使用，请输入正确的邮箱地址'
+                        //}
+                    }
+                },
+                password: {
+                    message: '密码无效',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: '密码长度必须在6到20之间'
+                        },
+                        different: {
+                            field: 'username',
+                            message: '密码不能和用户名相同'
+                        },
+                        regexp: {
+                            regexp: /^((?!\d+$)(?![a-zA-Z]+$)[a-zA-Z\d@@#$%^&_+].{5,19})+$/,
+                            message: '密码只能由字母、数字、字符的最少两个组合'
+                        }
+                    }
+                }
+            }
+        });
+
+        $('#signUp').bootstrapValidator({
+            message: '这个值是无效的',
+            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                valid: 'fa fa-check',
+                invalid: 'fa fa-close',
+                validating: 'fa fa-refresh'
+            },
+            fields: {/*验证*/
+                username: {
+                    message: '用户名无效',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        },
+                        stringLength: {
+                            min: 4,
+                            max: 20,
+                            message: '用户名长度必须在4到20之间'
+                        },
+                        regexp: {
+                            regexp: /^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5-\-\·a-zA-Z0-9_\.]+$/,
+                            message: '用户名只能是中文、字母、数字、_、-、·的组合，以中文或字母开头'
+                        },
+                        different: {
+                            field: 'password',
+                            message: '用户名不能和密码相同'
+                        }
+                        //,
+                        //remote: {/*远程验证*/
+                        //    url: 'remote.aspx',
+                        //    message: '此用户名已被占用，请换一个尝试'
+                        //}
+                    }
+                },
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: '电子邮件是必填的'
+                        },
+                        emailAddress: {
+                            message: '输入的不是一个有效的电子邮件地址'
+                        }
+                        //,
+                        //remote: {/*远程验证*/
+                        //    url: 'remote.aspx',
+                        //    message: '此电子邮箱已被使用，请输入正确的邮箱地址'
+                        //}
+                    }
+                },
+                password: {
+                    message: '密码无效',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: '密码长度必须在6到20之间'
+                        },
+                        different: {
+                            field: 'username',
+                            message: '密码不能和用户名相同'
+                        },
+                        regexp: {
+                            regexp: /^((?!\d+$)(?![a-zA-Z]+$)[a-zA-Z\d@@#$%^&_+].{5,19})+$/,
+                            message: '密码只能由字母、数字、字符的最少两个组合'
+                        }
+                    }
+                },
+                confirmPassword: {
+                    message: '重复密码无效',
+                    validators: {
+                        notEmpty: {},
+                        identical: {
+                            field: 'password',
+                            message: '两次输入的密码不一致'
+                        }
+                    }
+                },
+                verificationCode: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入验证码'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]{6}/,
+                            message: '验证码必须是6位数字'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

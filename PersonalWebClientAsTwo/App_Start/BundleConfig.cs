@@ -33,6 +33,10 @@ namespace PersonalWebClient
             bundles.Add(new ScriptBundle("~/bundles/list").Include(
                       "~/Scripts/app/list.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/uploadtitleimg").Include(
+                      "~/Content/imageUpload/sitelogo/sitelogo.js",
+                      "~/Content/imageUpload/cropper/cropper.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/service").Include(
                      "~/Scripts/linkServer/server.js"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
@@ -55,6 +59,10 @@ namespace PersonalWebClient
 
             bundles.Add(new StyleBundle("~/Content/bootstrap-theme").Include(
                        "~/Content/bootstrap/bootstrap-theme.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/uploadtitleimg").Include(
+                      "~/Content/imageUpload/sitelogo/sitelogo.css",
+                      "~/Content/imageUpload/cropper/cropper.min.css"));
         }
     }
 }

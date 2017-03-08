@@ -122,7 +122,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\MyCenterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,6 +159,7 @@
     <Content Include="Content\manager\safe-manager.css" />
     <Content Include="Content\summernote\summernote.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\bgImg.png" />
     <Content Include="Images\c.png" />
@@ -340,6 +340,9 @@
     <Content Include="Scripts\echarts\echarts.js" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
@@ -436,23 +439,33 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
-    <Content Include="Views\Shared\_Layout - 复制.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Image.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Jotting.cshtml" />
     <Content Include="Views\Shared\PartialView\format_loggedOnUser.cshtml" />
     <Content Include="Views\Shared\PartialView\format_signIn.cshtml" />
-    <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Tag.cshtml" />
+    <Content Include="Views\MyCenter\MyCenter.cshtml" />
+    <Content Include="Views\MyCenter\EditInformation.cshtml" />
+    <Content Include="Views\MyCenter\AttentionPerson.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_user.cshtml" />
+    <Content Include="Views\MyCenter\CollectScrawlAndJottings.cshtml" />
+    <Content Include="Views\MyCenter\MessageCenter.cshtml" />
+    <Content Include="Views\MyCenter\MyFans.cshtml" />
+    <Content Include="Views\MyCenter\MyScrawlAndJottings.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_work.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_workArticle.cshtml" />
+    <Content Include="Views\MyCenter\NewScrawlAndJottings.cshtml" />
+    <Content Include="Views\Home\RetrievePassword.cshtml" />
+    <Content Include="Views\Home\SignUpAndSignIn.cshtml" />
+    <Content Include="Views\Home\UserProfiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="fonts\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Detail\" />
-    <Folder Include="Views\MyCenter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

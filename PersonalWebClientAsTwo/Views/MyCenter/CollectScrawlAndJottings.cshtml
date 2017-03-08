@@ -1,0 +1,168 @@
+﻿<link href="../../Content/app/list.css" rel="stylesheet" />
+<script type="text/template" id="tagTemplate">
+    @Html.Partial("PartialView/format_Tag")
+</script>
+<style type="text/css">
+    body {
+        /*background-color: #eee;*/
+    }
+
+    .lb-header {
+        background-color: #fff;
+    }
+
+    .thumbnail.img_thumbnail, .jotting_thumbnail.thumbnail {
+        margin: 10px 8px;
+    }
+
+    .lb-header, .lb-sort {
+        box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
+        -webkit-box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
+    }
+</style>
+<div class="lb-header panel panel-default">
+    <div>
+        <p class="lb-tag-header"><em class="fa fa-tags"></em> 标签</p>
+        <hr />
+    </div>
+    <div class="lb-tag-content">
+    </div>
+</div>
+<div class="lb-sort">
+    <div class="panel panel-default">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation"><a href="#">默认排序<p class="fa fa-sort-alpha-asc"></p></a></li>
+            <li role="presentation"><a href="#">按时间排序<p class="fa fa-long-arrow-up"></p></a></li>
+            <li role="presentation"><a href="#">按热度排序<p class="fa fa-sort-amount-desc"></p></a></li>
+            <li role="presentation"><a href="#">按浏览量排序<p class="fa fa-sort-numeric-desc"></p></a></li>
+            <li role="presentation">
+                <div class="work_checkbox_content checkbox">
+                    <label class="checkbox-inline work_checkbox">
+                        <input type="checkbox" id="Scrawl_checkbox" value="Scrawl"> 涂鸦
+                    </label>
+                    <label class="checkbox-inline work_checkbox">
+                        <input type="checkbox" id="Jottings_checkbox" value="Jottings"> 随笔
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="lb-content moduleParent" id="masonry">
+
+</div>
+<script type="text/javascript">
+    var maxCount = 49;
+    var everyCount = 6;
+    var length = 0;
+    var imagesLoading = false;
+    var $container = $('#masonry');
+    var isShowScrawl = true;//显示涂鸦
+    var isShowJottings = true;//显示随笔
+    //判断当前浏览器窗口滚动条是否离底部距离小于20
+    $(window).scroll(function () {
+
+        //下边这一段不知道影响性能不
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.thumbnail',
+                isAnimated: true,
+                transitionDuration: '0.6s'
+            });
+        });
+        //上方这段
+
+        if ($(document).height() - $(window).height() - $(document).scrollTop() < 50) {
+            if (!imagesLoading) {
+                imagesLoading = true;
+                appendToMasonry();
+                imagesLoading = false;
+            }
+        }
+    });
+    function appendToMasonry() {
+        var data = "";
+        var l = Math.ceil(everyCount * length);
+        var min = length * everyCount;
+        if (everyCount * (length + 1) < maxCount) {
+            var max = (length + 1) * everyCount;
+            for (var i = min + 1; i < max; i++) {
+                var r = parseInt(Math.random() * 18) + 1;
+                if (isShowScrawl) {
+                    data += $("#Imageformat").html().format(i);
+                }
+                if (isShowJottings) {
+                    data += $("#Jottingformat").html().format(i);
+                }
+            }
+        }
+        else if (min < maxCount && everyCount * (length + 1) > maxCount) {
+            for (var j = min; j < maxCount; j++) {
+                var r = parseInt(Math.random() * 19);
+                if (isShowScrawl) {
+                    data += $("#Imageformat").html().format(i);
+                }
+                if (isShowJottings) {
+                    data += $("#Jottingformat").html().format(i);
+                }
+            }
+        }
+        else
+            return;
+        ++length;
+
+        var $data = $(data);
+        if (length > 1) {
+            $container.imagesLoaded().always(function () {
+                $container.append($data).masonry('appended', $data).masonry();
+            });
+            return;
+        }
+
+        $container.append($data);
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.thumbnail',
+                isAnimated: true,
+                transitionDuration: '0.6s'
+            });
+        });
+    }
+
+    $(function () {
+        var tagTemplate = $('#tagTemplate').html();
+        var tags = ["btn-info", "btn-success", "btn-warning", "btn-danger", "btn-inverse", "btn-default"];
+        var tags_text = ["涂鸦-原画", "涂鸦-插画", "涂鸦-试手", "涂鸦-漫画", "涂鸦-概念设计", "涂鸦-临摹"];
+        var randm = parseInt(Math.random() * 20);
+        for (var i = 0; i < randm; i++) {
+            var rand = parseInt(Math.random() * 5);
+            var evrandCount = parseInt(Math.random() * 10000);
+            $('.lb-tag-content').append(tagTemplate.format(tags[rand], tags_text[rand] + i, evrandCount));
+        }
+
+        $('#Scrawl_checkbox').click(function () {
+            var hasChk = $('#Scrawl_checkbox').is(':checked');
+            if (hasChk) {
+                isShowScrawl = true;
+            } else {
+                isShowScrawl = false;
+            }
+
+        });
+        $('#Jottings_checkbox').click(function () {
+            var hasChk = $('#Jottings_checkbox').is(':checked');
+            if (hasChk) {
+                isShowJottings = true;
+            } else {
+                isShowJottings = false;
+            }
+        });
+
+        $container.html('');
+        appendToMasonry();
+
+        //图片灰度展示
+        $.philter();
+    });
+</script>
+
