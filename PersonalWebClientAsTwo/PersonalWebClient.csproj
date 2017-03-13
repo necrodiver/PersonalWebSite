@@ -120,6 +120,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManagerOperationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductionOperationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SafeManagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyCenterController.cs" />
@@ -343,6 +348,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\SafeManager\Index.cshtml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
@@ -427,6 +434,19 @@
     <Content Include="Scripts\sweetalert\sweetalert.css" />
     <Content Include="Scripts\sweetalert\sweetalert.min.js" />
     <Content Include="Scripts\userControl\userCtrl.js" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\Index.html" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\Mail.html" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\Message.html" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\SystemNotice.html" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\UserMessage.html" />
+    <Content Include="Areas\Admin\Views\ManagerOperation\WorkReminder.html" />
+    <Content Include="Areas\Admin\Views\ProductionOperation\JottingsManage.html" />
+    <Content Include="Areas\Admin\Views\ProductionOperation\ScrawlManage.html" />
+    <Content Include="Areas\Admin\Views\ProductionOperation\ScrawlView.html" />
+    <Content Include="Areas\Admin\Views\Statistics\ErrorStatistics.html" />
+    <Content Include="Areas\Admin\Views\Statistics\VisitStatistics.html" />
+    <Content Include="Areas\Admin\Views\UserControl\EditUser.html" />
+    <Content Include="Areas\Admin\Views\UserControl\UserCtrl.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -464,6 +484,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Detail\" />
   </ItemGroup>

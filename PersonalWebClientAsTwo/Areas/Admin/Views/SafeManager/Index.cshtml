@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/index")*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/helper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lightbox")
+    @Scripts.Render("~/bundles/waterfallFlowLayout")
+    @Scripts.Render("~/bundles/philter")
+    @Scripts.Render("~/bundles/service")
+    <link href="../../Content/manager/safe-manager.css" rel="stylesheet" />
+    @{
+        Layout = null;
+    }
+</head>
+<body>
+    <div class="all">
+        <div class="safe_header">
+            <div class="panel panel-default col-sm-12 safe_top">
+                <div class="safe_top_logo col-sm-3">
+                    <img class="top_logo_img" src="../../Images/logo.png" />
+                </div>
+                <div class="safe_top_admin_context pull-right">
+                    <div class="top_admin_child safe_top_admin_remind col-sm-2 col-sm-offset-1">
+                        <a href="javascript:;" class="linkstyle">
+                            <p><i class="fa fa-bell-o" aria-hidden="true"></i> 提醒 <span class="badge-success">99+</span></p>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safe_top_admin_information col-sm-2">
+                        <a href="javascript:;" class="linkstyle">
+                            <p><i class="fa fa-comment-o"></i> 消息 <span class="badge-danger">99+</span></p>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safe_top_admin_user col-sm-3">
+                        <a href="javascript:;" class="linkstyle">
+                            <div class="safe_tau_content clearfix">
+                                <img class="img-circle safe_tauc_picture pull-left" src="../../Images/user-ceshi.jpg" />
+                                <p class="pull-left">&nbsp;neclodiver <span class="badge-danger">99+</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="top_admin_child safe_top_admin_user col-sm-2">
+                        <a href="javascript:;" class="linkstyle">
+                            <p class="safe_tauc_exit"><i class="fa fa-sign-out" title="退出"></i></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="safe_left col-xs-3">
+            <ul class="list-group safe_left_navbar">
+
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_index">
+                        <i class="fa fa-home safe_linc_ico"></i>
+                        <span>首页</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right hidden"></i>
+                    </div>
+                </li>
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_message">
+                        <i class="fa fa-comments-o safe_linc_ico"></i>
+                        <span>消息管理</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right"></i>
+                    </div>
+                    <ul class="list_child_group hidden">
+                        <li class="list_child_item select_sysNotice">
+                            <i class="fa fa-flag-o list_child_item_ico"></i>
+                            <span>系统公告</span>
+                            <i class="badge-warning list_child_item_right pull-right">99+</i>
+                        </li>
+                        <li class="list_child_item select_newMail">
+                            <i class="fa fa-envelope-o list_child_item_ico"></i>
+                            <span>邮件</span>
+                            <i class="badge-info list_child_item_right pull-right">99+</i>
+                        </li>
+                        <li class="list_child_item select_workRemind">
+                            <i class="fa fa-bell-o list_child_item_ico"></i>
+                            <span>工作提醒</span>
+                            <i class="badge-success list_child_item_right pull-right">99+</i>
+                        </li>
+                        <li class="list_child_item select_userMessage">
+                            <i class="fa fa-comment-o list_child_item_ico"></i>
+                            <span>用户反馈</span>
+                            <i class="badge-primary  list_child_item_right pull-right">99+</i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_user">
+                        <i class="fa fa-user-circle safe_linc_ico"></i>
+                        <span>用户管理</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right hidden"></i>
+                    </div>
+                </li>
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_production">
+                        <i class="fa fa-puzzle-piece safe_linc_ico"></i>
+                        <span>作品管理</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right"></i>
+                    </div>
+                    <ul class="list_child_group hidden">
+                        <li class="list_child_item select_Scrawl">
+                            <i class="fa fa-paint-brush list_child_item_ico"></i>
+                            <span>涂鸦管理</span>
+                            <i class="badge-warning list_child_item_right pull-right">99+</i>
+                        </li>
+                        <li class="list_child_item select_Jottings">
+                            <i class="fa fa-pencil list_child_item_ico"></i>
+                            <span>随笔管理</span>
+                            <i class="badge-info list_child_item_right pull-right">99+</i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_statistics">
+                        <i class="fa fa-line-chart safe_linc_ico"></i>
+                        <span>统计</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right"></i>
+                    </div>
+                    <ul class="list_child_group hidden">
+                        <li class="list_child_item select_visit">
+                            <i class="fa fa-area-chart list_child_item_ico"></i>
+                            <span>访问统计</span>
+                            <i class="badge-warning list_child_item_right pull-right hidden"></i>
+                        </li>
+                        <li class="list_child_item select_error">
+                            <i class="fa fa-times-circle list_child_item_ico"></i>
+                            <span>错误记录</span>
+                            <i class="badge-warning list_child_item_right pull-right hidden"></i>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item safe_ln_item">
+                    <div class="safe_lni_content select_system">
+                        <i class="fa fa-cogs safe_linc_ico"></i>
+                        <span>系统设定</span>
+                        <i class="fa fa-chevron-right safe_lnic_right pull-right"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="safe_right col-xs-9">
+            <div class="panel panel-default">
+                <div class="safe_right_title">
+                    <p>首页</p>
+                </div>
+            </div>
+            <div class="safe_right_context">
+                <iframe class="safe_rc_iframe panel panel-default" frameborder="0" scrolling="no" src="ManagerOperation/Index.html"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="../../Scripts/manage/safe-manager.js"></script>
+</body>
+</html>
+

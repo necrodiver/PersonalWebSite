@@ -1,0 +1,486 @@
+﻿<!--上传头像插件-->
+<link href="../../../Content/imageUpload/sitelogo/sitelogo.css" rel="stylesheet" />
+<script src="../../../Content/imageUpload/sitelogo/sitelogo.js"></script>
+<link href="../../../Content/imageUpload/cropper/cropper.min.css" rel="stylesheet" />
+<script src="../../../Content/imageUpload/cropper/cropper.min.js"></script>
+
+<style type="text/css">
+    .edit_parent, .edit_sreality {
+        margin: 20px;
+        min-width: 400px;
+    }
+
+    .edit_ch_nickname {
+    }
+
+    .edit_c {
+        margin-top: 13px;
+    }
+
+        .edit_c p {
+            text-shadow: 3px 4px 4px rgba(0,0,0,0.175);
+        }
+
+    .edit_cn_l, .edit_cs_l {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 5px;
+        width: 100px;
+    }
+
+    .edit_cn_c {
+        font-size: 15px;
+        font-weight: 200;
+        margin: 0 15px;
+        width: 250px;
+    }
+
+    .edit_cn_r, .edit_img, .edit_cs_c select {
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.175);
+        -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.175);
+    }
+
+    .edit_img {
+        width: 100px;
+        cursor: pointer;
+    }
+
+    .edit_cn_l_picturename {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 100px;
+        padding-top: 80px;
+    }
+
+    .edit_cn_r_state {
+        font-size: 13px;
+        font-weight: 200;
+        color: #8f8f8f;
+        padding-top: 80px;
+    }
+
+    .edit_cs_c select {
+        width: 100px;
+        margin-left: 15px;
+    }
+
+    .edit_s .col-3 {
+        float: none;
+        margin: 15px 7px;
+        width: 250px;
+    }
+
+    .edit_cnl_introduce {
+        margin: 5px 10px 0px 7px;
+    }
+
+    .edit_cut {
+        margin-top: 25px;
+    }
+
+    .edit_cut_l {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 0;
+    }
+
+    .edit_cut_r {
+        font-size: 12px;
+        font-weight: 200;
+        color: #808080;
+        margin-bottom: 0;
+    }
+
+    .radio_content input {
+        margin-left: 10px;
+    }
+
+    .edit_ss_cont {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 5px;
+        width: 80px;
+    }
+
+    .edit_ss_cont, .edit_cut_l, .edit_cut_r, .radio_content {
+        text-shadow: 3px 4px 4px rgba(0,0,0,0.175);
+    }
+
+    .edit_s .col-3 {
+        margin-top: 0px;
+    }
+
+    .edit_s_name {
+        margin-top: 15px;
+    }
+
+    .edit_secrecy {
+        margin-left: 10px;
+    }
+
+    .edit_submit {
+        width:60%;
+        margin-left:-10px;
+        margin-top: 20px;
+    }
+    .edit_submit button{
+        width:100%;
+    }
+
+    .nickname_edit_content {
+        z-index: 0;
+        padding-left: 70px;
+    }
+
+    .domain_edit_content {
+        padding-left: 60px;
+        z-index: 0;
+    }
+
+        .nickname_edit_content .col-3, .domain_edit_content .col-3 {
+            float: none;
+            width: 250px;
+        }
+
+        .nickname_edit_content div, .domain_edit_content div {
+            margin: 10px 3%;
+        }
+
+    .edit_nickname_state, .edit_domain_state {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    .edit_domain_old {
+        font-size: 14px;
+        font-weight: 200;
+        color: #033185;
+    }
+
+    .edit_domain_old_txt {
+        font-size: 14px;
+        font-weight: 700;
+        color: #126489;
+    }
+
+    .email_edit_content {
+        margin: 2px 20px;
+        z-index: 0;
+        padding-left: 75px;
+    }
+
+    .edit_eh_l {
+        font-size: 15px;
+        font-weight: 700;
+        color: #666;
+        width: 120px;
+        height: 20px;
+    }
+
+    .edit_eh_c {
+        font-size: 15px;
+        font-weight: 200;
+        color: #808080;
+        width: 150px;
+    }
+
+        .edit_eh_c .col-3 {
+            float: none;
+            margin-top: 10px;
+        }
+
+        .edit_eh_c button {
+            margin-top: 10px;
+        }
+
+    .edit_ehc_submit {
+        margin-right: 5px;
+    }
+    .back{
+        width:60%;
+        margin-top:20px;
+        margin-left:20px;
+    }
+    .back button{
+        width:100%;
+    }
+    .all_childEdit{
+        width:80%;
+        margin:0 auto;
+    }
+</style>
+<div class="help">
+    <!--修改昵称-->
+    <div class="modal fade model_edit" id="edit_nickname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">昵称修改</h4>
+                </div>
+                <div class="modal-body nickname_edit_content">
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">请输入新的昵称</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="edit_nickname_state2">2-10个字符 支持中英文、数字、"_"或减号</div>
+                    <div class="edit_nickname_submit clearfix"><button class="btn btn-success btn-sm pull-right">保存</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改域名-->
+    <div class="modal fade model_edit" id="edit_domain" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">个性域名修改</h4>
+                </div>
+                <div class="modal-body domain_edit_content">
+                    <div class="edit_domain_old clearfix"><p class="pull-left">当前使用的个性域名为：www.notlives.cc/</p><p class="pull-left edit_domain_old_txt">bainbain</p></div>
+                    <div class="col-3 input-effect">
+                        <input class="effect-16 input-effect-text" type="text" placeholder="">
+                        <label class="input-effect-text">www.notlives.cc/</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="edit_nickname_state2">2-10个字符 支持中英文、数字、"_"</div>
+                    <div class="edit_nickname_submit clearfix"><button class="btn btn-success btn-sm pull-right">保存</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改邮件地址-->
+    <div class="modal fade model_edit" id="edit_email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">邮件地址修改</h4>
+                </div>
+                <div class="modal-body email_edit_content email_edit_content_first">
+                    <div class="edit_email_header clearfix">
+                        <div class="edit_eh_l pull-left">当前邮件地址：</div>
+                        <div class="edit_eh_c pull-left">neclodiver@live.com</div>
+                    </div>
+                    <div class="edit_email_center clearfix">
+                        <div class="edit_eh_l pull-left"> </div>
+                        <div class="edit_eh_c pull-left">
+                            <div class="col-3 input-effect pull-left">
+                                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                                <label class="input-effect-text">验证码</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            <button class="btn btn-sm btn-default pull-left">发送</button>
+                        </div>
+                    </div>
+                    <div class="edit_email_footer clearfix">
+                        <div class="edit_eh_l pull-left"></div>
+                        <div class="edit_eh_c pull-left">
+                            <button class="btn btn-success btn-sm edit_ehc_submit pull-right">验证邮箱</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body email_edit_content email_edit_content_second hidden">
+                    <div class="edit_email_header clearfix">
+                        <div class="col-3 input-effect pull-left">
+                            <input class="effect-16 input-effect-text" type="email" placeholder="">
+                            <label class="input-effect-text">新邮件地址</label>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="edit_email_center clearfix">
+                        <div class="edit_eh_l pull-left"> </div>
+                        <div class="edit_eh_c pull-left">
+                            <div class="col-3 input-effect pull-left">
+                                <input class="effect-16 input-effect-text" type="text" placeholder="">
+                                <label class="input-effect-text">验证码</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            <button class="btn btn-sm btn-default pull-left">发送</button>
+                        </div>
+                    </div>
+                    <div class="edit_email_footer clearfix">
+                        <div class="edit_eh_l pull-left"></div>
+                        <div class="edit_eh_c pull-left">
+                            <button class="btn btn-success btn-sm edit_ehc_submit pull-right">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改图片-->
+    <div class="modal fade" id="edit_img" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="avatar-form" action="{{url('admin/upload-logo')}}" enctype="multipart/form-data" method="post">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">&times;</button>
+                        <h4 class="modal-title" id="avatar-modal-label">修改头像</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="avatar-body">
+                            <div class="avatar-upload">
+                                <input class="avatar-src" name="avatar_src" type="hidden">
+                                <input class="avatar-data" name="avatar_data" type="hidden">
+                                <label for="avatarInput">图片上传</label>
+                                <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="avatar-wrapper"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="avatar-preview preview-lg"></div>
+                                    <div class="avatar-preview preview-md"></div>
+                                    <div class="avatar-preview preview-sm"></div>
+                                </div>
+                            </div>
+                            <div class="row avatar-btns">
+                                <div class="col-md-9">
+                                    <div class="btn-group">
+                                        <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+</div>
+<div class="all_childEdit">
+    <div class="header clearfix">
+        <div class="back"><button class="btn btn-primary pull-right" onclick="javascript:history.back(-1);"><em class="fa fa-reply"></em> 返回</button></div>
+    </div>
+    <div class="edit_parent">
+        <div class="edit_common">
+            <div class="edit_c edit_ch_nickname clearfix">
+                <p class="edit_cn_l pull-left">昵称</p>
+                <p class="edit_cn_c pull-left">bain-片片</p>
+                <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_nickname"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            </div>
+            <div class="edit_c edit_c_domain clearfix">
+                <p class="edit_cn_l pull-left">个性域名</p>
+                <p class="edit_cn_c pull-left">www.notlives.cc/pianpian</p>
+                <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_domain"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            </div>
+            <div class="edit_c edit_c_email clearfix">
+                <p class="edit_cn_l pull-left">邮件地址</p>
+                <p class="edit_cn_c pull-left">neclodiver@live.com</p>
+                <button class="edit_cn_r pull-left btn btn-success btn-xs" data-toggle="modal" data-target="#edit_email"><em class="glyphicon glyphicon-wrench"></em> 修改</button>
+            </div>
+        </div>
+        <div class="edit_c edit_c_picture clearfix">
+            <p class="edit_cn_l_picturename pull-left">头像</p>
+            <div class="edit_cn_c pull-left" id="crop-avatar" data-toggle="modal" data-target="#edit_img">
+                <img class="edit_img img-thumbnail" src="../../../Images/user-ceshi.jpg" alt="Logo" />
+            </div>
+            <p class="edit_cn_r_state pull-left">（可点击图片来修改头像）</p>
+        </div>
+    </div>
+    <div class="edit_sreality">
+        <form class="form-horizontal form_content">
+            <fieldset>
+                <div class="edit_c edit_c_area clearfix">
+                    <p class="edit_cs_l pull-left">地区</p>
+                    <div class="edit_cs_c">
+                        <select class="form-control pull-left">
+                            <option value="beijing">北京</option>
+                            <option value="shanghai">上海</option>
+                            <option value="guangzhou" selected>广州</option>
+                            <option value="wuhan">武汉</option>
+                            <option value="hangkong">香港</option>
+                        </select>
+                        <select class="form-control pull-left">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="edit_c edit_c_introduce">
+                    <p class="edit_cn_l">个性签名</p>
+                    <textarea class="form-control edit_cnl_introduce" placeholder="请填写你的个性签名（300字以内~~）"></textarea>
+                </div>
+                <hr />
+                <div class="edit_cut">
+                    <p class="edit_cut_l">真实信息</p><p class="edit_cut_r">(真实信息为非必填项，且真实信息将不会公开显示，仅用官方活动或项目合作联系)</p>
+                </div>
+                <div class="edit_secrecy">
+                    <div class="edit_s edit_s_name clearfix">
+                        <div class="col-3 input-effect">
+                            <input class="effect-16 input-effect-text" type="text" placeholder="">
+                            <label class="input-effect-text">姓名</label>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="edit_s edit_s_qq">
+                        <div class="col-3 input-effect">
+                            <input class="effect-16 input-effect-text" type="text" placeholder="">
+                            <label class="input-effect-text">QQ</label>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="edit_s edit_s_mobileno">
+                        <div class="col-3 input-effect">
+                            <input class="effect-16 input-effect-text" type="tel" placeholder="">
+                            <label class="input-effect-text">电话</label>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="edit_s edit_s_sex clearfix">
+                        <p class="edit_ss_cont pull-left">性别：</p>
+                        <div class="radio_content pull-left">
+                            <input type="radio" name="radio_sex" /> 保密
+                            <input type="radio" name="radio_sex" /> 男
+                            <input type="radio" name="radio_sex" /> 女
+                        </div>
+                    </div>
+                    <div class="edit_submit clearfix">
+                        <button class="btn btn-success" type="submit" onclick="javascript:history.back(-1);">保存</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".col-3 input").val("");
+
+        $(".input-effect input").focusout(function () {
+            if ($(this).val() != "") {
+                $(this).addClass("has-content");
+            } else {
+                $(this).removeClass("has-content");
+            }
+        })
+    });
+    $(function () {
+        $('#edit_nickname,#edit_domain,#edit_email').modal({
+            keyboard: true,
+            show: false
+        });
+    });
+</script>

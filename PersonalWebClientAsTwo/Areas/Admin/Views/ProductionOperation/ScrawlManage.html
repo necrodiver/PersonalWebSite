@@ -1,0 +1,352 @@
+﻿<!--搜索建议插件-->
+<script src="../../../Scripts/bootstrap/bootstrap-suggest.js"></script>
+<!--table插件-->
+<link href="../../../Content/bootstrap/bootstrap-table.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrap-table.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+<!--选择对话框-->
+<link href="../../../Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+<script src="../../../Scripts/sweetalert/sweetalert-dev.js"></script>
+<!--时间插件-->
+<link href="../../../Content/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--富文本编辑器-->
+<link href="../../../Content/summernote/summernote.css" rel="stylesheet" />
+<script src="../../../Scripts/summernote/summernote.js"></script>
+<script src="../../../Scripts/summernote/lang/summernote-zh-CN.js"></script>
+<!--表单验证-->
+<link href="../../../Content/bootstrap/bootstrapValidator.css" rel="stylesheet" />
+<script src="../../../Scripts/bootstrap/bootstrapValidator.js"></script>
+<script src="../../../Scripts/bootstrap/bootstrapValidator_zh_CN.js"></script>
+<!--上传图片工具-->
+<link href="../../../Content/fileinput.css" rel="stylesheet" />
+<script src="../../../Scripts/fileinput.min.js"></script>
+<script src="../../../Scripts/fileinput_locale_zh.js"></script>
+
+<link href="../../../Content/manager/msgManager.css" rel="stylesheet" />
+<script type="text/template" id="sendPeopleTemplate">
+    <div class="send_people clearfix">
+        <a href="javascript:;" class="linkstyle">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+    </div>
+</script>
+<script type="text/template" id="userSearchTemplate">
+    <div class="users_context panel panel-default pull-left">
+        <a href="javascript:;" class="linkstyle pull-left">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+        <div class="pull-right remove_user">
+            <em class="fa fa-remove"></em>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="tableEditTemplate">
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#read_Content" data-toggle="modal"></span>
+    <span class="fa fa-mail-forward table_edit_pass" title="通过" editId="{0}"></span>
+    <span class="fa fa-reply-all table_edit_reject" title="驳回" editId="{0}"></span>
+    <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+    <span class="fa fa-thumbs-o-up table_edit_recommend" title="推荐" editId="{0}"></span>
+    <span class="fa fa-pencil-square-o table_edit_edit" title="修改" editId="{0}" data-target="#edit_Content" data-toggle="modal"></span>
+</script>
+<div class="safe_newmail_all">
+    <style type="text/css">
+        .addUser_Context {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .btn_submit {
+            margin-top: 10px;
+        }
+
+        .check_uc_page {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+
+        .check_up_left {
+            width: 150px;
+            font-size: 14px;
+            color: #808080;
+            line-height: 34px;
+            font-weight: 700;
+        }
+
+        .check_up_right {
+            margin-left: 10px;
+        }
+
+            .check_up_right p {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 34px;
+            }
+
+            .check_up_right img {
+                width: 150px;
+            }
+
+        .line {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .instructions_about {
+            font-size: 12px;
+            color: #671d1d;
+            text-align: center;
+        }
+
+        .check_userInfo_context {
+            margin-bottom: 10px;
+        }
+
+        .form_title p {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .form_onecontent {
+            margin-bottom: 10px;
+        }
+
+        .btn_submit {
+            width: 100%;
+        }
+
+        .sj_u_img {
+            width: 40px;
+            border: 1px solid gray;
+            margin: 5px;
+        }
+
+        .sj_u_nickname {
+            margin-top: 5px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+            .sj_u_nickname .linkstyle {
+                color: #000;
+            }
+
+        .sj_u_weibo {
+            color: #b5b5b5;
+        }
+
+
+        .browse_u_r_message {
+            margin-right: 10px;
+            margin-top: 5px;
+            height: 45px;
+        }
+
+            .browse_u_r_message div {
+            }
+
+                .browse_u_r_message div p {
+                    margin-bottom: 0;
+                }
+
+        .browser_urm_partition {
+            border-right: 1px solid #e7e8ea;
+            padding-right: 10px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .browser_urmp_num {
+            font-size: 15px;
+            color: black;
+            font-weight: 700;
+        }
+
+            .browser_urmp_num em .linkstyle {
+                color: #000000;
+            }
+
+        .browser_urmp_title {
+            font-size: 14px;
+            color: #a3a3a3;
+            font-weight: 500;
+        }
+
+        .browser_urm_plast {
+            text-align: center;
+        }
+
+        .browse_u_attention {
+            margin-top: 55px;
+        }
+        .btnSelectUserName{
+            padding:14px;
+        }
+    </style>
+    <div class="help">
+        <!--新增涂鸦-->
+        <div class="modal fade" id="add_Content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">新增涂鸦</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <div class="form_title"><p>用户昵称</p></div>
+                                <div class="form_onecontent">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="inputUserName" placeholder="这的样式好蛋疼">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle btnSelectUserName" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦主题名称</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦主题名称" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦标签</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦标签，多个标签请用英文逗号标记" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>说明</p></div>
+                                <div class="form_onecontent">
+                                    <textarea maxlength="500" class="new_sct_c form-control" placeholder="填写说明~~"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input id="imgUpload" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn_submit" type="submit"><em class="fa fa-plus"></em> 添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--修改涂鸦-->
+        <div class="modal fade" id="edit_Content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">新增涂鸦</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sj_user panel panel-default clearfix">
+                            <img class="img-rounded sj_u_img pull-left" src="../../../Images/user-ceshi.jpg" />
+                            <div class="sj_u_center pull-left">
+                                <p class="sj_u_nickname"><a class="linkstyle" target="_blank" href="http://localhost:10841/Client/APP/UserProfiles.html">bain-片片</a></p>
+                                <a class="linkstyle sj_u_weibo" target="_blank" href="http://weibo.com/bain2p">http://weibo.com/bain2p</a>
+                            </div>
+                            <div class="sj_u_right pull-right">
+                                <div class="browse_u_r_message">
+                                    <div class="pull-left browser_urm_partition"><p class="browser_urmp_num"><em><a class="linkstyle" target="_blank" href="http://localhost:10841/Client/APP/UserProfiles.html">9999999</a></em></p><p class="browser_urmp_title">浏览</p></div>
+                                    <div class="pull-left browser_urm_partition"><p class="browser_urmp_num"><em><a class="linkstyle" target="_blank" href="http://localhost:10841/Client/APP/UserProfiles.html">99999</a></em></p><p class="browser_urmp_title">收藏</p></div>
+                                    <div class="pull-left browser_urm_plast"><p class="browser_urmp_num"><em><a class="linkstyle" target="_blank" href="http://localhost:10841/Client/APP/UserProfiles.html">99999</a></em></p><p class="browser_urmp_title">评论</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="post">
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦主题名称</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦主题名称" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>涂鸦标签</p></div>
+                                <div class="form_onecontent">
+                                    <input type="text" class="form-control" placeholder="请输入涂鸦标签，多个标签请用英文逗号标记" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form_title"><p>说明</p></div>
+                                <div class="form_onecontent">
+                                    <textarea maxlength="500" class="new_sct_c form-control" placeholder="填写说明~~"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input id="imgUpload" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn_submit" type="submit"><em class="fa fa-plus"></em> 修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--查看涂鸦-->
+        <div class="modal fade modal-lg" id="read_Content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">查看涂鸦内容</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe style="width:100%;height:60%;" src="ScrawlView.html"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_newmail_center">
+        <div class="safe_nc_title clearfix">
+            <div class="btn-group safe_nct_content pull-left">
+                <button type="button" class="btn btn-default" id="btn_DeleteContent"><em class="fa fa-user-times em_delete"></em> 删除</button>
+                <button type="button" class="btn btn-default" id="btn_NewContent" data-target="#add_Content" data-toggle="modal"><em class="fa fa-user-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_PassContent"><em class="fa fa-mail-forward em_begin"></em> 通过</button>
+            </div>
+            <div class="safe_nt_search pull-left">
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                    <div class="safe_nts_text pull-left">
+                        <div class="form-group">
+                            <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                                <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                                <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_time" value="" /><br />
+                        </div>
+                    </div>
+                </div>
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入用户昵称或涂鸦名称" /></div>
+                </div>
+            </div>
+            <div class="btn-group safe_nct_content pull-right">
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh"></em></button>
+            </div>
+        </div>
+        <style type="text/css">
+        </style>
+        <div class="safe_nc_context">
+            <table id="contextTable"></table>
+        </div>
+    </div>
+    <div class="safe_newmail_bottom"></div>
+</div>
+<script src="../../../Scripts/productionOpration/scrawlManage.js"></script>

@@ -1,0 +1,131 @@
+﻿<!--时间插件-->
+<link href="../../../Content/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+<link href="../../../Content/manager/safe-index.css" rel="stylesheet" />
+
+<div class="safe_index_context">
+    <style type="text/css">
+        .safe_index_page2 {
+        }
+
+        .safe_ip2_tubiao {
+        }
+
+        .chart {
+            width: auto;
+            height: 360px;
+        }
+
+        .chart-visit {
+        }
+
+        .safe_ip2t_content {
+            border: 1px solid #eee;
+        }
+        .form_datetime{
+            width:220px;
+        }
+        .safe_nts_name,.time_from{
+            font-size:13px;
+            font-weight:700;
+            height:35px;
+            line-height:35px;
+        }
+        .time_from{
+            margin-left:10px;
+            margin-right:10px;
+        }
+        .btn_visit{
+            margin-right:10px;
+        }
+       .safe_nts_text .form-group{
+           margin-bottom:0;
+       }
+       .select_btngroup{
+           margin-top:15px;
+       }
+       .select_btntimegroup{
+           margin-top:10px;
+       }
+    </style>
+    <div class="clearfix">
+        <button class="btn btn-default pull-left btn_visit">日访问量</button>
+        <button class="btn btn-warning pull-left btn_visit">周访问量</button>
+        <button class="btn btn-primary pull-left btn_visit">月访问量</button>
+        <button class="btn btn-success pull-left btn_visit">年访问量</button>
+        <div class="safe_nts pull-right">
+            <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+            <div class="safe_nts_text pull-left">
+                <div class="form-group pull-left">
+                    <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                        <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_time" value="" /><br />
+                </div>
+                <div class="pull-left time_from"> ~ </div>
+                <div class="form-group pull-left">
+                    <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                        <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_time" value="" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_index safe_index_page2">
+        <div class="safe_ip2_tubiao">
+            <div class="safe_ip2t_title"><p></p></div>
+            <div class="safe_ip2t_content">
+                <div id="visitChart" class="chart chart-visit"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix select_btngroup">
+        <button class="btn btn-default pull-left btn_visit">日登录/注册量</button>
+        <button class="btn btn-warning pull-left btn_visit">周登录/注册量</button>
+        <button class="btn btn-primary pull-left btn_visit">月登录/注册量</button>
+        <button class="btn btn-success pull-left btn_visit">年登录/注册量</button>
+    </div>
+    <div class="clearfix select_btntimegroup">
+        <div class="safe_nts pull-right">
+            <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+            <div class="safe_nts_text pull-left">
+                <div class="form-group pull-left">
+                    <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                        <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_time" value="" /><br />
+                </div>
+                <div class="pull-left time_from"> ~ </div>
+                <div class="form-group pull-left">
+                    <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                        <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_time" value="" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_index safe_index_page3">
+        <div class="safe_ip2_tubiao">
+            <div class="safe_ip2t_title"><p></p></div>
+            <div class="safe_ip2t_content">
+                <div id="signupChart" class="chart chart-signup"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--数据图表-->
+<script src="../../../Scripts/echarts/echarts-all.js"></script>
+<script src="../../../Scripts/manage/statistics-visit.js"></script>

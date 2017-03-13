@@ -1,0 +1,166 @@
+﻿
+<!--选择对话框-->
+<link href="../../../Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+<script src="../../../Scripts/sweetalert/sweetalert-dev.js"></script>
+<!--时间插件-->
+<link href="../../../Content/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="../../../Scripts/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="../../../Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--富文本编辑器-->
+<link href="../../../Content/summernote/summernote.css" rel="stylesheet" />
+<script src="../../../Scripts/summernote/summernote.js"></script>
+<script src="../../../Scripts/summernote/lang/summernote-zh-CN.js"></script>
+<!--helper-->
+<script src="../../../Scripts/Helper.js"></script>
+
+<link href="../../../Content/imgbox.css" rel="stylesheet" />
+<link href="../../../Content/manager/msgManager.css" rel="stylesheet" />
+<script type="text/template" id="sendPeopleTemplate">
+    <div class="send_people clearfix">
+        <a href="javascript:;" class="linkstyle">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+    </div>
+</script>
+<script type="text/template" id="userSearchTemplate">
+    <div class="users_context panel panel-default pull-left">
+        <a href="javascript:;" class="linkstyle pull-left">
+            <img class="img-rounded send_people_img pull-left" src="{0}" />
+            <p class="send_people_name pull-left">  {1}</p>
+        </a>
+        <div class="pull-right remove_user">
+            <em class="fa fa-remove"></em>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="tableEditTemplate">
+    <span class="fa fa-eye table_edit_read" title="查看" editId="{0}" data-target="#letter_dialogBox" data-toggle="modal"></span>
+    <span class="fa fa-remove table_edit_delete" title="删除" editId="{0}"></span>
+</script>
+<div class="safe_newmail_all">
+    <div class="help">
+        <!--收件及回复-->
+        <div class="modal fade" id="letter_dialogBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">xxx-消息内容</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="user_reply">
+                            <div class="user_r_title">
+                                <div class="pull-left user_rt_time">[2016-12-19 10:37]</div>
+                                <div class="pull-left user_rt_name"> 张三 ：</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user_r_content">
+                                <p>请问原画基础需要从哪里入手</p>
+                            </div>
+                        </div>
+                        <div class="my_answer">
+                            <textarea maxlength="500" class="input_textareaAsnwer" placeholder="填写您的回复，500字以内哦~~"></textarea>
+                            <div class="my_answer_button">
+                                <button class="btn btn-success btn-sm pull-right my_answer_btn">发送</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新消息-->
+        <div class="modal fade" id="new_Mail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">新邮件</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="new_mail_context">
+                            <div class="new_mail_top clearfix">
+                                <div class="new_mail_type clearfix">
+                                    <div class="new_mail_t pull-left"><p>请选择发送类型：</p></div>
+                                    <div class="btn-group pull-left">
+                                        <div class="btn-group" id="btnUserType" data-toggle="buttons">
+                                            <label class="btn btn-default">
+                                                <input type="radio" class="toggle" id="btnAllUsers" value="1"> 全体用户
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" class="toggle" id="btnAllAdmin" value="2"> 全体工作人员
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" class="toggle" id="btnCustomUsers" value="3"> 自定义
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="new_mail_userCtrl clearfix">
+                                    <div class="new_mail_l pull-left"><p>请输入用户昵称:</p></div>
+                                    <div class="input-group pull-left new_mail_r">
+                                        <input type="text" class="form-control user_nickname" id="textUsers" value="张三;lisi;王五;大傻逼" placeholder="请输入用户昵称,然后检索录入" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" id="btnNickNameSearch">检索</button>
+                                        </span>
+                                    </div>
+                                    <div class="user_nickname_explain pull-left"><p>(说明：请先输入用户昵称，然后检索，会查找到相关用户列出，多个用户请用分号隔开，选择的用户则为接收的用户)</p></div>
+                                    <div class="new_mail_users pull-left">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="new_mail_center">
+                                <div class="new_mail_title"><p>邮件内容:</p></div>
+                                <div id="newMailContext"></div>
+                            </div>
+                            <div class="new_mail_bottom clearfix">
+                                <button class="btn btn-success pull-right">发送</button>
+                                <button class="btn btn-default pull-right">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe_newmail_center">
+        <div class="safe_nc_title clearfix">
+            <div class="btn-group safe_nct_content pull-left">
+                <button type="button" class="btn btn-default" id="btn_DeleteMail"><em class="fa fa-trash em_delete"></em> 删除</button>
+                <button type="button" class="btn btn-default" id="btn_NewMail" data-target="#new_Mail" data-toggle="modal"><em class="fa fa-plus em_add"></em> 新增</button>
+                <button type="button" class="btn btn-default" id="btn_ReplyMail"  data-target="#letter_dialogBox" data-toggle="modal"><em class="fa fa-paper-plane-o em_reply"></em> 回复</button>
+            </div>
+            <div class="safe_nt_search pull-left">
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索时间：</p></div>
+                    <div class="safe_nts_text pull-left">
+                        <div class="form-group">
+                            <div class="input-group date form_datetime" data-date="2017-02-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_time">
+                                <input class="form-control" size="16" type="text" value="" placeholder="请选择时间" readonly>
+                                <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-calendar-plus-o"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_time" value="" /><br />
+                        </div>
+                    </div>
+                </div>
+                <div class="safe_nts pull-right">
+                    <div class="safe_nts_name pull-left"><p>搜索名称：</p></div>
+                    <div class="safe_nts_text pull-left"><input type="text" class="form-control" placeholder="请输入发送人昵称或邮件标题" /></div>
+                </div>
+            </div>
+            <div class="btn-group safe_nct_content pull-right">
+                <button type="button" class="btn btn-default" title="刷新" id="btnTableRefresh"><em class="fa fa-refresh em_refresh"></em></button>
+            </div>
+        </div>
+        <style type="text/css">
+        </style>
+        <div class="safe_nc_context">
+            <table id="newMailTable"></table>
+        </div>
+    </div>
+    <div class="safe_newmail_bottom"></div>
+</div>
+<script src="../../../Scripts/manage/safe-mail.js"></script>
