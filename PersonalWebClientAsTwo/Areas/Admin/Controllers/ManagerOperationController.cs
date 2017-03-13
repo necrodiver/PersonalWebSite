@@ -9,7 +9,7 @@ namespace PersonalWebClient.Areas.Admin.Controllers
     public class ManagerOperationController : Controller
     {
         // GET: Admin/ManagerOperation
-        public ActionResult Index()
+        public ActionResult Context()
         {
             return View();
         }

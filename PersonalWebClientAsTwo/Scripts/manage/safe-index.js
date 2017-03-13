@@ -112,6 +112,12 @@ $(document).ready(function () {
             }
         ]
     };
+
     visitChart.setOption(visitOption);
     signupChart.setOption(signupOption);
+
+    window.onresize = function () {
+        visitChart.resize();
+        signupChart.resize();
+    };
 });

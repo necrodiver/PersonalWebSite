@@ -350,6 +350,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\SafeManager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Context.cshtml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
@@ -434,17 +435,17 @@
     <Content Include="Scripts\sweetalert\sweetalert.css" />
     <Content Include="Scripts\sweetalert\sweetalert.min.js" />
     <Content Include="Scripts\userControl\userCtrl.js" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\Index.html" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\Mail.html" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\Message.html" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\SystemNotice.html" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\UserMessage.html" />
-    <Content Include="Areas\Admin\Views\ManagerOperation\WorkReminder.html" />
-    <Content Include="Areas\Admin\Views\ProductionOperation\JottingsManage.html" />
-    <Content Include="Areas\Admin\Views\ProductionOperation\ScrawlManage.html" />
-    <Content Include="Areas\Admin\Views\ProductionOperation\ScrawlView.html" />
-    <Content Include="Areas\Admin\Views\Statistics\ErrorStatistics.html" />
-    <Content Include="Areas\Admin\Views\Statistics\VisitStatistics.html" />
+    <None Include="Areas\Admin\Views\ManagerOperation\Context.cshtml" />
+    <None Include="Areas\Admin\Views\ManagerOperation\Mail.cshtml" />
+    <None Include="Areas\Admin\Views\ManagerOperation\Message.cshtml" />
+    <None Include="Areas\Admin\Views\ManagerOperation\SystemNotice.cshtml" />
+    <None Include="Areas\Admin\Views\ManagerOperation\UserMessage.cshtml" />
+    <None Include="Areas\Admin\Views\ManagerOperation\WorkReminder.cshtml" />
+    <None Include="Areas\Admin\Views\ProductionOperation\JottingsManage.cshtml" />
+    <None Include="Areas\Admin\Views\ProductionOperation\ScrawlManage.cshtml" />
+    <None Include="Areas\Admin\Views\ProductionOperation\ScrawlView.cshtml" />
+    <None Include="Areas\Admin\Views\Statistics\ErrorStatistics.cshtml" />
+    <None Include="Areas\Admin\Views\Statistics\VisitStatistics.cshtml" />
     <Content Include="Areas\Admin\Views\UserControl\EditUser.html" />
     <Content Include="Areas\Admin\Views\UserControl\UserCtrl.html" />
     <Content Include="Web.config" />
@@ -485,7 +486,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Detail\" />
   </ItemGroup>

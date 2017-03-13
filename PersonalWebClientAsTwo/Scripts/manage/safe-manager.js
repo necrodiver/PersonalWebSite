@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿/// <reference path="../jquery/jquery-1.10.2.js" />
+$(document).ready(function () {
     $('.safe_lni_content').click(function () {
         $('.list_child_group').addClass('hidden');
         if ($(this).children('.safe_lnic_right').hasClass('fa-chevron-right')) {
@@ -44,7 +45,7 @@
                 $('.safe_rc_iframe').attr('src', 'ManagerOperation/Mail.html');
                 $('.safe_right_title p').text('邮件');
             }
-            else if ($(this).hasClass('select_workRemind')){
+            else if ($(this).hasClass('select_workRemind')) {
                 $('.safe_rc_iframe').attr('src', 'ManagerOperation/WorkReminder.html');
                 $('.safe_right_title p').text('工作提醒');
             }
@@ -71,7 +72,11 @@
             else if ($(this).hasClass('select_error')) {
                 $('.safe_rc_iframe').attr('src', 'Statistics/ErrorStatistics.html');
                 $('.safe_right_title p').text('访问统计');
-            }   
+            }
         }
     });
+    $.get('/Client/Admin/ManagerOperation/Context', function (data) {
+        $('.safe_rc_context').html(data);
+    });
+
 });

@@ -45,26 +45,26 @@ p {
     padding: 10px;
 }
 
-.linkstyle {
+.safe_icb_link.linkstyle {
     cursor: pointer;
 }
 
-    .linkstyle:link {
+    .safe_icb_link.linkstyle:link {
         text-decoration: none;
         color: #fff;
     }
 
-    .linkstyle:visited {
+    .safe_icb_link.linkstyle:visited {
         text-decoration: none;
         color: #fff;
     }
 
-    .linkstyle:hover {
+    .safe_icb_link.linkstyle:hover {
         text-decoration: none;
         color: #fff;
     }
 
-    .linkstyle:active {
+    .safe_icb_link.linkstyle:active {
         text-decoration: none;
         color: #fff;
     }

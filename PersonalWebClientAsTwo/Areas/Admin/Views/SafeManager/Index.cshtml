@@ -13,6 +13,7 @@
     @Scripts.Render("~/bundles/waterfallFlowLayout")
     @Scripts.Render("~/bundles/philter")
     @Scripts.Render("~/bundles/service")
+
     <link href="../../Content/manager/safe-manager.css" rel="stylesheet" />
     @{
         Layout = null;
@@ -152,7 +153,9 @@
                 </div>
             </div>
             <div class="safe_right_context">
-                <iframe class="safe_rc_iframe panel panel-default" frameborder="0" scrolling="no" src="ManagerOperation/Index.html"></iframe>
+                <div class="safe_rc_context panel panel-default">
+                    @*@Html.Partial("Context")*@
+                </div>
             </div>
         </div>
     </div>
