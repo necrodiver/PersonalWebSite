@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = null;
 }
 @Scripts.Render("~/bundles/jquery")
@@ -6,6 +6,8 @@
 
 @Scripts.Render("~/bundles/uploadtitleimg")
 @Styles.Render("~/Content/uploadtitleimg")
+
+<link href="~/Content/input-style.css" rel="stylesheet" />
 <style type="text/css">
     .edit_parent, .edit_sreality {
         margin: 20px;
@@ -70,7 +72,7 @@
         margin-left: 15px;
     }
 
-    .edit_s>.col-3 {
+    .edit_s > .col-3 {
         float: none;
         margin: 15px 7px;
         width: 250px;
@@ -449,7 +451,7 @@
     </form>
 </div>
 <script type="text/javascript">
-    $(window).load(function () {
+    $(function () {
         $(".col-3 input").val("");
 
         $(".input-effect input").focusout(function () {
@@ -458,9 +460,7 @@
             } else {
                 $(this).removeClass("has-content");
             }
-        })
-    });
-    $(function () {
+        });
         $('#edit_nickname,#edit_domain,#edit_email').modal({
             keyboard: true,
             show: false

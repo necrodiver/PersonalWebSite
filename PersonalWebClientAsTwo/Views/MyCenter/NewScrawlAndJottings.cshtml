@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = null;
 }
 @Styles.Render("~/Content/css")
@@ -78,9 +78,11 @@
         float: none;
         margin: 15px;
     }
-    .new_sch_t, .new_sch_tag{
-        z-index:0;
+
+    .new_sch_t, .new_sch_tag {
+        z-index: 0;
     }
+
     .new_sch_t, .new_sch_tag, .new_jn_content, .new_jt_content {
         margin-bottom: 0px;
         margin-top: 10px;
@@ -88,7 +90,7 @@
 
     .new_jn_name, .new_jt_tag {
         width: 250px;
-        z-index:0;
+        z-index: 0;
     }
 
     .new_jottings_content, .new_jbottom_click {
@@ -189,6 +191,17 @@
         }
     });
 
+    $(function () {
+        $(".col-3 input").val("");
+
+        $(".input-effect input").focusout(function () {
+            if ($(this).val() != "") {
+                $(this).addClass("has-content");
+            } else {
+                $(this).removeClass("has-content");
+            }
+        });
+    });
     $(document).ready(function () {
         $('#summernote').summernote({
             lang: 'zh-CN',

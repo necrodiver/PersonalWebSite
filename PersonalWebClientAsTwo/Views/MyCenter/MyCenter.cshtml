@@ -117,8 +117,19 @@
 </div>
 <script src="~/Scripts/jquery/jquery-1.10.2.js"></script>
 <script>
-    $(function () {
 
+    $(function () {
+        $(window).load(function () {
+            $(".col-3 input").val("");
+
+            $(".input-effect input").focusout(function () {
+                if ($(this).val() != "") {
+                    $(this).addClass("has-content");
+                } else {
+                    $(this).removeClass("has-content");
+                }
+            })
+        });
         $.get('@Url.Action("MessageCenter")', function (data) {
             $('.mycenter_right').html(data);
         });

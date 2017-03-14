@@ -59,6 +59,7 @@
     box-shadow: 4px 6px 12px rgba(0,0,0,0.175);
     -webkit-box-shadow: 4px 6px 12px rgba(0,0,0,0.175);
     padding-bottom:20px;
+    z-index:0;
 }
 
 .mycenter_tabs {
