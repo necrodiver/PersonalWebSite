@@ -159,6 +159,12 @@
     <Content Include="Content\imgbox.css" />
     <Content Include="Content\input-style.css" />
     <Content Include="Content\lightbox.css" />
+    <Content Include="Content\lightbox\close.png" />
+    <Content Include="Content\lightbox\lightbox.css" />
+    <Content Include="Content\lightbox\lightbox.min.css" />
+    <Content Include="Content\lightbox\loading.gif" />
+    <Content Include="Content\lightbox\next.png" />
+    <Content Include="Content\lightbox\prev.png" />
     <Content Include="Content\manager\msgManager.css" />
     <Content Include="Content\manager\safe-index.css" />
     <Content Include="Content\manager\safe-manager.css" />
@@ -351,6 +357,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\SafeManager\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Context.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
@@ -367,6 +374,10 @@
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lightbox.min.js" />
+    <Content Include="Scripts\lightbox\lightbox-plus-jquery.js" />
+    <Content Include="Scripts\lightbox\lightbox-plus-jquery.min.js" />
+    <Content Include="Scripts\lightbox\lightbox.js" />
+    <Content Include="Scripts\lightbox\lightbox.min.js" />
     <Content Include="Scripts\linkServer\server.js" />
     <Content Include="Scripts\manage\safe-index.js" />
     <Content Include="Scripts\manage\safe-mail.js" />
@@ -482,6 +493,8 @@
     <Content Include="Views\Home\RetrievePassword.cshtml" />
     <Content Include="Views\Home\SignUpAndSignIn.cshtml" />
     <Content Include="Views\Home\UserProfiles.cshtml" />
+    <Content Include="Scripts\lightbox\lightbox-plus-jquery.min.map" />
+    <Content Include="Scripts\lightbox\lightbox.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,13 @@
-﻿<script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
-<link href="../../Content/bootstrap/bootstrap-table.css" rel="stylesheet" />
-<script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+﻿@{ 
+    Layout=null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/btable")
+@Styles.Render("~/Content/btablecss")
+
 <style type="text/css">
     .spanbadge {
         background-color: #6ec29d;
@@ -125,7 +132,7 @@
         $(function () {
 
             //1.初始化Table
-            var oTable = new TableInit();
+            var oTable = TableInit();
             oTable.Init();
 
             //2.初始化Button的点击事件
@@ -134,19 +141,20 @@
 
             $(function () {
                 $('#letter_dialogBox').modal({
-                    keyboard: true
+                    keyboard: true,
+                    show:false
                 })
             });
 
         });
 
-
-        var TableInit = function () {
+        //var TableInit = 
+        function TableInit() {
             var oTableInit = new Object();
             //初始化Table
             oTableInit.Init = function () {
                 $('#tb_departments').bootstrapTable({
-                    url: '../../Test/Handler1.ashx/GetDepartment',         //请求后台的URL（*）
+                    //url: '../../Test/Handler1.ashx/GetDepartment',         //请求后台的URL（*）
                     method: 'post',                      //请求方式（*）
                     toolbar: '#toolbar',                //工具按钮用哪个容器
                     striped: true,                      //是否显示行间隔色

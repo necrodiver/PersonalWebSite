@@ -1,9 +1,18 @@
-﻿<link href="../../Content/app/list.css" rel="stylesheet" />
+﻿@{
+    Layout = null;
+}
+@*@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/index")*@
+
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/helper")
+@Scripts.Render("~/bundles/bootstrap")*@
+@Scripts.Render("~/bundles/waterfallFlowLayout")
+@Scripts.Render("~/bundles/philter")
+@*@Scripts.Render("~/bundles/service")*@
+
 <script type="text/template" id="tagTemplate">
-    <button class="btn {0} btn-xs" type="button">
-        <em class="fa fa-tag"></em>
-        {1} <span class="badge">{2}</span>
-    </button>
+    @Html.Partial("PartialView/format_Tag")
 </script>
 <script type="text/template" id="workTemplate">
     @Html.Partial("PartialView/format_work")
@@ -13,18 +22,19 @@
 </script>
 
 <style type="text/css">
-    body {
-        /*background-color: #eee;*/
-    }
-
     .lb-header {
         background-color: #fff;
+        padding:10px 0 10px 10px;
+        margin-top:10px;
     }
 
     .work_thumbnail.thumbnail, .workArticle_thumbnail.thumbnail {
         margin: 10px 8px;
     }
-
+    .lb-header hr{
+        margin-top:10px;
+        margin-bottom:10px;
+    }
     .lb-header, .lb-sort {
         box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
         -webkit-box-shadow: -2px 2px 6px rgba(0,0,0,0.175);
@@ -170,7 +180,6 @@
 
         $container.html('');
         appendToMasonry();
-
         //图片灰度展示
         $.philter();
     });

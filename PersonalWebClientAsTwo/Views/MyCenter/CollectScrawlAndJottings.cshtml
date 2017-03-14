@@ -1,4 +1,10 @@
-﻿<link href="../../Content/app/list.css" rel="stylesheet" />
+﻿@{
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/waterfallFlowLayout")
+@Scripts.Render("~/bundles/philter")
+<link href="../../Content/app/list.css" rel="stylesheet" />
 <script type="text/template" id="tagTemplate">
     @Html.Partial("PartialView/format_Tag")
 </script>
@@ -10,7 +16,9 @@
     .lb-header {
         background-color: #fff;
     }
-
+    .content .lb-content{
+        padding-left:0px;
+    }
     .thumbnail.img_thumbnail, .jotting_thumbnail.thumbnail {
         margin: 10px 8px;
     }

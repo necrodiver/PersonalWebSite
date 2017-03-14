@@ -2,6 +2,7 @@
 
     $('#mycenter_news').click(function () {
         $('.mycenter_right_content').attr('src', 'MyCenterOperation/MessageCenter.html');
+
     });
     $('#mycenter_newScrawlJottings').click(function () {
         $('.mycenter_right_content').attr('src', 'MyCenterOperation/NewScrawlAndJottings.html');

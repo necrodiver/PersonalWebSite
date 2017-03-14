@@ -1,17 +1,20 @@
-﻿<link href="../../Content/bootstrap/bootstrap-table.css" rel="stylesheet" />
-<script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
-<script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
+﻿@{ 
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/btable")
+@Styles.Render("~/Content/btablecss")
 
 <!--上传图片工具-->
-<link href="../../Content/fileinput.css" rel="stylesheet" />
-<script src="../../Scripts/fileinput.min.js"></script>
-<script src="../../Scripts/fileinput_locale_zh.js"></script>
+@Scripts.Render("~/bundles/fileinput")
+@Styles.Render("~/Content/fileinputcss")
+
 
 <!--summernote富文本编辑器-->
-<link href="../../Content/summernote/summernote.css" rel="stylesheet" />
-<script src="../../Scripts/summernote/summernote.js"></script>
-<script src="../../Scripts/summernote/lang/summernote-zh-CN.js"></script>
-
+@Scripts.Render("~/bundles/summernote")
+@Styles.Render("~/Content/summernotecss")
 
 <style type="text/css">
     .new_content {
@@ -75,7 +78,9 @@
         float: none;
         margin: 15px;
     }
-
+    .new_sch_t, .new_sch_tag{
+        z-index:0;
+    }
     .new_sch_t, .new_sch_tag, .new_jn_content, .new_jt_content {
         margin-bottom: 0px;
         margin-top: 10px;
@@ -83,6 +88,7 @@
 
     .new_jn_name, .new_jt_tag {
         width: 250px;
+        z-index:0;
     }
 
     .new_jottings_content, .new_jbottom_click {

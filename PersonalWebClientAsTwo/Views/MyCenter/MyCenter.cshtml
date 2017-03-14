@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "MyCenter";
 }
+
+
 <link href="../Content/app/myCenter.css" rel="stylesheet" />
 <div class="anchor_Top affix panel" data-spy="affix">
     <a class="anchor_linkTop" href="#all">
@@ -109,11 +111,59 @@
         </div>
     </div>
     <div class="mycenter_right panel panel-default pull-right  col-md-9">
-        @Html.Partial("MessageCenter")
+        @*@Html.Partial("MessageCenter")*@
     </div>
     <div class="clearfix"></div>
 </div>
+<script src="~/Scripts/jquery/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
 
-<script src="../Scripts/app/mycenter.js"></script>
+        $.get('@Url.Action("MessageCenter")', function (data) {
+            $('.mycenter_right').html(data);
+        });
+
+        $('#mycenter_news').click(function () {
+            $.get('@Url.Action("MessageCenter")', function (data) {
+                $('.mycenter_right').html(data);
+            });
+
+        });
+        $('#mycenter_newScrawlJottings').click(function () {
+            $.get('@Url.Action("NewScrawlAndJottings")', function (data) {
+                $('.mycenter_right').html(data);
+            });
+        });
+        $('#mycenter_ScrawlJottings').click(function () {
+            $.get('@Url.Action("MyScrawlAndJottings")', function (data) {
+                $('.mycenter_right').html(data);
+            });
+        });
+        $('#mycenter_collectScrawlJottings').click(function () {
+            $.get('@Url.Action("CollectScrawlAndJottings")', function (data) {
+                $('.mycenter_right').html(data);
+            });
+            //$('.mycenter_right_content').attr('src', 'MyCenterOperation/CollectScrawlAndJottings.html');
+        });
+        $('#mycenter_attentionPerson').click(function () {
+            $('.mycenter_right_content').attr('src', 'MyCenterOperation/AttentionPerson.html');
+        });
+        $('#mycenter_myFans').click(function () {
+            $('.mycenter_right_content').attr('src', 'MyCenterOperation/MyFans.html');
+        });
+
+        $('#mycenter_editInformation,#editInformation').click(function () {
+            $('.mycenter_right_content').attr('src', 'MyCenterOperation/EditInformation.html');
+            $('.mycenter_tabs').removeClass('mycenter_tabs_click');
+            $('#mycenter_editInformation').addClass('mycenter_tabs_click');
+        });
+
+        $('.mycenter_tabs').click(function () {
+            $('.mycenter_tabs').removeClass('mycenter_tabs_click');
+            $(this).addClass('mycenter_tabs_click');
+        });
+    });
+</script>
+@*<script src="../Scripts/app/mycenter.js"></script>*@
 
 

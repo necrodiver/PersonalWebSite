@@ -77,6 +77,6 @@ $(document).ready(function () {
     });
     $.get('/Client/Admin/ManagerOperation/Context', function (data) {
         $('.safe_rc_context').html(data);
+        $('canvas').width('100%');
     });
-
 });

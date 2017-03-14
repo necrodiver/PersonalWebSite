@@ -19,7 +19,7 @@ namespace PersonalWebClient
                         "~/Scripts/imagesloaded.pkgd.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/lightbox").Include(
-                        "~/Scripts/lightbox.min.js"));
+                        "~/Scripts/lightbox/lightbox.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/helper").Include(
                       "~/Scripts/Helper.js"));
@@ -51,7 +51,7 @@ namespace PersonalWebClient
                       "~/Content/bootstrap/bootstrap.css",
                       "~/Content/input-style.css",
                       "~/Content/fontAwesome/font-awesome.css",
-                      "~/Content/lightbox.css",
+                      "~/Content/lightbox/lightbox.min.css",
                       "~/Content/imgbox.css"));
 
             bundles.Add(new StyleBundle("~/Content/index").Include(
@@ -63,6 +63,26 @@ namespace PersonalWebClient
             bundles.Add(new ScriptBundle("~/Content/uploadtitleimg").Include(
                       "~/Content/imageUpload/sitelogo/sitelogo.css",
                       "~/Content/imageUpload/cropper/cropper.min.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/btable").Include(
+                     "~/Scripts/bootstrap/bootstrap-table.js",
+                     "~/Scripts/bootstrap/bootstrap-table-zh-CN.js"));
+            bundles.Add(new StyleBundle("~/Content/btablecss").Include(
+                     "~/Content/bootstrap/bootstrap-table.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fileinput").Include(
+                     "~/Scripts/fileinput.min.js",
+                     "~/Scripts/fileinput_locale_zh.js"));
+            bundles.Add(new StyleBundle("~/Content/fileinputcss").Include(
+                     "~/Content/fileinput.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/summernote").Include(
+                    "~/Scripts/summernote/summernote.js",
+                    "~/Scripts/summernote/lang/summernote-zh-CN.js"));
+            bundles.Add(new StyleBundle("~/Content/summernotecss").Include(
+                     "~/Content/summernote/summernote.css"));
+
         }
     }
 }
