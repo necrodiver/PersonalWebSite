@@ -64,6 +64,8 @@ namespace PersonalWebClient
                       "~/Content/imageUpload/sitelogo/sitelogo.css",
                       "~/Content/imageUpload/cropper/cropper.min.css"));
 
+            bundles.Add(new StyleBundle("~/Content/listcss").Include(
+                      "~/Content/app/list.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/btable").Include(
                      "~/Scripts/bootstrap/bootstrap-table.js",

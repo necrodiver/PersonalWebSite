@@ -2,7 +2,7 @@
     ViewBag.Title = "MyCenter";
 }
 
-
+@Styles.Render("~/Content/listcss")
 <link href="../Content/app/myCenter.css" rel="stylesheet" />
 <div class="anchor_Top affix panel" data-spy="affix">
     <a class="anchor_linkTop" href="#all">
@@ -143,17 +143,23 @@
             $.get('@Url.Action("CollectScrawlAndJottings")', function (data) {
                 $('.mycenter_right').html(data);
             });
-            //$('.mycenter_right_content').attr('src', 'MyCenterOperation/CollectScrawlAndJottings.html');
         });
         $('#mycenter_attentionPerson').click(function () {
-            $('.mycenter_right_content').attr('src', 'MyCenterOperation/AttentionPerson.html');
+            $.get('@Url.Action("AttentionPerson")', function (data) {
+                $('.mycenter_right').html(data);
+            });
         });
         $('#mycenter_myFans').click(function () {
-            $('.mycenter_right_content').attr('src', 'MyCenterOperation/MyFans.html');
+            $.get('@Url.Action("MyFans")', function (data) {
+                $('.mycenter_right').html(data);
+            });
         });
 
         $('#mycenter_editInformation,#editInformation').click(function () {
-            $('.mycenter_right_content').attr('src', 'MyCenterOperation/EditInformation.html');
+            $.get('@Url.Action("EditInformation")', function (data) {
+                $('.mycenter_right').html(data);
+            });
+            //$('.mycenter_right_content').attr('src', 'MyCenterOperation/EditInformation.html');
             $('.mycenter_tabs').removeClass('mycenter_tabs_click');
             $('#mycenter_editInformation').addClass('mycenter_tabs_click');
         });

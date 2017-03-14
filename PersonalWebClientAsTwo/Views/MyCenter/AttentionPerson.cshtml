@@ -1,5 +1,11 @@
-﻿<!--用于图片灰度显示-->
-<link href="../../Content/app/list.css" rel="stylesheet" />
+﻿@{ 
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/waterfallFlowLayout")
+@Scripts.Render("~/bundles/philter")
+<!--用于图片灰度显示-->
+@*<link href="../../Content/app/list.css" rel="stylesheet" />*@
 <script type="text/template" id="userTemplate">
    @Html.Partial("PartialView/format_user")
 </script>

@@ -1,11 +1,11 @@
-﻿<!--上传头像插件-->
+﻿@{ 
+    Layout = null;
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
 @Scripts.Render("~/bundles/uploadtitleimg")
 @Styles.Render("~/Content/uploadtitleimg")
-
-<link href="../../Content/bootstrap/bootstrap-table.css" rel="stylesheet" />
-<script src="../../Scripts/bootstrap/bootstrap-table.js"></script>
-<script src="../../Scripts/bootstrap/bootstrap-table-zh-CN.js"></script>
-
 <style type="text/css">
     .edit_parent, .edit_sreality {
         margin: 20px;
@@ -70,7 +70,7 @@
         margin-left: 15px;
     }
 
-    .edit_s .col-3 {
+    .edit_s>.col-3 {
         float: none;
         margin: 15px 7px;
         width: 250px;

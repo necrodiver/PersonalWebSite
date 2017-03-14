@@ -158,7 +158,6 @@
     <Content Include="Content\imageUpload\sitelogo\sitelogo.js" />
     <Content Include="Content\imgbox.css" />
     <Content Include="Content\input-style.css" />
-    <Content Include="Content\lightbox.css" />
     <Content Include="Content\lightbox\close.png" />
     <Content Include="Content\lightbox\lightbox.css" />
     <Content Include="Content\lightbox\lightbox.min.css" />
@@ -373,7 +372,6 @@
     <Content Include="Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\lightbox.min.js" />
     <Content Include="Scripts\lightbox\lightbox-plus-jquery.js" />
     <Content Include="Scripts\lightbox\lightbox-plus-jquery.min.js" />
     <Content Include="Scripts\lightbox\lightbox.js" />
