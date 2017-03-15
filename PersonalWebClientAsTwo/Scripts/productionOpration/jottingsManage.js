@@ -403,7 +403,7 @@
         searchFields: [ "shortAccount"],
         effectiveFieldsAlias:{userName: "姓名"},*/
         clearable: false,
-        url: "../../../Test/bootstrapSuggestPlugin/data.json",
+        url: "../../../Test/data.json",
         idField: "userId",
         keyField: "userName"
     }).on('onDataRequestSuccess', function (e, result) {
@@ -412,5 +412,8 @@
         console.log('onSetSelectValue: ', keyword, data);//F:\Codes\PersonalWebSite\PersonalWebClient\Test/bootstrapSuggestPlugin/data.json
     }).on('onUnsetSelectValue', function () {
         console.log('onUnsetSelectValue');
+    });
+    $.get('/Client/Admin/ProductionOperation/ScrawlView', function (data) {
+        $('#scrawlViewJ').html(data);
     });
 });

@@ -208,7 +208,7 @@ $(document).ready(function () {
             });
         } else {
             //['error', 'warning', 'info', 'success', 'input', 'prompt']
-            swal("删除提示", "请先选择要删除的项~~", "info");
+            swal("冻结提示", "请先选择要冻结的项~~", "info");
         }
     });
 

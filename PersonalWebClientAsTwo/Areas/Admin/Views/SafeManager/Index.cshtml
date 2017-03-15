@@ -14,6 +14,18 @@
     @Scripts.Render("~/bundles/philter")
     @Scripts.Render("~/bundles/service")
 
+    @Scripts.Render("~/bundles/btable")
+    @Styles.Render("~/Content/btablecss")
+
+    @Styles.Render("~/Content/datetimepicker")
+    @Scripts.Render("~/bundles/datetimepicker")
+
+    @Styles.Render("~/Content/sweetalert")
+    @Scripts.Render("~/bundles/sweetalert")
+
+    @Styles.Render("~/Content/summernotecss")
+    @Scripts.Render("~/bundles/summernote")
+
     <link href="../../Content/manager/safe-manager.css" rel="stylesheet" />
     @{
         Layout = null;
@@ -154,7 +166,7 @@
             </div>
             <div class="safe_right_context">
                 <div class="safe_rc_context panel panel-default">
-                    @*@Html.Partial("Context")*@
+                    @Html.Partial("Context")
                 </div>
             </div>
         </div>

@@ -134,7 +134,7 @@
 
 .remove_user {
     font-size: 25px;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     margin-right: 5px;
     cursor: pointer;
 }

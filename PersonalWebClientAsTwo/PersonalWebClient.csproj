@@ -125,6 +125,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductionOperationController.cs" />
     <Compile Include="Areas\Admin\Controllers\SafeManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserControlController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyCenterController.cs" />
@@ -455,8 +456,8 @@
     <None Include="Areas\Admin\Views\ProductionOperation\ScrawlView.cshtml" />
     <None Include="Areas\Admin\Views\Statistics\ErrorStatistics.cshtml" />
     <None Include="Areas\Admin\Views\Statistics\VisitStatistics.cshtml" />
-    <Content Include="Areas\Admin\Views\UserControl\EditUser.html" />
-    <Content Include="Areas\Admin\Views\UserControl\UserCtrl.html" />
+    <None Include="Areas\Admin\Views\UserControl\EditUser.cshtml" />
+    <None Include="Areas\Admin\Views\UserControl\UserCtrl.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -493,6 +494,8 @@
     <Content Include="Views\Home\UserProfiles.cshtml" />
     <Content Include="Scripts\lightbox\lightbox-plus-jquery.min.map" />
     <Content Include="Scripts\lightbox\lightbox.min.map" />
+    <Content Include="Test\data1.json" />
+    <Content Include="Test\data.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

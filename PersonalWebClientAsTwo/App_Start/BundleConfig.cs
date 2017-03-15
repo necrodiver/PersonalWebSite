@@ -52,6 +52,7 @@ namespace PersonalWebClient
                       "~/Content/input-style.css",
                       "~/Content/fontAwesome/font-awesome.css",
                       "~/Content/lightbox/lightbox.min.css",
+                      "~/Content/bootstrap/bootstrapValidator.css",
                       "~/Content/imgbox.css"));
 
             bundles.Add(new StyleBundle("~/Content/index").Include(
@@ -84,6 +85,28 @@ namespace PersonalWebClient
                     "~/Scripts/summernote/lang/summernote-zh-CN.js"));
             bundles.Add(new StyleBundle("~/Content/summernotecss").Include(
                      "~/Content/summernote/summernote.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datetimepicker").Include(
+                    "~/Scripts/datetimepicker/bootstrap-datetimepicker.js",
+                    "~/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"));
+            bundles.Add(new StyleBundle("~/Content/datetimepicker").Include(
+                     "~/Content/bootstrap/bootstrap-datetimepicker.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include(
+                   "~/Scripts/sweetalert/sweetalert-dev.js"));
+            bundles.Add(new StyleBundle("~/Content/sweetalert").Include(
+                     "~/Scripts/sweetalert/sweetalert.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/imgupload").Include(
+                   "~/Content/imageUpload/sitelogo/sitelogo.js",
+                   "~/Content/imageUpload/cropper/cropper.min.js"));
+            bundles.Add(new StyleBundle("~/Content/imgupload").Include(
+                     "~/Content/imageUpload/sitelogo/sitelogo.css",
+                     "~/Content/imageUpload/cropper/cropper.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/echar").Include(
+                   "~/Scripts/echarts/echarts-all.js"));
 
         }
     }

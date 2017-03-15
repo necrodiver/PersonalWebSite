@@ -17,11 +17,16 @@ $(document).ready(function () {
             $(this).removeClass('safe_lni_content_select');
         }
         if ($(this).hasClass('select_index')) {
-            $('.safe_rc_iframe').attr('src', 'ManagerOperation/Index.html');
+            //$('.safe_rc_iframe').attr('src', 'ManagerOperation/Index.html');
+            $.get('/Client/Admin/ManagerOperation/Context', function (data) {
+                $('.safe_rc_context').html(data);
+            });
             $('.safe_right_title p').text('首页');
         }
         else if ($(this).hasClass('select_user')) {
-            $('.safe_rc_iframe').attr('src', 'UserControl/UserCtrl.html');
+            $.get('/Client/Admin/UserControl/UserCtrl', function (data) {
+                $('.safe_rc_context').html(data);
+            });
             $('.safe_right_title p').text('用户管理');
         }
         else if ($(this).hasClass('select_system')) {
@@ -42,27 +47,41 @@ $(document).ready(function () {
             $(this).parent('.list_child_group').prev('.safe_lni_content').addClass('safe_lni_content_select');
 
             if ($(this).hasClass('select_newMail')) {
-                $('.safe_rc_iframe').attr('src', 'ManagerOperation/Mail.html');
+                $.get('/Client/Admin/ManagerOperation/Mail', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('邮件');
             }
             else if ($(this).hasClass('select_workRemind')) {
-                $('.safe_rc_iframe').attr('src', 'ManagerOperation/WorkReminder.html');
+                $.get('/Client/Admin/ManagerOperation/WorkReminder', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('工作提醒');
             }
             else if ($(this).hasClass('select_userMessage')) {
-                $('.safe_rc_iframe').attr('src', 'ManagerOperation/UserMessage.html');
+                $.get('/Client/Admin/ManagerOperation/UserMessage', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('用户反馈');
             }
             else if ($(this).hasClass('select_sysNotice')) {
-                $('.safe_rc_iframe').attr('src', 'ManagerOperation/SystemNotice.html');
+                $.get('/Client/Admin/ManagerOperation/SystemNotice', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('系统公告');
             }
             else if ($(this).hasClass('select_Scrawl')) {
-                $('.safe_rc_iframe').attr('src', 'ProductionOperation/ScrawlManage.html');
+                $.get('/Client/Admin/ProductionOperation/ScrawlManage', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
+                //$('.safe_rc_iframe').attr('src', 'ProductionOperation/ScrawlManage.html');
                 $('.safe_right_title p').text('涂鸦管理');
             }
             else if ($(this).hasClass('select_Jottings')) {
-                $('.safe_rc_iframe').attr('src', 'ProductionOperation/JottingsManage.html');
+                //$('.safe_rc_iframe').attr('src', 'ProductionOperation/JottingsManage.html');
+                $.get('/Client/Admin/ProductionOperation/JottingsManage', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('随笔管理');
             }
             else if ($(this).hasClass('select_visit')) {
@@ -75,8 +94,7 @@ $(document).ready(function () {
             }
         }
     });
-    $.get('/Client/Admin/ManagerOperation/Context', function (data) {
-        $('.safe_rc_context').html(data);
-        $('canvas').width('100%');
-    });
+    //$.get('/Client/Admin/ManagerOperation/Context', function (data) {
+    //    $('.safe_rc_context').html(data);
+    //});
 });
