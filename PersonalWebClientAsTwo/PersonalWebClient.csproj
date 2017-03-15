@@ -129,6 +129,7 @@
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyCenterController.cs" />
+    <Compile Include="Controllers\SignController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,6 +140,7 @@
     <Content Include="Content\app\index.css" />
     <Content Include="Content\app\list.css" />
     <Content Include="Content\app\myCenter.css" />
+    <Content Include="Content\app\sign.css" />
     <Content Include="Content\app\userProfiles.css" />
     <Content Include="Content\bootstrap\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap\bootstrap-datetimepicker.min.css" />
@@ -261,6 +263,7 @@
     <Content Include="Scripts\app\index.js" />
     <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\app\mycenter.js" />
+    <Content Include="Scripts\app\sign.js" />
     <Content Include="Scripts\app\userProfiles.js" />
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
     <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
@@ -496,6 +499,9 @@
     <Content Include="Scripts\lightbox\lightbox.min.map" />
     <Content Include="Test\data1.json" />
     <Content Include="Test\data.json" />
+    <Content Include="Views\Shared\PartialView\format_SignInForm.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_SignUpForm.cshtml" />
+    <Content Include="Views\Sign\Sign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
