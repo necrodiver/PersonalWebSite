@@ -9,7 +9,7 @@ namespace PersonalWebClient.Areas.Admin.Controllers
     public class StatisticsController : Controller
     {
         // GET: Admin/Statistics
-        public ActionResult ErrorStatustucs()
+        public ActionResult ErrorStatistics()
         {
             return View();
         }

@@ -17,7 +17,6 @@ $(document).ready(function () {
             $(this).removeClass('safe_lni_content_select');
         }
         if ($(this).hasClass('select_index')) {
-            //$('.safe_rc_iframe').attr('src', 'ManagerOperation/Index.html');
             $.get('/Client/Admin/ManagerOperation/Context', function (data) {
                 $('.safe_rc_context').html(data);
             });
@@ -74,23 +73,25 @@ $(document).ready(function () {
                 $.get('/Client/Admin/ProductionOperation/ScrawlManage', function (data) {
                     $('.safe_rc_context').html(data);
                 });
-                //$('.safe_rc_iframe').attr('src', 'ProductionOperation/ScrawlManage.html');
                 $('.safe_right_title p').text('涂鸦管理');
             }
             else if ($(this).hasClass('select_Jottings')) {
-                //$('.safe_rc_iframe').attr('src', 'ProductionOperation/JottingsManage.html');
                 $.get('/Client/Admin/ProductionOperation/JottingsManage', function (data) {
                     $('.safe_rc_context').html(data);
                 });
                 $('.safe_right_title p').text('随笔管理');
             }
             else if ($(this).hasClass('select_visit')) {
-                $('.safe_rc_iframe').attr('src', 'Statistics/VisitStatistics.html');
+                $.get('/Client/Admin/Statistics/VisitStatistics', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
                 $('.safe_right_title p').text('访问统计');
             }
             else if ($(this).hasClass('select_error')) {
-                $('.safe_rc_iframe').attr('src', 'Statistics/ErrorStatistics.html');
-                $('.safe_right_title p').text('访问统计');
+                $.get('/Client/Admin/Statistics/ErrorStatistics', function (data) {
+                    $('.safe_rc_context').html(data);
+                });
+                $('.safe_right_title p').text('错误记录');
             }
         }
     });

@@ -316,13 +316,13 @@
         searchFields: [ "shortAccount"],
         effectiveFieldsAlias:{userName: "姓名"},*/
         clearable: false,
-        url: "../../../Test/bootstrapSuggestPlugin/data.json",
+        url: "../../../Test/data.json",
         idField: "userId",
         keyField: "userName"
     }).on('onDataRequestSuccess', function (e, result) {
         console.log('onDataRequestSuccess: ', result);
     }).on('onSetSelectValue', function (e, keyword, data) {
-        console.log('onSetSelectValue: ', keyword, data);//F:\Codes\PersonalWebSite\PersonalWebClient\Test/bootstrapSuggestPlugin/data.json
+        console.log('onSetSelectValue: ', keyword, data);//F:\Codes\PersonalWebSite\PersonalWebClient\Test/data.json
     }).on('onUnsetSelectValue', function () {
         console.log('onUnsetSelectValue');
     });
