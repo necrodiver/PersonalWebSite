@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿/// <reference path="../jquery/jquery-1.10.2.js" />
+$(function () {
     $('#signUpForm').bootstrapValidator({
         message: '这个值是无效的',
         feedbackIcons: {/*输入框不同状态，显示图片的样式*/
@@ -91,5 +92,9 @@
                 }
             }
         }
+    });
+
+    $("#btnRegister").click(function () {
+
     });
 });

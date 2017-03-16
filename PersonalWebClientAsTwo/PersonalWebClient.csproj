@@ -263,8 +263,8 @@
     <Content Include="Scripts\app\index.js" />
     <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\app\mycenter.js" />
-    <Content Include="Scripts\app\signIn.js" />
-    <Content Include="Scripts\app\signUp.js" />
+    <Content Include="Scripts\app\app-signIn.js" />
+    <Content Include="Scripts\app\app-signUp.js" />
     <Content Include="Scripts\app\userProfiles.js" />
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
     <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
