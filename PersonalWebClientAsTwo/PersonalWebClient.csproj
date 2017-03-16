@@ -479,7 +479,7 @@
     <Content Include="Views\Shared\PartialView\format_Image.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Jotting.cshtml" />
     <Content Include="Views\Shared\PartialView\format_loggedOnUser.cshtml" />
-    <Content Include="Views\Shared\PartialView\format_signIn.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_signInToolTip.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Tag.cshtml" />
     <Content Include="Views\MyCenter\MyCenter.cshtml" />
@@ -503,6 +503,7 @@
     <Content Include="Views\Shared\PartialView\format_SignInForm.cshtml" />
     <Content Include="Views\Shared\PartialView\format_SignUpForm.cshtml" />
     <Content Include="Views\Sign\Sign.cshtml" />
+    <Content Include="Views\Shared\PartialView\format_Sign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

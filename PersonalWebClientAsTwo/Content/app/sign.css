@@ -11,7 +11,7 @@
         font-weight: 700;
     }
 
-    #signUp {
+    #signUpForm {
         margin-top: 50px;
         margin-bottom: 50px;
     }
@@ -41,7 +41,7 @@
         color: #000;
     }
 
-    #signIn {
+    #signInForm {
         margin-top: 50px;
         margin-bottom: 50px;
     }
