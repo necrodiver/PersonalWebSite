@@ -9,6 +9,9 @@ $server.accessToDataThis = function (fullUrl, jsonData, isAsync) {
         type: "post",
         dataType: "json",
         data: jsonData,
+        xhrFields: {
+               withCredentials: true
+        },
         success: function (msgObj) {
             return msgObj;
         },
@@ -19,11 +22,11 @@ $server.accessToDataThis = function (fullUrl, jsonData, isAsync) {
 }
 
 $server.accessToData = function (childUrlName, jsonData, isAsync) {
-    return $server.accessToDataThis($server.getChildUrl(childUrlName), jsonData, isAsync);
+    return $server.accessToDataThis($server.getFullUrl(childUrlName), jsonData, isAsync);
 }
 
 $server.accessToData = function (childUrlName, jsonData) {
-    return $server.accessToDataThis($server.getChildUrl(childUrlName), jsonData, true);
+    return $server.accessToDataThis($server.getFullUrl(childUrlName), jsonData, true);
 }
 
 $server.getFullUrl = function GetChildUrl(urlName) {
@@ -94,6 +97,9 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "commend_getList"://查询消息
             urlFull = serverUrl + "Comment/GetList";
 
+        case "Test":
+            urlFull = serverUrl + "Account/GetTestValuesModal?DM=1000";
+
         default:
             urlFull =null;
     }
@@ -106,9 +112,8 @@ $server.ceshi = function (num) {
     });
 }
 $server.ceshi1 = function (num) {
-    $.get(serverUrl + 'Account/GetTestValues1', { DM: num }, function (data) {
-        console.log('从服务器获取的时间：' + data);
-    });
+    var a = $server.accessToData("Test", null);
+    console.log(a);
 }
 
 function consoleLog(status) {

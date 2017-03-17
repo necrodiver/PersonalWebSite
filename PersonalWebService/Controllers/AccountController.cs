@@ -135,6 +135,8 @@ namespace PersonalWebService.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("GetTestValues")]
         public string GetTestValues(int DM)
         {
             try
@@ -149,7 +151,9 @@ namespace PersonalWebService.Controllers
             return DateTime.Now.ToString() + ":" + DM;
         }
 
-        public async Task<ReturnStatus_Model> GetTestValues1(int DM)
+        [HttpGet]
+        [Route("GetTestValuesModal")]
+        public async Task<ReturnStatus_Model> GetTestValuesModel(int DM)
         {
             return await Task.Run(() =>
             {
