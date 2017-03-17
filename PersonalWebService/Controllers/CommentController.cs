@@ -36,6 +36,8 @@ namespace PersonalWebService.Controllers
             });
         }
 
+        [HttpPost]
+        [Route("GetList")]
         public async Task<List<UserComment_Model>>GetList([FromBody]UserCommentCondition_Model condition)
         {
             return await Task.Run(()=> {

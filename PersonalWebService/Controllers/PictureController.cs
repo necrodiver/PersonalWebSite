@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace PersonalWebService.Controllers
 {
-    [RoutePrefix("api/Article")]
+    [RoutePrefix("api/Scrawl")]
     [ModelValidationFilter]
     [BasicAuthentication]
     public class PictureController : ApiController

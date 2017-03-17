@@ -48,7 +48,7 @@ namespace PersonalWebService.BLL
             rsModel.title = "用户登录";
 
             //验证码验证错误时
-            if (VerificationCode2_Helper.IsPass(user.ValidateCode,index))
+            if (VerificationCode2_Helper.IsPass(user.ValidateCode, index))
             {
                 rsModel.message = "验证码有误，请刷新验证码后重新输入";
                 return rsModel;
@@ -444,6 +444,55 @@ namespace PersonalWebService.BLL
             return null;
         }
 
+
+        public ReturnStatus_Model ContrastUser(string email, string nickName)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "查询用户数据";
+
+            bool isEmailnull = string.IsNullOrEmpty(email);
+            bool isUserNamenull = string.IsNullOrEmpty(nickName);
+
+            if (isEmailnull && isUserNamenull)
+            {
+                rsModel.message = "你验证的内容为空，请重新添加后进行验证";
+                return rsModel;
+            }
+            List<DataField> param = new List<DataField>();
+            string whereStr = "";
+            if (!isEmailnull)
+            {
+                param.Add(new DataField { Name = "@UserName", Value = email });
+                whereStr = " UserName=@UserName ";
+            }
+            else
+            {
+                param.Add(new DataField { Name = "@NickName", Value = nickName });
+                whereStr = " NickName=@NickName ";
+            }
+            try
+            {
+                string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", whereStr);
+                UserInfo userInfo = dal.GetDataSingle<UserInfo>(sql, param);
+                if (userInfo == null || userInfo.UserId == null)
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "不存在当前用户";
+                    return rsModel;
+                }
+
+                rsModel.isRight = false;
+                rsModel.message = "查询已存在";
+                return rsModel;
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return null;
+        }
+
         /// <summary>
         /// 修改用户数据（只限管理员）
         /// </summary>
@@ -534,13 +583,13 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            if (adminInfo.Level >=0)
+            if (adminInfo.Level >= 0)
             {
                 rsModel.isRight = false;
                 rsModel.message = "您的权限不足，不能进行删除操作！";
             }
 
-            if(dal.GetDataCount("SELECT COUNT(*) FROM [dbo].[AdminInfo] WHERE AdminId='"+adminInfo.AdminId+ "' AND Pwd='" + adminInfo.Pwd + "'",null) != 1)
+            if (dal.GetDataCount("SELECT COUNT(*) FROM [dbo].[AdminInfo] WHERE AdminId='" + adminInfo.AdminId + "' AND Pwd='" + adminInfo.Pwd + "'", null) != 1)
             {
                 rsModel.isRight = false;
                 rsModel.message = "管理员账户存在问题，请稍后重试";
@@ -570,7 +619,7 @@ namespace PersonalWebService.BLL
 
             try
             {
-                if (dal.OpeData(sql,null))
+                if (dal.OpeData(sql, null))
                 {
                     rsModel.isRight = true;
                     rsModel.message = "删除成功！";

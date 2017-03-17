@@ -28,7 +28,7 @@ namespace PersonalWebClient
                       "~/Scripts/philter/jquery.philter.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/index").Include(
-                      "~/Scripts/app/index.js"));
+                      "~/Scripts/app/app-index.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/list").Include(
                       "~/Scripts/app/list.js"));

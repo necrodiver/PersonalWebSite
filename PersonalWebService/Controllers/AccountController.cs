@@ -38,6 +38,24 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [Route("ContrastNickName")]
+        public async Task<ReturnStatus_Model> ContrastUserName(string nickName)
+        {
+            return await Task.Run(() => {
+                return accountBll.ContrastUser(null, nickName);
+            });
+        }
+
+        [HttpPost]
+        [Route("ContrastEmail")]
+        public async Task<ReturnStatus_Model> ContrastUserEmail(string email)
+        {
+            return await Task.Run(() => {
+                return accountBll.ContrastUser(email, null);
+            });
+        }
+
+        [HttpPost]
         [BasicAuthentication]
         [Route("Edit")]
         //修改用户信息
@@ -117,14 +135,6 @@ namespace PersonalWebService.Controllers
             });
         }
 
-        private Task<string> GetValueAsync(string userName, string passWord)
-        {
-            return Task.Run(() =>
-            {
-                return DateTime.Now.ToString() + "  UserName:" + userName + "  PWD:" + passWord;
-            });
-        }
-
         public string GetTestValues(int DM)
         {
             try
@@ -137,6 +147,18 @@ namespace PersonalWebService.Controllers
             }
 
             return DateTime.Now.ToString() + ":" + DM;
+        }
+
+        public async Task<ReturnStatus_Model> GetTestValues1(int DM)
+        {
+            return await Task.Run(() =>
+            {
+                ReturnStatus_Model rsModel = new ReturnStatus_Model();
+                rsModel.isRight = false;
+                rsModel.title = "测试";
+                rsModel.message = "测试显示，传值DM："+DM;
+                return rsModel;
+            });
         }
 
         [HttpPost]

@@ -27,11 +27,18 @@ $(function () {
                         field: 'password',
                         message: '用户名不能和密码相同'
                     }
-                    //,
-                    //remote: {/*远程验证*/
-                    //    url: 'remote.aspx',
-                    //    message: '此用户名已被占用，请换一个尝试'
-                    //}
+                    ,
+                    remote: {/*远程验证*/
+                        url: $server.getFullUrl('user_constractNickName'),
+                        message: '此用户名已被占用，请换一个尝试',
+                        delay: 500,
+                        type: 'POST',
+                        data: function (validator) {
+                            return {
+                                nickName: $('[name="username"]').val()
+                            };
+                        }
+                    }
                 }
             },
             email: {

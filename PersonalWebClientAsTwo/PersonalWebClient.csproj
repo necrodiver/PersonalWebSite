@@ -260,7 +260,7 @@
     <Content Include="Images\user-ceshi.jpg" />
     <Content Include="Images\weibo.jpg" />
     <Content Include="Images\x.png" />
-    <Content Include="Scripts\app\index.js" />
+    <Content Include="Scripts\app\app-index.js" />
     <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\app\mycenter.js" />
     <Content Include="Scripts\app\app-signIn.js" />
