@@ -329,3 +329,4 @@ F:\Codes\PersonalWebSite\PersonalWebService\bin\PersonalWebService.IDAL.pdb
 F:\Codes\PersonalWebSite\PersonalWebService\bin\System.Web.Cors.dll
 F:\Codes\PersonalWebSite\PersonalWebService\bin\System.Web.Http.Cors.dll
 F:\Codes\PersonalWebSite\PersonalWebService\bin\System.Web.Http.Cors.xml
+F:\Codes\PersonalWebSite\PersonalWebService\bin\zh-Hans\System.Web.Http.Cors.resources.dll
