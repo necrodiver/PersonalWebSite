@@ -21,7 +21,7 @@ namespace PersonalWebService
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             //设置跨域请求
-            config.EnableCors(new EnableCorsAttribute("localhost:4525", "Access-Control-Allow-Origin", "GET,POST,PUT"));
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4525", "Access-Control-Allow-Origin", "GET,POST,PUT"));
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
@@ -32,13 +32,10 @@ namespace PersonalWebService
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //设置数据返回格式为json
-            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
-            //默认返回 json  
-            //GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("datatype", "json", "application/json"));
-            GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("format", "json", "application/json"));
-            
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
         }
     }
 }

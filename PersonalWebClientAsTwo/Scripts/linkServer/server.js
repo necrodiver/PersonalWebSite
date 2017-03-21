@@ -4,21 +4,19 @@ var userInfo;
 var $server = [];
 var serverUrl = 'http://localhost:10841/Service/api/';
 var isPost = true;
+var isAsync = true;
 jQuery.support.cors = true;
 
-$server.accessToDataThis = function (fullUrl, jsonData, isAsync) {
+$server.accessToDataThis = function (fullUrl, jsonData, manage) {
     $.ajax({
         async: isAsync,
         url: fullUrl,
         type: isPost ? "POST" : "GET",
-        dataType: "jsonp",
+        dataType: "json",
         data: jsonData,
-        contentType:"application/json",
-        //xhrFields: {
-        //    withCredentials: true
-        //},
-        success: function (msgObj) {
-            return msgObj;
+        success: function (dataJson) {
+            console.log("msgObj的值:" + dataJson);
+            manage(dataJson);
         },
         error: function (xmlHttpRequest, textStatus, errorThrown) {
             console.log(xmlHttpRequest.status);
@@ -26,18 +24,14 @@ $server.accessToDataThis = function (fullUrl, jsonData, isAsync) {
     });
 }
 
-$server.accessToData = function (childUrlName, jsonData, isAsync) {
-    return $server.accessToDataThis($server.getFullUrl(childUrlName), jsonData, isAsync);
-}
-
-$server.accessToData = function (childUrlName, jsonData) {
-    return $server.accessToDataThis($server.getFullUrl(childUrlName), jsonData, true);
+$server.accessToData = function (childUrlName, jsonData, manage) {
+    return $server.accessToDataThis($server.getFullUrl(childUrlName), jsonData, manage);
 }
 
 $server.getFullUrl = function GetChildUrl(urlName) {
     var urlFull = "";
     switch (urlName) {
-//Account
+        //Account
         case "user_Login"://登录
             urlFull = serverUrl + "Account/Login";
             break;
@@ -68,7 +62,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "user_vertifyCode"://找回密码后的修改密码
             urlFull = serverUrl + "Account/VertifyCode";
             break;
-//Article
+            //Article
         case "article_add"://添加文章
             urlFull = serverUrl + "Article/Add";
             break;
@@ -81,7 +75,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "article_delete"://删除文章
             urlFull = serverUrl + "Article/Delete";
             break;
-//Scrawl
+            //Scrawl
         case "scrawl_add"://添加涂鸦
             urlFull = serverUrl + "Scrawl/Add";
             break;
@@ -94,7 +88,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "scrawl_delete"://删除涂鸦
             urlFull = serverUrl + "Scrawl/Delete";
             break;
-//Comment
+            //Comment
         case "commend_add"://添加消息
             urlFull = serverUrl + "Comment/Add";
             break;
@@ -119,14 +113,10 @@ $server.ceshi = function (num) {
         console.log('从服务器获取的时间：' + data);
     });
 }
+
 $server.ceshi1 = function (num) {
     isPost = false;
-    var a = $server.accessToData("Test", {DM:num});
-    console.log(a);
-    //$.get(serverUrl + 'Account/GetTestValuesModal', { DM: num }, function (data) {
-    //    console.log('从服务器获取的时间：' + data);
-    //},"json");
-
+    $server.accessToData("Test", { "DM": num }, function (a) {console.log("a的值：" + a);});
 }
 
 function consoleLog(status) {
