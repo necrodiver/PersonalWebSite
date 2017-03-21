@@ -80,6 +80,28 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [Route("RegisterSendEmail")]
+        //发送邮件
+        public async Task<ReturnStatus_Model> RegisterSendEmail([FromBody]SendEmail sendEmail)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.SendEmail(sendEmail.Email, "RegisterSendEmail");
+            });
+        }
+
+        [HttpPost]
+        [Route("Register")]
+        //用户注册
+        public async Task<ReturnStatus_Model> Register([FromBody]UserRegister userRegister)
+        {
+            return await Task.Run(() =>
+            {
+                return accountBll.FirstRegisterUserInfo(userRegister);
+            });
+        }
+
+        [HttpPost]
         [BasicAuthentication]
         [Route("Get")]
         //获取个人信息

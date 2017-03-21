@@ -96,6 +96,107 @@ namespace PersonalWebService.BLL
             return rsModel;
         }
 
+        public ReturnStatus_Model SendEmail(string email, string sessionKey)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.title = "验证码发送";
+            rsModel.isRight = false;
+            //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>(sessionKey);
+            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) < DateTime.Now)
+            {
+                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
+                return rsModel;
+            }
+
+            YZMHelper yzmChild = new YZMHelper();
+            RetrieveValue rv = new RetrieveValue();
+            rv.ValidateCode = yzmChild.Text;
+            rv.SaveTime = DateTime.Now;
+            SessionState.SaveSession(rv, sessionKey);
+            try
+            {
+                if (emailHelper.SendEmail(email, yzmChild.Text))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "邮件发送成功！";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                rsModel.message = "邮件发送失败！请稍后重试";
+            }
+            return rsModel;
+        }
+
+        /// <summary>
+        /// 初步注册用户，详细内容将在登录后填写
+        /// </summary>
+        /// <param name="userRegister"></param>
+        /// <returns></returns>
+        public ReturnStatus_Model FirstRegisterUserInfo(UserRegister userRegister)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "注册用户";
+            //首先各种验证
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
+            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
+            {
+                rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
+                return rsModel;
+            }
+            if (!rvPrev.ValidateCode.Equals(userRegister.ValidateCode))
+            {
+                rsModel.message = "验证码输入有误，请重新输入";
+                return rsModel;
+            }
+
+            //数据装入model
+            UserInfo userInfoS = new UserInfo();
+            userInfoS.UserName = userRegister.UserName;
+            userInfoS.NickName = userRegister.NickName;
+            userInfoS.Password = userRegister.PassWord;
+            userInfoS.AddTime = DateTime.Now;
+            userInfoS.State = State.正常;
+            userInfoS.NowStatus = NowStatus.未登录;
+
+            //查询email和昵称是否存在于数据库中
+            string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", " UserName=@UserName");
+            if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = userInfoS.UserName }) == 1)
+            {
+                rsModel.message = "当前email账号已存在,请重新选择Email账号进行注册";
+                return rsModel;
+            }
+
+            sql = string.Format(sqlSelectTemplate, "TOP 1 *", " NickName=@NickName");
+            if (dal.GetDataCount(sql, new DataField { Name = "@NickName", Value = userInfoS.UserName }) == 1)
+            {
+                rsModel.message = "当前用户昵称已存在,请重新选择昵称进行注册";
+                return rsModel;
+            }
+
+            try
+            {
+                if (dal.OpeData(userInfoS, OperatingModel.Add))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "注册成功";
+                }
+                else
+                {
+                    rsModel.message = "注册失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                rsModel.message = "服务器错误，请稍后重试";
+            }
+            return rsModel;
+        }
+
         /// <summary>
         /// 获取用户数据
         /// </summary>
@@ -474,8 +575,7 @@ namespace PersonalWebService.BLL
             try
             {
                 string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", whereStr);
-                UserInfo userInfo = dal.GetDataSingle<UserInfo>(sql, param);
-                if (userInfo == null || userInfo.UserId == null)
+                if (dal.GetDataCount(sql, param) < 1)
                 {
                     rsModel.isRight = true;
                     rsModel.message = "不存在当前用户";

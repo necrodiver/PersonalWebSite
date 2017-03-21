@@ -78,6 +78,42 @@ namespace PersonalWebService.Model
         [DisplayName("验证码")]
         public List<Coord> ValidateCode { get; set; }
     }
+    public class SendEmail
+    {
+        [Required]
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
+        public string Email { get; set; }
+    }
+    /// <summary>
+    /// 初步注册账号
+    /// </summary>
+    public class UserRegister
+    {
+        [Required]
+        [DisplayName("用户名")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DisplayName("昵称")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
+        //这里需要添加敏感词过滤
+        public string NickName { get; set; }
+
+        [Required]
+        [DisplayName("登录密码")]
+        [RegularExpression(@"^\w+$", ErrorMessage = "{0}不符合规范")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
+        public string PassWord { get; set; }
+
+        [Required]
+        [DisplayName("验证码")]
+        [RegularExpression(@"^[A-Za-z0-9]{4}$", ErrorMessage = "{0}不符合规范")]
+        public string ValidateCode { get; set; }
+    }
 
     /// <summary>
     /// 找回密码Model

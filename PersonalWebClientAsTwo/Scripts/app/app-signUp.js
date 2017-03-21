@@ -1,4 +1,5 @@
-﻿/// <reference path="../jquery/jquery-1.10.2.js" />
+﻿/// <reference path="../linkServer/server.js" />
+/// <reference path="../jquery/jquery-1.10.2.js" />
 $(function () {
     $('#signUpForm').bootstrapValidator({
         message: '这个值是无效的',
@@ -102,6 +103,16 @@ $(function () {
     });
 
     $("#btnRegister").click(function () {
-
+        var sup_email = $("#sup_email").val();
+        var sup_nickname = $("#sup_nickname").val();
+        var sup_pwd = $("#sup_pwd").val();
+        var sup_vcode = $("#sup_vcode").val();
+        var userRegister=new{
+            "UserName":sup_email,
+            "NickName":sup_nickname,
+            "PassWord":sup_sup_pwdemail,
+            "ValidateCode":sup_vcode
+        };
+        $server.accessToData("user_register", userRegister, $server.logReturn);
     });
 });
