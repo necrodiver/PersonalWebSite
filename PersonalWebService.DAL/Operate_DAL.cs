@@ -15,7 +15,7 @@ namespace PersonalWebService.DAL
             // return generDB.Edit(sql, param);
 
             string value = generDB.GetScaler(sql, param);
-            if (string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
                 return Convert.ToInt32(value);
             }

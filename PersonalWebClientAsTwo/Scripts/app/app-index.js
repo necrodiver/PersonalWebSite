@@ -1,8 +1,6 @@
 ﻿/// <reference path="../linkServer/server.js" />
 
 //测试一下服务器链接情况，获取时间
-
-$server.ceshi1(1001);
 $(function () {
     $(window).load(function () {
         $(".col-3 input").val("");

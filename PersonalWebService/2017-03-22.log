@@ -1,0 +1,112 @@
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass4_0.<ContrastUserName>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass5_0.<ContrastUserEmail>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass5_0.<ContrastUserEmail>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578
+<>c__DisplayClass5_0.<ContrastUserEmail>b__0 => Account_BLL.ContrastUser => LogRecord_Helper.RecordLog System.InvalidOperationException: An enumerable sequence of parameters (arrays, lists, etc) is not allowed in this context
+   在 Dapper.SqlMapper.GetCacheInfo(Identity identity, Object exampleParameters, Boolean addToCache)
+   在 Dapper.SqlMapper.ExecuteScalarImpl[T](IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.ExecuteScalar(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetScaler(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 66
+   在 PersonalWebService.DAL.Operate_DAL.GetDataCount(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 17
+   在 PersonalWebService.BLL.Account_BLL.ContrastUser(String email, String nickName) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 578

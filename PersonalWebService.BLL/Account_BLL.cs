@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace PersonalWebService.BLL
 {
@@ -561,28 +562,29 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
             List<DataField> param = new List<DataField>();
+            var args = new DynamicParameters();
             string whereStr = "";
             if (!isEmailnull)
             {
-                param.Add(new DataField { Name = "@UserName", Value = email });
+                args.Add("@UserName", email);
                 whereStr = " UserName=@UserName ";
             }
             else
             {
-                param.Add(new DataField { Name = "@NickName", Value = nickName });
+                args.Add("@NickName",nickName);
                 whereStr = " NickName=@NickName ";
             }
             try
             {
-                string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", whereStr);
-                if (dal.GetDataCount(sql, param) < 1)
+                string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
+                if (dal.GetDataCount(sql, args) < 1)
                 {
-                    rsModel.isRight = true;
+                    rsModel.isRight = false;
                     rsModel.message = "不存在当前用户";
                     return rsModel;
                 }
 
-                rsModel.isRight = false;
+                rsModel.isRight = true;
                 rsModel.message = "查询已存在";
                 return rsModel;
             }

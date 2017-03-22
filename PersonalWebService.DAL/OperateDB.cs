@@ -63,7 +63,7 @@ namespace PersonalWebService.DAL
         {
             using (IDbConnection conn = GetOpenConnection())
             {
-                return conn.ExecuteScalar(sql, param) as string;
+                return conn.ExecuteScalar(sql, param).ToString();
             }
         }
 
@@ -108,7 +108,8 @@ namespace PersonalWebService.DAL
         private static IDbConnection GetOpenConnection()
         {
             SqlConnection conn = new SqlConnection(sqlConnectionString);
-            conn.Open();
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
             return conn;
         }
 
@@ -117,7 +118,7 @@ namespace PersonalWebService.DAL
             int num = 0;
             using (IDbConnection conn = GetOpenConnection())
             {
-                num= Convert.ToInt32(conn.Execute(sql, param));
+                num = Convert.ToInt32(conn.Execute(sql, param));
             }
             return num;
         }

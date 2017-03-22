@@ -1,4 +1,5 @@
 ﻿/// <reference path="../jquery/jquery-3.1.1.js" />
+/// <reference path="../jquery/jquery-1.10.2.js" />
 
 var userInfo;
 var $server = [];
@@ -13,6 +14,7 @@ $server.accessToDataThis = function (fullUrl, jsonData, manage) {
         url: fullUrl,
         type: isPost ? "POST" : "GET",
         dataType: "json",
+        contentType: "application/x-www-form-urlencoded",//这个是默认方式，可写可不写
         data: jsonData,
         success: function (dataJson) {
             console.log("msgObj的值:" + dataJson);
@@ -41,11 +43,14 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "user_edit"://修改用户信息
             childUrl = "Account/Edit";
             break;
-        case "user_constractNickName"://查询用户昵称是否存在
-            childUrl = "Account/ContrastNickName";
+        case "user_constractNickNameWeb"://查询用户昵称是否存在
+            childUrl = "Account/ContrastNickNameWeb";
             break;
-        case "user_constractEmail"://查询用户是否存在
+        case "user_constractEmail"://查询用户邮箱是否已存在
             childUrl = "Account/ContrastEmail";
+            break;
+        case "user_contrastEmailWeb":
+            childUrl = "Account/ContrastEmailWeb";
             break;
         case "user_register"://注册用户
             childUrl = "Account/FirstRegisterUserInfo";
@@ -119,14 +124,19 @@ $server.getFullUrl = function GetChildUrl(urlName) {
 
 
 $server.ceshi = function (num) {
-    $.get(serverUrl + 'Account/GetTestValuesModal', { DM: num }, function (data) {
+    $.get(serverUrl + 'Account/GetTestValuesModal', { "DM": num }, function (data) {
         console.log('从服务器获取的时间：' + data);
     });
 }
 
 $server.ceshi1 = function (num) {
-    isPost = false;
-    $server.accessToData("Test", { "DM": num }, function (a) { console.log("a的值：" + a); });
+    isPost = true;
+    //$server.accessToData("Test", { "": num }, function (a) { console.log("a的值：" + a); });
+    $server.accessToData("user_constractEmail", { "": "1508840744@qq.com" }, function (a) { console.log("a的值：" + a); });
+    //$.post("http://localhost:10841/Service/api/Account/GetTestValuesModal", { "DM": num }, function (msg) {
+    //    console.log(msg);
+    //});
+
 }
 
 $server.logReturn = function consoleLog(status) {

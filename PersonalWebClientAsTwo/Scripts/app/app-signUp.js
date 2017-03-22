@@ -1,6 +1,7 @@
 ﻿/// <reference path="../linkServer/server.js" />
 /// <reference path="../jquery/jquery-1.10.2.js" />
 $(function () {
+    $server.ceshi1(1001);
     $('#signUpForm').bootstrapValidator({
         message: '这个值是无效的',
         feedbackIcons: {/*输入框不同状态，显示图片的样式*/
@@ -9,6 +10,31 @@ $(function () {
             validating: 'fa fa-refresh'
         },
         fields: {/*验证*/
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: '电子邮件是必填的'
+                    },
+                    emailAddress: {
+                        message: '输入的不是一个有效的电子邮件地址'
+                    }
+                    ,
+                    remote: {/*远程验证*/
+                        url: $server.getFullUrl('user_contrastEmailWeb'),
+                        message: '此电子邮箱已被使用，请输入正确的邮箱地址',
+                        type: 'POST',
+                        crossDomain: true,
+                        name: 'email',
+                        dataType: 'json',
+                        delay: 2000,
+                        data: function (validator) {
+                            return {
+                                "": $('#sup_email').val()
+                            };
+                        }
+                    }
+                }
+            },
             username: {
                 message: '用户名无效',
                 validators: {
@@ -29,32 +55,20 @@ $(function () {
                         message: '用户名不能和密码相同'
                     }
                     ,
-                    remote: {/*远程验证*/
-                        url: $server.getFullUrl('user_constractNickName'),
-                        message: '此用户名已被占用，请换一个尝试',
-                        delay: 500,
+                    remote: {
+                        url: $server.getFullUrl('user_constractNickNameWeb'),
+                        message: '此用户名已被使用，请换一个用户名尝试',
                         type: 'POST',
+                        crossDomain: true,
+                        name: 'email',
+                        dataType: 'json',
+                        delay: 2000,
                         data: function (validator) {
                             return {
-                                nickName: $('[name="username"]').val()
+                                "": $('#sup_nickname').val()
                             };
                         }
                     }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: '电子邮件是必填的'
-                    },
-                    emailAddress: {
-                        message: '输入的不是一个有效的电子邮件地址'
-                    }
-                    //,
-                    //remote: {/*远程验证*/
-                    //    url: 'remote.aspx',
-                    //    message: '此电子邮箱已被使用，请输入正确的邮箱地址'
-                    //}
                 }
             },
             password: {
@@ -107,11 +121,11 @@ $(function () {
         var sup_nickname = $("#sup_nickname").val();
         var sup_pwd = $("#sup_pwd").val();
         var sup_vcode = $("#sup_vcode").val();
-        var userRegister=new{
-            "UserName":sup_email,
-            "NickName":sup_nickname,
-            "PassWord":sup_sup_pwdemail,
-            "ValidateCode":sup_vcode
+        var userRegister = new {
+            "UserName": sup_email,
+            "NickName": sup_nickname,
+            "PassWord": sup_sup_pwdemail,
+            "ValidateCode": sup_vcode
         };
         $server.accessToData("user_register", userRegister, $server.logReturn);
     });

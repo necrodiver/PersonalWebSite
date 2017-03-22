@@ -39,8 +39,20 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
+        [Route("ContrastNickNameWeb")]
+        public async Task<RModal> ContrastUserNameWeb([FromBody]string nickName)
+        {
+            return await Task.Run(() => {
+                ReturnStatus_Model rsModel= accountBll.ContrastUser(null, nickName);
+                RModal rmodal= new RModal();
+                rmodal.valid = !rsModel.isRight;
+                return rmodal;
+            });
+        }
+
+        [HttpPost]
         [Route("ContrastNickName")]
-        public async Task<ReturnStatus_Model> ContrastUserName(string nickName)
+        public async Task<ReturnStatus_Model> ContrastNickName([FromBody]string nickName)
         {
             return await Task.Run(() => {
                 return accountBll.ContrastUser(null, nickName);
@@ -49,10 +61,22 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("ContrastEmail")]
-        public async Task<ReturnStatus_Model> ContrastUserEmail(string email)
+        public async Task<ReturnStatus_Model> ContrastUserEmail([FromBody]string email)
         {
             return await Task.Run(() => {
                 return accountBll.ContrastUser(email, null);
+            });
+        }
+
+        [HttpPost]
+        [Route("ContrastEmailWeb")]
+        public async Task<RModal> ContrastUserEmailWeb([FromBody]string email)
+        {
+            return await Task.Run(() => {
+                ReturnStatus_Model rsModel = accountBll.ContrastUser(email,null);
+                RModal rmodal = new RModal();
+                rmodal.valid = !rsModel.isRight;
+                return rmodal;
             });
         }
 
@@ -174,9 +198,9 @@ namespace PersonalWebService.Controllers
             return DateTime.Now.ToString() + ":" + DM;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetTestValuesModal")]
-        public async Task<ReturnStatus_Model> GetTestValuesModel(int DM)
+        public async Task<ReturnStatus_Model> GetTestValuesModel([FromBody]int DM)
         {
             return await Task.Run(() =>
             {
@@ -193,5 +217,9 @@ namespace PersonalWebService.Controllers
         {
             return DateTime.Now.ToString() + ":" + SS;
         }
+    }
+    public class RModal
+    {
+        public bool valid;
     }
 }
