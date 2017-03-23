@@ -13,7 +13,7 @@ using System.Web.Http.Cors;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Account")]
-    //[ModelValidationFilter]
+    [ModelValidationFilter]
     public class AccountController : ApiController
     {
         BLL.Account_BLL accountBll = new BLL.Account_BLL();
@@ -115,7 +115,7 @@ namespace PersonalWebService.Controllers
         }
 
         [HttpPost]
-        [Route("Register")]
+        [Route("FirstRegisterUserInfo")]
         //用户注册
         public async Task<ReturnStatus_Model> Register([FromBody]UserRegister userRegister)
         {

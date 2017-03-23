@@ -107,7 +107,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             childUrl = "Comment/GetList";
             break;
         case "registerSendEmail"://发送邮件确认信息
-            childUrl = "Comment/RegisterSendEmail";
+            childUrl = "Account/RegisterSendEmail";
             break;
 
         case "Test"://用于测试

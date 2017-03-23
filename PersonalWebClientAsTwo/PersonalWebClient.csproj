@@ -494,7 +494,6 @@
     <Content Include="Views\Shared\PartialView\format_workArticle.cshtml" />
     <Content Include="Views\MyCenter\NewScrawlAndJottings.cshtml" />
     <Content Include="Views\Home\RetrievePassword.cshtml" />
-    <Content Include="Views\Home\SignUpAndSignIn.cshtml" />
     <Content Include="Views\Home\UserProfiles.cshtml" />
     <Content Include="Scripts\lightbox\lightbox-plus-jquery.min.map" />
     <Content Include="Scripts\lightbox\lightbox.min.map" />
@@ -502,8 +501,9 @@
     <Content Include="Test\data.json" />
     <Content Include="Views\Shared\PartialView\format_SignInForm.cshtml" />
     <Content Include="Views\Shared\PartialView\format_SignUpForm.cshtml" />
-    <Content Include="Views\Sign\Sign.cshtml" />
+    <Content Include="Views\Sign\SignUp.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Sign.cshtml" />
+    <Content Include="Views\Sign\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

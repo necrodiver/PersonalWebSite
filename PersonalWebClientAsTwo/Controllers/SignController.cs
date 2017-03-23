@@ -9,7 +9,11 @@ namespace PersonalWebClient.Controllers
     public class SignController : Controller
     {
         // GET: Sign
-        public ActionResult Sign()
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+        public ActionResult SignUp()
         {
             return View();
         }

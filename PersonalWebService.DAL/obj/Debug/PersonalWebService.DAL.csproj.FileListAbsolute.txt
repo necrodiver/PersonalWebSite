@@ -33,12 +33,14 @@ F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Dapper.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.SqlServer.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Helper.dll
+F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.IDAL.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Model.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\System.Web.Http.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\NLog.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\System.Net.Http.Formatting.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Newtonsoft.Json.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Helper.pdb
+F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.IDAL.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.Model.pdb
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\Dapper.xml
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\EntityFramework.xml
@@ -53,5 +55,3 @@ F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\zh-Hans\System.Net.Htt
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\obj\Debug\PersonalWebService.DAL.csprojResolveAssemblyReference.cache
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\obj\Debug\PersonalWebService.DAL.dll
 F:\Codes\PersonalWebSite\PersonalWebService.DAL\obj\Debug\PersonalWebService.DAL.pdb
-F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.IDAL.dll
-F:\Codes\PersonalWebSite\PersonalWebService.DAL\bin\Debug\PersonalWebService.IDAL.pdb

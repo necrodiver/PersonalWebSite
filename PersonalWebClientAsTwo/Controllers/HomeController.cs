@@ -22,10 +22,6 @@ namespace PersonalWebClient.Controllers
             return View();
         }
 
-        public ActionResult SignUpAndSignIn()
-        {
-            return View();
-        }
         public ActionResult UserProfiles()
         {
             return View();

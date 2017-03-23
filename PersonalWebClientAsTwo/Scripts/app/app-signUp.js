@@ -108,25 +108,39 @@ $(function () {
                         message: '请输入验证码'
                     },
                     regexp: {
-                        regexp: /^[0-9]{6}/,
+                        regexp: /^[A-Za-z0-9]{6}/,
                         message: '验证码必须是6位数字'
                     }
                 }
+            },
+            vnotice: {
+                validators: {
+                    notEmpty: {
+                        message: '如果未同意规则条件，将不能注册'
+                    }
+                }
+
             }
         }
-    });
-
-    $("#btnRegister").click(function () {
+    }).on("success.form.bv", function (e) {
+        e.preventDefault();
+        console.log("提交用户注册表单star");
         var sup_email = $("#sup_email").val();
         var sup_nickname = $("#sup_nickname").val();
         var sup_pwd = $("#sup_pwd").val();
         var sup_vcode = $("#sup_vcode").val();
-        var userRegister = new {
+        var userRegister = {
             "UserName": sup_email,
             "NickName": sup_nickname,
-            "PassWord": sup_sup_pwdemail,
+            "PassWord": sup_pwd,
             "ValidateCode": sup_vcode
         };
         $server.accessToData("user_register", userRegister, $server.logReturn);
+        console.log("提交用户注册表单end");
+    });
+
+    $("#btnSendVCode").click(function () {
+        var email = $("#sup_email").val();
+        $server.accessToData("registerSendEmail", { "Email": email }, $server.logReturn);
     });
 });

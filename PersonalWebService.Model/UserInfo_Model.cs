@@ -111,7 +111,7 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("验证码")]
-        [RegularExpression(@"^[A-Za-z0-9]{4}$", ErrorMessage = "{0}不符合规范")]
+        [RegularExpression(@"^[A-Za-z0-9]{6}$", ErrorMessage = "{0}不符合规范")]
         public string ValidateCode { get; set; }
     }
 
