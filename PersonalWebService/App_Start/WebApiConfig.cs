@@ -17,8 +17,8 @@ namespace PersonalWebService
         {
             // Web API 配置和服务
             // 将 Web API 配置为仅使用不记名令牌身份验证。
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            //config.SuppressDefaultHostAuthentication();
+            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             //设置跨域请求
             config.EnableCors(new EnableCorsAttribute("http://localhost:4525", "Access-Control-Allow-Origin", "GET,POST,PUT"));

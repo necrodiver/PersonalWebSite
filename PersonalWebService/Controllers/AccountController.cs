@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -33,7 +34,8 @@ namespace PersonalWebService.Controllers
         [Route("GetVFC")]
         public async Task<string> GetVerificationCode()
         {
-            return await Task.Run(()=> {
+            return await Task.Run(() =>
+            {
                 return accountBll.GetVerificationCode();
             });
         }
@@ -42,9 +44,10 @@ namespace PersonalWebService.Controllers
         [Route("ContrastNickNameWeb")]
         public async Task<RModal> ContrastUserNameWeb([FromBody]string nickName)
         {
-            return await Task.Run(() => {
-                ReturnStatus_Model rsModel= accountBll.ContrastUser(null, nickName);
-                RModal rmodal= new RModal();
+            return await Task.Run(() =>
+            {
+                ReturnStatus_Model rsModel = accountBll.ContrastUser(null, nickName);
+                RModal rmodal = new RModal();
                 rmodal.valid = !rsModel.isRight;
                 return rmodal;
             });
@@ -54,7 +57,8 @@ namespace PersonalWebService.Controllers
         [Route("ContrastNickName")]
         public async Task<ReturnStatus_Model> ContrastNickName([FromBody]string nickName)
         {
-            return await Task.Run(() => {
+            return await Task.Run(() =>
+            {
                 return accountBll.ContrastUser(null, nickName);
             });
         }
@@ -63,7 +67,8 @@ namespace PersonalWebService.Controllers
         [Route("ContrastEmail")]
         public async Task<ReturnStatus_Model> ContrastUserEmail([FromBody]string email)
         {
-            return await Task.Run(() => {
+            return await Task.Run(() =>
+            {
                 return accountBll.ContrastUser(email, null);
             });
         }
@@ -72,8 +77,9 @@ namespace PersonalWebService.Controllers
         [Route("ContrastEmailWeb")]
         public async Task<RModal> ContrastUserEmailWeb([FromBody]string email)
         {
-            return await Task.Run(() => {
-                ReturnStatus_Model rsModel = accountBll.ContrastUser(email,null);
+            return await Task.Run(() =>
+            {
+                ReturnStatus_Model rsModel = accountBll.ContrastUser(email, null);
                 RModal rmodal = new RModal();
                 rmodal.valid = !rsModel.isRight;
                 return rmodal;
@@ -94,7 +100,7 @@ namespace PersonalWebService.Controllers
 
         [HttpPost]
         [Route("Add")]
-        //用户注册
+        //添加用户
         public async Task<ReturnStatus_Model> Add([FromBody]UserInfo_Model userInfo)
         {
             return await Task.Run(() =>
@@ -106,23 +112,17 @@ namespace PersonalWebService.Controllers
         [HttpPost]
         [Route("RegisterSendEmail")]
         //发送邮件
-        public async Task<ReturnStatus_Model> RegisterSendEmail([FromBody]SendEmail sendEmail)
+        public ReturnStatus_Model RegisterSendEmail([FromBody]SendEmail sendEmail)
         {
-            return await Task.Run(() =>
-            {
-                return accountBll.SendEmail(sendEmail.Email, "RegisterSendEmail");
-            });
+            return accountBll.SendEmail(sendEmail.Email, "RegisterSendEmail");
         }
 
         [HttpPost]
         [Route("FirstRegisterUserInfo")]
         //用户注册
-        public async Task<ReturnStatus_Model> Register([FromBody]UserRegister userRegister)
+        public ReturnStatus_Model Register([FromBody]UserRegister userRegister)
         {
-            return await Task.Run(() =>
-            {
-                return accountBll.FirstRegisterUserInfo(userRegister);
-            });
+            return accountBll.FirstRegisterUserInfo(userRegister);
         }
 
         [HttpPost]
@@ -143,43 +143,34 @@ namespace PersonalWebService.Controllers
         [BasicAuthentication]
         [Route("Logout")]
         //退出登录
-        public async Task<ReturnStatus_Model> Logout()
+        public ReturnStatus_Model Logout()
         {
-            return await Task.Run(() =>
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "注销登录";
+            rsModel.message = "注销失败";
+            if (SessionState.RemoveSession("UserInfo"))
             {
-                ReturnStatus_Model rsModel = new ReturnStatus_Model();
-                rsModel.isRight = false;
-                rsModel.title = "注销登录";
-                rsModel.message = "注销失败";
-                if (SessionState.RemoveSession("UserInfo"))
-                {
-                    rsModel.isRight = true;
-                    rsModel.message = "注销成功";
-                }
-                return rsModel;
-            });
+                rsModel.isRight = true;
+                rsModel.message = "注销成功";
+            }
+            return rsModel;
         }
 
         [HttpPost]
         [Route("RetrievePwd")]
         //找回密码，发送验证码
-        public async Task<ReturnStatus_Model> RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
+        public ReturnStatus_Model RetrievePwd([FromBody]RetrievePwdStart retrievePwd)
         {
-            return await Task.Run(() =>
-            {
-                return accountBll.RetrievePwd(retrievePwd);
-            });
+            return accountBll.RetrievePwd(retrievePwd);
         }
 
         [HttpPost]
         [Route("VertifyCode")]
         //找回密码后的修改密码
-        public async Task<ReturnStatus_Model> VertifyCode([FromBody]ResetPwd resetPwd)
+        public ReturnStatus_Model VertifyCode([FromBody]ResetPwd resetPwd)
         {
-            return await Task.Run(() =>
-            {
-                return accountBll.VertifyCode(resetPwd);
-            });
+            return accountBll.VertifyCode(resetPwd);
         }
 
         [HttpGet]
@@ -207,15 +198,17 @@ namespace PersonalWebService.Controllers
                 ReturnStatus_Model rsModel = new ReturnStatus_Model();
                 rsModel.isRight = false;
                 rsModel.title = "测试";
-                rsModel.message = "测试显示，传值DM："+DM;
+                rsModel.message = "测试显示，传值DM：" + DM;
                 return rsModel;
             });
         }
 
-        [HttpPost]
+        [HttpGet]
+        [Route("TestValues")]
         public string TestValues1([FromBody]string SS)
         {
-            return DateTime.Now.ToString() + ":" + SS;
+            HttpContext.Current.Session["time"] = DateTime.Now;
+            return HttpContext.Current.Session["time"] + ":" + SS;
         }
     }
     public class RModal

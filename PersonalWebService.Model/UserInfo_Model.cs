@@ -49,7 +49,7 @@ namespace PersonalWebService.Model
         public DateTime AddTime { get; set; }
 
         [DisplayName("修改日期")]
-        public DateTime EditTime { get; set; }
+        public DateTime? EditTime { get; set; }
 
         [DisplayName("当前登录状态")]
         public NowStatus? NowStatus { get; set; }
@@ -194,11 +194,11 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 修改时间
         /// </summary>
-        public DateTime EditTime { get; set; }
+        public DateTime? EditTime { get; set; }
         /// <summary>
         /// 最后一次登录时间
         /// </summary>
-        public DateTime LastvisitDate { get; set; }
+        public DateTime? LastvisitDate { get; set; }
         /// <summary>
         /// 账号状态
         /// </summary>

@@ -1,0 +1,51 @@
+SignController.Register => Account_BLL.FirstRegisterUserInfo => LogRecord_Helper.RecordLog System.Data.SqlTypes.SqlTypeException: SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+   在 System.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   在 Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.Operate(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 25
+   在 PersonalWebService.DAL.GenericityOperateDB.Operate[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\GenericityOperateDB.cs:行号 68
+   在 PersonalWebService.DAL.Operate_DAL.OpeData[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 47
+   在 PersonalWebService.BLL.Account_BLL.FirstRegisterUserInfo(UserRegister userRegister) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 187
+SignController.Register => Account_BLL.FirstRegisterUserInfo => LogRecord_Helper.RecordLog System.Data.SqlClient.SqlException (0x80131904): 对象名 'T' 无效。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   在 Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.Operate(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 25
+   在 PersonalWebService.DAL.GenericityOperateDB.Operate[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\GenericityOperateDB.cs:行号 68
+   在 PersonalWebService.DAL.Operate_DAL.OpeData[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 47
+   在 PersonalWebService.BLL.Account_BLL.FirstRegisterUserInfo(UserRegister userRegister) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 187
+ClientConnectionId:69cc5ab5-0cc0-4199-838b-721f4688e4f3
+Error Number:208,State:1,Class:16
+SignController.Register => Account_BLL.FirstRegisterUserInfo => LogRecord_Helper.RecordLog System.Data.SqlClient.SqlException (0x80131904): 对象名 'PersonalWebService.Model.UserInfo' 无效。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   在 Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   在 Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.Operate(String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 25
+   在 PersonalWebService.DAL.GenericityOperateDB.Operate[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\GenericityOperateDB.cs:行号 68
+   在 PersonalWebService.DAL.Operate_DAL.OpeData[T](T model, OperatingModel operate) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 47
+   在 PersonalWebService.BLL.Account_BLL.FirstRegisterUserInfo(UserRegister userRegister) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 187
+ClientConnectionId:d053bcec-3a9d-49a1-81ae-3ffad7003624
+Error Number:208,State:1,Class:16

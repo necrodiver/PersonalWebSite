@@ -104,7 +104,7 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>(sessionKey);
-            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) < DateTime.Now)
+            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
             {
                 rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
                 return rsModel;
@@ -143,7 +143,7 @@ namespace PersonalWebService.BLL
             rsModel.title = "注册用户";
             //首先各种验证
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
-            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
+            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now)
             {
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
                 return rsModel;
@@ -164,15 +164,19 @@ namespace PersonalWebService.BLL
             userInfoS.NowStatus = NowStatus.未登录;
 
             //查询email和昵称是否存在于数据库中
-            string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", " UserName=@UserName");
-            if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = userInfoS.UserName }) == 1)
+            List<DataField> param = new List<DataField>();
+            var args = new DynamicParameters();
+            args.Add("@UserName", userInfoS.UserName);
+            string sql = string.Format(sqlSelectTemplate, "  Count(*) ", " UserName=@UserName ");
+            if (dal.GetDataCount(sql, args) == 1)
             {
                 rsModel.message = "当前email账号已存在,请重新选择Email账号进行注册";
                 return rsModel;
             }
 
-            sql = string.Format(sqlSelectTemplate, "TOP 1 *", " NickName=@NickName");
-            if (dal.GetDataCount(sql, new DataField { Name = "@NickName", Value = userInfoS.UserName }) == 1)
+            args.Add("@NickName", userInfoS.NickName);
+            sql = string.Format(sqlSelectTemplate, " Count(*) ", " NickName=@NickName");
+            if (dal.GetDataCount(sql, args) == 1)
             {
                 rsModel.message = "当前用户昵称已存在,请重新选择昵称进行注册";
                 return rsModel;
@@ -195,6 +199,7 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
                 rsModel.message = "服务器错误，请稍后重试";
             }
+            SessionState.RemoveSession("RegisterSendEmail");//注册走完后就删除session,防止二次使用
             return rsModel;
         }
 
@@ -571,7 +576,7 @@ namespace PersonalWebService.BLL
             }
             else
             {
-                args.Add("@NickName",nickName);
+                args.Add("@NickName", nickName);
                 whereStr = " NickName=@NickName ";
             }
             try

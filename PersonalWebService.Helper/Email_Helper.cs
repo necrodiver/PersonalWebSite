@@ -58,7 +58,7 @@ namespace PersonalWebService.Helper
             sb.Append("		</div>");
             sb.Append("	</div>");
             sb.Append("</div>");
-            string emailBody = string.Format(sb.ToString(), email,verificationCodeNum, emailTimeFrame, feedBackEmail, DateTime.Now.ToString("yyyy-MM-dd"));
+            string emailBody = string.Format(sb.ToString(), email,verificationCodeNum, emailTimeFrame, feedBackEmail, DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             try
             {
                 using (SmtpClient client = new SmtpClient())

@@ -64,7 +64,7 @@ namespace PersonalWebService.DAL
                 default:
                     break;
             }
-            sql = string.Format(sql, nameof(T), sql1S, sql2S);
+            sql = string.Format(sql, typeof(T).Name, sql1S, sql2S);
             return Operate(sql, model);
         }
 

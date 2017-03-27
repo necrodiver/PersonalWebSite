@@ -1,5 +1,6 @@
 ﻿/// <reference path="../linkServer/server.js" />
 /// <reference path="../jquery/jquery-1.10.2.js" />
+/// <reference path="../bootstrap/bootstrap-popover.js" />
 $(function () {
     $server.ceshi1(1001);
     $('#signUpForm').bootstrapValidator({
@@ -23,13 +24,13 @@ $(function () {
                         url: $server.getFullUrl('user_contrastEmailWeb'),
                         message: '此电子邮箱已被使用，请输入正确的邮箱地址',
                         type: 'POST',
-                        crossDomain: true,
+                        crossDomain: false,//是否跨域
                         name: 'email',
                         dataType: 'json',
                         delay: 2000,
                         data: function (validator) {
                             return {
-                                "": $('#sup_email').val()
+                                email: $('#sup_email').val()
                             };
                         }
                     }
@@ -59,13 +60,13 @@ $(function () {
                         url: $server.getFullUrl('user_constractNickNameWeb'),
                         message: '此用户名已被使用，请换一个用户名尝试',
                         type: 'POST',
-                        crossDomain: true,
+                        crossDomain: false,
                         name: 'email',
                         dataType: 'json',
                         delay: 2000,
                         data: function (validator) {
                             return {
-                                "": $('#sup_nickname').val()
+                                nickName: $('#sup_nickname').val()
                             };
                         }
                     }
@@ -124,7 +125,6 @@ $(function () {
         }
     }).on("success.form.bv", function (e) {
         e.preventDefault();
-        console.log("提交用户注册表单star");
         var sup_email = $("#sup_email").val();
         var sup_nickname = $("#sup_nickname").val();
         var sup_pwd = $("#sup_pwd").val();
@@ -135,12 +135,24 @@ $(function () {
             "PassWord": sup_pwd,
             "ValidateCode": sup_vcode
         };
-        $server.accessToData("user_register", userRegister, $server.logReturn);
-        console.log("提交用户注册表单end");
+
+        $server.accessToData("user_register", userRegister, function (data) {
+            swal(data.title, data.message, data.isRight ? 'success' : 'error');
+            if (data.isRight) {
+                $("#signUpForm").data('bootstrapValidator').destroy();
+                $('#signUpForm').data('bootstrapValidator', null);
+                location.href = 'SignIn';
+            }
+        });
     });
 
+    //发送验证码
     $("#btnSendVCode").click(function () {
         var email = $("#sup_email").val();
-        $server.accessToData("registerSendEmail", { "Email": email }, $server.logReturn);
+        if (email == null || email == '' || email.length < 5 || !email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
+            swal("注册提示", "当前email地址格式不正确，请重新输入", "warning");
+            return;
+        }
+        $server.accessToData("registerSendEmail", { "Email": email }, function (data) { swal(data.title, data.message, data.isRight ? 'success' : 'error') });
     });
 });

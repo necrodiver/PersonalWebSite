@@ -3,7 +3,8 @@
 
 var userInfo;
 var $server = [];
-var serverUrl = 'http://localhost:10841/Service/api/';
+//var serverUrl = 'http://localhost:10841/Service/api/';
+var serverUrl = 'http://localhost:4525/Client/';
 var isPost = true;
 var isAsync = true;
 jQuery.support.cors = true;
@@ -44,16 +45,16 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             childUrl = "Account/Edit";
             break;
         case "user_constractNickNameWeb"://查询用户昵称是否存在
-            childUrl = "Account/ContrastNickNameWeb";
+            childUrl = "Sign/ContrastNickNameWeb";
             break;
         case "user_constractEmail"://查询用户邮箱是否已存在
-            childUrl = "Account/ContrastEmail";
+            childUrl = "Sign/ContrastEmail";
             break;
-        case "user_contrastEmailWeb":
-            childUrl = "Account/ContrastEmailWeb";
+        case "user_contrastEmailWeb"://查询用户邮箱地址
+            childUrl = "Sign/ContrastEmailWeb";
             break;
         case "user_register"://注册用户
-            childUrl = "Account/FirstRegisterUserInfo";
+            childUrl = "Sign/Register";
             break;
         case "user_add"://添加用户-----------------------------此方法将挪到管理端
             childUrl = "Account/Add";
@@ -107,7 +108,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             childUrl = "Comment/GetList";
             break;
         case "registerSendEmail"://发送邮件确认信息
-            childUrl = "Account/RegisterSendEmail";
+            childUrl = "Sign/RegisterSendEmail";
             break;
 
         case "Test"://用于测试
@@ -132,7 +133,7 @@ $server.ceshi = function (num) {
 $server.ceshi1 = function (num) {
     isPost = true;
     //$server.accessToData("Test", { "": num }, function (a) { console.log("a的值：" + a); });
-    $server.accessToData("user_constractEmail", { "": "1508840744@qq.com" }, function (a) { console.log("a的值：" + a); });
+    $server.accessToData("user_constractEmail", { "email": "1508840744@qq.com" }, function (a) { console.log("a的值：" + a); });
     //$.post("http://localhost:10841/Service/api/Account/GetTestValuesModal", { "DM": num }, function (msg) {
     //    console.log(msg);
     //});

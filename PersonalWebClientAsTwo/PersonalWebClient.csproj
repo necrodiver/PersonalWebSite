@@ -58,6 +58,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -533,6 +534,18 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PersonalWebService.BLL\PersonalWebService.BLL.csproj">
+      <Project>{cfd11176-b9db-46b4-8cdc-992ba030a989}</Project>
+      <Name>PersonalWebService.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalWebService.Helper\PersonalWebService.Helper.csproj">
+      <Project>{b545805c-a7ae-443f-bec0-1c4196d5a025}</Project>
+      <Name>PersonalWebService.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalWebService.Model\PersonalWebService.Model.csproj">
+      <Project>{adc1f98e-a360-49c9-bbf2-4d9eec2ff05f}</Project>
+      <Name>PersonalWebService.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PWC.Helper\PWC.Helper.csproj">
       <Project>{2390708C-EDC2-4A40-9841-9B0E64684E43}</Project>
       <Name>PWC.Helper</Name>

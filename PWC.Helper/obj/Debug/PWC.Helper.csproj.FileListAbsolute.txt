@@ -2,4 +2,3 @@ F:\Codes\PersonalWebSite\PWC.Helper\bin\Debug\PWC.Helper.dll
 F:\Codes\PersonalWebSite\PWC.Helper\bin\Debug\PWC.Helper.pdb
 F:\Codes\PersonalWebSite\PWC.Helper\obj\Debug\PWC.Helper.dll
 F:\Codes\PersonalWebSite\PWC.Helper\obj\Debug\PWC.Helper.pdb
-F:\Codes\PersonalWebSite\PWC.Helper\obj\Debug\PWC.Helper.csprojResolveAssemblyReference.cache
