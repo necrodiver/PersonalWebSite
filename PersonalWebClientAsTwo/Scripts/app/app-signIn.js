@@ -19,11 +19,6 @@ $(document).ready(function () {
                     emailAddress: {
                         message: '输入的不是一个有效的电子邮件地址'
                     }
-                    //,
-                    //remote: {/*远程验证*/
-                    //    url: 'remote.aspx',
-                    //    message: '此电子邮箱已被使用，请输入正确的邮箱地址'
-                    //}
                 }
             },
             password: {
@@ -48,5 +43,26 @@ $(document).ready(function () {
                 }
             }
         }
+    }).on("success.form.bv", function (e) {
+        e.preventDefault();
+        var sup_email = $("#sup_email").val();
+        var sup_nickname = $("#sup_nickname").val();
+        var sup_pwd = $("#sup_pwd").val();
+        var sup_vcode = $("#sup_vcode").val();
+        var userRegister = {
+            "UserName": sup_email,
+            "NickName": sup_nickname,
+            "PassWord": sup_pwd,
+            "ValidateCode": sup_vcode
+        };
+
+        $server.accessToData("user_register", userRegister, function (data) {
+            swal(data.title, data.message, data.isRight ? 'success' : 'error');
+            if (data.isRight) {
+                $("#signUpForm").data('bootstrapValidator').destroy();
+                $('#signUpForm').data('bootstrapValidator', null);
+                location.href = 'SignIn';
+            }
+        });
     });
 });

@@ -22,6 +22,21 @@ namespace PersonalWebClient.Controllers
         }
 
         [HttpPost]
+        //登录
+        public JsonResult Login(UserLogin user)
+        {
+            return Json(accountBll.VerifyUserInfo(user), JsonRequestBehavior.DenyGet);
+        }
+
+
+        [HttpPost]
+        //获取验证码
+        public string GetVerificationCode()
+        {
+            return accountBll.GetVerificationCode();
+        }
+
+        [HttpPost]
         //验证用户昵称是否存在
         public JsonResult ContrastNickName(string nickName)
         {

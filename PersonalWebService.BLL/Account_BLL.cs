@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace PersonalWebService.BLL
 {
@@ -34,6 +36,44 @@ namespace PersonalWebService.BLL
         public string GetVerificationCode()
         {
             return VerificationCode2_Helper.GetVerificationCodeAsImageDate(out index);
+        }
+        public ReturnStatus_Model GetVerificationCodeNum()
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "获取验证码";
+
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
+            if (rvPrev != null && rvPrev.SaveTime.AddSeconds(1) > DateTime.Now)
+            {
+                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁获取验证码";
+                return rsModel;
+            }
+            try
+            {
+                YZMHelper yzmChild = new YZMHelper();
+                yzmChild.CreateImage();
+
+                RetrieveValue rv = new RetrieveValue();
+                rv.ValidateCode = yzmChild.Text;
+                rv.SaveTime = DateTime.Now;
+
+                SessionState.SaveSession(rv, "VFCCode");
+
+                Bitmap vcfImage = yzmChild.Image;
+                string imageDate = ImageConvert.ToBase64HtmlString(vcfImage, ImageFormat.Gif);
+
+                rsModel.isRight = true;
+                rsModel.message = imageDate;
+
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
+                rsModel.message = "服务器错误，请稍后重试";
+            }
+            return rsModel;
+            
         }
 
         /// <summary>
@@ -235,7 +275,7 @@ namespace PersonalWebService.BLL
 
             //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
-            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) < DateTime.Now)
+            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
             {
                 rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
                 return rsModel;
