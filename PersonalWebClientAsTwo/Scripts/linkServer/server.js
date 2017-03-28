@@ -69,7 +69,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             childUrl = "Account/RetrievePwd";
             break;
         case "user_vertifyCode"://找回密码后的修改密码
-            childUrl = "Account/VertifyCode";
+            childUrl = "Sign/VertifyCode";
             break;
             //Article
         case "article_add"://添加文章
@@ -110,7 +110,15 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "registerSendEmail"://发送邮件确认信息
             childUrl = "Sign/RegisterSendEmail";
             break;
-
+        case "registerReEmail"://发送邮件确认信息
+            childUrl = "Sign/ContrastNotEmail";
+            break;
+        case "retrieveVFCAndEmail"://找回密码第一步提交
+            childUrl = "Sign/RetrieveVFCAndEmail";
+            break;
+        case "retrievePwdEmail"://找回密码发送邮件确认信息
+            childUrl = "Sign/RetrievePwdEmail";
+            break;
         case "Test"://用于测试
             childUrl = "Account/GetTestValuesModal";
             break;

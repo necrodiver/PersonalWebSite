@@ -1,0 +1,16 @@
+SignController.Login => Account_BLL.VerifyUserInfo => LogRecord_Helper.RecordLog System.InvalidOperationException: 序列不包含任何元素
+   在 System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   在 Dapper.SqlMapper.ThrowZeroRows(Row row)
+   在 Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   在 Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetSingle[T](String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 52
+   在 PersonalWebService.DAL.Operate_DAL.GetDataSingle[T](String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 37
+   在 PersonalWebService.BLL.Account_BLL.VerifyUserInfo(UserLogin user) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 113
+SignController.Login => Account_BLL.VerifyUserInfo => LogRecord_Helper.RecordLog System.InvalidOperationException: 序列不包含任何元素
+   在 System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   在 Dapper.SqlMapper.ThrowZeroRows(Row row)
+   在 Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   在 Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   在 PersonalWebService.DAL.OperateDB.GetSingle[T](String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\OperateDB.cs:行号 52
+   在 PersonalWebService.DAL.Operate_DAL.GetDataSingle[T](String sql, Object param) 位置 F:\Codes\PersonalWebSite\PersonalWebService.DAL\Operate_DAL.cs:行号 37
+   在 PersonalWebService.BLL.Account_BLL.VerifyUserInfo(UserLogin user) 位置 F:\Codes\PersonalWebSite\PersonalWebService.BLL\Account_BLL.cs:行号 113

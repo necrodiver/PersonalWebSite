@@ -129,8 +129,8 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("验证码")]
-        [StringLength(6, MinimumLength = 6, ErrorMessage = "{0} 长度必须是6位数字或字母组合")]
-        public List<Coord> ValidateCode { get; set; }
+        [RegularExpression(@"^[A-Za-z0-9]{6}$", ErrorMessage = "{0}不符合规范")]
+        public string ValidateCode { get; set; }
     }
 
     /// <summary>
@@ -151,10 +151,21 @@ namespace PersonalWebService.Model
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string Email { get; set; }
+
         [Required]
         [DisplayName("验证码")]
         [RegularExpression(@"^[A-Za-z0-9]{6}$", ErrorMessage = "{0}不符合规范")]
         public string ValidateCode { get; set; }
+
+        [Required]
+        [DisplayName("登录密码")]
+        [RegularExpression(@"^\w+$", ErrorMessage = "{0}必须是字母、数字和下划线组成的")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
+        public string Password { get; set; }
+    }
+
+    public class ResetPwdSet
+    {
         [Required]
         [DisplayName("登录密码")]
         [RegularExpression(@"^\w+$", ErrorMessage = "{0}必须是字母、数字和下划线组成的")]

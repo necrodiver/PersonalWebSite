@@ -262,6 +262,8 @@
     <Content Include="Images\weibo.jpg" />
     <Content Include="Images\x.png" />
     <Content Include="Scripts\app\app-index.js" />
+    <Content Include="Scripts\app\app-rePwdSet.js" />
+    <Content Include="Scripts\app\app-rePwd.js" />
     <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\app\mycenter.js" />
     <Content Include="Scripts\app\app-signIn.js" />
@@ -505,6 +507,8 @@
     <Content Include="Views\Sign\SignUp.cshtml" />
     <Content Include="Views\Shared\PartialView\format_Sign.cshtml" />
     <Content Include="Views\Sign\SignIn.cshtml" />
+    <Content Include="Views\Sign\RetrievePwd.cshtml" />
+    <Content Include="Views\Sign\RetrievePwdSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

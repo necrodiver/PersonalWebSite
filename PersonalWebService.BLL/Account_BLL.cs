@@ -68,7 +68,7 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
             }
             return null;
-            
+
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace PersonalWebService.BLL
             }
 
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev==null||!rvPrev.ValidateCode.Equals(user.ValidateCode))
+            if (rvPrev == null || !rvPrev.ValidateCode.Equals(user.ValidateCode))
             {
                 rsModel.message = "验证码有误，请重新输入";
                 SessionState.RemoveSession("VFCCode");
@@ -110,7 +110,7 @@ namespace PersonalWebService.BLL
                 string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
                 var args = new DynamicParameters();
                 args.Add("@UserName", user.UserName);
-                userInfo = dal.GetDataSingle<UserInfo>(sql,args);
+                userInfo = dal.GetDataSingle<UserInfo>(sql, args);
             }
             catch (Exception ex)
             {
@@ -137,9 +137,9 @@ namespace PersonalWebService.BLL
                 {
                     string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
                     var args = new DynamicParameters();
-                    args.Add("@NowStatus",NowStatus.已登录);
+                    args.Add("@NowStatus", NowStatus.已登录);
                     args.Add("@UserId", userInfo.UserId);
-                    dal.OpeData(sqlUpTime,args);
+                    dal.OpeData(sqlUpTime, args);
 
                     rsModel.isRight = true;
                     rsModel.message = "用户登录成功！";
@@ -168,15 +168,42 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
+            var args = new DynamicParameters();
+            string whereStr = "";
+            args.Add("@UserName", email);
+            whereStr = " UserName=@UserName ";
+            try
+            {
+                string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
+                if (dal.GetDataCount(sql, args) < 1)
+                {
+                    rsModel.message = "当前邮箱地址不存在，请重新填写";
+                    return rsModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                rsModel.message = "服务器错误，请稍后尝试";
+                return rsModel;
+            }
+
             YZMHelper yzmChild = new YZMHelper();
-            RetrieveValue rv = new RetrieveValue();
-            rv.ValidateCode = yzmChild.Text;
-            rv.SaveTime = DateTime.Now;
-            SessionState.SaveSession(rv, sessionKey);
             try
             {
                 if (emailHelper.SendEmail(email, yzmChild.Text))
                 {
+                    RetrieveValue rvEmail = new RetrieveValue();
+
+                    rvEmail.ValidateCode = email;
+                    rvEmail.SaveTime = DateTime.Now;
+                    SessionState.SaveSession(rvEmail, sessionKey + "Email");
+
+                    RetrieveValue rv = new RetrieveValue();
+                    rv.ValidateCode = yzmChild.Text;
+                    rv.SaveTime = DateTime.Now;
+                    SessionState.SaveSession(rv, sessionKey);
+
                     rsModel.isRight = true;
                     rsModel.message = "邮件发送成功！";
                 }
@@ -200,12 +227,34 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "注册用户";
             //首先各种验证
+            var userInfoSession = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfoSession != null)
+            {
+                rsModel.message = "当前用户已存在，请勿重复注册";
+                return rsModel;
+            }
+
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
+            RetrieveValue rvPrevEmail = SessionState.GetSession<RetrieveValue>("RegisterSendEmail" + "Email");
             if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now)
             {
+                SessionState.RemoveSession("RegisterSendEmail");
+                SessionState.RemoveSession("RegisterSendEmail" + "Email");
+
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
                 return rsModel;
             }
+
+            if (rvPrevEmail == null || rvPrevEmail.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now ||
+                rvPrevEmail.ValidateCode.Equals(userRegister.UserName))
+            {
+                SessionState.RemoveSession("RegisterSendEmail");
+                SessionState.RemoveSession("RegisterSendEmail" + "Email");
+
+                rsModel.message = "当前邮箱地址非发送邮箱地址，请认真填写";
+                return rsModel;
+            }
+
             if (!rvPrev.ValidateCode.Equals(userRegister.ValidateCode))
             {
                 rsModel.message = "验证码输入有误，请重新输入";
@@ -216,7 +265,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfoS = new UserInfo();
             userInfoS.UserName = userRegister.UserName;
             userInfoS.NickName = userRegister.NickName;
-            userInfoS.Password =aesE.AESEncrypt(userRegister.PassWord);
+            userInfoS.Password = aesE.AESEncrypt(userRegister.PassWord);
             userInfoS.AddTime = DateTime.Now;
             userInfoS.State = State.正常;
             userInfoS.NowStatus = NowStatus.未登录;
@@ -402,6 +451,44 @@ namespace PersonalWebService.BLL
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
             return rsModel;
+        }
+
+        public ReturnStatus_Model VertifyCodeSet(string pwd)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "重置密码";
+            var rtEmail = SessionState.GetSession<RetrieveValue>("RetrieveSetPwd");
+            if (rtEmail == null || rtEmail.SaveTime.AddMinutes(20) < DateTime.Now)
+            {
+                rsModel.message = "当前重置密码操作过期，请重新操作";
+                return rsModel;
+            }
+
+            try
+            {
+                string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "UserName=@UserName");
+                var args = new DynamicParameters();
+                args.Add("@UserName", rtEmail.ValidateCode);
+                args.Add("@PassWord", aesE.AESEncrypt(pwd));
+                if (dal.OpeData(sqlUpdate, args))
+                {
+                    rsModel.isRight = true;
+                    rsModel.message = "修改密码成功，你现在可以登录了";
+                    SessionState.RemoveSession("RetrieveSetPwd");
+                }
+                else
+                {
+                    rsModel.message = "修改失败，请稍后重试（请重新发送邮件）";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+                rsModel.message = "服务器错误，请稍后重试或重新操作找回密码";
+            }
+            return rsModel;
+
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace PersonalWebClient.Controllers
             var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
             if (userInfo != null)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -28,6 +28,36 @@ namespace PersonalWebClient.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            return View();
+        }
+
+        //找回密码First
+        public ActionResult RetrievePwd()
+        {
+            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfo != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        //找回密码Second
+        public ActionResult RetrievePwdSet()
+        {
+            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfo != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var rtEmail = SessionState.GetSession<RetrieveValue>("RetrieveSetPwd");
+            if (rtEmail == null || rtEmail.SaveTime.AddMinutes(20) < DateTime.Now)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            ViewBag.rtEmailStr = rtEmail.ValidateCode;
             return View();
         }
 
@@ -50,7 +80,7 @@ namespace PersonalWebClient.Controllers
         //获取验证码2
         public ActionResult GetVerificationCode2()
         {
-            byte[] imageByte= accountBll.GetVerificationCode2();
+            byte[] imageByte = accountBll.GetVerificationCode2();
             return File(imageByte, @"image/gif");
         }
 
@@ -100,6 +130,66 @@ namespace PersonalWebClient.Controllers
         public JsonResult Register(UserRegister userRegister)
         {
             return Json(accountBll.FirstRegisterUserInfo(userRegister), JsonRequestBehavior.DenyGet);
+        }
+
+        [HttpPost]
+        //验证用户邮箱地址是否存在，返回固定格式
+        public JsonResult ContrastNotEmail(string email)
+        {
+            ReturnStatus_Model rsModel = accountBll.ContrastUser(email, null);
+            RModal rmodal = new RModal();
+            rmodal.valid = rsModel.isRight;
+            return Json(rmodal, JsonRequestBehavior.DenyGet);
+        }
+
+        [HttpPost]
+        //找回密码的发送邮件
+        public JsonResult RetrievePwdEmail(SendEmail sendEmail)
+        {
+            return Json(accountBll.SendEmail(sendEmail.Email, "RetrieveValidateCode"), JsonRequestBehavior.DenyGet);
+        }
+
+        [HttpPost]
+        //找回密码-验证Email地址和验证码是否正确
+        public JsonResult RetrieveVFCAndEmail(RetrievePwdStart rps)
+        {
+            var vcCode = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
+            var rtEmail = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode" + "Email");
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "找回密码";
+            if (vcCode == null || vcCode.SaveTime.AddMinutes(20) < DateTime.Now || rtEmail == null || rtEmail.SaveTime.AddMinutes(20) < DateTime.Now)
+            {
+                rsModel.message = "当前验证码或Email地址不存在或已过期，请重新输入";
+                return Json(rsModel, JsonRequestBehavior.DenyGet);
+            }
+            if (vcCode.ValidateCode.Equals(rps.ValidateCode) && rtEmail.ValidateCode.Equals(rps.Email))
+            {
+                rsModel.isRight = true;
+                rsModel.message = "恭喜校验成功，可以进行修改密码操作";
+                RetrieveValue rv = new RetrieveValue();
+                rv.SaveTime = DateTime.Now;
+                rv.ValidateCode = rtEmail.ValidateCode;
+                SessionState.SaveSession(rv, "RetrieveSetPwd");
+
+                SessionState.RemoveSession("RetrieveValidateCode");
+                SessionState.RemoveSession("RetrieveValidateCode" + "Email");
+
+                return Json(rsModel, JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                rsModel.message = "当前验证码或Email地址错误，请重新输入";
+                return Json(rsModel, JsonRequestBehavior.DenyGet);
+            }
+
+        }
+
+        [HttpPost]
+        //找回密码后的修改密码
+        public JsonResult VertifyCode(ResetPwdSet resetPwd)
+        {
+            return Json(accountBll.VertifyCodeSet(resetPwd.Password), JsonRequestBehavior.DenyGet);
         }
 
     }

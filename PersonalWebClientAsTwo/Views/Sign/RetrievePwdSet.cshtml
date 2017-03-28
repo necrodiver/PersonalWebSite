@@ -1,0 +1,40 @@
+﻿<style type="text/css">
+    .form-control-feedback {
+        margin-top: 10px;
+    }
+</style>
+<div class="signup_context panel panel-default">
+    <div class="panel-heading signup_title clearfix">
+        <p class="pull-left">找回密码</p>
+    </div>
+    <div class="panel-body">
+        <form role="form" id="retrievePassword2" method="post" class="form-horizontal">
+            <div class="signup_content">
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">账号</label>
+                    <div class="col-lg-3">
+                        <label class="control-label">@ViewBag.rtEmailStr</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">新密码</label>
+                    <div class="col-lg-3">
+                        <input type="password" class="form-control" name="rtPwdSet_password" id="rtPwdSet_password" placeholder="请输入新的密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">重复密码</label>
+                    <div class="col-lg-3">
+                        <input type="password" class="form-control" name="rtPwdSet_confirmPassword" placeholder="请再一次输入上方的密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-lg-offset-6">
+                        <button class="btn btn-success" type="submit">保存</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/app/app-rePwdSet.js"></script>

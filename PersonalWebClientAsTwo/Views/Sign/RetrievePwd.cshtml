@@ -1,0 +1,37 @@
+﻿<style type="text/css">
+    .form-control-feedback {
+        margin-top: 10px;
+    }
+</style>
+<div class="signup_context panel panel-default">
+    <div class="panel-heading signup_title clearfix">
+        <p class="pull-left">找回密码</p>
+    </div>
+    <div class="panel-body">
+        <form role="form" id="retrievePassword1" method="post" class="form-horizontal">
+            <div class="signup_content">
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">账号</label>
+                    <div class="col-lg-3">
+                        <input type="email" class="form-control" name="rtpwd_email" id="rtpwd_email" placeholder="请输入您注册的邮箱地址" />
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary" type="button" id="btnRtPwdEmail">发送验证码</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-lg-offset-2 control-label">验证码</label>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" name="rtpwd_verificationCode" id="rtpwd_verificationCode" placeholder="输入验证码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <button class="btn btn-success form-control" type="submit">找回密码</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/app/app-rePwd.js"></script>
