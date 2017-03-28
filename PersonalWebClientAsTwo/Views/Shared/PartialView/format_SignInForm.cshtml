@@ -8,22 +8,24 @@
                 <div class="form-group">
                     <label class="col-lg-2 col-lg-offset-2 control-label">登录账号</label>
                     <div class="col-lg-5">
-                        <input type="email" class="form-control" name="email" placeholder="请输入您的邮箱地址" />
+                        <input type="email" class="form-control" name="email" id="sin_email" placeholder="请输入您的邮箱地址" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 col-lg-offset-2 control-label">密码</label>
                     <div class="col-lg-5">
-                        <input type="password" class="form-control" name="password" placeholder="请输入密码" />
+                        <input type="password" class="form-control" name="password" id="sin_pwd" placeholder="请输入密码" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 col-lg-offset-2 control-label">验证码</label>
                     <div class="col-lg-2">
-                        <input type="text" class="form-control" name="password" placeholder="请输入验证码" />
+                        <input type="text" class="form-control" name="vcf" id="sin_vcf" placeholder="请输入验证码" />
                     </div>
                     <div class="col-lg-2">
-                        <img class="signin_img" title="点击图片进行替换" />
+                        <img class="signin_img" id="signInImage"
+                              src="@Url.Action("GetVerificationCode2")"
+                             title="点击图片进行替换" />
                     </div>
                 </div>
                 <div class="form-group">

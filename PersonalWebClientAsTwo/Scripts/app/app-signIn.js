@@ -1,6 +1,7 @@
 ﻿/// <reference path="../jquery/jquery-1.10.2.js" />
 /// <reference path="../bootstrap/bootstrap.js" />
 /// <reference path="../bootstrap/bootstrapValidator.js" />
+/// <reference path="../linkServer/server.js" />
 
 $(document).ready(function () {
     $('#signInForm').bootstrapValidator({
@@ -41,28 +42,50 @@ $(document).ready(function () {
                         message: '密码只能由字母、数字、字符的最少两个组合'
                     }
                 }
+            },
+            vcf: {
+                message: '验证码无效',
+                validators: {
+                    notEmpty: {
+                        message: '验证码不能为空'
+                    },
+                    regexp: {
+                        regexp: /^^[A-Za-z0-9]{6}$/,
+                        message: '验证码只能是数字或字母组成的6位长度'
+                    }
+                }
             }
+            //
         }
     }).on("success.form.bv", function (e) {
         e.preventDefault();
-        var sup_email = $("#sup_email").val();
-        var sup_nickname = $("#sup_nickname").val();
-        var sup_pwd = $("#sup_pwd").val();
-        var sup_vcode = $("#sup_vcode").val();
-        var userRegister = {
-            "UserName": sup_email,
-            "NickName": sup_nickname,
-            "PassWord": sup_pwd,
-            "ValidateCode": sup_vcode
+        var sin_email = $("#sin_email").val();
+        var sin_pwd = $("#sin_pwd").val();
+        var sin_vcf = $("#sin_vcf").val();
+        var userLogin = {
+            "UserName": sin_email,
+            "PassWord": sin_pwd,
+            "ValidateCode": sin_vcf
         };
 
-        $server.accessToData("user_register", userRegister, function (data) {
+        $server.accessToData("user_Login", userLogin, function (data) {
             swal(data.title, data.message, data.isRight ? 'success' : 'error');
             if (data.isRight) {
-                $("#signUpForm").data('bootstrapValidator').destroy();
-                $('#signUpForm').data('bootstrapValidator', null);
-                location.href = 'SignIn';
+                $("#signInForm").data('bootstrapValidator').destroy();
+                $('#signInForm').data('bootstrapValidator', null);
+                location.href = '../Home/Index';
             }
         });
+    });
+
+    $('#signInImage').click(function () {
+        //$server.accessToData("getVFC", {}, function (data) {
+        //    if (data.length > 10) {
+        //        $('#signInImage').attr('src', 'url(' + data + ')');
+        //    } else {
+        //        swal(data.title, data.message, 'error');
+        //    }
+        //});
+        $('#signInImage').attr('src', 'GetVerificationCode2?time='+new Date().getMilliseconds());
     });
 });

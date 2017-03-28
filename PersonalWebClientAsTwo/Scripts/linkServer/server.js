@@ -36,10 +36,10 @@ $server.getFullUrl = function GetChildUrl(urlName) {
     switch (urlName) {
         //Account
         case "user_Login"://登录
-            childUrl = "Account/Login";
+            childUrl = "Sign/Login";
             break;
         case "getVFC"://获取验证码
-            childUrl = "Account/GetVFC";
+            childUrl = "Sign/GetVerificationCode2";
             break;
         case "user_edit"://修改用户信息
             childUrl = "Account/Edit";

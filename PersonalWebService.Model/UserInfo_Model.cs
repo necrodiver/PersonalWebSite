@@ -76,7 +76,8 @@ namespace PersonalWebService.Model
 
         [Required]
         [DisplayName("验证码")]
-        public List<Coord> ValidateCode { get; set; }
+        [RegularExpression(@"^[A-Za-z0-9]{6}$", ErrorMessage = "{0}不符合规范")]
+        public string ValidateCode { get; set; }
     }
     public class SendEmail
     {

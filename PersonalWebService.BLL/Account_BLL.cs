@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace PersonalWebService.BLL
 {
@@ -37,17 +38,12 @@ namespace PersonalWebService.BLL
         {
             return VerificationCode2_Helper.GetVerificationCodeAsImageDate(out index);
         }
-        public ReturnStatus_Model GetVerificationCodeNum()
+        public byte[] GetVerificationCode2()
         {
-            ReturnStatus_Model rsModel = new ReturnStatus_Model();
-            rsModel.isRight = false;
-            rsModel.title = "获取验证码";
-
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev != null && rvPrev.SaveTime.AddSeconds(1) > DateTime.Now)
+            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(100) > DateTime.Now)
             {
-                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁获取验证码";
-                return rsModel;
+                System.Threading.Thread.Sleep(100);
             }
             try
             {
@@ -61,18 +57,17 @@ namespace PersonalWebService.BLL
                 SessionState.SaveSession(rv, "VFCCode");
 
                 Bitmap vcfImage = yzmChild.Image;
-                string imageDate = ImageConvert.ToBase64HtmlString(vcfImage, ImageFormat.Gif);
-
-                rsModel.isRight = true;
-                rsModel.message = imageDate;
-
+                MemoryStream stream = new MemoryStream();
+                vcfImage.Save(stream, ImageFormat.Gif);
+                return stream.ToArray();
+                //string imageDate = ImageConvert.ToBase64HtmlString(vcfImage, ImageFormat.Gif);
+                //return imageDate;
             }
             catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
-                rsModel.message = "服务器错误，请稍后重试";
             }
-            return rsModel;
+            return null;
             
         }
 
@@ -88,17 +83,34 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "用户登录";
 
-            //验证码验证错误时
-            if (VerificationCode2_Helper.IsPass(user.ValidateCode, index))
+            var userInfoSession = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfoSession != null)
             {
-                rsModel.message = "验证码有误，请刷新验证码后重新输入";
+                rsModel.message = "当前用户已存在，请勿重复登录";
                 return rsModel;
             }
+
+            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
+            if (rvPrev==null||!rvPrev.ValidateCode.Equals(user.ValidateCode))
+            {
+                rsModel.message = "验证码有误，请重新输入";
+                SessionState.RemoveSession("VFCCode");
+                return rsModel;
+            }
+            ////验证码验证错误时
+            //if (VerificationCode2_Helper.IsPass(user.ValidateCode, index))
+            //{
+            //    rsModel.message = "验证码有误，请刷新验证码后重新输入";
+            //    return rsModel;
+            //}
+
             UserInfo userInfo = new UserInfo();
             try
             {
                 string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
-                userInfo = dal.GetDataSingle<UserInfo>(sql, new DataField { Name = "@UserName", Value = user.UserName });
+                var args = new DynamicParameters();
+                args.Add("@UserName", user.UserName);
+                userInfo = dal.GetDataSingle<UserInfo>(sql,args);
             }
             catch (Exception ex)
             {
@@ -123,10 +135,16 @@ namespace PersonalWebService.BLL
 
                 if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
-                    string sqlUpTime = "UPDATE [dbo].[UserInfo] SET LastvisitDate=GETDATE() WHERE UserId=@UserId";
-                    dal.OpeData(sqlUpTime, new DataField { Name = "@UserId", Value = userInfo.UserId });
+                    string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
+                    var args = new DynamicParameters();
+                    args.Add("@NowStatus",NowStatus.已登录);
+                    args.Add("@UserId", userInfo.UserId);
+                    dal.OpeData(sqlUpTime,args);
+
                     rsModel.isRight = true;
                     rsModel.message = "用户登录成功！";
+
+                    userInfo.NowStatus = NowStatus.已登录;
                     SessionState.SaveSession(userInfo, "UserInfo");
                 }
                 else
@@ -198,7 +216,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfoS = new UserInfo();
             userInfoS.UserName = userRegister.UserName;
             userInfoS.NickName = userRegister.NickName;
-            userInfoS.Password = userRegister.PassWord;
+            userInfoS.Password =aesE.AESEncrypt(userRegister.PassWord);
             userInfoS.AddTime = DateTime.Now;
             userInfoS.State = State.正常;
             userInfoS.NowStatus = NowStatus.未登录;

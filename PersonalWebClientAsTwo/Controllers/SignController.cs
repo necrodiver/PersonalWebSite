@@ -14,10 +14,20 @@ namespace PersonalWebClient.Controllers
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
         public ActionResult SignIn()
         {
+            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfo != null)
+            {
+                return RedirectToAction("Index","Home");
+            }
             return View();
         }
         public ActionResult SignUp()
         {
+            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            if (userInfo != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -29,11 +39,19 @@ namespace PersonalWebClient.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         //获取验证码
         public string GetVerificationCode()
         {
             return accountBll.GetVerificationCode();
+        }
+
+        [HttpGet]
+        //获取验证码2
+        public ActionResult GetVerificationCode2()
+        {
+            byte[] imageByte= accountBll.GetVerificationCode2();
+            return File(imageByte, @"image/gif");
         }
 
         [HttpPost]
