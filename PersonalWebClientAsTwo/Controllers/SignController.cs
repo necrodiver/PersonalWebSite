@@ -192,6 +192,23 @@ namespace PersonalWebClient.Controllers
             return Json(accountBll.VertifyCodeSet(resetPwd.Password), JsonRequestBehavior.DenyGet);
         }
 
+        [HttpPost]
+        [UserVisitValidationFilter]
+        //退出登录
+        public ReturnStatus_Model Logout()
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "注销登录";
+            rsModel.message = "注销失败";
+            if (SessionState.RemoveSession("UserInfo"))
+            {
+                HttpContext.Session.Clear();
+                rsModel.isRight = true;
+                rsModel.message = "注销成功";
+            }
+            return rsModel;
+        }
     }
 
     public class RModal

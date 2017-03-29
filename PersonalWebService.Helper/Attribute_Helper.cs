@@ -170,4 +170,20 @@ namespace PersonalWebService.Helper
             base.OnActionExecuting(actionContext);
         }
     }
+
+    public class UserVisitValidationFilterAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+            var userInfo= SessionState.GetSession<UserInfo>("UserInfo");
+            var errors = new Dictionary<string, string>();
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
+            {
+                errors.Add("VisitWeb", "请先登录后再进行访问");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
+                return;
+            }
+            base.OnActionExecuting(actionContext);
+        }
+    }
 }

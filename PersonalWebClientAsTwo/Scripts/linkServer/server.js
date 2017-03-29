@@ -41,9 +41,6 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "getVFC"://获取验证码
             childUrl = "Sign/GetVerificationCode2";
             break;
-        case "user_edit"://修改用户信息
-            childUrl = "Account/Edit";
-            break;
         case "user_constractNickNameWeb"://查询用户昵称是否存在
             childUrl = "Sign/ContrastNickNameWeb";
             break;
@@ -56,21 +53,10 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "user_register"://注册用户
             childUrl = "Sign/Register";
             break;
-        case "user_add"://添加用户-----------------------------此方法将挪到管理端
-            childUrl = "Account/Add";
-            break;
-        case "user_getSelf"://获取个人信息
-            childUrl = "Account/Get";
-            break;
-        case "user_logout"://退出登录
-            childUrl = "Account/Logout";
-            break;
-        case "user_retrievePwd"://找回密码时发送验证码
-            childUrl = "Account/RetrievePwd";
-            break;
         case "user_vertifyCode"://找回密码后的修改密码
             childUrl = "Sign/VertifyCode";
             break;
+
             //Article
         case "article_add"://添加文章
             childUrl = "Article/Add";
@@ -84,6 +70,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "article_delete"://删除文章
             childUrl = "Article/Delete";
             break;
+
             //Scrawl
         case "scrawl_add"://添加涂鸦
             childUrl = "Scrawl/Add";
@@ -97,6 +84,7 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "scrawl_delete"://删除涂鸦
             childUrl = "Scrawl/Delete";
             break;
+
             //Comment
         case "commend_add"://添加消息
             childUrl = "Comment/Add";
@@ -119,33 +107,14 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "retrievePwdEmail"://找回密码发送邮件确认信息
             childUrl = "Sign/RetrievePwdEmail";
             break;
-        case "Test"://用于测试
-            childUrl = "Account/GetTestValuesModal";
+        case "logout"://退出
+            childUrl = "Sign/Logout";
             break;
         default:
             childUrl = null;
             break;
     }
     return serverUrl + childUrl;
-}
-
-
-
-
-$server.ceshi = function (num) {
-    $.get(serverUrl + 'Account/GetTestValuesModal', { "DM": num }, function (data) {
-        console.log('从服务器获取的时间：' + data);
-    });
-}
-
-$server.ceshi1 = function (num) {
-    isPost = true;
-    //$server.accessToData("Test", { "": num }, function (a) { console.log("a的值：" + a); });
-    $server.accessToData("user_constractEmail", { "email": "1508840744@qq.com" }, function (a) { console.log("a的值：" + a); });
-    //$.post("http://localhost:10841/Service/api/Account/GetTestValuesModal", { "DM": num }, function (msg) {
-    //    console.log(msg);
-    //});
-
 }
 
 $server.logReturn = function consoleLog(status) {

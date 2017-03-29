@@ -172,20 +172,23 @@ namespace PersonalWebService.BLL
             string whereStr = "";
             args.Add("@UserName", email);
             whereStr = " UserName=@UserName ";
-            try
+            if (!sessionKey.Equals("RegisterSendEmail"))
             {
-                string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
-                if (dal.GetDataCount(sql, args) < 1)
+                try
                 {
-                    rsModel.message = "当前邮箱地址不存在，请重新填写";
+                    string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
+                    if (dal.GetDataCount(sql, args) < 1)
+                    {
+                        rsModel.message = "当前邮箱地址不存在，请重新填写";
+                        return rsModel;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+                    rsModel.message = "服务器错误，请稍后尝试";
                     return rsModel;
                 }
-            }
-            catch (Exception ex)
-            {
-                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
-                rsModel.message = "服务器错误，请稍后尝试";
-                return rsModel;
             }
 
             YZMHelper yzmChild = new YZMHelper();
@@ -246,7 +249,7 @@ namespace PersonalWebService.BLL
             }
 
             if (rvPrevEmail == null || rvPrevEmail.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now ||
-                rvPrevEmail.ValidateCode.Equals(userRegister.UserName))
+                !rvPrevEmail.ValidateCode.Equals(userRegister.UserName))
             {
                 SessionState.RemoveSession("RegisterSendEmail");
                 SessionState.RemoveSession("RegisterSendEmail" + "Email");
