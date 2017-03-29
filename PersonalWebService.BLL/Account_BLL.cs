@@ -34,16 +34,106 @@ namespace PersonalWebService.BLL
         /// 获取验证码
         /// </summary>
         /// <returns></returns>
-        public string GetVerificationCode()
+        public byte[] GetVerificationCode()
         {
-            return VerificationCode2_Helper.GetVerificationCodeAsImageDate(out index);
+            RetrieveValueCN rvPrev = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
+            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(300) > DateTime.Now)
+            {
+                System.Threading.Thread.Sleep(300);
+            }
+            try
+            {
+                int[] vcfCode;
+                VerificationCode2_Helper vcfHelper2 = new VerificationCode2_Helper();
+                Bitmap vcfImage = vcfHelper2.GetVerificationCodeAsImageDate(out vcfCode);
+                MemoryStream stream = new MemoryStream();
+                vcfImage.Save(stream, ImageFormat.Gif);
+
+                RetrieveValueCN rvPrevCN = new RetrieveValueCN();
+                rvPrevCN.SaveTime = DateTime.Now;
+                rvPrevCN.ValidateCode = vcfCode;
+                SessionState.SaveSession(rvPrevCN, "VFCCodeCN");
+
+                return stream.ToArray();
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return null;
         }
+
+        public ReturnStatus_Model VerifyUserInfoIndex(UserLoginTwo user)
+        {
+            ReturnStatus_Model rsModel = new ReturnStatus_Model();
+            rsModel.isRight = false;
+            rsModel.title = "登录提示";
+
+            RetrieveValueCN rvPrev = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
+            if (rvPrev == null || !VerificationCode2_Helper.IsPass(user.ValidateCode, rvPrev.ValidateCode) || rvPrev.SaveTime.AddMinutes(5) > DateTime.Now)
+            {
+                rsModel.message = "验证码有误或已过期，请重新输入";
+                SessionState.RemoveSession("VFCCodeCN");
+                return rsModel;
+            }
+
+            UserInfo userInfo = new UserInfo();
+            try
+            {
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
+                var args = new DynamicParameters();
+                args.Add("@UserName", user.UserName);
+                userInfo = dal.GetDataSingle<UserInfo>(sql, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex);
+                rsModel.message = "服务器错误，请稍后重试";
+                return rsModel;
+            }
+
+            //无用户
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserName))
+            {
+                rsModel.message = "不存在此账户，请重新登录或注册后进行登录";
+            }
+            else
+            {
+                if (userInfo.UserName == null || userInfo.Password == null)
+                {
+                    rsModel.message = "当前用户存在问题，请联系管理员进行处理";
+                    LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserId + "的账户存在问题");
+                    return rsModel;
+                }
+
+                if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
+                {
+                    string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
+                    var args = new DynamicParameters();
+                    args.Add("@NowStatus", NowStatus.已登录);
+                    args.Add("@UserId", userInfo.UserId);
+                    dal.OpeData(sqlUpTime, args);
+
+                    rsModel.isRight = true;
+                    rsModel.message = "用户登录成功！";
+
+                    userInfo.NowStatus = NowStatus.已登录;
+                    SessionState.SaveSession(userInfo, "UserInfo");
+                }
+                else
+                {
+                    rsModel.message = "用户名或密码有误，请重新输入登录账户";
+                }
+            }
+            return rsModel;
+        }
+
         public byte[] GetVerificationCode2()
         {
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(100) > DateTime.Now)
+            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(300) > DateTime.Now)
             {
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(300);
             }
             try
             {
@@ -60,8 +150,6 @@ namespace PersonalWebService.BLL
                 MemoryStream stream = new MemoryStream();
                 vcfImage.Save(stream, ImageFormat.Gif);
                 return stream.ToArray();
-                //string imageDate = ImageConvert.ToBase64HtmlString(vcfImage, ImageFormat.Gif);
-                //return imageDate;
             }
             catch (Exception ex)
             {
@@ -91,18 +179,12 @@ namespace PersonalWebService.BLL
             }
 
             RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev == null || !rvPrev.ValidateCode.Equals(user.ValidateCode))
+            if (rvPrev == null || !rvPrev.ValidateCode.Equals(user.ValidateCode) || rvPrev.SaveTime.AddMinutes(5) > DateTime.Now)
             {
                 rsModel.message = "验证码有误，请重新输入";
                 SessionState.RemoveSession("VFCCode");
                 return rsModel;
             }
-            ////验证码验证错误时
-            //if (VerificationCode2_Helper.IsPass(user.ValidateCode, index))
-            //{
-            //    rsModel.message = "验证码有误，请刷新验证码后重新输入";
-            //    return rsModel;
-            //}
 
             UserInfo userInfo = new UserInfo();
             try
@@ -310,6 +392,7 @@ namespace PersonalWebService.BLL
                 rsModel.message = "服务器错误，请稍后重试";
             }
             SessionState.RemoveSession("RegisterSendEmail");//注册走完后就删除session,防止二次使用
+            SessionState.RemoveSession("RegisterSendEmail" + "Email");
             return rsModel;
         }
 
@@ -402,12 +485,14 @@ namespace PersonalWebService.BLL
             if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
             {
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
+                SessionState.RemoveSession("RetrieveValidateCode");
                 return rsModel;
             }
 
             if (!rvPrev.ValidateCode.Equals(resetPwd.Password))
             {
                 rsModel.message = "验证码输入有误，请重新输入";
+                SessionState.RemoveSession("RetrieveValidateCode");
                 return rsModel;
             }
 
@@ -453,6 +538,7 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
+            SessionState.RemoveSession("RetrieveValidateCode");
             return rsModel;
         }
 
@@ -465,6 +551,7 @@ namespace PersonalWebService.BLL
             if (rtEmail == null || rtEmail.SaveTime.AddMinutes(20) < DateTime.Now)
             {
                 rsModel.message = "当前重置密码操作过期，请重新操作";
+                SessionState.RemoveSession("RetrieveSetPwd");
                 return rsModel;
             }
 
@@ -478,7 +565,6 @@ namespace PersonalWebService.BLL
                 {
                     rsModel.isRight = true;
                     rsModel.message = "修改密码成功，你现在可以登录了";
-                    SessionState.RemoveSession("RetrieveSetPwd");
                 }
                 else
                 {
@@ -490,6 +576,7 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试或重新操作找回密码";
             }
+            SessionState.RemoveSession("RetrieveSetPwd");
             return rsModel;
 
         }

@@ -55,6 +55,13 @@ body {
     position: relative;
 }
 
+.yz-Refresh{
+    color:#cccccc;
+    cursor:pointer;
+    margin-top:16px;
+    margin-right:10px;
+}
+
 .yz-span {
     width: 16px;
     height: 16px;
@@ -247,7 +254,6 @@ body {
 
 .login-content {
     margin: 0 auto;
-    height: 300px;
     width: 90%;
 }
 

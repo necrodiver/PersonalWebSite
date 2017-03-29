@@ -73,16 +73,23 @@ namespace PersonalWebClient.Controllers
             return Json(accountBll.VerifyUserInfo(user), JsonRequestBehavior.DenyGet);
         }
 
+        [HttpPost]
+        public JsonResult LoginIndex(UserLoginTwo user)
+        {
+            return Json(accountBll.VerifyUserInfoIndex(user), JsonRequestBehavior.DenyGet);
+        }
+
 
         [HttpGet]
-        //获取验证码
-        public string GetVerificationCode()
+        //获取验证码,用于主页面
+        public ActionResult GetVerificationCode()
         {
-            return accountBll.GetVerificationCode();
+            byte[] imageByte = accountBll.GetVerificationCode();
+            return File(imageByte, @"image/gif");
         }
 
         [HttpGet]
-        //获取验证码2
+        //获取验证码2 用于分页面（主要）
         public ActionResult GetVerificationCode2()
         {
             byte[] imageByte = accountBll.GetVerificationCode2();

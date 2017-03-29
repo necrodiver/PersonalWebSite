@@ -45,6 +45,7 @@ namespace PersonalWebClient
                       "~/Scripts/bootstrap/bootstrap-popover.js",
                       "~/Scripts/bootstrap/bootstrap-affix.js",
                       "~/Scripts/bootstrap/bootstrapValidator.js",
+                      "~/Scripts\bootstrap\bootstrap-transition.js",
                       "~/Scripts/bootstrap/bootstrapValidator_zh_CN.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

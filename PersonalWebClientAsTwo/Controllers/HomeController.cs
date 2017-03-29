@@ -1,4 +1,5 @@
-﻿using PWC.Helper;
+﻿using PersonalWebService.Model;
+using PWC.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,10 @@ namespace PersonalWebClient.Controllers
 {
     public class HomeController : Controller
     {
-        public async Task<ActionResult> Index()
+        PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
+
+        public ActionResult Index()
         {
-            //PWCHelper_HttpClientService hcs = new PWCHelper_HttpClientService();
-            //string a=await hcs.TestDM2();
-            //ViewBag.a = a;
             return View();
         }
         public ActionResult RetrievePassword()
@@ -26,8 +26,16 @@ namespace PersonalWebClient.Controllers
         {
             return View();
         }
-        public ActionResult List()
+        public ActionResult List(string name)
         {
+            if (name.Equals("Scrawl"))
+            {
+
+            }
+            if (name.Equals("Jottings"))
+            {
+
+            }
             return View();
         }
 

@@ -79,6 +79,28 @@ namespace PersonalWebService.Model
         [RegularExpression(@"^[A-Za-z0-9]{6}$", ErrorMessage = "{0}不符合规范")]
         public string ValidateCode { get; set; }
     }
+
+    /// <summary>
+    /// 用户登录Model 第二种
+    /// </summary>
+    public class UserLoginTwo
+    {
+        [Required]
+        [DisplayName("用户名")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DisplayName("登录密码")]
+        [RegularExpression(@"^\w+$", ErrorMessage = "{0}不符合规范")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
+        public string PassWord { get; set; }
+
+        [Required]
+        [DisplayName("验证码")]
+        public List<Coord> ValidateCode { get; set; }
+    }
     public class SendEmail
     {
         [Required]
@@ -140,6 +162,17 @@ namespace PersonalWebService.Model
     {
         [DisplayName("验证码")]
         public string ValidateCode { get; set; }
+        [DisplayName("存储时间")]
+        public DateTime SaveTime { get; set; }
+    }
+
+    /// <summary>
+    /// 存储验证码和时间Model ,用于主页面
+    /// </summary>
+    public class RetrieveValueCN
+    {
+        [DisplayName("验证码")]
+        public int[] ValidateCode { get; set; }
         [DisplayName("存储时间")]
         public DateTime SaveTime { get; set; }
     }

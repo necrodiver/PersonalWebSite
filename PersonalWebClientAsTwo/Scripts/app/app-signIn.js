@@ -74,6 +74,8 @@ $(document).ready(function () {
                 $("#signInForm").data('bootstrapValidator').destroy();
                 $('#signInForm').data('bootstrapValidator', null);
                 location.href = '../Home/Index';
+            } else {
+                $('#signInImage').attr('src', 'GetVerificationCode2?time=' + new Date().getMilliseconds());
             }
         });
     });
