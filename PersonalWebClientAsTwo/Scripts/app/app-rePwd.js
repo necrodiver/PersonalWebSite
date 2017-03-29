@@ -70,6 +70,11 @@
             swal("找回密码提示", "当前email地址格式不正确，请重新输入", "warning");
             return;
         }
-        $server.accessToData("retrievePwdEmail", { "Email": rtEmail }, function (data) { swal(data.title, data.message, data.isRight ? 'success' : 'error') });
+        $server.accessToData("retrievePwdEmail", { "Email": rtEmail }, function (data) {
+            swal(data.title, data.message, data.isRight ? 'success' : 'error');
+            if (data.isRight) {
+                setTimeoutThis($('#btnRtPwdEmail'), "发送验证码");
+            }
+        });
     });
 });

@@ -31,7 +31,10 @@ namespace PersonalWebClient.Controllers
             return View();
         }
 
-        //找回密码First
+        /// <summary>
+        /// 找回密码First
+        /// </summary>
+        /// <returns></returns>
         public ActionResult RetrievePwd()
         {
             var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
@@ -42,7 +45,10 @@ namespace PersonalWebClient.Controllers
             return View();
         }
 
-        //找回密码Second
+        /// <summary>
+        /// 找回密码Second
+        /// </summary>
+        /// <returns></returns>
         public ActionResult RetrievePwdSet()
         {
             var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
@@ -62,7 +68,6 @@ namespace PersonalWebClient.Controllers
         }
 
         [HttpPost]
-        //登录
         public JsonResult Login(UserLogin user)
         {
             return Json(accountBll.VerifyUserInfo(user), JsonRequestBehavior.DenyGet);

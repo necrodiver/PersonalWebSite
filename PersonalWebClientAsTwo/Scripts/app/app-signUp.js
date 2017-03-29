@@ -2,7 +2,6 @@
 /// <reference path="../jquery/jquery-1.10.2.js" />
 /// <reference path="../bootstrap/bootstrap-popover.js" />
 $(function () {
-    $server.ceshi1(1001);
     $('#signUpForm').bootstrapValidator({
         message: '这个值是无效的',
         feedbackIcons: {/*输入框不同状态，显示图片的样式*/
@@ -153,6 +152,11 @@ $(function () {
             swal("注册提示", "当前email地址格式不正确，请重新输入", "warning");
             return;
         }
-        $server.accessToData("registerSendEmail", { "Email": email }, function (data) { swal(data.title, data.message, data.isRight ? 'success' : 'error') });
+        $server.accessToData("registerSendEmail", { "Email": email }, function (data) {
+            swal(data.title, data.message, data.isRight ? 'success' : 'error');
+            if (data.isRight) {
+                setTimeoutThis($('#btnSendVCode'), "发送验证码");
+            }
+        });
     });
 });

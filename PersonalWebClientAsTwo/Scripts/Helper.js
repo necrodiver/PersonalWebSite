@@ -15,3 +15,18 @@ if (!String.prototype.format) {
         });
     };
 }
+
+function setTimeoutThis(sid,msg) {
+    $(sid).attr('disabled', true);
+    var lastSecond = 2 * 60;
+    var lasttime = 0;
+    var timer = setInterval(function () {
+        if (lastSecond == 0) {
+            $(sid).attr('disabled', false).text(msg);
+            window.clearTimeout(timer);
+            return;
+        }
+        $(sid).text(lastSecond + "秒 后可用");
+        lastSecond--;
+    }, 1000);
+}
