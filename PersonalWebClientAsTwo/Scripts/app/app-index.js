@@ -79,21 +79,30 @@ $(function () {
             };
 
             $server.accessToData("user_LoginIndex", userLogin, function (data) {
-                swal(data.title, data.message, data.isRight ? 'success' : 'error');
                 if (data.isRight) {
+                    $('#myModal').modal('hide');
+                    swal(data.title, data.message, data.isRight ? 'success' : 'error');
                 } else {
+                    $('.alert-message>.alert').text(data.message).css("display", "block");
+                    window.setTimeout(function () {
+                        $('.alert-message>.alert').css("display", "none");
+                    }, 2000);
                 }
-                $('#img').attr('src', '../Sign/GetVerificationCode?time=' + new Date().getMilliseconds());
+                $('#img').attr('src', $server.getFullUrl('getVFCIndex') + '?time=' + new Date().getMilliseconds());
             });
 
         });
 
         $('#yz-Refresh').click(function () {
-            $('#img').attr('src', '../Sign/GetVerificationCode?time=' + new Date().getMilliseconds());
+            $('#img').attr('src', $server.getFullUrl('getVFCIndex') + '?time=' + new Date().getMilliseconds());
         });
     }
+
     LoginIndex();
 
+    $('#userId').click(function () {
+        $('#img').attr('src', $server.getFullUrl('getVFCIndex') + '?time=' + new Date().getMilliseconds());
+    });
 
 
     $('#userId').each(function () {

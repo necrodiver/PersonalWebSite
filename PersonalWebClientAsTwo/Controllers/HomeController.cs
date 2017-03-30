@@ -21,7 +21,6 @@ namespace PersonalWebClient.Controllers
         {
             return View();
         }
-
         public ActionResult UserProfiles()
         {
             return View();

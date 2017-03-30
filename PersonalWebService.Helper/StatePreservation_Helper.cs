@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace PersonalWebService.Helper
 {
@@ -12,7 +11,7 @@ namespace PersonalWebService.Helper
     {
         public SessionState()
         {
-            HttpContext.Current.Session.Timeout = 10;
+            System.Web.HttpContext.Current.Session.Timeout = 10;
         }
         /// <summary>
         /// 存储Session
@@ -23,7 +22,7 @@ namespace PersonalWebService.Helper
         /// <returns></returns>
         public static bool SaveSession<T>(T sessionContent, string sessionKey) where T : class, new()
         {
-            HttpContext.Current.Session[sessionKey] = sessionContent;
+            System.Web.HttpContext.Current.Session[sessionKey] = sessionContent;
             return true;
         }
 
@@ -35,11 +34,11 @@ namespace PersonalWebService.Helper
         /// <returns></returns>
         public static T GetSession<T>(string sessionKey) where T : class, new()
         {
-            if (HttpContext.Current.Session[sessionKey] == null)
+            if (System.Web.HttpContext.Current.Session[sessionKey] == null)
             {
                 return null;
             }
-            return HttpContext.Current.Session[sessionKey] as T;
+            return System.Web.HttpContext.Current.Session[sessionKey] as T;
         }
         /// <summary>
         /// 删除Session
@@ -48,11 +47,11 @@ namespace PersonalWebService.Helper
         /// <returns></returns>
         public static bool RemoveSession(string sessionKey)
         {
-            if (HttpContext.Current.Session[sessionKey] == null)
+            if (System.Web.HttpContext.Current.Session[sessionKey] == null)
             {
                 return false;
             }
-            HttpContext.Current.Session.Remove(sessionKey);
+            System.Web.HttpContext.Current.Session.Remove(sessionKey);
             return true;
         }
     }

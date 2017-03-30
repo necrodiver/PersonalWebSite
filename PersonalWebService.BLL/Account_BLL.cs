@@ -36,9 +36,9 @@ namespace PersonalWebService.BLL
         public byte[] GetVerificationCode()
         {
             RetrieveValueCN rvPrev1 = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
-            if (rvPrev1 != null && rvPrev1.SaveTime.AddMilliseconds(300) > DateTime.Now)
+            if (rvPrev1 != null && rvPrev1.SaveTime.AddMilliseconds(100) > DateTime.Now)
             {
-                System.Threading.Thread.Sleep(300);
+                System.Threading.Thread.Sleep(100);
             }
             try
             {
@@ -52,7 +52,6 @@ namespace PersonalWebService.BLL
                 rvPrevCN.SaveTime = DateTime.Now;
                 rvPrevCN.ValidateCode = vcfCode;
                 SessionState.SaveSession(rvPrevCN, "VFCCodeCN");
-                RetrieveValueCN rvPrev2 = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
                 return stream.ToArray();
             }
             catch (Exception ex)
@@ -320,11 +319,10 @@ namespace PersonalWebService.BLL
 
             RetrieveValue rvPrevFirst = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
             RetrieveValue rvPrevEmail = SessionState.GetSession<RetrieveValue>("RegisterSendEmail" + "Email");
+            SessionState.RemoveSession("RegisterSendEmail");//注册走完后就删除session,防止二次使用
+            SessionState.RemoveSession("RegisterSendEmail" + "Email");
             if (rvPrevFirst == null || rvPrevFirst.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now)
             {
-                SessionState.RemoveSession("RegisterSendEmail");
-                SessionState.RemoveSession("RegisterSendEmail" + "Email");
-
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
                 return rsModel;
             }
@@ -332,16 +330,13 @@ namespace PersonalWebService.BLL
             if (rvPrevEmail == null || rvPrevEmail.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now ||
                 !rvPrevEmail.ValidateCode.Equals(userRegister.UserName))
             {
-                SessionState.RemoveSession("RegisterSendEmail");
-                SessionState.RemoveSession("RegisterSendEmail" + "Email");
-
                 rsModel.message = "当前邮箱地址非发送邮箱地址，请认真填写";
                 return rsModel;
             }
 
             if (!rvPrevFirst.ValidateCode.Equals(userRegister.ValidateCode))
             {
-                rsModel.message = "验证码输入有误，请重新输入";
+                rsModel.message = "验证码输入有误，请重新发送验证码并验证";
                 return rsModel;
             }
 
@@ -390,8 +385,6 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
                 rsModel.message = "服务器错误，请稍后重试";
             }
-            SessionState.RemoveSession("RegisterSendEmail");//注册走完后就删除session,防止二次使用
-            SessionState.RemoveSession("RegisterSendEmail" + "Email");
             return rsModel;
         }
 
@@ -514,7 +507,6 @@ namespace PersonalWebService.BLL
             UserInfo_Model userinfo = new UserInfo_Model();
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
             userinfo.UserName = resetPwd.Email;
-            SessionState.RemoveSession("RetrieveValidateCode");
             string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "UserName=@UserName");
             try
             {
@@ -536,7 +528,6 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试（请重新发送邮件），或者联系管理员";
             }
-            SessionState.RemoveSession("RetrieveValidateCode");
             return rsModel;
         }
 
@@ -546,10 +537,10 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "重置密码";
             var rtEmail = SessionState.GetSession<RetrieveValue>("RetrieveSetPwd");
+            SessionState.RemoveSession("RetrieveSetPwd");
             if (rtEmail == null || rtEmail.SaveTime.AddMinutes(20) < DateTime.Now)
             {
                 rsModel.message = "当前重置密码操作过期，请重新操作";
-                SessionState.RemoveSession("RetrieveSetPwd");
                 return rsModel;
             }
 
@@ -574,7 +565,6 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
                 rsModel.message = "服务器错误，请稍后重试或重新操作找回密码";
             }
-            SessionState.RemoveSession("RetrieveSetPwd");
             return rsModel;
 
         }
