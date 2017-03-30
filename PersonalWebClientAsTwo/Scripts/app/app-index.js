@@ -19,6 +19,28 @@ $(function () {
         }
     }
 
+    function GetCoord() {
+        var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+        if ($('.yz-span').length > 0) {
+            var x1Str = $($('.yz-span')[0]).css('left');
+            var y1Str = $($('.yz-span')[0]).css('top');
+            x1 = x1Str.substr(0, x1Str.length - 2);
+            y1 = y1Str.substr(0, y1Str.length - 2);
+            x2 = x1;
+            y2 = y1;
+        } else {
+            return null;
+        }
+        if ($('.yz-span').length > 1) {
+            var x2Str = $($('.yz-span')[1]).css('left');
+            var y2Str = $($('.yz-span')[1]).css('top');
+            x2 = x2Str.substr(0, x2Str.length - 2);
+            y2 = y2Str.substr(0, y2Str.length - 2);
+        }
+        $('.yz-span').remove();
+        return [{ 'x': x1, 'y': y1 }, { 'x': x2, 'y': y2 }];
+    }
+
     function LoginIndex() {
         $('#btnLogin').click(function () {
             var login_email = $('#login_email').val();
@@ -27,28 +49,47 @@ $(function () {
             if (login_email == null || login_email == '' || login_email.length < 5 ||
                 !login_email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
 
-                $('.alert-message .alert').text('你输入的Email地址格式有问题，请重新输入！').removeClass('hidden');
+                $('.alert-message>.alert').text('你输入的Email地址格式有问题，请重新输入！').css("display", "block");
                 window.setTimeout(function () {
-                    $('.alert-message').addClass('hideen');
+                    $('.alert-message>.alert').css("display", "none");
                 }, 2000);
                 return;
             }
 
-            if (login_pwd == null || login_pwd == '' || !login_pwd.match(/^[A-Za-z0-9]{6}/)) {
-                $('.alert-message .alert').text('你输入的密码格式有问题，请重新输入！').removeClass('hidden');
+            if (login_pwd == null || login_pwd == '' || !login_pwd.match(/^[A-Za-z0-9]{6}$/)) {
+                $('.alert-message>.alert').text('你输入的密码格式有问题，请重新输入！').css("display", "block");
                 window.setTimeout(function () {
-                    $('.alert-message').addClass('hideen');
+                    $('.alert-message>.alert').css("display", "none");
                 }, 2000);
                 return;
             }
 
             var xyCoord = GetCoord();
+            if (xyCoord == null) {
+                $('.alert-message>.alert').text('当前验证码无效，请操作验证码验证！').css("display", "block");
+                window.setTimeout(function () {
+                    $('.alert-message>.alert').css("display", "none");
+                }, 2000);
+                return;
+            }
             var userLogin = {
                 "UserName": login_email,
                 "PassWord": login_pwd,
-                "ValidateCode": 'daiding'
+                "ValidateCode": xyCoord
             };
 
+            $server.accessToData("user_LoginIndex", userLogin, function (data) {
+                swal(data.title, data.message, data.isRight ? 'success' : 'error');
+                if (data.isRight) {
+                } else {
+                }
+                $('#img').attr('src', '../Sign/GetVerificationCode?time=' + new Date().getMilliseconds());
+            });
+
+        });
+
+        $('#yz-Refresh').click(function () {
+            $('#img').attr('src', '../Sign/GetVerificationCode?time=' + new Date().getMilliseconds());
         });
     }
     LoginIndex();
@@ -103,28 +144,6 @@ $(function () {
                 $(this).remove();
             }
         });
-    }
-
-    function GetCoord() {
-        var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-        if ($('.yz-span').length > 0) {
-            var x1Str = $($('.yz-span')[0]).css('left');
-            var y1Str = $($('.yz-span')[0]).css('top');
-            x1 = x1Str.substr(0, x1Str.length - 2);
-            y1 = y1Str.substr(0, y1Str.length - 2);
-            x2 = x1;
-            y2 = y1;
-        } else {
-            return null;
-        }
-        if ($('.yz-span').length > 1) {
-            var x2Str = $($('.yz-span')[1]).css('left');
-            var y2Str = $($('.yz-span')[1]).css('top');
-            x2 = x2Str.substr(0, x2Str.length - 2);
-            y2 = y2Str.substr(0, y2Str.length - 2);
-        }
-        $('.yz-span').remove();
-        return { 'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2 };
     }
 
     function FillModule() {

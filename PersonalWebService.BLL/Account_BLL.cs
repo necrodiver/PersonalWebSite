@@ -28,7 +28,6 @@ namespace PersonalWebService.BLL
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserInfo] WHERE {0}";
-        private static int[] index;
 
         /// <summary>
         /// 获取验证码
@@ -36,8 +35,8 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public byte[] GetVerificationCode()
         {
-            RetrieveValueCN rvPrev = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
-            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(300) > DateTime.Now)
+            RetrieveValueCN rvPrev1 = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
+            if (rvPrev1 != null && rvPrev1.SaveTime.AddMilliseconds(300) > DateTime.Now)
             {
                 System.Threading.Thread.Sleep(300);
             }
@@ -53,7 +52,7 @@ namespace PersonalWebService.BLL
                 rvPrevCN.SaveTime = DateTime.Now;
                 rvPrevCN.ValidateCode = vcfCode;
                 SessionState.SaveSession(rvPrevCN, "VFCCodeCN");
-
+                RetrieveValueCN rvPrev2 = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
                 return stream.ToArray();
             }
             catch (Exception ex)
@@ -69,11 +68,11 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "登录提示";
 
-            RetrieveValueCN rvPrev = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
-            if (rvPrev == null || !VerificationCode2_Helper.IsPass(user.ValidateCode, rvPrev.ValidateCode) || rvPrev.SaveTime.AddMinutes(5) > DateTime.Now)
+            RetrieveValueCN rvPrevIndex = SessionState.GetSession<RetrieveValueCN>("VFCCodeCN");
+            SessionState.RemoveSession("VFCCodeCN");
+            if (rvPrevIndex == null || !VerificationCode2_Helper.IsPass(user.ValidateCode, rvPrevIndex.ValidateCode) || rvPrevIndex.SaveTime.AddMinutes(5) < DateTime.Now)
             {
                 rsModel.message = "验证码有误或已过期，请重新输入";
-                SessionState.RemoveSession("VFCCodeCN");
                 return rsModel;
             }
 
@@ -130,8 +129,8 @@ namespace PersonalWebService.BLL
 
         public byte[] GetVerificationCode2()
         {
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev != null && rvPrev.SaveTime.AddMilliseconds(300) > DateTime.Now)
+            RetrieveValue rvPrevCode2 = SessionState.GetSession<RetrieveValue>("VFCCode");
+            if (rvPrevCode2 != null && rvPrevCode2.SaveTime.AddMilliseconds(300) > DateTime.Now)
             {
                 System.Threading.Thread.Sleep(300);
             }
@@ -178,11 +177,11 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("VFCCode");
-            if (rvPrev == null || !rvPrev.ValidateCode.Equals(user.ValidateCode) || rvPrev.SaveTime.AddMinutes(5) > DateTime.Now)
+            RetrieveValue rvPrevVertify = SessionState.GetSession<RetrieveValue>("VFCCode");
+            SessionState.RemoveSession("VFCCode");
+            if (rvPrevVertify == null || !rvPrevVertify.ValidateCode.Equals(user.ValidateCode) || rvPrevVertify.SaveTime.AddMinutes(5) < DateTime.Now)
             {
                 rsModel.message = "验证码有误，请重新输入";
-                SessionState.RemoveSession("VFCCode");
                 return rsModel;
             }
 
@@ -243,10 +242,10 @@ namespace PersonalWebService.BLL
             rsModel.title = "验证码发送";
             rsModel.isRight = false;
             //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>(sessionKey);
-            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
+            RetrieveValue rvPrevEmail = SessionState.GetSession<RetrieveValue>(sessionKey);
+            if (rvPrevEmail != null && rvPrevEmail.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
             {
-                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
+                rsModel.message = "上次发送时间为：" + rvPrevEmail.SaveTime + ",请勿频繁发送";
                 return rsModel;
             }
 
@@ -319,9 +318,9 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
+            RetrieveValue rvPrevFirst = SessionState.GetSession<RetrieveValue>("RegisterSendEmail");
             RetrieveValue rvPrevEmail = SessionState.GetSession<RetrieveValue>("RegisterSendEmail" + "Email");
-            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now)
+            if (rvPrevFirst == null || rvPrevFirst.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now)
             {
                 SessionState.RemoveSession("RegisterSendEmail");
                 SessionState.RemoveSession("RegisterSendEmail" + "Email");
@@ -340,7 +339,7 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            if (!rvPrev.ValidateCode.Equals(userRegister.ValidateCode))
+            if (!rvPrevFirst.ValidateCode.Equals(userRegister.ValidateCode))
             {
                 rsModel.message = "验证码输入有误，请重新输入";
                 return rsModel;
@@ -427,10 +426,10 @@ namespace PersonalWebService.BLL
             rsModel.title = "找回密码";
 
             //进行检查邮件验证码上次发送时间是否符合规定的发送时间间隔
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
-            if (rvPrev != null && rvPrev.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
+            RetrieveValue rvPrevRPwd = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
+            if (rvPrevRPwd != null && rvPrevRPwd.SaveTime.AddMinutes(sendEmailInterval) > DateTime.Now)
             {
-                rsModel.message = "上次发送时间为：" + rvPrev.SaveTime + ",请勿频繁发送";
+                rsModel.message = "上次发送时间为：" + rvPrevRPwd.SaveTime + ",请勿频繁发送";
                 return rsModel;
             }
 
@@ -481,18 +480,17 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "找回密码";
             //首先各种验证
-            RetrieveValue rvPrev = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
-            if (rvPrev == null || rvPrev.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
+            RetrieveValue rvPrevVC = SessionState.GetSession<RetrieveValue>("RetrieveValidateCode");
+            SessionState.RemoveSession("RetrieveValidateCode");
+            if (rvPrevVC == null || rvPrevVC.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) > DateTime.Now)
             {
                 rsModel.message = "当前验证码已过期，请重新发送邮件进行查看";
-                SessionState.RemoveSession("RetrieveValidateCode");
                 return rsModel;
             }
 
-            if (!rvPrev.ValidateCode.Equals(resetPwd.Password))
+            if (!rvPrevVC.ValidateCode.Equals(resetPwd.Password))
             {
                 rsModel.message = "验证码输入有误，请重新输入";
-                SessionState.RemoveSession("RetrieveValidateCode");
                 return rsModel;
             }
 

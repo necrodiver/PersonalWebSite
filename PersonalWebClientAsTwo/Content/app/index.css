@@ -163,6 +163,16 @@ body {
     height: 45px;
 }
 
+.login-message>div>.linkstyle:hover{
+    color:#aaa;
+}
+.login-message>div>.linkstyle:visited{
+    color:#aaa;
+}
+.login-message>div{
+    margin-top:10px;
+    margin-left:25px;
+}
 /*.scrowl_img:hover {
     -moz-transform: scale(0.95,0.95);
     -webkit-transform: scale(0.95,0.95);

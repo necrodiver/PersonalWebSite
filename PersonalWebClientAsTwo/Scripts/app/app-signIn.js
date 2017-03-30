@@ -81,13 +81,6 @@ $(document).ready(function () {
     });
 
     $('#signInImage').click(function () {
-        //$server.accessToData("getVFC", {}, function (data) {
-        //    if (data.length > 10) {
-        //        $('#signInImage').attr('src', 'url(' + data + ')');
-        //    } else {
-        //        swal(data.title, data.message, 'error');
-        //    }
-        //});
         $('#signInImage').attr('src', 'GetVerificationCode2?time='+new Date().getMilliseconds());
     });
 });

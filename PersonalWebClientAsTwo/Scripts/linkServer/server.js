@@ -38,6 +38,12 @@ $server.getFullUrl = function GetChildUrl(urlName) {
         case "user_Login"://登录
             childUrl = "Sign/Login";
             break;
+        case "user_LoginIndex"://登录Index
+            childUrl = "Sign/LoginIndex";
+            break;
+        case "getVFCIndex"://获取验证码Index
+            childUrl = "Sign/GetVerificationCode";
+            break;
         case "getVFC"://获取验证码
             childUrl = "Sign/GetVerificationCode2";
             break;
@@ -55,6 +61,21 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             break;
         case "user_vertifyCode"://找回密码后的修改密码
             childUrl = "Sign/VertifyCode";
+            break;
+        case "registerSendEmail"://发送邮件确认信息
+            childUrl = "Sign/RegisterSendEmail";
+            break;
+        case "registerReEmail"://发送邮件确认信息
+            childUrl = "Sign/ContrastNotEmail";
+            break;
+        case "retrieveVFCAndEmail"://找回密码第一步提交
+            childUrl = "Sign/RetrieveVFCAndEmail";
+            break;
+        case "retrievePwdEmail"://找回密码发送邮件确认信息
+            childUrl = "Sign/RetrievePwdEmail";
+            break;
+        case "logout"://退出
+            childUrl = "Sign/Logout";
             break;
 
             //Article
@@ -94,21 +115,6 @@ $server.getFullUrl = function GetChildUrl(urlName) {
             break;
         case "commend_getList"://查询消息
             childUrl = "Comment/GetList";
-            break;
-        case "registerSendEmail"://发送邮件确认信息
-            childUrl = "Sign/RegisterSendEmail";
-            break;
-        case "registerReEmail"://发送邮件确认信息
-            childUrl = "Sign/ContrastNotEmail";
-            break;
-        case "retrieveVFCAndEmail"://找回密码第一步提交
-            childUrl = "Sign/RetrieveVFCAndEmail";
-            break;
-        case "retrievePwdEmail"://找回密码发送邮件确认信息
-            childUrl = "Sign/RetrievePwdEmail";
-            break;
-        case "logout"://退出
-            childUrl = "Sign/Logout";
             break;
         default:
             childUrl = null;
