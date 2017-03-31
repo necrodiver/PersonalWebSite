@@ -27,6 +27,11 @@ namespace PersonalWebClient.Controllers
         }
         public ActionResult List(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                return View();
+            }
+
             if (name.Equals("Scrawl"))
             {
 

@@ -264,6 +264,7 @@
     <Content Include="Scripts\app\app-index.js" />
     <Content Include="Scripts\app\app-rePwdSet.js" />
     <Content Include="Scripts\app\app-rePwd.js" />
+    <Content Include="Scripts\app\app-top.js" />
     <Content Include="Scripts\app\list.js" />
     <Content Include="Scripts\app\mycenter.js" />
     <Content Include="Scripts\app\app-signIn.js" />

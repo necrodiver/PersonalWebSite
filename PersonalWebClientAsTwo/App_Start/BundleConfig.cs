@@ -37,8 +37,12 @@ namespace PersonalWebClient
                       "~/Content/imageUpload/sitelogo/sitelogo.js",
                       "~/Content/imageUpload/cropper/cropper.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/apptop").Include(
+                     "~/Scripts/app/app-top.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/service").Include(
                      "~/Scripts/linkServer/server.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap/bootstrap.min.js",
                       "~/Scripts/bootstrap/bootstrap-tooltip.js",
