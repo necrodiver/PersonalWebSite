@@ -7,6 +7,7 @@ using PersonalWebService.Model;
 using PersonalWebService.Helper;
 using PersonalWebService.DAL;
 using System.Text.RegularExpressions;
+using Dapper;
 
 namespace PersonalWebService.BLL
 {
@@ -142,7 +143,7 @@ namespace PersonalWebService.BLL
                                 WHERE {1}";
             //硬条件只针对普通用户，管理员不在此范围内
             sbsql.Append("A.IsFreeze=1 AND A.ArticleState=1");
-            sqlSelect = string.Format(sqlSelect, sbsql.ToString(),sqlIndex);
+            sqlSelect = string.Format(sqlSelect, sbsql.ToString(), sqlIndex);
             List<Article> articleList = new List<Article>();
             try
             {
@@ -327,6 +328,26 @@ namespace PersonalWebService.BLL
                 rsModel.message = "系统出现一个问题，请联系管理员或重试！";
                 return rsModel;
             }
+        }
+
+        /// <summary>
+        /// 获取文章数量
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public int GetArticleCount(string userId) {
+            var args = new DynamicParameters();
+            string sql = string.Format(sqlSelectTemplate, "COUNT(*) ", " [UserId]=@UserId ");
+            args.Add("@UserId", userId);
+            try
+            {
+                int num = dal.GetDataCount(sql, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+            }
+            return 0;
         }
     }
 }

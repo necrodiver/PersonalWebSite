@@ -48,7 +48,10 @@ namespace PersonalWebService.Model
         public string Address { get; set; }
 
         [DisplayName("经验")]
-        public int EXP { get; set; } 
+        public int EXP { get; set; }
+
+        [DisplayName("个人域名")]
+        public string SelfDmainName { get; set; }
 
         [DisplayName("创建日期")]
         public DateTime AddTime { get; set; }
@@ -246,6 +249,10 @@ namespace PersonalWebService.Model
         /// 经验
         /// </summary>
         public int EXP { get; set; }
+        /// <summary>
+        /// 个人域名名称
+        /// </summary>
+        public string SelfDmainName { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

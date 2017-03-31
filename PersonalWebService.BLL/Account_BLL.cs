@@ -351,7 +351,6 @@ namespace PersonalWebService.BLL
             userInfoS.EXP = 0;
 
             //查询email和昵称是否存在于数据库中
-            List<DataField> param = new List<DataField>();
             var args = new DynamicParameters();
             args.Add("@Email", userInfoS.Email);
             string sql = string.Format(sqlSelectTemplate, "  Count(*) ", " Email=@Email ");

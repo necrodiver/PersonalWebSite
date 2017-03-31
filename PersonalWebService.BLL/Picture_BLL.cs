@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PersonalWebService.Model;
 using PersonalWebService.Helper;
 using PersonalWebService.DAL;
+using Dapper;
 
 namespace PersonalWebService.BLL
 {
@@ -311,6 +312,27 @@ namespace PersonalWebService.BLL
                 rsModel.message = "系统出现一个问题，请联系管理员或重试！";
                 return rsModel;
             }
+        }
+
+        /// <summary>
+        /// 获取文章数量
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public int GetPictureCount(string userId)
+        {
+            var args = new DynamicParameters();
+            string sql = string.Format(sqlSelectTemplate, "COUNT(*) ", " [UserId]=@UserId ");
+            args.Add("@UserId", userId);
+            try
+            {
+                int num = dal.GetDataCount(sql, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Fatal, ex.ToString());
+            }
+            return 0;
         }
     }
 }
