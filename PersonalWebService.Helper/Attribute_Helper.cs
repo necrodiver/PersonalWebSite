@@ -44,7 +44,7 @@ namespace PersonalWebService.Helper
             string password = userTicketData.Substring(userTicketData.IndexOf(":") + 1);
             //这里对用户名和密码进行验证
             UserInfo userModel = SessionState.GetSession<UserInfo>("UserInfo");
-            if (userModel != null && userModel.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
+            if (userModel != null && userModel.Email.Equals(userName, StringComparison.OrdinalIgnoreCase) && userModel.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
@@ -59,7 +59,7 @@ namespace PersonalWebService.Helper
         public static UserInfo GetUserInfo()
         {
             UserInfo userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo;
-            if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserId) && !string.IsNullOrEmpty(userinfo.UserName) && !string.IsNullOrEmpty(userinfo.Password))
+            if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserId) && !string.IsNullOrEmpty(userinfo.Email) && !string.IsNullOrEmpty(userinfo.Password))
             {
                 return userinfo;
             }

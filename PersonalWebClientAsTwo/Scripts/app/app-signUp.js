@@ -129,7 +129,7 @@ $(function () {
         var sup_pwd = $("#sup_pwd").val();
         var sup_vcode = $("#sup_vcode").val();
         var userRegister = {
-            "UserName": sup_email,
+            "Email": sup_email,
             "NickName": sup_nickname,
             "PassWord": sup_pwd,
             "ValidateCode": sup_vcode

@@ -58,6 +58,7 @@
     <Compile Include="AccountAdmin_BLL.cs" />
     <Compile Include="Account_BLL.cs" />
     <Compile Include="Article_BLL.cs" />
+    <Compile Include="FansAdditional_BLL.cs" />
     <Compile Include="Log_BLL.cs" />
     <Compile Include="Picture_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

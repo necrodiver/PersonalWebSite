@@ -21,7 +21,7 @@ namespace PersonalWebService.Model
         [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DisplayName("昵称")]
@@ -38,12 +38,17 @@ namespace PersonalWebService.Model
         [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度不能超过20个字段，不能小于6个字段")]
         public string Password { get; set; }
 
-
         [Required]
         [DisplayName("用户头像")]
         [StringLength(1 * 1024 * 1024, MinimumLength = 10, ErrorMessage = "{0}不符合规格")]
         //这里需要添加图片过滤
         public string AccountPicture { get; set; }
+
+        [DisplayName("现住地址")]
+        public string Address { get; set; }
+
+        [DisplayName("经验")]
+        public int EXP { get; set; } 
 
         [DisplayName("创建日期")]
         public DateTime AddTime { get; set; }
@@ -63,10 +68,10 @@ namespace PersonalWebService.Model
     public class UserLogin
     {
         [Required]
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DisplayName("登录密码")]
@@ -86,10 +91,10 @@ namespace PersonalWebService.Model
     public class UserLoginTwo
     {
         [Required]
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DisplayName("登录密码")]
@@ -115,10 +120,10 @@ namespace PersonalWebService.Model
     public class UserRegister
     {
         [Required]
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DisplayName("昵称")]
@@ -180,7 +185,7 @@ namespace PersonalWebService.Model
     public class ResetPwd
     {
         [Required]
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
         public string Email { get; set; }
@@ -213,9 +218,9 @@ namespace PersonalWebService.Model
         /// </summary>
         public string UserId { get; set; }
         /// <summary>
-        /// 用户名（邮箱地址）
+        /// 邮箱地址
         /// </summary>
-        public string UserName { get; set; }
+        public string Email { get; set; }
         /// <summary>
         /// 用户昵称
         /// </summary>
@@ -231,7 +236,16 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 密码
         /// </summary>
+        /// 
         public string Password { get; set; }
+        /// <summary>
+        /// 现住地址
+        /// </summary>
+        public string Address { get; set; }
+        /// <summary>
+        /// 经验
+        /// </summary>
+        public int EXP { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
@@ -264,9 +278,9 @@ namespace PersonalWebService.Model
         /// </summary>
         public string UserId { get; set; }
         /// <summary>
-        /// 用户名（邮箱地址）
+        /// 邮箱地址
         /// </summary>
-        public string UserName { get; set; }
+        public string Email { get; set; }
         /// <summary>
         /// 用户昵称
         /// </summary>
@@ -302,10 +316,10 @@ namespace PersonalWebService.Model
         [Required]
         [StringLength(32)]
         public string UserId { get; set; }
-        [DisplayName("用户名")]
+        [DisplayName("用户账号名")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "{0}必须是邮箱格式，以便找回密码")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
         [DisplayName("昵称")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
         public string NickName { get; set; }
@@ -319,6 +333,9 @@ namespace PersonalWebService.Model
         [DisplayName("个人简介")]
         [StringLength(300, MinimumLength = 1, ErrorMessage = "{0}长度不能超过300个字段，不能小于1个字段")]
         public string Introduce { get; set; }
+        [DisplayName("现住地址")]
+        [StringLength(120, MinimumLength = 2, ErrorMessage = "{0}长度不能超过120个字段，不能小于2个字段")]
+        public string Address { get; set; }
     }
 
     public class Coord

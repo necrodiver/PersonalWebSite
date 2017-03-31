@@ -73,7 +73,7 @@ $(function () {
                 return;
             }
             var userLogin = {
-                "UserName": login_email,
+                "Email": login_email,
                 "PassWord": login_pwd,
                 "ValidateCode": xyCoord
             };
@@ -157,8 +157,3 @@ $(function () {
     }
     $('#userId').popover('hide');
 });
-
-
-function InitializeUser() {
-
-}

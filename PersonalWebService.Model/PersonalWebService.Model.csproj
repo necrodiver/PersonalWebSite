@@ -53,6 +53,7 @@
     <Compile Include="AdminInfo_Model.cs" />
     <Compile Include="TrieNode_Model.cs" />
     <Compile Include="UserComment_Model.cs" />
+    <Compile Include="UserFans.cs" />
     <Compile Include="UserInfo_Model.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

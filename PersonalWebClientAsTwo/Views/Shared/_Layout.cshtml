@@ -28,6 +28,17 @@
         @Html.Partial("PartialView/format_Jotting")
     </script>
     <script type="text/template" id="loggedOnUserTemplate">
+        @model PersonalWebService.Model.UserInfo
+        @{
+            if (Model==null||string.IsNullOrEmpty(Model.UserId))
+            {
+                @Html.Partial("PartialView/format_signInToolTip")
+            }
+            else
+            {
+                @Html.Partial("PartialView/format_loggedOnUser",Model)
+            }
+        }
         @Html.Partial("PartialView/format_loggedOnUser")
     </script>
     <script type="text/template" id="signInTemplate">

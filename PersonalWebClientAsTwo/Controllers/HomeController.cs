@@ -1,4 +1,5 @@
-﻿using PersonalWebService.Model;
+﻿using PersonalWebService.Helper;
+using PersonalWebService.Model;
 using PWC.Helper;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
 
         public ActionResult Index()
         {
-            return View();
+            return View(baseUserInfo);
         }
         public ActionResult RetrievePassword()
         {
@@ -23,13 +24,13 @@ namespace PersonalWebClient.Controllers
         }
         public ActionResult UserProfiles()
         {
-            return View();
+            return View(baseUserInfo);
         }
         public ActionResult List(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
-                return View();
+                return View(baseUserInfo);
             }
 
             if (name.Equals("Scrawl"))
@@ -40,14 +41,15 @@ namespace PersonalWebClient.Controllers
             {
 
             }
-            return View();
+            return View(baseUserInfo);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(baseUserInfo);
         }
+
     }
 }

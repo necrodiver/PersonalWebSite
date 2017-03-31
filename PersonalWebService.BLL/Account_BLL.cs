@@ -78,9 +78,9 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " Email=@Email AND State!=-100");
                 var args = new DynamicParameters();
-                args.Add("@UserName", user.UserName);
+                args.Add("@Email", user.Email);
                 userInfo = dal.GetDataSingle<UserInfo>(sql, args);
             }
             catch (Exception ex)
@@ -91,20 +91,20 @@ namespace PersonalWebService.BLL
             }
 
             //无用户
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserName))
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.Email))
             {
                 rsModel.message = "不存在此账户，请重新登录或注册后进行登录";
             }
             else
             {
-                if (userInfo.UserName == null || userInfo.Password == null)
+                if (userInfo.Email == null || userInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
                     LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserId + "的账户存在问题");
                     return rsModel;
                 }
 
-                if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
+                if (userInfo.Email.Equals(user.Email) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
                     string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
                     var args = new DynamicParameters();
@@ -187,9 +187,9 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " UserName=@UserName AND State!=-100");
+                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " Email=@Email AND State!=-100");
                 var args = new DynamicParameters();
-                args.Add("@UserName", user.UserName);
+                args.Add("@Email", user.Email);
                 userInfo = dal.GetDataSingle<UserInfo>(sql, args);
             }
             catch (Exception ex)
@@ -200,20 +200,20 @@ namespace PersonalWebService.BLL
             }
 
             //无用户
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserName))
+            if (userInfo == null || string.IsNullOrEmpty(userInfo.Email))
             {
                 rsModel.message = "不存在此账户，请重新登录或注册后进行登录";
             }
             else
             {
-                if (userInfo.UserName == null || userInfo.Password == null)
+                if (userInfo.Email == null || userInfo.Password == null)
                 {
                     rsModel.message = "当前用户存在问题，请联系管理员进行处理";
                     LogRecord_Helper.RecordLog(LogLevels.Error, "用户ID为：" + userInfo.UserId + "的账户存在问题");
                     return rsModel;
                 }
 
-                if (userInfo.UserName.Equals(user.UserName) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
+                if (userInfo.Email.Equals(user.Email) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
                     string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
                     var args = new DynamicParameters();
@@ -250,8 +250,8 @@ namespace PersonalWebService.BLL
 
             var args = new DynamicParameters();
             string whereStr = "";
-            args.Add("@UserName", email);
-            whereStr = " UserName=@UserName ";
+            args.Add("@Email", email);
+            whereStr = " Email=@Email ";
             if (!sessionKey.Equals("RegisterSendEmail"))
             {
                 try
@@ -328,7 +328,7 @@ namespace PersonalWebService.BLL
             }
 
             if (rvPrevEmail == null || rvPrevEmail.SaveTime.AddMinutes(Convert.ToDouble(Email_Helper.emailTimeFrame)) < DateTime.Now ||
-                !rvPrevEmail.ValidateCode.Equals(userRegister.UserName))
+                !rvPrevEmail.ValidateCode.Equals(userRegister.Email))
             {
                 rsModel.message = "当前邮箱地址非发送邮箱地址，请认真填写";
                 return rsModel;
@@ -342,18 +342,19 @@ namespace PersonalWebService.BLL
 
             //数据装入model
             UserInfo userInfoS = new UserInfo();
-            userInfoS.UserName = userRegister.UserName;
+            userInfoS.Email = userRegister.Email;
             userInfoS.NickName = userRegister.NickName;
             userInfoS.Password = aesE.AESEncrypt(userRegister.PassWord);
             userInfoS.AddTime = DateTime.Now;
             userInfoS.State = State.正常;
             userInfoS.NowStatus = NowStatus.未登录;
+            userInfoS.EXP = 0;
 
             //查询email和昵称是否存在于数据库中
             List<DataField> param = new List<DataField>();
             var args = new DynamicParameters();
-            args.Add("@UserName", userInfoS.UserName);
-            string sql = string.Format(sqlSelectTemplate, "  Count(*) ", " UserName=@UserName ");
+            args.Add("@Email", userInfoS.Email);
+            string sql = string.Format(sqlSelectTemplate, "  Count(*) ", " Email=@Email ");
             if (dal.GetDataCount(sql, args) == 1)
             {
                 rsModel.message = "当前email账号已存在,请重新选择Email账号进行注册";
@@ -428,8 +429,8 @@ namespace PersonalWebService.BLL
 
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "Count(*)", "UserName=@UserName");
-                int count = dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = retrievePwd.Email });
+                string sql = string.Format(sqlSelectTemplate, "Count(*)", "Email=@Email");
+                int count = dal.GetDataCount(sql, new DataField { Name = "@Email", Value = retrievePwd.Email });
                 if (count == 1)
                 {
                     //准备进行发送邮件
@@ -487,10 +488,10 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            string sql = string.Format(sqlSelectTemplate, "Count(*)", "UserName=@UserName");
+            string sql = string.Format(sqlSelectTemplate, "Count(*)", "Email=@Email");
             try
             {
-                if (dal.GetDataCount(sql, new DataField { Name = "@UserName", Value = resetPwd.Email }) != 1)
+                if (dal.GetDataCount(sql, new DataField { Name = "@Email", Value = resetPwd.Email }) != 1)
                 {
                     rsModel.message = "登录账号有问题或不存在，请重新输入";
                     return rsModel;
@@ -506,12 +507,12 @@ namespace PersonalWebService.BLL
             //然后进行数据导入
             UserInfo_Model userinfo = new UserInfo_Model();
             userinfo.Password = aesE.AESEncrypt(resetPwd.Password);
-            userinfo.UserName = resetPwd.Email;
-            string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "UserName=@UserName");
+            userinfo.Email = resetPwd.Email;
+            string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "Email=@Email");
             try
             {
                 List<DataField> param = new List<DataField>();
-                param.Add(new DataField { Name = "@UserName", Value = resetPwd.Email });
+                param.Add(new DataField { Name = "@Email", Value = resetPwd.Email });
                 param.Add(new DataField { Name = "PassWord", Value = resetPwd.Password });
                 if (dal.OpeData(sqlUpdate, param))
                 {
@@ -546,9 +547,9 @@ namespace PersonalWebService.BLL
 
             try
             {
-                string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "UserName=@UserName");
+                string sqlUpdate = string.Format(sqlUpdateTemplate, "PassWord=@PassWord", "Email=@Email");
                 var args = new DynamicParameters();
-                args.Add("@UserName", rtEmail.ValidateCode);
+                args.Add("@Email", rtEmail.ValidateCode);
                 args.Add("@PassWord", aesE.AESEncrypt(pwd));
                 if (dal.OpeData(sqlUpdate, args))
                 {
@@ -633,7 +634,7 @@ namespace PersonalWebService.BLL
 
             UserInfo userInfoS = new UserInfo();
             userInfoS.UserId = userInfo.UserId;
-            userInfoS.UserName = userInfo.UserName;
+            userInfoS.Email = userInfo.Email;
             userInfoS.NickName = userInfo.NickName;
             userInfoS.AccountPicture = userInfo.AccountPicture;
             userInfoS.Password = userInfo.Password;
@@ -680,10 +681,10 @@ namespace PersonalWebService.BLL
                 sbsql.Append("U.UserId=@UserId AND ");
                 param.Add(new DataField { Name = "@UserId", Value = condition.UserId });
             }
-            if (!string.IsNullOrEmpty(condition.UserName))
+            if (!string.IsNullOrEmpty(condition.Email))
             {
-                sbsql.Append("U.UserName=@UserName AND ");
-                param.Add(new DataField { Name = "@UserName", Value = condition.UserName });
+                sbsql.Append("U.Email=@Email AND ");
+                param.Add(new DataField { Name = "@Email", Value = condition.Email });
             }
             if (!string.IsNullOrEmpty(condition.NickName))
             {
@@ -753,7 +754,7 @@ namespace PersonalWebService.BLL
                         userInfoMList.Add(new UserInfo_Model
                         {
                             UserId = l.UserId,
-                            UserName = l.UserName,
+                            Email = l.Email,
                             NickName = l.NickName,
                             Introduce = l.Introduce,
                             AccountPicture = l.AccountPicture,
@@ -794,8 +795,8 @@ namespace PersonalWebService.BLL
             string whereStr = "";
             if (!isEmailnull)
             {
-                args.Add("@UserName", email);
-                whereStr = " UserName=@UserName ";
+                args.Add("@Email", email);
+                whereStr = " Email=@Email ";
             }
             else
             {
@@ -841,10 +842,10 @@ namespace PersonalWebService.BLL
             AdminInfo adminInfo = SessionState.GetSession<AdminInfo>("AdminInfo");
             StringBuilder sbsql = new StringBuilder();
             List<DataField> param = new List<DataField>();
-            if (!string.IsNullOrEmpty(editUserInfo.UserName))
+            if (!string.IsNullOrEmpty(editUserInfo.Email))
             {
-                sbsql.Append("UserName=@UserName,");
-                param.Add(new DataField { Name = "@UserName", Value = editUserInfo.UserName });
+                sbsql.Append("Email=@Email,");
+                param.Add(new DataField { Name = "@Email", Value = editUserInfo.Email });
             }
             if (!string.IsNullOrEmpty(editUserInfo.NickName))
             {

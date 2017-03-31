@@ -63,7 +63,7 @@ $(document).ready(function () {
         var sin_pwd = $("#sin_pwd").val();
         var sin_vcf = $("#sin_vcf").val();
         var userLogin = {
-            "UserName": sin_email,
+            "Email": sin_email,
             "PassWord": sin_pwd,
             "ValidateCode": sin_vcf
         };
