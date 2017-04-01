@@ -1,0 +1,5 @@
+E:\StudyMaterials\GitHub\PersonalWebSite\PWC.Model\bin\Debug\PWC.Model.dll
+E:\StudyMaterials\GitHub\PersonalWebSite\PWC.Model\bin\Debug\PWC.Model.pdb
+E:\StudyMaterials\GitHub\PersonalWebSite\PWC.Model\obj\Debug\PWC.Model.csprojResolveAssemblyReference.cache
+E:\StudyMaterials\GitHub\PersonalWebSite\PWC.Model\obj\Debug\PWC.Model.dll
+E:\StudyMaterials\GitHub\PersonalWebSite\PWC.Model\obj\Debug\PWC.Model.pdb

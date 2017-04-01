@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
-    [ModelValidationFilter]
+    [ModelValidationMVCFilter]
     public class SignController : Controller
     {
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
@@ -68,7 +68,7 @@ namespace PersonalWebClient.Controllers
         }
 
         [HttpPost]
-        [ModelValidationFilter]
+        [ModelValidationWebApiFilter]
         public JsonResult Login(UserLogin user)
         {
             return Json(accountBll.VerifyUserInfo(user), JsonRequestBehavior.DenyGet);

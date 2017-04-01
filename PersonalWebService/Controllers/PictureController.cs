@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Scrawl")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class PictureController : ApiController
     {

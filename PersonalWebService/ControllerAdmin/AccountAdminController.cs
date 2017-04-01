@@ -12,7 +12,7 @@ using System.Web.Http;
 namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/AccountSystem")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     public class AccountAdminController : AdminBaseController
     {
         private static BLL.AccountAdmin_BLL accountAdminBll = new BLL.AccountAdmin_BLL();

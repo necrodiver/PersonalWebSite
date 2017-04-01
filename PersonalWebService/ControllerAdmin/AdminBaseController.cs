@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace PersonalWebService.ControllerAdmin
 {
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     public class AdminBaseController : ApiController
     {
         public AdminBaseController()

@@ -12,7 +12,7 @@ using System.Web.Http;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Comment")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class CommentController : ApiController
     {

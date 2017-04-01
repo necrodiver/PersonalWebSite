@@ -12,7 +12,7 @@ using System.Web.Http;
 namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/Log")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class LogOperateController : AdminBaseController
     {

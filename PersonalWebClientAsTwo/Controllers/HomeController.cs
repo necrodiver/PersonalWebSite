@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
-    [ModelValidationFilter]
+    [ModelValidationMVCFilter]
     public class HomeController : BaseController
     {
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();

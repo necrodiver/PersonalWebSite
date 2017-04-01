@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/UserOperate")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class UserInfoOperateController : AdminBaseController
     {

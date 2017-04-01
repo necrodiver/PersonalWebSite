@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonalWebService.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ namespace PersonalWebClient.Controllers
 {
     public class MyCenterController : Controller
     {
-        // GET: MyCenter
+        [ModelValidationMVCFilter]
         public ActionResult MyCenter()
         {
             return View();

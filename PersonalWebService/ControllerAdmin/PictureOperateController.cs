@@ -12,7 +12,7 @@ using System.Web.Http;
 namespace PersonalWebService.ControllerAdmin
 {
     [RoutePrefix("api/PictureOperate")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class PictureOperateController : AdminBaseController
     {

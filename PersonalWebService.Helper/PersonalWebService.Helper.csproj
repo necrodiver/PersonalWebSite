@@ -59,7 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attribute_Helper.cs" />
+    <Compile Include="AttributeMVC_Helper.cs" />
+    <Compile Include="AttributeWebApi_Helper.cs" />
     <Compile Include="Email_Helper.cs" />
     <Compile Include="EncryptOperate_Helper.cs" />
     <Compile Include="LogRecord_Helper.cs" />

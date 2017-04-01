@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Article")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     [BasicAuthentication]
     public class ArticleController : ApiController
     {

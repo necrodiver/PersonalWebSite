@@ -1,21 +1,19 @@
-﻿using System;
+﻿using PersonalWebService.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
-using System.Web.Http.Filters;
-using System.Web.Security;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Configuration;
+using System.Web.Http;
 using System.Web.Http.Controllers;
-using PersonalWebService.Model;
-using System.Web;
-using System.Collections.Generic;
+using System.Web.Http.Filters;
+using System.Web.Security;
 
 namespace PersonalWebService.Helper
 {
-    public class Attribute_Helper
-    {
-    }
     public class BasicAuthenticationAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
@@ -123,10 +121,7 @@ namespace PersonalWebService.Helper
         }
     }
 
-    /// <summary>
-    /// 模型过滤器验证
-    /// </summary>
-    public class ModelValidationFilterAttribute : ActionFilterAttribute
+    public class ModelValidationWebApiFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
@@ -138,48 +133,6 @@ namespace PersonalWebService.Helper
                     errors[m.Key] = m.Value.Errors.Select(e => e.ErrorMessage);
                     return true;
                 });
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
-                return;
-            }
-            base.OnActionExecuting(actionContext);
-        }
-    }
-
-    /// <summary>
-    /// 用户权限过滤验证
-    /// </summary>
-    public class AuthorityAdminAttribute : ActionFilterAttribute
-    {
-        public override void OnActionExecuting(HttpActionContext actionContext)
-        {
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
-            var errors = new Dictionary<string, string>();
-            bool isPass = false;
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))
-                errors.Add("SelectList", "非法查询！");
-            //else if (!userInfo.UserType.Equals(UserType.管理员))
-            //    errors.Add("SelectList", "权限不足！无法查询");
-            else
-                isPass = true;
-
-            if (!isPass)
-            {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
-                return;
-            }
-            base.OnActionExecuting(actionContext);
-        }
-    }
-
-    public class UserVisitValidationFilterAttribute : ActionFilterAttribute
-    {
-        public override void OnActionExecuting(HttpActionContext actionContext)
-        {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
-            var errors = new Dictionary<string, string>();
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
-            {
-                errors.Add("VisitWeb", "请先登录后再进行访问");
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, errors);
                 return;
             }

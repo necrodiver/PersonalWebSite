@@ -14,7 +14,7 @@ using System.Web.Http.Cors;
 namespace PersonalWebService.Controllers
 {
     [RoutePrefix("api/Account")]
-    [ModelValidationFilter]
+    [ModelValidationWebApiFilter]
     public class AccountController : ApiController
     {
         BLL.Account_BLL accountBll = new BLL.Account_BLL();
