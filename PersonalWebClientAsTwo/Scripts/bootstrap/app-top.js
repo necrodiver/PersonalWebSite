@@ -116,7 +116,8 @@ $(function () {
             html: true,
             animation:true,
             content: ContentMethod(),
-        }).on("mouseenter", function () {
+        })
+         .on("mouseenter", function () {
             var _this = this;
             $(this).popover("show");
             $(this).siblings(".popover").on("mouseleave", function () {
@@ -129,13 +130,6 @@ $(function () {
                     $(_this).popover("hide");
                 }
             }, 100);
-        }).on("inserted.bs.popover", function () {
-            $('#user-signin-d').bind('click', function (e) {
-                window.location.href = "../Sign/SignIn";
-            });
-            $('#user-signup-d').bind('click', function (e) {
-                window.location.href = "../Sign/SignUp";
-            });
         });
     });
 
@@ -160,19 +154,19 @@ $(function () {
         });
     }
 
-    $('#user-signin-d').click(function () {
-        window.location.href = "../Sign/SignIn";
-    });
-    //$('#user-signin-d').bind('click', function (e) {
+    //$('#user-signin-d').click(function () {
     //    window.location.href = "../Sign/SignIn";
-    //    e.stopPropagation();
     //});
-    $('#user-signup-d').click(function () {
-        window.location.href = "../Sign/SignUp";
+    $('#user-signin-d').bind('click', function (e) {
+        window.location.href = "../Sign/SignIn";
+        e.stopPropagation();
     });
-    //$('#user-signup-d').bind('click', function (e) {
+    //$('#user-signup-d').click(function () {
     //    window.location.href = "../Sign/SignUp";
-    //    e.stopPropagation();
     //});
+    $('#user-signup-d').bind('click', function (e) {
+        window.location.href = "../Sign/SignUp";
+        e.stopPropagation();
+    });
     $('#userId').popover('hide');
 });

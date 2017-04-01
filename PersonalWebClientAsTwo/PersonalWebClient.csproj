@@ -271,12 +271,15 @@
     <Content Include="Scripts\app\app-signIn.js" />
     <Content Include="Scripts\app\app-signUp.js" />
     <Content Include="Scripts\app\userProfiles.js" />
+    <Content Include="Scripts\bootstrap\app-top.js" />
     <Content Include="Scripts\bootstrap\bootstrap-affix.js" />
     <Content Include="Scripts\bootstrap\bootstrap-modal.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-popover - 复制.js" />
     <Content Include="Scripts\bootstrap\bootstrap-popover.js" />
     <Content Include="Scripts\bootstrap\bootstrap-suggest.js" />
     <Content Include="Scripts\bootstrap\bootstrap-table-zh-CN.js" />
     <Content Include="Scripts\bootstrap\bootstrap-table.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-tooltip - 复制.js" />
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />

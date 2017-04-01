@@ -20,6 +20,7 @@
     @Styles.Render("~/Content/sweetalert")
     @Scripts.Render("~/bundles/sweetalert")
 
+    @model PersonalWebService.Model.UserInfo
     @*@Scripts.Render("~/bundles/bootstrap-theme")*@
     <script type="text/template" id="Imageformat">
         @Html.Partial("PartialView/format_Image")
@@ -27,22 +28,17 @@
     <script type="text/template" id="Jottingformat">
         @Html.Partial("PartialView/format_Jotting")
     </script>
-    <script type="text/template" id="loggedOnUserTemplate">
-        @model PersonalWebService.Model.UserInfo
+    <script type="text/template" id="signInTemplate">
         @{
-            if (Model==null||string.IsNullOrEmpty(Model.UserId))
+            if (Model == null || string.IsNullOrEmpty(Model.UserId))
             {
                 @Html.Partial("PartialView/format_signInToolTip")
             }
             else
             {
-                @Html.Partial("PartialView/format_loggedOnUser",Model)
+                @Html.Partial("PartialView/format_loggedOnUser", Model)
             }
         }
-        @Html.Partial("PartialView/format_loggedOnUser")
-    </script>
-    <script type="text/template" id="signInTemplate">
-        @Html.Partial("PartialView/format_signInToolTip")
     </script>
 </head>
 <body>
@@ -50,9 +46,14 @@
         <div class="col-md-12">
             <div class="supplement">
                 <!--模态框-->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    @Html.Partial("PartialView/format_Sign")
-                </div>
+                @{
+                    if (Model == null || string.IsNullOrEmpty(Model.UserId))
+                    {
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            @Html.Partial("PartialView/format_Sign")
+                        </div>
+                    }
+                }
                 <!--背景动画-->
                 <div class="anim_content">
                 </div>

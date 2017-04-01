@@ -28,7 +28,7 @@ namespace PersonalWebService.BLL
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserInfo] WHERE {0}";
-
+        private static User_BLL userBll = new User_BLL();
         /// <summary>
         /// 获取验证码
         /// </summary>
@@ -78,10 +78,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " Email=@Email AND State!=-100");
-                var args = new DynamicParameters();
-                args.Add("@Email", user.Email);
-                userInfo = dal.GetDataSingle<UserInfo>(sql, args);
+                userInfo = userBll.GetUserInfo(user.Email);
             }
             catch (Exception ex)
             {
@@ -187,10 +184,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "TOP 1 *", " Email=@Email AND State!=-100");
-                var args = new DynamicParameters();
-                args.Add("@Email", user.Email);
-                userInfo = dal.GetDataSingle<UserInfo>(sql, args);
+                userInfo = userBll.GetUserInfo(user.Email);
             }
             catch (Exception ex)
             {
@@ -248,16 +242,11 @@ namespace PersonalWebService.BLL
                 return rsModel;
             }
 
-            var args = new DynamicParameters();
-            string whereStr = "";
-            args.Add("@Email", email);
-            whereStr = " Email=@Email ";
             if (!sessionKey.Equals("RegisterSendEmail"))
             {
                 try
                 {
-                    string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
-                    if (dal.GetDataCount(sql, args) < 1)
+                    if (userBll.getUserCount(email, null, true))
                     {
                         rsModel.message = "当前邮箱地址不存在，请重新填写";
                         return rsModel;
@@ -351,18 +340,13 @@ namespace PersonalWebService.BLL
             userInfoS.EXP = 0;
 
             //查询email和昵称是否存在于数据库中
-            var args = new DynamicParameters();
-            args.Add("@Email", userInfoS.Email);
-            string sql = string.Format(sqlSelectTemplate, "  Count(*) ", " Email=@Email ");
-            if (dal.GetDataCount(sql, args) == 1)
+            if (userBll.getUserCount(userInfoS.Email, null, true))
             {
                 rsModel.message = "当前email账号已存在,请重新选择Email账号进行注册";
                 return rsModel;
             }
 
-            args.Add("@NickName", userInfoS.NickName);
-            sql = string.Format(sqlSelectTemplate, " Count(*) ", " NickName=@NickName");
-            if (dal.GetDataCount(sql, args) == 1)
+            if (userBll.getUserCount(null, userInfoS.NickName, false))
             {
                 rsModel.message = "当前用户昵称已存在,请重新选择昵称进行注册";
                 return rsModel;
@@ -389,7 +373,7 @@ namespace PersonalWebService.BLL
         }
 
         /// <summary>
-        /// 获取用户数据
+        /// 获取Session的用户数据
         /// </summary>
         /// <returns></returns>
         public UserInfo_Model GetUserInfo()
@@ -428,9 +412,7 @@ namespace PersonalWebService.BLL
 
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "Count(*)", "Email=@Email");
-                int count = dal.GetDataCount(sql, new DataField { Name = "@Email", Value = retrievePwd.Email });
-                if (count == 1)
+                if (userBll.getUserCount(retrievePwd.Email, null, true))
                 {
                     //准备进行发送邮件
                     YZMHelper yzmChild = new YZMHelper();
@@ -445,14 +427,9 @@ namespace PersonalWebService.BLL
                         return rsModel;
                     }
                 }
-                else if (count == 0)
+                else
                 {
                     rsModel.message = "当前用户不存在，请输入正确的注册的用户Email";
-                }
-                else if (count > 1)
-                {
-                    rsModel.message = "当前用户存在问题，请联系管理员进行查看";
-                    LogRecord_Helper.RecordLog(LogLevels.Fatal, "账户：" + retrievePwd.Email + " 存在问题，查询出现多个此账户，请检查程序和数据库是否存在问题");
                 }
             }
             catch (Exception ex)
@@ -789,23 +766,20 @@ namespace PersonalWebService.BLL
                 rsModel.message = "你验证的内容为空，请重新添加后进行验证";
                 return rsModel;
             }
-            List<DataField> param = new List<DataField>();
-            var args = new DynamicParameters();
-            string whereStr = "";
-            if (!isEmailnull)
-            {
-                args.Add("@Email", email);
-                whereStr = " Email=@Email ";
-            }
-            else
-            {
-                args.Add("@NickName", nickName);
-                whereStr = " NickName=@NickName ";
-            }
+
+            bool isNullUser = true;
             try
             {
-                string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
-                if (dal.GetDataCount(sql, args) < 1)
+                if (!isEmailnull)
+                {
+                    isNullUser=userBll.getUserCount(email,null,true);
+                }
+                else
+                {
+                    isNullUser = userBll.getUserCount(null, nickName, false);
+                }
+
+                if (isNullUser)
                 {
                     rsModel.isRight = false;
                     rsModel.message = "不存在当前用户";

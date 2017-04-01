@@ -83,7 +83,7 @@ namespace PersonalWebService.BLL
                 else
                 {
                     args.Add("@NickName", nickName);
-                    whereStr = " NickName=@NickName ";
+                    whereStr = " NickName=@NickName  AND State!=-100";
                 }
                 string sql = string.Format(sqlSelectTemplate, "  Count(*) ", whereStr);
                 return dal.GetDataCount(sql, args)==1;
@@ -105,7 +105,7 @@ namespace PersonalWebService.BLL
             UserInfo userInfo = new UserInfo();
             try
             {
-                string sql = string.Format(sqlSelectTemplate, "*", " Email=@Email AND State!=-100");
+                string sql = string.Format(sqlSelectTemplate, " TOP 1 * ", " Email=@Email AND State!=-100");
                 var args = new DynamicParameters();
                 args.Add("@Email", email);
                 userInfo = dal.GetDataSingle<UserInfo>(sql, args);
@@ -113,6 +113,7 @@ namespace PersonalWebService.BLL
                 {
                     return null;
                 }
+                return userInfo;
             }
             catch (Exception ex)
             {
