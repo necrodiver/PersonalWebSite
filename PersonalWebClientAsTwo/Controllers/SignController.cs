@@ -68,6 +68,7 @@ namespace PersonalWebClient.Controllers
         }
 
         [HttpPost]
+        [ModelValidationFilter]
         public JsonResult Login(UserLogin user)
         {
             return Json(accountBll.VerifyUserInfo(user), JsonRequestBehavior.DenyGet);

@@ -10,13 +10,14 @@ using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
+    [ModelValidationFilter]
     public class HomeController : BaseController
     {
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
 
         public ActionResult Index()
         {
-            return View(baseUserInfo);
+            return View(SessionState.GetSession<UserInfo>("UserInfo"));
         }
         public ActionResult RetrievePassword()
         {
@@ -24,13 +25,13 @@ namespace PersonalWebClient.Controllers
         }
         public ActionResult UserProfiles()
         {
-            return View(baseUserInfo);
+            return View(SessionState.GetSession<UserInfo>("UserInfo"));
         }
         public ActionResult List(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
-                return View(baseUserInfo);
+                return View(SessionState.GetSession<UserInfo>("UserInfo"));
             }
 
             if (name.Equals("Scrawl"))
@@ -41,14 +42,14 @@ namespace PersonalWebClient.Controllers
             {
 
             }
-            return View(baseUserInfo);
+            return View(SessionState.GetSession<UserInfo>("UserInfo"));
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View(baseUserInfo);
+            return View(SessionState.GetSession<UserInfo>("UserInfo"));
         }
 
     }

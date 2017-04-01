@@ -4,20 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Controllers;
 using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
     public class BaseController : Controller
     {
-        public static UserInfo baseUserInfo;
-        public BaseController()
-        {
-            baseUserInfo = GetUserInfo();
-        }
-        public UserInfo GetUserInfo()
-        {
-            return BasicAuthenticationAttribute.GetUserInfo();
-        }
+        //public static UserInfo baseUserInfo;
+        //public BaseController()
+        //{
+        //    baseUserInfo = GetUserInfo();
+        //}
+        //public UserInfo GetUserInfo()
+        //{
+        //    return BasicAuthenticationAttribute.GetUserInfo();
+        //}
     }
 }

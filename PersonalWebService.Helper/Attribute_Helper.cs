@@ -58,7 +58,7 @@ namespace PersonalWebService.Helper
 
         public static UserInfo GetUserInfo()
         {
-            UserInfo userinfo = HttpContext.Current.Session["UserInfo"] as UserInfo;
+            UserInfo userinfo = SessionState.GetSession<UserInfo>("UserInfo");
             if (userinfo != null && !string.IsNullOrEmpty(userinfo.UserId) && !string.IsNullOrEmpty(userinfo.Email) && !string.IsNullOrEmpty(userinfo.Password))
             {
                 return userinfo;
@@ -175,7 +175,7 @@ namespace PersonalWebService.Helper
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            var userInfo= SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
             var errors = new Dictionary<string, string>();
             if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
             {
