@@ -17,7 +17,7 @@ namespace PersonalWebClient.Controllers
 
         public ActionResult Index()
         {
-            return View(SessionState.GetSession<UserInfo>("UserInfo"));
+            return View(SessionState.GetSession<UserInfo_Model>("UserInfo"));
         }
         public ActionResult RetrievePassword()
         {
@@ -25,13 +25,13 @@ namespace PersonalWebClient.Controllers
         }
         public ActionResult UserProfiles()
         {
-            return View(SessionState.GetSession<UserInfo>("UserInfo"));
+            return View(SessionState.GetSession<UserInfo_Model>("UserInfo"));
         }
         public ActionResult List(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
-                return View(SessionState.GetSession<UserInfo>("UserInfo"));
+                return View(SessionState.GetSession<UserInfo_Model>("UserInfo"));
             }
 
             if (name.Equals("Scrawl"))
@@ -42,14 +42,14 @@ namespace PersonalWebClient.Controllers
             {
 
             }
-            return View(SessionState.GetSession<UserInfo>("UserInfo"));
+            return View(SessionState.GetSession<UserInfo_Model>("UserInfo"));
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View(SessionState.GetSession<UserInfo>("UserInfo"));
+            return View(SessionState.GetSession<UserInfo_Model>("UserInfo"));
         }
 
     }

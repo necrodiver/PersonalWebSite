@@ -103,17 +103,12 @@ namespace PersonalWebService.BLL
 
                 if (userInfo.Email.Equals(user.Email) && userInfo.Password.Equals(aesE.AESEncrypt(user.PassWord)))
                 {
-                    string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
-                    var args = new DynamicParameters();
-                    args.Add("@NowStatus", NowStatus.已登录);
-                    args.Add("@UserId", userInfo.UserId);
-                    dal.OpeData(sqlUpTime, args);
+                    userBll.UpdateUserNowStatus(NowStatus.已登录, userInfo.UserId);
 
                     rsModel.isRight = true;
                     rsModel.message = "用户登录成功！";
-
                     userInfo.NowStatus = NowStatus.已登录;
-                    SessionState.SaveSession(userInfo, "UserInfo");
+                    SessionState.SaveSession(userBll.GetUserInfo_Model(userInfo.Email), "UserInfo");
                 }
                 else
                 {
@@ -166,7 +161,7 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "用户登录";
 
-            var userInfoSession = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfoSession = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfoSession != null)
             {
                 rsModel.message = "当前用户已存在，请勿重复登录";
@@ -219,7 +214,7 @@ namespace PersonalWebService.BLL
                     rsModel.message = "用户登录成功！";
 
                     userInfo.NowStatus = NowStatus.已登录;
-                    SessionState.SaveSession(userInfo, "UserInfo");
+                    SessionState.SaveSession(userBll.GetUserInfo_Model(userInfo.Email), "UserInfo");
                 }
                 else
                 {
@@ -299,7 +294,7 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "注册用户";
             //首先各种验证
-            var userInfoSession = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfoSession = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfoSession != null)
             {
                 rsModel.message = "当前用户已存在，请勿重复注册";
@@ -335,7 +330,7 @@ namespace PersonalWebService.BLL
             userInfoS.NickName = userRegister.NickName;
             userInfoS.Password = aesE.AESEncrypt(userRegister.PassWord);
             userInfoS.AddTime = DateTime.Now;
-            userInfoS.State = State.正常;
+            userInfoS.State = StateUser.正常;
             userInfoS.NowStatus = NowStatus.未登录;
             userInfoS.EXP = 0;
 
@@ -370,24 +365,6 @@ namespace PersonalWebService.BLL
                 rsModel.message = "服务器错误，请稍后重试";
             }
             return rsModel;
-        }
-
-        /// <summary>
-        /// 获取Session的用户数据
-        /// </summary>
-        /// <returns></returns>
-        public UserInfo_Model GetUserInfo()
-        {
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
-            if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName))
-                return null;
-            UserInfo_Model userInfoModel = new UserInfo_Model();
-            userInfoModel.UserId = userInfo.UserId;
-            userInfoModel.NickName = userInfo.NickName;
-            userInfoModel.Introduce = userInfo.Introduce;
-            userInfoModel.AccountPicture = userInfo.AccountPicture;
-            userInfoModel.AddTime = userInfo.AddTime;
-            return userInfoModel;
         }
 
         /// <summary>
@@ -557,7 +534,7 @@ namespace PersonalWebService.BLL
             rsModel.isRight = false;
             rsModel.title = "修改用户信息";
 
-            UserInfo userInfos = SessionState.GetSession<UserInfo>("UserInfo");
+            UserInfo_Model userInfos = SessionState.GetSession<UserInfo_Model>("UserInfo");
             userInfo.Password = aesE.AESEncrypt(userInfo.Password);
 
             StringBuilder sbsql = new StringBuilder();
@@ -616,7 +593,7 @@ namespace PersonalWebService.BLL
             userInfoS.Password = userInfo.Password;
             userInfoS.AddTime = DateTime.Now;
             userInfoS.EditTime = userInfo.EditTime;
-            userInfoS.State = State.正常;
+            userInfoS.State = StateUser.正常;
             userInfoS.NowStatus = NowStatus.未登录;
 
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
@@ -772,7 +749,7 @@ namespace PersonalWebService.BLL
             {
                 if (!isEmailnull)
                 {
-                    isNullUser=userBll.getUserCount(email,null,true);
+                    isNullUser = userBll.getUserCount(email, null, true);
                 }
                 else
                 {

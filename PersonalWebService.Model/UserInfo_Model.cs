@@ -48,9 +48,11 @@ namespace PersonalWebService.Model
         public string Address { get; set; }
 
         [DisplayName("经验")]
+        [MaxLength(99999, ErrorMessage = "{0}值错误")]
         public int EXP { get; set; }
 
         [DisplayName("个人域名")]
+        [StringLength(40, MinimumLength = 1, ErrorMessage = "{0}长度必须大于1且小于40")]
         public string SelfDmainName { get; set; }
 
         [DisplayName("创建日期")]
@@ -63,7 +65,19 @@ namespace PersonalWebService.Model
         public NowStatus? NowStatus { get; set; }
 
         [DisplayName("账号状态")]
-        public State? State { get; set; }
+        public StateUser? State { get; set; }
+
+        [DisplayName("等级")]
+        [MaxLength(1, ErrorMessage = "{0}不符合规范")]
+        public int Level { get; set; }
+
+        [DisplayName("关注")]
+        [MaxLength(8, ErrorMessage = "{0}不符合规范")]
+        public int Focus { get; set; }
+
+        [DisplayName("粉丝")]
+        [MaxLength(8, ErrorMessage = "{0}不符合规范")]
+        public int Fans { get; set; }
     }
     /// <summary>
     /// 用户登录Model
@@ -268,7 +282,7 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 账号状态
         /// </summary>
-        public State State { get; set; }
+        public StateUser State { get; set; }
         /// <summary>
         /// 用户登录状态
         /// </summary>

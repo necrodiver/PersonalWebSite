@@ -20,11 +20,11 @@ namespace PersonalWebService.BLL
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserFans] WHERE {1}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserFans] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserFans] WHERE {0}";
-        public string GetFansCount(string userId)
+        public int GetFansCount(string userId)
         {
             if (string.IsNullOrEmpty(userId))
             {
-                return null;
+                return 0;
             }
             var args = new DynamicParameters();
             string whereStr = "";
@@ -34,13 +34,41 @@ namespace PersonalWebService.BLL
             {
                 string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
                 int num = dal.GetDataCount(sql, args);
-                return num.ToString();
+                return num;
             }
             catch (Exception ex)
             {
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
-            return null;
+            return 0;
+        }
+
+        /// <summary>
+        /// 获取关注数量
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public int GetFocusCount(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return 0;
+            }
+            var args = new DynamicParameters();
+            string whereStr = "";
+            args.Add("@Uad_FansId", userId);
+            whereStr = " Uad_FansId=@Uad_FansId ";
+            try
+            {
+                string sql = string.Format(sqlSelectTemplate, " Count(*) ", whereStr);
+                int num = dal.GetDataCount(sql, args);
+                return num;
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return 0;
         }
         public bool DeleteFans(UserFans userFans)
         {

@@ -21,6 +21,7 @@ namespace PersonalWebService.BLL
         private static Email_Helper emailHelper = new Email_Helper();
         private static double sendEmailInterval = Convert.ToDouble(ConfigurationManager.AppSettings["SendEmailInterval"]);
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
+        private static FansAdditional_BLL fansBll = new FansAdditional_BLL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[UserInfo] WHERE {1}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[UserInfo] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[UserInfo] WHERE {0}";
@@ -48,6 +49,9 @@ namespace PersonalWebService.BLL
                 model.EditTime = userInfo.EditTime;
                 model.NowStatus = userInfo.NowStatus;
                 model.State = userInfo.State;
+                model.Level = EXPCompute_Helper.GetLevel(userInfo.EXP);
+                model.Focus = fansBll.GetFocusCount(userInfo.UserId);
+                model.Fans = fansBll.GetFansCount(userInfo.UserId);
 
                 return model;
             }
@@ -86,7 +90,7 @@ namespace PersonalWebService.BLL
                     whereStr = " NickName=@NickName  AND State!=-100";
                 }
                 string sql = string.Format(sqlSelectTemplate, "  Count(*) ", whereStr);
-                return dal.GetDataCount(sql, args)==1;
+                return dal.GetDataCount(sql, args) == 1;
             }
             catch (Exception ex)
             {
@@ -169,6 +173,54 @@ namespace PersonalWebService.BLL
             try
             {
                 return dal.OpeData(userInfoF, OperatingModel.Add);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 更新用户当前状态
+        /// </summary>
+        /// <param name="nowStatus"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool UpdateUserNowStatus(NowStatus nowStatus, string userId)
+        {
+            try
+            {
+                string sqlUpTime = string.Format(sqlUpdateTemplate, " LastvisitDate=GETDATE(),NowStatus=@NowStatus ", " UserId=@UserId ");
+                var args = new DynamicParameters();
+                args.Add("@NowStatus", nowStatus);
+                args.Add("@UserId", userId);
+                dal.OpeData(sqlUpTime, args);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 用户账号状态设定
+        /// </summary>
+        /// <param name="nowStatus"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool UpdateUserState(StateUser stateUser, string userId)
+        {
+            try
+            {
+                string sqlUpTime = string.Format(sqlUpdateTemplate, " EditTime=GETDATE(),State=@State ", " UserId=@UserId ");
+                var args = new DynamicParameters();
+                args.Add("@State", stateUser);
+                args.Add("@UserId", userId);
+                dal.OpeData(sqlUpTime, args);
+                return true;
             }
             catch (Exception ex)
             {

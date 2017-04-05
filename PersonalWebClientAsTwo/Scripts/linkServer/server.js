@@ -4,7 +4,7 @@
 var userInfo;
 var $server = [];
 //var serverUrl = 'http://localhost:10841/Service/api/';
-var serverUrl = 'http://localhost:4525/Client/';
+var serverUrl = 'http://localhost:4525/';
 var isPost = true;
 var isAsync = true;
 jQuery.support.cors = true;

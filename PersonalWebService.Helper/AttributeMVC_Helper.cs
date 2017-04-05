@@ -39,7 +39,7 @@ namespace PersonalWebService.Helper
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             var errors = new Dictionary<string, string>();
             if (userInfo == null || string.IsNullOrEmpty(userInfo.NickName)) {
                 errors.Add("SelectList", "非法查询！");
@@ -57,7 +57,7 @@ namespace PersonalWebService.Helper
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             var errors = new Dictionary<string, string>();
             if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
             {

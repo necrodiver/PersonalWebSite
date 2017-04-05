@@ -36,7 +36,7 @@ namespace PersonalWebService.BLL
                 rsModel.message = "评论出错，请稍后重试";
                 return rsModel;
             }
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo == null)
             {
                 rsModel.isRight = false;
@@ -127,7 +127,7 @@ namespace PersonalWebService.BLL
             ReturnStatus_Model rsModel = new ReturnStatus_Model();
             rsModel.isRight = false;
             rsModel.title = "删除评论";
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             string sqlSelect = @"SELECT COUNT(*) FROM [dbo].[UserComment]
                             WHERE CommentId=@CommentId and UserId=@UserId";
             List<DataField> paramSelect = new List<DataField>();

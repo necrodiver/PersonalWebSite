@@ -280,7 +280,7 @@ namespace PersonalWebService.BLL
                 rsModel.message = "需要操作删除的文章为空，请先选择需要删除的文章";
                 return rsModel;
             }
-            UserInfo userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            UserInfo_Model userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo == null || string.IsNullOrEmpty(userInfo.UserId))
             {
                 rsModel.message = "你未登录账号或账号已过期，请重新登录！";

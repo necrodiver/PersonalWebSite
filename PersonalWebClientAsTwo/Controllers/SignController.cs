@@ -14,7 +14,7 @@ namespace PersonalWebClient.Controllers
         PersonalWebService.BLL.Account_BLL accountBll = new PersonalWebService.BLL.Account_BLL();
         public ActionResult SignIn()
         {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -23,7 +23,7 @@ namespace PersonalWebClient.Controllers
         }
         public ActionResult SignUp()
         {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -37,7 +37,7 @@ namespace PersonalWebClient.Controllers
         /// <returns></returns>
         public ActionResult RetrievePwd()
         {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -51,7 +51,7 @@ namespace PersonalWebClient.Controllers
         /// <returns></returns>
         public ActionResult RetrievePwdSet()
         {
-            var userInfo = SessionState.GetSession<UserInfo>("UserInfo");
+            var userInfo = SessionState.GetSession<UserInfo_Model>("UserInfo");
             if (userInfo != null)
             {
                 return RedirectToAction("Index", "Home");

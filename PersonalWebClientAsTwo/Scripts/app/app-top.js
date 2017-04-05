@@ -136,6 +136,16 @@ $(function () {
             $('#user-signup-d').bind('click', function (e) {
                 window.location.href = "../Sign/SignUp";
             });
+
+            $('#logOut').click(function () {
+                $server.accessToData("logout", null, function (data) {
+                    swal(data.title, data.message, data.isRight ? 'success' : 'error');
+                    if (data.isRight) {
+                        window.location.reload();
+                    }
+                });
+                window.location.reload();
+            });
         });
     });
 
@@ -163,16 +173,19 @@ $(function () {
     $('#user-signin-d').click(function () {
         window.location.href = "../Sign/SignIn";
     });
-    //$('#user-signin-d').bind('click', function (e) {
-    //    window.location.href = "../Sign/SignIn";
-    //    e.stopPropagation();
-    //});
+
     $('#user-signup-d').click(function () {
         window.location.href = "../Sign/SignUp";
     });
-    //$('#user-signup-d').bind('click', function (e) {
-    //    window.location.href = "../Sign/SignUp";
-    //    e.stopPropagation();
-    //});
+
+    $('#logOut').click(function () {
+        $server.accessToData("logout", null, function (data) {
+            swal(data.title, data.message, data.isRight ? 'success' : 'error');
+            if (data.isRight) {
+                window.location.href = "../Home/Index";
+            }
+        });
+    });
+
     $('#userId').popover('hide');
 });

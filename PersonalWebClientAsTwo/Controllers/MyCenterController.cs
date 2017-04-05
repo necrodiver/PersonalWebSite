@@ -7,9 +7,10 @@ using System.Web.Mvc;
 
 namespace PersonalWebClient.Controllers
 {
+    [ModelValidationMVCFilter]
+    //[UserVisitValidationFilter]
     public class MyCenterController : Controller
     {
-        [ModelValidationMVCFilter]
         public ActionResult MyCenter()
         {
             return View();

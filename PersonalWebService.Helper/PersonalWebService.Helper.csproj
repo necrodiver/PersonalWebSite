@@ -63,6 +63,7 @@
     <Compile Include="AttributeWebApi_Helper.cs" />
     <Compile Include="Email_Helper.cs" />
     <Compile Include="EncryptOperate_Helper.cs" />
+    <Compile Include="EXPCompute_Helper.cs" />
     <Compile Include="LogRecord_Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatePreservation_Helper.cs" />

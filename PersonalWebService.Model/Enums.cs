@@ -9,7 +9,7 @@ namespace PersonalWebService.Model
     /// <summary>
     /// 账号状态
     /// </summary>
-    public enum State
+    public enum StateUser
     {
         冻结 = -100,
         正常 = 0,

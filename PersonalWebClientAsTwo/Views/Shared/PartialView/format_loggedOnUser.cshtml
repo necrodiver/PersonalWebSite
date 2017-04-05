@@ -1,4 +1,4 @@
-﻿@model PersonalWebService.Model.UserInfo
+﻿@model PersonalWebService.Model.UserInfo_Model
 @{ 
     if (Model == null || string.IsNullOrEmpty(Model.UserId))
     {
@@ -12,7 +12,7 @@
                 <a href="#"><img class="img-circle user-img" src="../Images/user-ceshi.jpg" /></a>
             </div>
             <div class="pull-left user-name">
-                <a href="#" style="color:black;">&nbsp;日狗啊日狗，日个狗！</a>
+                <a href="#" style="color:black;">&nbsp;@Model.NickName</a>
             </div>
             <div class="pull-left user-check-p">
                 <button class="btn btn-default user-check" id="user-check">签到</button>
@@ -29,13 +29,13 @@
             </div>
             <div class="pull-left user-dgf">
                 <a href="#" class="user-dgf-link">
-                    <div class="user-dgf-link-1"><span>2423</span></div>
+                    <div class="user-dgf-link-1"><span>@Model.Focus</span></div>
                     <div class="user-dgf-link-2"><span>关注</span></div>
                 </a>
             </div>
             <div class="pull-left user-dgf-1">
                 <a href="#" class="user-dgf-link">
-                    <div class="user-dgf-link-1"><span>236234</span></div>
+                    <div class="user-dgf-link-1"><span>@Model.Fans</span></div>
                     <div class="user-dgf-link-2"><span>粉丝</span></div>
                 </a>
             </div>
@@ -43,7 +43,7 @@
     </tr>
     <tr>
         <td colspan="2" class="user-dxg"><i class="fa fa-star-o"></i> 等级</td>
-        <td><a href="#">Lv.4<i class="fa fa-chevron-right pull-right  user-right"></i></a></td>
+        <td><a href="#">Lv.@Model.Level<i class="fa fa-chevron-right pull-right  user-right"></i></a></td>
     </tr>
     <tr>
         <td colspan="2" class="user-dxg"><i class="fa fa-bell-o"></i> 消息</td>
@@ -53,6 +53,6 @@
         <td colspan="3" class="user-dxg"><i class="fa fa-cog"></i> <a href="http://localhost:10841/Client/APP/MyCenter.html" class="user-set">个人信息设置<i class="fa fa-chevron-right pull-right  user-right"></i></a></td>
     </tr>
     <tr>
-        <td colspan="3" class="center-block"><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> 退出</button></td>
+        <td colspan="3" class="center-block"><button type="button" class="btn btn-default" id="logOut"><i class="fa fa-sign-out"></i> 退出</button></td>
     </tr>
 </table>
