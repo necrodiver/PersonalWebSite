@@ -154,13 +154,13 @@
             //初始化Table
             oTableInit.Init = function () {
                 $('#tb_departments').bootstrapTable({
-                    //url: '../../Test/Handler1.ashx/GetDepartment',         //请求后台的URL（*）
+                    url: '../../Test/Handler1.ashx/GetDepartment',         //请求后台的URL（*）
                     method: 'post',                      //请求方式（*）
                     toolbar: '#toolbar',                //工具按钮用哪个容器
                     striped: true,                      //是否显示行间隔色
-                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                    cache: true,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
                     pagination: true,                   //是否显示分页（*）
-                    sortable: false,                     //是否启用排序
+                    sortable: true,                     //是否启用排序
                     sortOrder: "asc",                   //排序方式
                     queryParams: oTableInit.queryParams,//传递参数（*）
                     sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -197,10 +197,9 @@
             //得到查询的参数
             oTableInit.queryParams = function (params) {
                 var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                    limit: params.limit,   //页面大小
-                    offset: params.offset,  //页码
-                    departmentname: $("#txt_search_departmentname").val(),
-                    statu: $("#txt_search_statu").val()
+                    pageSize: params.limit,   //页面大小
+                    pageCurrent: params.offset / params.limit + 1,
+                    messageType:null//消息类型
                 };
                 return temp;
             };

@@ -130,6 +130,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageCenterController.cs" />
     <Compile Include="Controllers\MyCenterController.cs" />
     <Compile Include="Controllers\SignController.cs" />
     <Compile Include="Global.asax.cs">
@@ -521,6 +522,8 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Detail\" />
+    <Folder Include="Views\MessageCenter\" />
+    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

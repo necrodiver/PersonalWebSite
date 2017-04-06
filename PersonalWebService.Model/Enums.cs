@@ -93,4 +93,14 @@ namespace PersonalWebService.Model
         最高权限 = -100,
         第一权限 = 1
     }
+
+    public enum MessageType
+    {
+        私信 = 0,
+        提醒 = 1,
+        作品评论 = 2,
+        作品喜欢 = 3,
+        新增粉丝 = 4,
+        系统通知 = 5
+    }
 }

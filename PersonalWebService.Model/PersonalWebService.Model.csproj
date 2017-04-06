@@ -46,6 +46,7 @@
     <Compile Include="DataField.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Log_Model.cs" />
+    <Compile Include="MessageCenter_Model.cs" />
     <Compile Include="PictureSort_Model.cs" />
     <Compile Include="Picture_Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

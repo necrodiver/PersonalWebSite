@@ -1,5 +1,4 @@
-﻿/// <reference path="../jquery/jquery-3.1.1.js" />
-/// <reference path="../jquery/jquery-1.10.2.js" />
+﻿/// <reference path="../jquery/jquery-1.10.2.js" />
 
 var userInfo;
 var $server = [];

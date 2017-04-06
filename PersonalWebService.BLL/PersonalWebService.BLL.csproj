@@ -60,6 +60,7 @@
     <Compile Include="Article_BLL.cs" />
     <Compile Include="FansAdditional_BLL.cs" />
     <Compile Include="Log_BLL.cs" />
+    <Compile Include="MessageCenter_BLL.cs" />
     <Compile Include="Picture_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserComment_BLL.cs" />
