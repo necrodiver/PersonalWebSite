@@ -51,7 +51,6 @@ namespace PersonalWebService.DAL
             {
                 var tModel=conn.QueryFirstOrDefault<T>(sql, param);
                 return tModel;
-                //return conn.QuerySingle<T>(sql, param) as T;
             }
         }
 

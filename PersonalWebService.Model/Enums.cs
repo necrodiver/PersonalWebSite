@@ -103,4 +103,5 @@ namespace PersonalWebService.Model
         新增粉丝 = 4,
         系统通知 = 5
     }
+
 }

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace PersonalWebService.Model
 {
-    public class MessageModel {
+    public class MessageModel
+    {
         [Required]
         [DisplayName("单页数量")]
         public int PageSize { get; set; }
@@ -46,9 +47,35 @@ namespace PersonalWebService.Model
 
         [DisplayName("回信上一个私信的Id")]
         public string PL_ParentId { get; set; }
+    }
+
+    public class Message
+    {
+        [Required]
+        [DisplayName("消息Id")]
+        public int M_Id { get; set; }
+
+        [Required]
+        [DisplayName("消息类型Id")]
+        public MessageType M_Type { get; set; }
+
+        [Required]
+        [DisplayName("添加时间")]
+        public DateTime M_AddTime { get; set; }
+
+        [Required]
+        [DisplayName("消息内容Id")]
+        public string M_NameId { get; set; }
+
+        [Required]
+        [DisplayName("用户Id")]
+        public string M_UserId { get; set; }
 
         [Required]
         [DisplayName("是否已读")]
-        public int IsRead { get; set; }
+        /// <summary>
+        /// 0：未读，1：已读
+        /// </summary>
+        public int M_IsRead { get; set; }
     }
 }
