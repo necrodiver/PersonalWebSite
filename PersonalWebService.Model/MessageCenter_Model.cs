@@ -68,8 +68,12 @@ namespace PersonalWebService.Model
         public string M_NameId { get; set; }
 
         [Required]
-        [DisplayName("用户Id")]
-        public string M_UserId { get; set; }
+        [DisplayName("发送者Id")]
+        public string M_SenderId { get; set; }
+
+        [Required]
+        [DisplayName("接收者Id")]
+        public string M_ReceiverId { get; set; }
 
         [Required]
         [DisplayName("是否已读")]

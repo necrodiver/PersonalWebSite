@@ -49,5 +49,20 @@ namespace PersonalWebService.BLL
             }
             return 0;
         }
+
+        public List<PrivateLetter> GetPLList(string senderId, string AddresseeId, List<Message> msgList)
+        {
+            if (msgList == null || msgList.Count < 0)
+            {
+                return null;
+            }
+
+            msgList = msgList.FindAll(msg => (msg.M_Type == MessageType.私信 && (msg.M_SenderId == senderId || msg.M_ReceiverId == senderId)));
+
+            for (int i = 0; i < msgList.Count; i++)
+            {
+                
+            }
+        }
     }
 }
