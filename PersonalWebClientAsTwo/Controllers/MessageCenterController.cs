@@ -16,11 +16,11 @@ namespace PersonalWebClient.Controllers
         private static MessageCenter_BLL messageBll = new MessageCenter_BLL();
         public JsonResult GetMessageList(MessageModel messageModel)
         {
+            UserInfo_Model userModel = SessionState.GetSession<UserInfo_Model>("UserInfo");
             switch (messageModel.MessagType)
             {
                 case MessageType.私信:
-                    return Json(messageBll.GetMessageList<PrivateLetter>(messageModel));
-                    break;
+                    return Json(messageBll.GetMessageList(messageModel.MessagType, userModel.UserId,0,null),JsonRequestBehavior.DenyGet);
                 case MessageType.提醒:
 
                     break;
@@ -35,7 +35,7 @@ namespace PersonalWebClient.Controllers
                 default:
                     break;
             }
-            return JsonResult(messageBll.GetMessage);
+            return null;
         }
     }
 }
