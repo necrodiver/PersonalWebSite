@@ -73,6 +73,7 @@
     <Compile Include="WordsFilterDt_Helper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DirtyWords\SensitiveWordLibrary.txt" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
