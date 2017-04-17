@@ -18,7 +18,7 @@ namespace PersonalWebService.BLL
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[Message] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[Message] WHERE {0}";
         /// <summary>
-        /// 获取
+        /// 获取当前私信对话条数
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="whereStr"></param>
@@ -26,7 +26,6 @@ namespace PersonalWebService.BLL
         /// <returns></returns>
         public int GetPrivateLetterCount<T>(string whereStr, string senderId)
         {
-            Type modelType = typeof(T);
             string sqlStr = @"
                                 with Dep as 
                                 ( 
@@ -50,6 +49,13 @@ namespace PersonalWebService.BLL
             return 0;
         }
 
+        /// <summary>
+        /// 获取私信大集合，由传入的msgList确定集合条数
+        /// </summary>
+        /// <param name="senderId">发送者</param>
+        /// <param name="AddresseeId">接收者</param>
+        /// <param name="msgList"></param>
+        /// <returns></returns>
         public List<PrivateLetter> GetPLList(string senderId, string AddresseeId, List<Message> msgList)
         {
             if (msgList == null || msgList.Count < 0)
