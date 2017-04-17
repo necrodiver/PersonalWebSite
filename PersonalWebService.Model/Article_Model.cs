@@ -18,13 +18,13 @@ namespace PersonalWebService.Model
         [DisplayName("文章名称")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "{0}长度不能超过{1}个字段，不能小于{2}个字段")]
         [RegularExpression(@"^[([a-zA-Z\u4e00-\u9fa5])|(\w)]+$", ErrorMessage = "{0}必须是由汉字字母或数字组成")]
-        //这里需要添加敏感词过滤
+        [DirtyWords]
         public string ArticleName { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [DisplayName("文章内容")]
         [StringLength(5 * 1024 * 1024, MinimumLength = 20, ErrorMessage = "{0}长度不能超过{1}个字段，不能小于{2}个字段")]
-        //这里需要添加敏感词过滤
+        [DirtyWords]
         public string ArticleContent { get; set; }
 
         [Required]

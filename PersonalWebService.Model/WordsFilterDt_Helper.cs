@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace PersonalWebService.Helper
+namespace PersonalWebService.Model
 {
     public class WordsFilterDt_Helper
     {

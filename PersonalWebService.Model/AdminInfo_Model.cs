@@ -41,6 +41,7 @@ namespace PersonalWebService.Model
     {
         [DisplayName("用户名")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "{0}长度不能超过50个字段，不能小于5个字段")]
+        [DirtyWords]
         public string Name { get; set; }
         [DisplayName("登录密码")]
         [RegularExpression(@"^\w+$", ErrorMessage = "{0}不符合规范")]

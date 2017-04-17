@@ -17,7 +17,7 @@ namespace PersonalWebService.Model
         [DisplayName("图片名称")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "{0}长度不能超过{1}个字段，不能小于{2}个字段")]
         [RegularExpression(@"^[([a-zA-Z\u4e00-\u9fa5])|(\w)]+$", ErrorMessage = "{0}必须是由汉字字母或数字组成")]
-        //这里需添加敏感词过滤
+        [DirtyWords]
         public string PictureName { get; set; }
         [Required]
         [DisplayName("图片类别Id")]
@@ -28,6 +28,7 @@ namespace PersonalWebService.Model
         public string PictureUrl { get; set; }
         [Required(AllowEmptyStrings = false)]
         [DisplayName("图片说明")]
+        [DirtyWords]
         public string PictureExplain { get; set; }
         [Required]
         [DisplayName("发布时间/修改时间")]

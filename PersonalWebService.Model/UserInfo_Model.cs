@@ -145,7 +145,7 @@ namespace PersonalWebService.Model
         [Required]
         [DisplayName("昵称")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "{0}长度不能超过20个字段，不能小于4个字段")]
-        //这里需要添加敏感词过滤
+        [DirtyWords]
         public string NickName { get; set; }
 
         [Required]

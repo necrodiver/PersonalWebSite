@@ -56,6 +56,10 @@
     <Compile Include="UserComment_Model.cs" />
     <Compile Include="UserFans.cs" />
     <Compile Include="UserInfo_Model.cs" />
+    <Compile Include="WordsFilterDt_Helper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DirtyWords\SensitiveWordLibrary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

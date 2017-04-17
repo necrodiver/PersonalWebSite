@@ -52,6 +52,7 @@ namespace PersonalWebService.Model
         public string CommentId { get; set; }
         [Required(AllowEmptyStrings = false)]
         [DisplayName("评论内容")]
+        [DirtyWords]
         [StringLength(3000,MinimumLength =10,ErrorMessage ="{0}长度不能超过3000个字符，不能少于10个字符")]
         public string ReText { get; set; }
         [Required]
