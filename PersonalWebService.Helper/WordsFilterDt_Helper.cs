@@ -17,8 +17,12 @@ namespace PersonalWebService.Helper
     /// <summary>
     /// 敏感词模型验证
     /// </summary>
-    public class DetectionWordsAttribute : ValidationAttribute
+    public class DirtyWordsAttribute : ValidationAttribute
     {
+        public override string FormatErrorMessage(string name)
+        {
+            return string.Format("{0}中存在不文明词语", name);
+        }
         public override bool IsValid(object value)
         {
             string str = value.ToString();
