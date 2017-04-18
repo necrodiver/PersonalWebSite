@@ -13,7 +13,7 @@ namespace PersonalWebService.Model
     public class WordsFilterDt_Helper
     {
     }
-
+    
     /// <summary>
     /// 敏感词模型验证
     /// </summary>
@@ -35,6 +35,7 @@ namespace PersonalWebService.Model
     public class WordsFilterDt
     {
         private TrieNodeOperate trie = new TrieNodeOperate();
+        private readonly string wordsTxtFile = "../../DirtyWords/SensitiveWordLibrary.txt";
         /// <summary>
         /// 判断是否存在敏感词
         /// </summary>
@@ -52,7 +53,7 @@ namespace PersonalWebService.Model
         }
         private void GetWordsLibrary()
         {
-            var file = File.ReadAllLines(@"../../DirtyWords/SensitiveWordLibrary.txt", Encoding.UTF8).ToList();
+            var file = File.ReadAllLines(wordsTxtFile, Encoding.UTF8).ToList();
             List<string> words = new List<string>();
             file.FindAll(child =>
             {
