@@ -50,7 +50,7 @@ namespace PersonalWebService.BLL
         }
 
         /// <summary>
-        /// 获取私信大集合，由传入的msgList确定集合条数
+        /// 获取私信大集合(指的是没有父发送者)，由传入的msgList确定集合条数
         /// </summary>
         /// <param name="senderId">发送者</param>
         /// <param name="AddresseeId">接收者</param>
@@ -65,10 +65,41 @@ namespace PersonalWebService.BLL
 
             msgList = msgList.FindAll(msg => (msg.M_Type == MessageType.私信 && (msg.M_SenderId == senderId || msg.M_ReceiverId == senderId)));
 
+            var args = new DynamicParameters();
+            StringBuilder sbWhereStr = new StringBuilder();
             for (int i = 0; i < msgList.Count; i++)
             {
-                
+                string childIdStr = "@PL_Id" + i;
+                if (msgList.Count > i + 1)
+                {
+                    sbWhereStr.Append(childIdStr + ",");
+                }
+                else
+                {
+                    sbWhereStr.Append(childIdStr);
+                }
+                args.Add(childIdStr, msgList[i].M_NameId);
             }
+            string sqlStr = string.Format(sqlSelectTemplate, " * ", sbWhereStr);
+            try
+            {
+                return dal.GetDataList<PrivateLetter>(sqlStr, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return null;
+        }
+
+        public List<PrivateLetter>GetPLChildList(int pageIndex, string senderId, string addresseeId)
+        {
+            int firstIndex = (pageIndex - 1) * PageNum + 1;
+            int lastIndex = pageIndex * PageNum;
+            var args = new DynamicParameters();
+            string sqlWhere1 = " M_Type=@M_Type AND M_UserId=@M_UserId ";
+            args.Add("@M_Type", firstIndex);
+            args.Add("@M_UserId", lastIndex);
             return null;
         }
     }
