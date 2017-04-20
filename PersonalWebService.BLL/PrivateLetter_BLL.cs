@@ -14,9 +14,9 @@ namespace PersonalWebService.BLL
     {
         public static readonly int PageNum = 12;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
-        private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[Message] WHERE {2}";
-        private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[Message] SET {0} WHERE {1}";
-        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[Message] WHERE {0}";
+        private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[PrivateLetter] WHERE {2}";
+        private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[PrivateLetter] SET {0} WHERE {1}";
+        private static readonly string sqlDeleteTemplate = "DELETE [dbo].[PrivateLetter] WHERE {0}";
         /// <summary>
         /// 获取当前私信对话条数
         /// </summary>
@@ -24,7 +24,7 @@ namespace PersonalWebService.BLL
         /// <param name="whereStr"></param>
         /// <param name="senderId"></param>
         /// <returns></returns>
-        public int GetPrivateLetterCount<T>(string whereStr, string senderId)
+        public int GetPrivateLetterCount(string whereStr, string senderId)
         {
             string sqlStr = @"
                                 with Dep as 
@@ -115,7 +115,7 @@ namespace PersonalWebService.BLL
             if (!string.IsNullOrEmpty(addresseeId))
             {
                 sbWhere.Append(" PL_AddresseeId=@PL_AddresseeId AND ");
-                args.Add("@addresseeId", addresseeId);
+                args.Add("@PL_AddresseeId", addresseeId);
             }
             sbWhere.Append(" 1=1 ");
 
@@ -145,6 +145,53 @@ namespace PersonalWebService.BLL
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
             return null;
+        }
+
+        /// <summary>
+        /// 删除PL某些消息,对应的必须是当前发送人发的
+        /// </summary>
+        /// <param name="plIdlist">私信Id列表</param>
+        /// <param name="senderId">发送者Id</param>
+        /// <param name="addresseeId">接收者Id</param>
+        /// <returns></returns>
+        public bool DeletePLList(List<string> plIdlist, string senderId, string addresseeId)
+        {
+            if (plIdlist == null || plIdlist.Count < 1)
+            {
+                return false;
+            }
+            var args = new DynamicParameters();
+            var whereSb = new StringBuilder();
+
+            plIdlist = plIdlist.FindAll(mid => (mid != null && mid.Length == 32));
+            for (int i = 0; i < plIdlist.Count; i++)
+            {
+                string childmId = "@mId" + i;
+                args.Add(childmId, plIdlist[i]);
+                if (plIdlist.Count != i + 1)
+                {
+                    whereSb.Append(childmId + ",");
+                }
+                else
+                {
+                    whereSb.Append(childmId);
+                }
+            }
+            string upStr = " PL_IsDeleted=1 ";
+            string whereStr = $" M_Id in ( {whereSb.ToString()} )  AND PL_SenderId=@PL_SenderId AND PL_AddresseeId=@PL_AddresseeId";
+            args.Add("@PL_SenderId", senderId);
+            args.Add("@PL_AddresseeId", addresseeId);
+            string sqlStr = string.Format(sqlUpdateTemplate, upStr, whereStr);
+
+            try
+            {
+                return dal.OpeData(sqlStr, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return false;
         }
     }
 }

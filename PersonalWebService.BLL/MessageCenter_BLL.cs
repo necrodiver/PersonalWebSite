@@ -130,8 +130,8 @@ namespace PersonalWebService.BLL
                     whereSb.Append(childmId);
                 }
             }
-            string whereStr = "M_Id=1";
-            string sqlStr = string.Format(sqlUpdateTemplate, whereStr, whereSb.ToString());
+            string upStr = " M_IsRead=1 ";
+            string sqlStr = string.Format(sqlUpdateTemplate, upStr, $" M_Id in ( {whereSb.ToString()} )");
 
             try
             {

@@ -47,6 +47,12 @@ namespace PersonalWebService.Model
 
         [DisplayName("回信上一个私信的Id")]
         public string PL_ParentId { get; set; }
+
+        [DisplayName("是否已读")]
+        public int PL_IsRead { get; set; }
+
+        [DisplayName("是否已被删除")]
+        public int PL_IsDeleted { get; set; }
     }
 
     public class Message
