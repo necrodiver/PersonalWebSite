@@ -14,6 +14,7 @@ namespace PersonalWebService.BLL
     {
         public static readonly int PageNum = 12;
         private static IDAL.IDAL_PersonalBase dal = new Operate_DAL();
+        private static MessageCenter_BLL msgBll = new MessageCenter_BLL();
         private static readonly string sqlSelectTemplate = "SELECT {0} FROM [dbo].[PrivateLetter] WHERE {2}";
         private static readonly string sqlUpdateTemplate = "UPDATE [dbo].[PrivateLetter] SET {0} WHERE {1}";
         private static readonly string sqlDeleteTemplate = "DELETE [dbo].[PrivateLetter] WHERE {0}";
@@ -195,15 +196,32 @@ namespace PersonalWebService.BLL
         }
 
         /// <summary>
-        /// 添加私信内容(注意添加私信前首先需要在Message表中添加引导列)
+        /// 添加私信内容(注意添加私信后需要在Message表中添加引导列,并设置Message表的NameId为PL_Id)
         /// </summary>
         /// <param name="plModel"></param>
-        /// <returns></returns>
+        /// <returns>返回PL_Id</returns>
         public bool AddPL(PrivateLetter plModel)
         {
+            if (plModel != null && string.IsNullOrEmpty(plModel.PL_Id))
+            {
+                plModel.PL_Id = Guid.NewGuid().ToString();
+            }
+            //这里我希望使用事务来完成，暂时先这样写，后边再改，因为pl表新增了mssage表也需要新增相关内容，但是如果两个新增有一个挂了那么就会出问题，防止意外发生，后边将使用事务
             try
             {
-                return dal.OpeData(plModel, OperatingModel.Add);
+                if (dal.OpeData(plModel, OperatingModel.Add))
+                {
+                    Message msgModel = new Message()
+                    {
+                        M_Type = MessageType.私信,
+                        M_SenderId = plModel.PL_SenderId,
+                        M_ReceiverId = plModel.PL_AddresseeId,
+                        M_NameId = plModel.PL_Id,
+                        M_AddTime = plModel.PL_Sendtime,
+                        M_IsRead = IsReaded.未读
+                    };
+                    return msgBll.AddMessage(msgModel);
+                }
             }
             catch (Exception ex)
             {

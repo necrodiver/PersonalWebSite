@@ -104,4 +104,10 @@ namespace PersonalWebService.Model
         系统通知 = 5
     }
 
+    public enum IsReaded
+    {
+        未读 = 0,
+        已读 = 1
+    }
+
 }

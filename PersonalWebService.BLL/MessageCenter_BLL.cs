@@ -143,6 +143,20 @@ namespace PersonalWebService.BLL
             }
             return false;
         }
+        public bool AddMessage(Message msgModel)
+        {
+            if (msgModel == null || string.IsNullOrEmpty(msgModel.M_NameId))
+                return false;
+            try
+            {
+                return dal.OpeData(msgModel, OperatingModel.Add);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+            return false;
+        }
 
     }
 }

@@ -49,7 +49,7 @@ namespace PersonalWebService.Model
         public string PL_ParentId { get; set; }
 
         [DisplayName("是否已读")]
-        public int PL_IsRead { get; set; }
+        public IsReaded PL_IsRead { get; set; }
 
         [DisplayName("是否已被删除")]
         public int PL_IsDeleted { get; set; }
@@ -86,6 +86,6 @@ namespace PersonalWebService.Model
         /// <summary>
         /// 0：未读，1：已读
         /// </summary>
-        public int M_IsRead { get; set; }
+        public IsReaded M_IsRead { get; set; }
     }
 }
