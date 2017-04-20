@@ -166,7 +166,7 @@ namespace PersonalWebService.BLL
             plIdlist = plIdlist.FindAll(mid => (mid != null && mid.Length == 32));
             for (int i = 0; i < plIdlist.Count; i++)
             {
-                string childmId = "@mId" + i;
+                string childmId = "@plId" + i;
                 args.Add(childmId, plIdlist[i]);
                 if (plIdlist.Count != i + 1)
                 {
@@ -191,6 +191,25 @@ namespace PersonalWebService.BLL
             {
                 LogRecord_Helper.RecordLog(LogLevels.Error, ex);
             }
+            return false;
+        }
+
+        /// <summary>
+        /// 添加私信内容(注意添加私信前首先需要在Message表中添加引导列)
+        /// </summary>
+        /// <param name="plModel"></param>
+        /// <returns></returns>
+        public bool AddPL(PrivateLetter plModel)
+        {
+            try
+            {
+                return dal.OpeData(plModel, OperatingModel.Add);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
+
             return false;
         }
     }
