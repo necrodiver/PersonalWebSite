@@ -92,14 +92,58 @@ namespace PersonalWebService.BLL
             return null;
         }
 
-        public List<PrivateLetter>GetPLChildList(int pageIndex, string senderId, string addresseeId)
+        /// <summary>
+        /// 查询详细的对话内容
+        /// </summary>
+        /// <param name="pageIndex">对话页数</param>
+        /// <param name="nameId">对话定位，nameId为Message的nameId</param>
+        /// <param name="isAhead">是否向前读取</param>
+        /// <param name="senderId">发送者Id(userId)</param>
+        /// <param name="addresseeId">接收者Id(userId)</param>
+        /// <returns></returns>
+        public List<PrivateLetter> GetPLChildList(int pageIndex, string nameId, bool isAhead, string senderId, string addresseeId)
         {
             int firstIndex = (pageIndex - 1) * PageNum + 1;
             int lastIndex = pageIndex * PageNum;
             var args = new DynamicParameters();
-            string sqlWhere1 = " M_Type=@M_Type AND M_UserId=@M_UserId ";
-            args.Add("@M_Type", firstIndex);
-            args.Add("@M_UserId", lastIndex);
+            StringBuilder sbWhere = new StringBuilder();
+            if (!string.IsNullOrEmpty(senderId))
+            {
+                sbWhere.Append(" PL_SenderId=@PL_SenderId AND ");
+                args.Add("@PL_SenderId", senderId);
+            }
+            if (!string.IsNullOrEmpty(addresseeId))
+            {
+                sbWhere.Append(" PL_AddresseeId=@PL_AddresseeId AND ");
+                args.Add("@addresseeId", addresseeId);
+            }
+            sbWhere.Append(" 1=1 ");
+
+            string onStr = isAhead ? "Dep.PL_Id = p.PL_ParentId" : "Dep.PL_ParentId = p.PL_Id";
+            string sqlStr = $@"with Dep as
+                             (
+                             	select PL_Id,PL_SenderId,PL_AddresseeId,PL_Message,PL_Sendtime,PL_ParentId 
+                             	from [dbo].[PrivateLetter] 
+                             	where PL_Id=@PL_Id AND {sbWhere.ToString()}
+                             	union all
+                             	select Dep.PL_Id,Dep.PL_SenderId,Dep.PL_AddresseeId,Dep.PL_Message,Dep.PL_Sendtime,Dep.PL_ParentId 
+                             	from Dep inner join [dbo].[PrivateLetter] p on {onStr}
+                             )
+                             select * from(
+                             	select ROW_NUMBER()Over(Order by PL_Sendtime)NUM,* from Dep
+                             ) PL where NUM>=@firstIndex AND NUM<=@lastIndex";
+            args.Add("@PL_Id", nameId);
+            args.Add("@firstIndex", firstIndex);
+            args.Add("@lastIndex", lastIndex);
+
+            try
+            {
+                dal.GetDataList<PrivateLetter>(sqlStr, args);
+            }
+            catch (Exception ex)
+            {
+                LogRecord_Helper.RecordLog(LogLevels.Error, ex);
+            }
             return null;
         }
     }
