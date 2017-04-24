@@ -115,7 +115,7 @@ namespace PersonalWebService.BLL
             }
             if (!string.IsNullOrEmpty(addresseeId))
             {
-                sbWhere.Append(" PL_AddresseeId=@PL_AddresseeId AND ");
+                sbWhere.Append(" PL_AddresseeId=@PL_AddresseeId AND  PL_IsDeleted=1 AND");
                 args.Add("@PL_AddresseeId", addresseeId);
             }
             sbWhere.Append(" 1=1 ");
@@ -178,7 +178,7 @@ namespace PersonalWebService.BLL
                     whereSb.Append(childmId);
                 }
             }
-            string upStr = " PL_IsDeleted=1 ";
+            string upStr = " PL_IsDeleted=1 ";//这里直接设定为1代表已删除，如果不这样做的话而采用直接删除对话链就会断掉了，后便也就查询不到了
             string whereStr = $" M_Id in ( {whereSb.ToString()} )  AND PL_SenderId=@PL_SenderId AND PL_AddresseeId=@PL_AddresseeId";
             args.Add("@PL_SenderId", senderId);
             args.Add("@PL_AddresseeId", addresseeId);

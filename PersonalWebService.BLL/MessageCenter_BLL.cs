@@ -143,6 +143,12 @@ namespace PersonalWebService.BLL
             }
             return false;
         }
+
+        /// <summary>
+        /// 添加消息提示（引导）
+        /// </summary>
+        /// <param name="msgModel"></param>
+        /// <returns></returns>
         public bool AddMessage(Message msgModel)
         {
             if (msgModel == null || string.IsNullOrEmpty(msgModel.M_NameId))
